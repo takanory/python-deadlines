@@ -9,13 +9,13 @@
 		<title>Newsfeed for Python Events Calendar from Python Conference Deadlines</title>
 		<description>Countdowns to your favourite Python conferences with calls for participation and resources to submit awesome talks!</description>
 		<link>https://pythondeadlin.es/feed.xml</link>
-		<lastBuildDate>Sun, 17 Mar 2024 09:20:02 +0000</lastBuildDate>
+		<lastBuildDate>Wed, 20 Mar 2024 10:18:45 +0000</lastBuildDate>
 		
 			<item>
-				<title>PyCon India 2023 Conference Deadline</title>
-				<description><![CDATA[* name of the event: PyCon India 2023<br/>* type of event: Conference <br/>* focus on Python: Yes<br/>* approximate number of attendees: Unknown<br/>* location (incl. country): Bengaluru, India<br/>* dates/times/recurrence (incl. time zone): September 20 - 23, 2024<br/>* HTML link : <a href="https://in.pycon.org/2024/">PyCon India 2023</a>]]></description>
+				<title>PyCon India 2024 Conference Deadline</title>
+				<description><![CDATA[* name of the event: PyCon India 2024<br/>* type of event: Conference <br/>* focus on Python: Yes<br/>* approximate number of attendees: Unknown<br/>* location (incl. country): NIMHANS Convention Centre, Bengaluru, India<br/>* dates/times/recurrence (incl. time zone): September 20 - 23, 2024<br/>* HTML link : <a href="https://in.pycon.org/2024/">PyCon India 2024</a>]]></description>
 				<pubDate>Fri, 20 Sep 2024 00:00:00 +0000</pubDate>
-				<link>https://pythondeadlin.es/conference/pycon-india-2023/</link>
+				<link>https://pythondeadlin.es/conference/pycon-india-2024/</link>
 				<guid isPermaLink="false"></guid>
 				<category>PY</category>
 			</item>

@@ -67,7 +67,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1710667202"
+      href="/static/css/js-year-calendar.min.css?t=1710929925"
       media="screen,projection"
     />
 
@@ -79,13 +79,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1710667202"
+      href="/static/css/deadlines.css?t=1710929925"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1710667202"
+      href="/static/css/calendar.css?t=1710929925"
       media="screen,projection"
     />
 
@@ -370,21 +370,21 @@
         </div>
         <hr />
         <div id="all_confs">
-          <div id="pycon-india-2023" class="ConfItem PY-conf">
+          <div id="pycon-india-2024" class="ConfItem PY-conf">
             <div class="row conf-row">
               <div class="col-6">
                 <span class="conf-title">
                   <a
                     title="Deadline Details"
-                    href="/conference/pycon-india-2023/"
-                    >PyCon India 2023</a
+                    href="/conference/pycon-india-2024/"
+                    >PyCon India 2024</a
                   >
                 </span>
                 <span class="conf-title-small">
                   <a
                     title="Deadline Details"
-                    href="/conference/pycon-india-2023/"
-                    >PyCon India '23</a
+                    href="/conference/pycon-india-2024/"
+                    >PyCon India '24</a
                   >
                 </span>
                 <span class="conf-title-icon">
@@ -427,8 +427,9 @@
                 <div class="meta">
                   <span class="conf-date">September 20 - 23, 2024.</span>
                   <span class="conf-place">
-                    <a href="http://maps.google.com/?q=Bengaluru, India"
-                      >Bengaluru, India</a
+                    <a
+                      href="http://maps.google.com/?q=NIMHANS Convention Centre, Bengaluru, India"
+                      >NIMHANS Convention Centre, Bengaluru, India</a
                     >
                   </span>
                 </div>
@@ -1452,7 +1453,7 @@
 
 
 
-                $('#pycon-india-2023 .PY-tag').html(sub2name["PY"].toLocaleLowerCase());
+                $('#pycon-india-2024 .PY-tag').html(sub2name["PY"].toLocaleLowerCase());
 
 
 
@@ -1466,33 +1467,33 @@
                 if (cfpDate.invalid || confDate.invalid) {
                   var cfpDate = DateTime.fromSQL("2024-05-31 23:59:00");
                   var confDate = DateTime.fromSQL("2024-09-20");
-                  console.log("Invalid timezone in pycon-india-2023. Using system timezone instead.");
+                  console.log("Invalid timezone in pycon-india-2024. Using system timezone instead.");
                 }
 
                 // render countdown timer
-                $('#pycon-india-2023 .timer').countdown(cfpDate.toJSDate(), function (event) {
+                $('#pycon-india-2024 .timer').countdown(cfpDate.toJSDate(), function (event) {
                   $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
                 });
 
                 // render countdown timer small
-                $('#pycon-india-2023 .timer-small').countdown(cfpDate.toJSDate(), function (event) {
+                $('#pycon-india-2024 .timer-small').countdown(cfpDate.toJSDate(), function (event) {
                   $(this).html(event.strftime('%Dd %H:%M:%S'));
                 });
 
                 // deadline in local timezone
-                $('#pycon-india-2023 .deadline-time').html(cfpDate.setZone('system').toLocaleString(DateTime.DATE_HUGE));
+                $('#pycon-india-2024 .deadline-time').html(cfpDate.setZone('system').toLocaleString(DateTime.DATE_HUGE));
 
                 // add calendar button
                 try {
                   var myCalendar = createCalendarFromObject({
-                    id: 'pycon-india-2023',
-                    title: 'PyCon India 2023 deadline',
+                    id: 'pycon-india-2024',
+                    title: 'PyCon India 2024 deadline',
                     date: cfpDate.toJSDate(),
                     duration: 60,
                   });
-                  document.querySelector('#pycon-india-2023 .calendar').appendChild(myCalendar);
+                  document.querySelector('#pycon-india-2024 .calendar').appendChild(myCalendar);
                 } catch (err) {
-                  document.querySelector('#pycon-india-2023 .calendar').appendChild("<p>Calendar not available.</p>");
+                  document.querySelector('#pycon-india-2024 .calendar').appendChild("<p>Calendar not available.</p>");
                   console.log("Error in cfp date.");
                 }
 
@@ -1500,21 +1501,21 @@
                 cfpDiff = cfpDate.diffNow("seconds");
                 confDiff = confDate.diffNow("seconds");
 
-                $('#pycon-india-2023').attr("cfpDiff", cfpDiff.toMillis());
-                $('#pycon-india-2023').attr("confDiff", confDiff.toMillis());
+                $('#pycon-india-2024').attr("cfpDiff", cfpDiff.toMillis());
+                $('#pycon-india-2024').attr("confDiff", confDiff.toMillis());
 
                 if (cfpDiff < 0) {
-                  $('#pycon-india-2023').addClass('pastcfp');
-                  $('#pycon-india-2023 .timer').replaceWith($('#pycon-india-2023 .deadline'));
-                  $('#pycon-india-2023 .timer-small').replaceWith($('#pycon-india-2023 .deadline'));
-                  $('#pycon-india-2023 .calendar').remove();
+                  $('#pycon-india-2024').addClass('pastcfp');
+                  $('#pycon-india-2024 .timer').replaceWith($('#pycon-india-2024 .deadline'));
+                  $('#pycon-india-2024 .timer-small').replaceWith($('#pycon-india-2024 .deadline'));
+                  $('#pycon-india-2024 .calendar').remove();
                 }
 
                 if (confDiff < 0) {
-                  $('#pycon-india-2023').addClass('pastconf');
-                  $('#pycon-india-2023 .timer').replaceWith($('#pycon-india-2023 .deadline'));
-                  $('#pycon-india-2023 .timer-small').replaceWith($('#pycon-india-2023 .deadline'));
-                  $('#pycon-india-2023 .calendar').remove();
+                  $('#pycon-india-2024').addClass('pastconf');
+                  $('#pycon-india-2024 .timer').replaceWith($('#pycon-india-2024 .deadline'));
+                  $('#pycon-india-2024 .timer-small').replaceWith($('#pycon-india-2024 .deadline'));
+                  $('#pycon-india-2024 .calendar').remove();
                 }
 
 
