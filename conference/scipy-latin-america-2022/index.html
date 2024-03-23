@@ -78,7 +78,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1710929925"
+      href="/static/css/js-year-calendar.min.css?t=1711210197"
       media="screen,projection"
     />
 
@@ -90,13 +90,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1710929925"
+      href="/static/css/deadlines.css?t=1711210197"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1710929925"
+      href="/static/css/calendar.css?t=1711210197"
       media="screen,projection"
     />
 
@@ -630,24 +630,14 @@
         </div>
         <div class="row">
           <div
-            id="6efaa651-c853-46e1-a04f-c1bec0e21180"
+            id="821491dc-f3e0-43c5-b29e-fae4d11c1686"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "6efaa651-c853-46e1-a04f-c1bec0e21180",
+              "821491dc-f3e0-43c5-b29e-fae4d11c1686",
               [
-                {
-                  latitude: -25.1076701,
-                  longitude: -64.3494964,
-                  title: "Scipy Latin America 2022 Conference Deadlines",
-                  icon: null,
-                  url: "/conference/scipy-latin-america-2022/",
-                  url_text: null,
-                  image: "",
-                  popup_html: "",
-                },
                 {
                   latitude: -25.1076701,
                   longitude: -64.3494964,
@@ -791,13 +781,13 @@
 
         // Use specified timezone for deadlines if available else use AoE timezone
 
-        var confDeadline = DateTime.fromSQL("2022-07-31 23:59:00", {
+        var confDeadline = DateTime.fromSQL("2022-08-31 23:59:00", {
           zone: "America/Argentina/Buenos_Aires",
         });
 
         // check if timezone is valid otherwise replace by system timezone
         if (confDeadline.invalid) {
-          var confDeadline = DateTime.fromSQL("2022-07-31 23:59:00");
+          var confDeadline = DateTime.fromSQL("2022-08-31 23:59:00");
           console.log("Invalid timezone. Using system timezone instead.");
         }
 

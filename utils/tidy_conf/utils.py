@@ -32,9 +32,7 @@ def ordered_dump(data, stream=None, Dumper=yaml.Dumper, **kwds):
         pass
 
     def _dict_representer(dumper, data):
-        return dumper.represent_mapping(
-            yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG, data.items()
-        )
+        return dumper.represent_mapping(yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG, data.items())
 
     OrderedDumper.add_representer(dict, _dict_representer)
     return yaml.dump(data, stream, OrderedDumper, **kwds)
@@ -98,3 +96,26 @@ def query_yes_no(question, default="no"):
             return valid[choice]
         else:
             sys.stdout.write("Please respond with 'yes' or 'no' " "(or 'y' or 'n').\n")
+
+
+def fill_missing_required(df):
+    required = [
+        "conference",
+        "year",
+        "link",
+        "cfp",
+        "place",
+        "start",
+        "end",
+        "sub",
+    ]
+
+    for i, row in df.copy().iterrows():
+        for keyword in required:
+            if pd.isna(row[keyword]):
+                user_input = input(
+                    f"What's the value of '{keyword}' for conference '{row['conference']}' check {row['link']} ?: "
+                )
+                if user_input != "":
+                    df.loc[i, keyword] = user_input
+    return df

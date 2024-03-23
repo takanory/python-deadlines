@@ -5,24 +5,23 @@
 # It writes to `"prefix"data.yml`, copy those to the conference.yml after screening.
 
 import datetime
-import pdb
 import sys
 import time
-import urllib
-from builtins import input
 from pathlib import Path
-from shutil import copyfile
 
 
 import pytz
-import requests
 import yaml
 from tqdm import tqdm
 
+
 sys.path.append(".")
-import link_check
-from utils import pretty_print, ordered_dump, Loader, get_schema
-from date_magic import clean_dates, create_nice_date
+from tidy_conf import auto_add_sub, write_conference_yaml
+from tidy_conf.latlon import add_latlon
+from tidy_conf.date import clean_dates, create_nice_date
+from tidy_conf.links import check_link_availability as link_check
+from tidy_conf.titles import tidy_titles
+from tidy_conf.utils import Loader, get_schema
 
 dateformat = "%Y-%m-%d %H:%M:%S"
 tba_words = ["tba", "tbd", "cancelled"]
@@ -33,7 +32,7 @@ def sort_by_cfp(data):
         return "TBA"
     if data["cfp"] in ["TBA", "Cancelled"]:
         return data["cfp"]
-    if not " " in data["cfp"]:
+    if " " not in data["cfp"]:
         data["cfp"] += " 23:59:00"
     return pytz.utc.normalize(
         datetime.datetime.strptime(data["cfp"], dateformat).replace(
@@ -55,10 +54,6 @@ def sort_by_date(data):
 
 def sort_by_date_passed(data):
     right_now = datetime.datetime.utcnow().replace(microsecond=0).strftime(dateformat)
-    return sort_by_cfp(data) < right_now
-
-
-def sort_by_year(data):
     return sort_by_cfp(data) < right_now
 
 
@@ -97,24 +92,6 @@ def tidy_dates(data):
     return data
 
 
-def tidy_titles(data):
-    mappings = {
-        "Pycon": "PyCon",
-        "Pydata": "PyData",
-        "Pyday": "PyDay",
-        "PyCon DE": "PyCon Germany",
-        "PyCon SK": "PyCon Slovakia",
-        "PyCon PL": "PyCon Poland",
-        "PyCon CZ": "PyCon Czechia",
-        "PyCon Italy": "PyCon Italia",
-        "Scipy": "SciPy",
-    }
-    for i, q in tqdm(enumerate(data.copy()), total=len(data)):
-        if "conference" in q:
-            data[i]["conference"] = q["conference"].strip()
-    return data
-
-
 def split_data(data):
     conf, tba, expired, legacy = [], [], [], []
     for q in tqdm(data):
@@ -134,80 +111,9 @@ def split_data(data):
                 if " " not in q["cfp"]:
                     q["cfp"] += " 23:59:00"
                 conf.append(q)
-        except:
+        except KeyError:
             print(data["cfp"].lower(), tba_words)
     return conf, tba, expired, legacy
-
-
-def add_latlon(data):
-    cache = {}
-
-    data_copy = []
-
-    # Build Cache
-    for i, q in tqdm(enumerate(data), total=len(data)):
-        if ("place" not in q) or ("online" in q["place"].lower()):
-            continue
-        elif "location" in q:
-            cache[q["place"]] = q["location"]
-            continue
-        else:
-            data_copy.append((i, q))
-
-    for i, q in tqdm(data_copy):
-        try:
-            q["place"] = q["place"].split(",")[0].strip() + ", " + q["place"].split(",")[-1].strip()
-        except IndexError:
-            print(f"IndexError: {q['place']}")
-
-        if q["place"] in cache and cache[q["place"]] is not None:
-            data[i]["location"] = {
-                "latitude": cache[q["place"]]["latitude"],
-                "longitude": cache[q["place"]]["longitude"],
-            }
-
-        else:
-            url = (
-                "https://nominatim.openstreetmap.org/search"
-                + "?format=json&q="
-                + urllib.parse.quote(q["place"])
-            )
-            response = requests.get(url)
-
-            if response:
-                try:
-                    response = response.json()
-                    data[i]["location"] = {
-                        "latitude": float(response[0]["lat"]),
-                        "longitude": float(response[0]["lon"]),
-                    }
-                    cache[q["place"]] = data[i]["location"]
-                except IndexError:
-                    cache[q["place"]] = None
-                    print(f"No response from Openstreetmaps for {q['place']}")
-                time.sleep(2)
-            else:
-                cache[q["place"]] = None
-                print(f"No response from Openstreetmaps for {q['place']}")
-    return data
-
-
-def auto_add_sub(data):
-    keywords = {
-        "PY": ["pycon", "pyladies", "pyday", "pycamp", "pyjamas"],
-        "WEB": ["django", "flask", "plone", "wagtail", "web"],
-        "PYDATA": ["pydata", "jupyter"],
-        "SCIPY": ["scipy"],
-        "BIZ": ["business"],
-        "GEO": ["geopython"],
-    }
-    for i, q in tqdm(enumerate(data.copy()), total=len(data)):
-        if "sub" not in q:
-            for key, value in keywords.items():
-                if any(word in q["conference"].lower() for word in value):
-                    data[i]["sub"] = key
-                    break
-    return data
 
 
 def check_links(data):
@@ -219,24 +125,12 @@ def check_links(data):
             else:
                 time.sleep(0.5)
                 new_link = link_check.check_link_availability(q["link"], q["start"])
-                if not "https://web.archive.org" in new_link:
+                if "https://web.archive.org" not in new_link:
                     cache[q["link"]] = new_link
                     cache[new_link] = new_link
                 q["link"] = new_link
             data[i] = q
     return data
-
-
-def write_yaml(data, url):
-    with open(url, "w") as outfile:
-        for line in ordered_dump(
-            data,
-            Dumper=yaml.SafeDumper,
-            default_flow_style=False,
-            explicit_start=True,
-        ).splitlines():
-            outfile.write(line.replace("- conference:", "\n- conference:"))
-            outfile.write("\n")
 
 
 # Sort:
@@ -285,6 +179,10 @@ def sort_data(base="", prefix=""):
     print("Checking Links")
     # data = check_links(data)
 
+    print("Sorting Keywords:")
+    for i, q in enumerate(data.copy()):
+        data[i] = order_keywords(q)
+
     # Split data by cfp
     print("Splitting conferences, tba, and archive")
     conf, tba, expired, legacy = split_data(data)
@@ -296,18 +194,18 @@ def sort_data(base="", prefix=""):
     # pretty_print("Date and Passed Deadline Sorting with tba:", conf, tba, expired)
     tba.sort(key=sort_by_date, reverse=True)
 
-    write_yaml(conf + tba, out_current)
+    write_conference_yaml(conf + tba, out_current)
 
     expired.sort(key=sort_by_date, reverse=True)
     expired.sort(key=sort_by_cfp, reverse=True)
 
     # pretty_print("New archive:", data)
-    write_yaml(expired, out_archive)
+    write_conference_yaml(expired, out_archive)
 
     legacy.sort(key=sort_by_date, reverse=True)
 
     # pretty_print("New legacy:", data)
-    write_yaml(legacy, out_legacy)
+    write_conference_yaml(legacy, out_legacy)
 
 
 if __name__ == "__main__":

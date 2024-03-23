@@ -4,36 +4,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-<title>SciPy US 2024 Conference Deadlines</title>
+<title>PyCon APAC 2017 Conference Deadlines</title>
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>SciPy US 2024 Conference Deadlines | Python Conference Deadlines</title>
-<meta name="generator" content="Jekyll v3.9.3" />
-<meta property="og:title" content="SciPy US 2024 Conference Deadlines" />
+<title>PyCon APAC 2017 Conference Deadlines | Python Conference Deadlines</title>
+<meta name="generator" content="Jekyll v4.3.3" />
+<meta property="og:title" content="PyCon APAC 2017 Conference Deadlines" />
 <meta name="author" content="Jesper Dramsch" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Countdown for the Call for Participation of this conference including conference dates and details." />
 <meta property="og:description" content="Countdown for the Call for Participation of this conference including conference dates and details." />
-<link rel="canonical" href="https://pythondeadlin.es/conference/scipy-us-2024/" />
-<meta property="og:url" content="https://pythondeadlin.es/conference/scipy-us-2024/" />
+<link rel="canonical" href="https://pythondeadlin.es/conference/pycon-apac-2017/" />
+<meta property="og:url" content="https://pythondeadlin.es/conference/pycon-apac-2017/" />
 <meta property="og:site_name" content="Python Conference Deadlines" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2024-07-08T00:00:00+00:00" />
+<meta property="article:published_time" content="2024-08-26T00:00:00+00:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="SciPy US 2024 Conference Deadlines" />
+<meta property="twitter:title" content="PyCon APAC 2017 Conference Deadlines" />
 <meta name="twitter:site" content="@jesperdramsch" />
 <meta name="twitter:creator" content="@jesperdramsch" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Jesper Dramsch","url":"https://dramsch.net"},"dateModified":"2024-07-08T00:00:00+00:00","datePublished":"2024-07-08T00:00:00+00:00","description":"Countdown for the Call for Participation of this conference including conference dates and details.","headline":"SciPy US 2024 Conference Deadlines","mainEntityOfPage":{"@type":"WebPage","@id":"https://pythondeadlin.es/conference/scipy-us-2024/"},"url":"https://pythondeadlin.es/conference/scipy-us-2024/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Jesper Dramsch","url":"https://dramsch.net"},"dateModified":"2024-08-26T00:00:00+00:00","datePublished":"2024-08-26T00:00:00+00:00","description":"Countdown for the Call for Participation of this conference including conference dates and details.","headline":"PyCon APAC 2017 Conference Deadlines","mainEntityOfPage":{"@type":"WebPage","@id":"https://pythondeadlin.es/conference/pycon-apac-2017/"},"url":"https://pythondeadlin.es/conference/pycon-apac-2017/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
 <link rel="alternate" type="application/rss+xml" title="RSS Feed for Pythondeadlin.es" href="/feed.xml" />
 
-<link rel="stylesheet" type="text/css" href="/static/css/js-year-calendar.min.css?t=1710160989" media="screen,projection">
+<link rel="stylesheet" type="text/css" href="/static/css/js-year-calendar.min.css?t=1710929925" media="screen,projection">
 
 <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="/static/css/deadlines.css?t=1710160989" media="screen,projection">
-<link rel="stylesheet" type="text/css" href="/static/css/calendar.css?t=1710160989" media="screen,projection">
+<link rel="stylesheet" type="text/css" href="/static/css/deadlines.css?t=1710929925" media="screen,projection">
+<link rel="stylesheet" type="text/css" href="/static/css/calendar.css?t=1710929925" media="screen,projection">
 
 <link rel="shortcut icon" href="/static/img/favicon.png">
 
@@ -91,6 +91,32 @@
 }
 
 
+.BIZ-tag {
+  color: #A8B9CC;
+}
+.BIZ-select {
+  color: #A8B9CC;
+  background: white;
+}
+.BIZ-select.active {
+    color: white;
+    background: #A8B9CC;
+}
+
+
+.GEO-tag {
+  color: #310c0c;
+}
+.GEO-select {
+  color: #310c0c;
+  background: white;
+}
+.GEO-select.active {
+    color: white;
+    background: #310c0c;
+}
+
+
   </style>
 
 <script defer data-domain="pythondeadlin.es" src="https://info.pythondeadlin.es/js/script.js"></script>
@@ -104,16 +130,6 @@
 <script type="text/javascript" src="/static/js/ouical.min.js"></script>
 <script type="text/javascript" src="/static/js/bootstrap-multiselect.min.js"></script>
 
-  
-  <style>
-    #twitter-widget {
-      width: 100%;
-    }
-
-    .twitter-timeline {
-      width: 100% !important;
-    }
-    </style>
   
 <script type='text/javascript'>
   /* global google */
@@ -343,19 +359,15 @@ if (typeof Object.assign !== 'function') {
   
 
   
-    / <a href="#">SciPy US 2024 Conference Deadlines</a>
+    / <a href="#">PyCon APAC 2017 Conference Deadlines</a>
   
 
 </div>
 
           <h1>
-            <span id="conf-title-href" href="/conference/scipy-us-2024/">SciPy US 2024</span>
-            <span id="twitter-box"><a href="https://twitter.com/share" class="twitter-share-button"
-                data-text="Countdown to the #SciPy US 2024 deadline!" data-show-count="false"
-                style="font-size:13px;">Tweet</a>
-              <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-            </span>
+            <span id="conf-title-href" href="/conference/pycon-apac-2017/">PyCon APAC 2017</span>
           </h1>
+          
         </div>
       </div>
       <div class="row">
@@ -363,12 +375,16 @@ if (typeof Object.assign !== 'function') {
           <span id="conf-subs" title="Conference subjects">
             
             
-            <span class="SCIPY-tag badge badge-light conf-sub conf-SCIPY">
+            <span class="PY-tag badge badge-light conf-sub conf-PY">
+              
+              
+              General Python
               
               
               
               
-              Scientific Python
+              
+              
               
               
               
@@ -383,44 +399,37 @@ if (typeof Object.assign !== 'function') {
     </div>
     <div id="page-content">
       <div id="conf-deadline-timer" class="row">
-        <div id="cfp-timer" class="col-12 conf-timer">
+        <div id="cfp-timer" class="col-12 conf-timer">TBA
         </div>
       </div>
       <div id="conf-key-facts" class="row">
         <div class="col-12 col-md-6">
           <div>
             <img src="/static/img/084-calendar.svg" class="badge-link" alt="Calendar icon" width="16" height="16" />
-            <span id="conf-date">July 08 - 14, 2024</span>
+            <span id="conf-date">August 26 - 28, 2017</span>
           </div>
           <div>
             <img src="/static/img/072-location.svg" class="badge-link" alt="Location icon" width="16" height="16" />
             <a id="conf-place" target="_blank"
-              href="https://maps.google.com/?q=Tacoma, Washington, USA">Tacoma, Washington, USA</a>
+              href="https://maps.google.com/?q=Kuala Lumpur, Malaysia">Kuala Lumpur, Malaysia</a>
           </div>
           <div>
             <img src="/static/img/203-earth.svg" class="badge-link" alt="Earth Icon" width="16" height="16" />
-            <a id="conf-website" target="_blank" href="https://scipy2024.scipy.org">https://scipy2024.scipy.org</a>
-          </div>
-          
-          <div>
-            <img src="/static/img/035-file-text.svg" class="badge-link" alt="Document Icon for CfP link" width="16"
-              height="16" />
-            <a id="conf-cfp_link" target="_blank" href="https://cfp.scipy.org/2024/cfp">Call for Participation</a>
+            <a id="conf-website" target="_blank" href="https://pycon.my/">https://pycon.my/</a>
           </div>
           
           <div>
             <img src="/static/img/002-home2.svg" class="badge-link" alt="Conference Series" width="16" height="16" />
-            <a id="conf-series" href="/series/scipy-us">All SciPy US conferences</a>
+            <a id="conf-series" href="/series/pycon-apac">All PyCon APAC conferences</a>
           </div>
           
           
           
-          <div>
-            <img src="/static/img/407-twitter.svg" class="badge-link" alt="Twitter icon" width="16" height="16" />
-            <a id="conf-twitter" target="_blank" href="https://twitter.com/SciPyConf">@SciPyConf</a>
-          </div>
           
-          
+        </div>
+        </div>
+        <div id="conf-deadlines" class="row">
+          <div class="col-12 col-md-6">
           <div class="meta deadline">
             Download Conference deadline:
           </div>
@@ -438,25 +447,41 @@ if (typeof Object.assign !== 'function') {
             <span class="deadline-local-time"></span>
           </div>
         </div>
-
         <div class="col-12 col-md-6">
-          
-          <!-- Twitter timeline -->
-          <div id="twitter-widget">
-            <a class="twitter-timeline" href="https://twitter.com/SciPyConf" data-tweet-limit=2>Tweets by
-              SciPyConf</a>
-            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-          </div>
           
         </div>
       </div>
+      <div class="row" id="conf-share-links">
+        <div class="col-12">
+              <a href="https://twitter.com/share?url=https://pythondeadlin.es/conference/pycon-apac-2017/&via=jesperdramsch&text=I%20found%20this%20Python%20conference:%20PyCon APAC%202017"
+                data-toggle="tooltip" title="Tweet on Twitter!">
+                Tweet Conference
+              </a> |
+              <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://pythondeadlin.es/conference/pycon-apac-2017/" data-toggle="tooltip"
+                title="Share on Linkedin!">
+                Link Conference on LinkedIn
+              </a> |
+              <a href="https://www.facebook.com/sharer/sharer.php?u=https://pythondeadlin.es/conference/pycon-apac-2017/&t=PyCon APAC%202017"
+                data-toggle="tooltip" title="Share of Facebook!">
+                Share Conference on FB
+              </a> |
+              <a href="https://api.whatsapp.com/send?text=I%20found%20this%20Python%20conference:%20PyCon APAC%202017%20https://pythondeadlin.es/conference/pycon-apac-2017/"
+                data-action="share/whatsapp/share" data-toggle="tooltip" title="Text on Whatsapp!">
+                Text Conference on WhatsApp
+              </a> |
+              <a href="mailto:?subject=Do%20you%20want%20to%20speak%20at%20PyCon APAC%202017&body=Hey,%20the%20CfP%20deadline%20for%20PyCon APAC%202017%20is%20approaching!%20%20https://pythondeadlin.es/conference/pycon-apac-2017/"
+                data-toggle="tooltip" title="Email to a Friend!">
+                Mail Conference
+              </a>
+        </div>
+        </div>
       <div class="row">
         
-        <div id='53d7827e-d191-48c4-9889-7630876dc4e9' style='width:100%;height:400px;' class=' jekyll-map'></div>
+        <div id='ca25d4f2-fde4-4f69-8d91-f1ac7177d7d5' style='width:100%;height:400px;' class=' jekyll-map'></div>
 <script type='text/javascript'>
   jekyllMaps.register(
-    '53d7827e-d191-48c4-9889-7630876dc4e9',
-    [{"latitude":47.2455013,"longitude":-122.438329,"title":"SciPy US 2024 Conference Deadlines","icon":null,"url":"/conference/scipy-us-2024/","url_text":null,"image":"","popup_html":""}],
+    'ca25d4f2-fde4-4f69-8d91-f1ac7177d7d5',
+    [{"latitude":4.5693754,"longitude":102.2656823,"title":"PyCon APAC 2017 Conference Deadlines","icon":null,"url":"/conference/pycon-apac-2017/","url_text":null,"image":"","popup_html":""}],
     {"baseUrl":"/","useCluster":true,"showMarker":true,"showMarkerPopup":true,"markerIcon":null,"styles":"[]","customZoom":6}
   );
 </script>
@@ -503,7 +528,7 @@ if (typeof Object.assign !== 'function') {
 var subs = [];
 var _all_subs = [];
 // Get all subs
-var conf_type_data = [{"name":"General Python","sub":"PY","color":"#4B8BBE"},{"name":"Scientific Python","sub":"SCIPY","color":"#70163C"},{"name":"Python for Data","sub":"PYDATA","color":"#849324"},{"name":"Python for Web","sub":"WEB","color":"#0D0A0B"}];
+var conf_type_data = [{"name":"General Python","sub":"PY","color":"#4B8BBE"},{"name":"Scientific Python","sub":"SCIPY","color":"#70163C"},{"name":"Python for Data","sub":"PYDATA","color":"#849324"},{"name":"Python for Web","sub":"WEB","color":"#0D0A0B"},{"name":"Python for Business","sub":"BIZ","color":"#A8B9CC"},{"name":"Python for Earth","sub":"GEO","color":"#310c0c"}];
 var sub2name = {}; var name2sub = {};
 for (var i = 0; i < conf_type_data.length; i++) {
     _all_subs[i] = conf_type_data[i]['sub'];
@@ -559,40 +584,9 @@ function createCalendarFromObject(data) {
 
       // other
       
-
-      // Use specified timezone for deadlines if available else use AoE timezone
-      
-      var confDeadline = DateTime.fromSQL("2024-02-27 23:59:00", { zone: "America/Los_Angeles" });
-      
-
-      // check if timezone is valid otherwise replace by system timezone
-      if (confDeadline.invalid) {
-        var confDeadline = DateTime.fromSQL("2024-02-27 23:59:00");
-        console.log("Invalid timezone. Using system timezone instead.");
-      }
-
-      // add calendar
-      var conferenceDeadlineCalendar = createCalendarFromObject({
-        id: 'scipy-us-2024',
-        title: 'SciPy US 2024 Conference Deadlines',
-        date: confDeadline.toJSDate(),
-        duration: 60,
-      });
-      document.querySelector('#conference-deadline').appendChild(conferenceDeadlineCalendar);
-
-      // render countdown timer
-      $('#cfp-timer').countdown(confDeadline.toJSDate(), function (event) {
-        $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
-      });
-
-      // render deadline conference time
-      
-      $('.deadline-time').html(confDeadline.setZone("America/Los_Angeles").toLocaleString(DateTime.DATETIME_HUGE_WITH_SECONDS));
-      
-
-      // render deadline in local timezone
-      $('.deadline-local-time').html(confDeadline.setZone('system').toLocaleString(DateTime.DATETIME_HUGE_WITH_SECONDS));
-
+      $('#cfp-timer').html("TBA");
+      $('.deadline-time').html("TBA");
+      $('.deadline-local-time').html("TBA");
       
 
     });

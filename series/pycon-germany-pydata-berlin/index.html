@@ -79,7 +79,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1710929925"
+      href="/static/css/js-year-calendar.min.css?t=1711210197"
       media="screen,projection"
     />
 
@@ -91,13 +91,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1710929925"
+      href="/static/css/deadlines.css?t=1711210197"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1710929925"
+      href="/static/css/calendar.css?t=1711210197"
       media="screen,projection"
     />
 
@@ -1928,13 +1928,13 @@
 
         <div class="row">
           <div
-            id="9a8350fe-b0a4-4aba-8684-4cfe17db7270"
+            id="41e17cfc-4dbe-480f-a4cc-c21ef52556a4"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "9a8350fe-b0a4-4aba-8684-4cfe17db7270",
+              "41e17cfc-4dbe-480f-a4cc-c21ef52556a4",
               [
                 {
                   latitude: 52.5170365,
@@ -2179,13 +2179,13 @@
 
                 // Use specified timezone for deadlines if available else use AoE timezone
 
-                  var cfpDate = DateTime.fromSQL("2023-12-22 23:59:59", { zone: "Europe/Berlin" });
+                  var cfpDate = DateTime.fromSQL("2024-01-07 23:59:59", { zone: "Europe/Berlin" });
                   var confDate = DateTime.fromSQL("2024-04-22", { zone: "Europe/Berlin" });
 
 
                 // check if timezone is valid otherwise replace by system timezone
                 if (cfpDate.invalid || confDate.invalid) {
-                  var cfpDate = DateTime.fromSQL("2023-12-22 23:59:59");
+                  var cfpDate = DateTime.fromSQL("2024-01-07 23:59:59");
                   var confDate = DateTime.fromSQL("2024-04-22");
                   console.log("Invalid timezone in pycon-germany-pydata-berlin-2024. Using system timezone instead.");
                 }

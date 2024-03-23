@@ -4,36 +4,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-<title>PyCon Asia Pacific 2023 Conference Deadlines</title>
+<title>PyCon APAC 2015 Conference Deadlines</title>
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>PyCon Asia Pacific 2023 Conference Deadlines | Python Conference Deadlines</title>
-<meta name="generator" content="Jekyll v3.9.3" />
-<meta property="og:title" content="PyCon Asia Pacific 2023 Conference Deadlines" />
+<title>PyCon APAC 2015 Conference Deadlines | Python Conference Deadlines</title>
+<meta name="generator" content="Jekyll v4.3.3" />
+<meta property="og:title" content="PyCon APAC 2015 Conference Deadlines" />
 <meta name="author" content="Jesper Dramsch" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Countdown for the Call for Participation of this conference including conference dates and details." />
 <meta property="og:description" content="Countdown for the Call for Participation of this conference including conference dates and details." />
-<link rel="canonical" href="https://pythondeadlin.es/conference/pycon-asia-pacific-2023/" />
-<meta property="og:url" content="https://pythondeadlin.es/conference/pycon-asia-pacific-2023/" />
+<link rel="canonical" href="https://pythondeadlin.es/conference/pycon-apac-2015/" />
+<meta property="og:url" content="https://pythondeadlin.es/conference/pycon-apac-2015/" />
 <meta property="og:site_name" content="Python Conference Deadlines" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2024-10-27T00:00:00+00:00" />
+<meta property="article:published_time" content="2024-06-05T00:00:00+00:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="PyCon Asia Pacific 2023 Conference Deadlines" />
+<meta property="twitter:title" content="PyCon APAC 2015 Conference Deadlines" />
 <meta name="twitter:site" content="@jesperdramsch" />
 <meta name="twitter:creator" content="@jesperdramsch" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Jesper Dramsch","url":"https://dramsch.net"},"dateModified":"2024-10-27T00:00:00+00:00","datePublished":"2024-10-27T00:00:00+00:00","description":"Countdown for the Call for Participation of this conference including conference dates and details.","headline":"PyCon Asia Pacific 2023 Conference Deadlines","mainEntityOfPage":{"@type":"WebPage","@id":"https://pythondeadlin.es/conference/pycon-asia-pacific-2023/"},"url":"https://pythondeadlin.es/conference/pycon-asia-pacific-2023/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Jesper Dramsch","url":"https://dramsch.net"},"dateModified":"2024-06-05T00:00:00+00:00","datePublished":"2024-06-05T00:00:00+00:00","description":"Countdown for the Call for Participation of this conference including conference dates and details.","headline":"PyCon APAC 2015 Conference Deadlines","mainEntityOfPage":{"@type":"WebPage","@id":"https://pythondeadlin.es/conference/pycon-apac-2015/"},"url":"https://pythondeadlin.es/conference/pycon-apac-2015/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
 <link rel="alternate" type="application/rss+xml" title="RSS Feed for Pythondeadlin.es" href="/feed.xml" />
 
-<link rel="stylesheet" type="text/css" href="/static/css/js-year-calendar.min.css?t=1710160989" media="screen,projection">
+<link rel="stylesheet" type="text/css" href="/static/css/js-year-calendar.min.css?t=1710929925" media="screen,projection">
 
 <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="/static/css/deadlines.css?t=1710160989" media="screen,projection">
-<link rel="stylesheet" type="text/css" href="/static/css/calendar.css?t=1710160989" media="screen,projection">
+<link rel="stylesheet" type="text/css" href="/static/css/deadlines.css?t=1710929925" media="screen,projection">
+<link rel="stylesheet" type="text/css" href="/static/css/calendar.css?t=1710929925" media="screen,projection">
 
 <link rel="shortcut icon" href="/static/img/favicon.png">
 
@@ -88,6 +88,32 @@
 .WEB-select.active {
     color: white;
     background: #0D0A0B;
+}
+
+
+.BIZ-tag {
+  color: #A8B9CC;
+}
+.BIZ-select {
+  color: #A8B9CC;
+  background: white;
+}
+.BIZ-select.active {
+    color: white;
+    background: #A8B9CC;
+}
+
+
+.GEO-tag {
+  color: #310c0c;
+}
+.GEO-select {
+  color: #310c0c;
+  background: white;
+}
+.GEO-select.active {
+    color: white;
+    background: #310c0c;
 }
 
 
@@ -333,19 +359,15 @@ if (typeof Object.assign !== 'function') {
   
 
   
-    / <a href="#">PyCon Asia Pacific 2023 Conference Deadlines</a>
+    / <a href="#">PyCon APAC 2015 Conference Deadlines</a>
   
 
 </div>
 
           <h1>
-            <span id="conf-title-href" href="/conference/pycon-asia-pacific-2023/">PyCon Asia Pacific 2023</span>
-            <span id="twitter-box"><a href="https://twitter.com/share" class="twitter-share-button"
-                data-text="Countdown to the #PyCon Asia Pacific 2023 deadline!" data-show-count="false"
-                style="font-size:13px;">Tweet</a>
-              <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-            </span>
+            <span id="conf-title-href" href="/conference/pycon-apac-2015/">PyCon APAC 2015</span>
           </h1>
+          
         </div>
       </div>
       <div class="row">
@@ -365,6 +387,10 @@ if (typeof Object.assign !== 'function') {
               
               
               
+              
+              
+              
+              
             </span>
             
           </span>
@@ -373,45 +399,37 @@ if (typeof Object.assign !== 'function') {
     </div>
     <div id="page-content">
       <div id="conf-deadline-timer" class="row">
-        <div id="cfp-timer" class="col-12 conf-timer">
+        <div id="cfp-timer" class="col-12 conf-timer">TBA
         </div>
       </div>
       <div id="conf-key-facts" class="row">
         <div class="col-12 col-md-6">
           <div>
             <img src="/static/img/084-calendar.svg" class="badge-link" alt="Calendar icon" width="16" height="16" />
-            <span id="conf-date">October 27 - 29, 2023</span>
+            <span id="conf-date">June 5 - 8, 2015</span>
           </div>
           <div>
             <img src="/static/img/072-location.svg" class="badge-link" alt="Location icon" width="16" height="16" />
             <a id="conf-place" target="_blank"
-              href="https://maps.google.com/?q=Tokyo, Japan">Tokyo, Japan</a>
+              href="https://maps.google.com/?q=Humanities and Social Sciences Building, Taiwan">Humanities and Social Sciences Building, Taiwan</a>
           </div>
           <div>
             <img src="/static/img/203-earth.svg" class="badge-link" alt="Earth Icon" width="16" height="16" />
-            <a id="conf-website" target="_blank" href="https://2023-apac.pycon.jp/">https://2023-apac.pycon.jp/</a>
-          </div>
-          
-          <div>
-            <img src="/static/img/035-file-text.svg" class="badge-link" alt="Document Icon for CfP link" width="16"
-              height="16" />
-            <a id="conf-cfp_link" target="_blank" href="https://pretalx.com/pyconapac2023/cfp">Call for Participation</a>
+            <a id="conf-website" target="_blank" href="https://web.archive.org/web/20150623171348/http://tw.pycon.org/2015apac/en/">https://web.archive.org/web/20150623171348/http://tw.pycon.org/2015apac/en/</a>
           </div>
           
           <div>
             <img src="/static/img/002-home2.svg" class="badge-link" alt="Conference Series" width="16" height="16" />
-            <a id="conf-series" href="/series/pycon-asia-pacific">All PyCon Asia Pacific conferences</a>
-          </div>
-          
-          
-          <div>
-            <img src="/static/img/060-coin-dollar.svg" class="badge-link" alt="Coin Dollar Icon for Sponsorship"
-              width="16" height="16" />
-            <a id="conf-sponsor" target="_blank" href="https://pyconjp.blogspot.com/2023/05/pyconapac2023-call-for-sponsors-en.html">Sponsorship Opportunity</a>
+            <a id="conf-series" href="/series/pycon-apac">All PyCon APAC conferences</a>
           </div>
           
           
           
+          
+        </div>
+        </div>
+        <div id="conf-deadlines" class="row">
+          <div class="col-12 col-md-6">
           <div class="meta deadline">
             Download Conference deadline:
           </div>
@@ -429,18 +447,41 @@ if (typeof Object.assign !== 'function') {
             <span class="deadline-local-time"></span>
           </div>
         </div>
-
         <div class="col-12 col-md-6">
           
         </div>
       </div>
+      <div class="row" id="conf-share-links">
+        <div class="col-12">
+              <a href="https://twitter.com/share?url=https://pythondeadlin.es/conference/pycon-apac-2015/&via=jesperdramsch&text=I%20found%20this%20Python%20conference:%20PyCon APAC%202015"
+                data-toggle="tooltip" title="Tweet on Twitter!">
+                Tweet Conference
+              </a> |
+              <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://pythondeadlin.es/conference/pycon-apac-2015/" data-toggle="tooltip"
+                title="Share on Linkedin!">
+                Link Conference on LinkedIn
+              </a> |
+              <a href="https://www.facebook.com/sharer/sharer.php?u=https://pythondeadlin.es/conference/pycon-apac-2015/&t=PyCon APAC%202015"
+                data-toggle="tooltip" title="Share of Facebook!">
+                Share Conference on FB
+              </a> |
+              <a href="https://api.whatsapp.com/send?text=I%20found%20this%20Python%20conference:%20PyCon APAC%202015%20https://pythondeadlin.es/conference/pycon-apac-2015/"
+                data-action="share/whatsapp/share" data-toggle="tooltip" title="Text on Whatsapp!">
+                Text Conference on WhatsApp
+              </a> |
+              <a href="mailto:?subject=Do%20you%20want%20to%20speak%20at%20PyCon APAC%202015&body=Hey,%20the%20CfP%20deadline%20for%20PyCon APAC%202015%20is%20approaching!%20%20https://pythondeadlin.es/conference/pycon-apac-2015/"
+                data-toggle="tooltip" title="Email to a Friend!">
+                Mail Conference
+              </a>
+        </div>
+        </div>
       <div class="row">
         
-        <div id='a24cabf4-b5cd-4d7b-992b-12e6bd3206ae' style='width:100%;height:400px;' class=' jekyll-map'></div>
+        <div id='33cefb60-d706-427e-963c-9c32c951f9e0' style='width:100%;height:400px;' class=' jekyll-map'></div>
 <script type='text/javascript'>
   jekyllMaps.register(
-    'a24cabf4-b5cd-4d7b-992b-12e6bd3206ae',
-    [{"latitude":35.6812665,"longitude":139.757653,"title":"PyCon Asia Pacific 2023 Conference Deadlines","icon":null,"url":"/conference/pycon-asia-pacific-2023/","url_text":null,"image":"","popup_html":""}],
+    '33cefb60-d706-427e-963c-9c32c951f9e0',
+    [{"latitude":25.0407021,"longitude":121.61144927190821,"title":"PyCon APAC 2015 Conference Deadlines","icon":null,"url":"/conference/pycon-apac-2015/","url_text":null,"image":"","popup_html":""}],
     {"baseUrl":"/","useCluster":true,"showMarker":true,"showMarkerPopup":true,"markerIcon":null,"styles":"[]","customZoom":6}
   );
 </script>
@@ -487,7 +528,7 @@ if (typeof Object.assign !== 'function') {
 var subs = [];
 var _all_subs = [];
 // Get all subs
-var conf_type_data = [{"name":"General Python","sub":"PY","color":"#4B8BBE"},{"name":"Scientific Python","sub":"SCIPY","color":"#70163C"},{"name":"Python for Data","sub":"PYDATA","color":"#849324"},{"name":"Python for Web","sub":"WEB","color":"#0D0A0B"}];
+var conf_type_data = [{"name":"General Python","sub":"PY","color":"#4B8BBE"},{"name":"Scientific Python","sub":"SCIPY","color":"#70163C"},{"name":"Python for Data","sub":"PYDATA","color":"#849324"},{"name":"Python for Web","sub":"WEB","color":"#0D0A0B"},{"name":"Python for Business","sub":"BIZ","color":"#A8B9CC"},{"name":"Python for Earth","sub":"GEO","color":"#310c0c"}];
 var sub2name = {}; var name2sub = {};
 for (var i = 0; i < conf_type_data.length; i++) {
     _all_subs[i] = conf_type_data[i]['sub'];
@@ -543,40 +584,9 @@ function createCalendarFromObject(data) {
 
       // other
       
-
-      // Use specified timezone for deadlines if available else use AoE timezone
-      
-      var confDeadline = DateTime.fromSQL("2023-05-31 23:59:59", { zone: "UTC-12" });
-      
-
-      // check if timezone is valid otherwise replace by system timezone
-      if (confDeadline.invalid) {
-        var confDeadline = DateTime.fromSQL("2023-05-31 23:59:59");
-        console.log("Invalid timezone. Using system timezone instead.");
-      }
-
-      // add calendar
-      var conferenceDeadlineCalendar = createCalendarFromObject({
-        id: 'pycon-asia-pacific-2023',
-        title: 'PyCon Asia Pacific 2023 Conference Deadlines',
-        date: confDeadline.toJSDate(),
-        duration: 60,
-      });
-      document.querySelector('#conference-deadline').appendChild(conferenceDeadlineCalendar);
-
-      // render countdown timer
-      $('#cfp-timer').countdown(confDeadline.toJSDate(), function (event) {
-        $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
-      });
-
-      // render deadline conference time
-      
-      $('.deadline-time').html(confDeadline.setZone("UTC-12").toLocaleString(DateTime.DATETIME_HUGE_WITH_SECONDS));
-      
-
-      // render deadline in local timezone
-      $('.deadline-local-time').html(confDeadline.setZone('system').toLocaleString(DateTime.DATETIME_HUGE_WITH_SECONDS));
-
+      $('#cfp-timer').html("TBA");
+      $('.deadline-time').html("TBA");
+      $('.deadline-local-time').html("TBA");
       
 
     });

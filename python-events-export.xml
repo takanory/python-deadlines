@@ -9,11 +9,11 @@
 		<title>Newsfeed for Python Events Calendar from Python Conference Deadlines</title>
 		<description>Countdowns to your favourite Python conferences with calls for participation and resources to submit awesome talks!</description>
 		<link>https://pythondeadlin.es/feed.xml</link>
-		<lastBuildDate>Wed, 20 Mar 2024 10:18:45 +0000</lastBuildDate>
+		<lastBuildDate>Sat, 23 Mar 2024 16:09:57 +0000</lastBuildDate>
 		
 			<item>
 				<title>PyCon India 2024 Conference Deadline</title>
-				<description><![CDATA[* name of the event: PyCon India 2024<br/>* type of event: Conference <br/>* focus on Python: Yes<br/>* approximate number of attendees: Unknown<br/>* location (incl. country): NIMHANS Convention Centre, Bengaluru, India<br/>* dates/times/recurrence (incl. time zone): September 20 - 23, 2024<br/>* HTML link : <a href="https://in.pycon.org/2024/">PyCon India 2024</a>]]></description>
+				<description><![CDATA[* name of the event: PyCon India 2024<br/>* type of event: Conference <br/>* focus on Python: Yes<br/>* approximate number of attendees: Unknown<br/>* location (incl. country): Bengaluru, India<br/>* dates/times/recurrence (incl. time zone): September 20 - 23, 2024<br/>* HTML link : <a href="https://in.pycon.org/2024/">PyCon India 2024</a>]]></description>
 				<pubDate>Fri, 20 Sep 2024 00:00:00 +0000</pubDate>
 				<link>https://pythondeadlin.es/conference/pycon-india-2024/</link>
 				<guid isPermaLink="false"></guid>
@@ -103,7 +103,7 @@
 		
 			<item>
 				<title>PyCon Colombia 2024 Conference Deadline</title>
-				<description><![CDATA[* name of the event: PyCon Colombia 2024<br/>* type of event: Conference <br/>* focus on Python: Yes<br/>* approximate number of attendees: Unknown<br/>* location (incl. country): Medellin, Colombia<br/>* dates/times/recurrence (incl. time zone): June 7 - 9, 2024<br/>* HTML link : <a href="https://2024.pycon.co/en">PyCon Colombia 2024</a>]]></description>
+				<description><![CDATA[* name of the event: PyCon Colombia 2024<br/>* type of event: Conference <br/>* focus on Python: Yes<br/>* approximate number of attendees: Unknown<br/>* location (incl. country): Medellín, Colombia<br/>* dates/times/recurrence (incl. time zone): June 7 - 9, 2024<br/>* HTML link : <a href="https://2024.pycon.co/en">PyCon Colombia 2024</a>]]></description>
 				<pubDate>Fri, 07 Jun 2024 00:00:00 +0000</pubDate>
 				<link>https://pythondeadlin.es/conference/pycon-colombia-2024/</link>
 				<guid isPermaLink="false"></guid>
@@ -156,10 +156,10 @@
 			</item>
 		
 			<item>
-				<title>SciPy 2024 Conference Deadline</title>
-				<description><![CDATA[* name of the event: SciPy 2024<br/>* type of event: Conference <br/>* focus on Python: Yes<br/>* approximate number of attendees: Unknown<br/>* location (incl. country): Tacoma, USA<br/>* dates/times/recurrence (incl. time zone): July 8 - 14, 2024<br/>* HTML link : <a href="https://scipy2024.scipy.org">SciPy 2024</a>]]></description>
+				<title>SciPy US 2024 Conference Deadline</title>
+				<description><![CDATA[* name of the event: SciPy US 2024<br/>* type of event: Conference <br/>* focus on Python: Yes<br/>* approximate number of attendees: Unknown<br/>* location (incl. country): Tacoma, USA<br/>* dates/times/recurrence (incl. time zone): July 8 - 14, 2024<br/>* HTML link : <a href="https://scipy2024.scipy.org">SciPy US 2024</a>]]></description>
 				<pubDate>Mon, 08 Jul 2024 00:00:00 +0000</pubDate>
-				<link>https://pythondeadlin.es/conference/scipy-2024/</link>
+				<link>https://pythondeadlin.es/conference/scipy-us-2024/</link>
 				<guid isPermaLink="false"></guid>
 				<category>SCIPY</category>
 			</item>
@@ -175,7 +175,7 @@
 		
 			<item>
 				<title>PyCon Namibia 2024 Conference Deadline</title>
-				<description><![CDATA[* name of the event: PyCon Namibia 2024<br/>* type of event: Conference <br/>* focus on Python: Yes<br/>* approximate number of attendees: Unknown<br/>* location (incl. country): Windhoek, Namibia<br/>* dates/times/recurrence (incl. time zone): March 4 - 8, 2024<br/>* HTML link : <a href="https://na.pycon.org/">PyCon Namibia 2024</a>]]></description>
+				<description><![CDATA[* name of the event: PyCon Namibia 2024<br/>* type of event: Conference <br/>* focus on Python: Yes<br/>* approximate number of attendees: Unknown<br/>* location (incl. country): Windhoek, Namibia<br/>* dates/times/recurrence (incl. time zone): March 4 - 7, 2024<br/>* HTML link : <a href="https://na.pycon.org/">PyCon Namibia 2024</a>]]></description>
 				<pubDate>Mon, 04 Mar 2024 00:00:00 +0000</pubDate>
 				<link>https://pythondeadlin.es/conference/pycon-namibia-2024/</link>
 				<guid isPermaLink="false"></guid>
@@ -193,7 +193,7 @@
 		
 			<item>
 				<title>PyTexas 2024 Conference Deadline</title>
-				<description><![CDATA[* name of the event: PyTexas 2024<br/>* type of event: Conference <br/>* focus on Python: Yes<br/>* approximate number of attendees: Unknown<br/>* location (incl. country): Austin, Texas, USA<br/>* dates/times/recurrence (incl. time zone): April 19 - 21, 2024<br/>* HTML link : <a href="https://pytexas.org/2024">PyTexas 2024</a>]]></description>
+				<description><![CDATA[* name of the event: PyTexas 2024<br/>* type of event: Conference <br/>* focus on Python: Yes<br/>* approximate number of attendees: Unknown<br/>* location (incl. country): Austin, Texas, USA of America<br/>* dates/times/recurrence (incl. time zone): April 19 - 21, 2024<br/>* HTML link : <a href="https://pytexas.org/2024/">PyTexas 2024</a>]]></description>
 				<pubDate>Fri, 19 Apr 2024 00:00:00 +0000</pubDate>
 				<link>https://pythondeadlin.es/conference/pytexas-2024/</link>
 				<guid isPermaLink="false"></guid>

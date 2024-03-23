@@ -9,13 +9,13 @@
 		<title>Python Conference Deadlines</title>
 		<description>Countdowns to your favourite Python conferences with calls for participation and resources to submit awesome talks!</description>
 		<link>https://pythondeadlin.es/feed.xml</link>
-		<lastBuildDate>Wed, 20 Mar 2024 10:18:45 +0000</lastBuildDate>
+		<lastBuildDate>Sat, 23 Mar 2024 16:09:57 +0000</lastBuildDate>
 		
 		
 		
 			<item>
 				<title>PyCon India 2024 Conference Deadline</title>
-				<description>Conference in NIMHANS Convention Centre, Bengaluru, India on September 20 - 23, 2024. CfP: 2024-05-31 23:59:00 AoE.&lt;br /&gt;Find them here: @PyConIndia </description>
+				<description>Conference in Bengaluru, India on September 20 - 23, 2024. CfP: 2024-05-31 23:59:00 AoE.&lt;br /&gt;Find them here: @PyConIndia </description>
 				<pubDate>Fri, 31 May 2024 23:59:00 +0000</pubDate>
 				<link>https://pythondeadlin.es/conference/pycon-india-2024/</link>
 				<guid isPermaLink="false"></guid>
@@ -135,7 +135,7 @@
 		
 			<item>
 				<title>PyCon Colombia 2024 Conference Deadline</title>
-				<description>Conference in Medellin, Colombia on June 7 - 9, 2024. CfP: 2024-03-11 23:59:59 AoE.&lt;br /&gt;Find them here: @PyConColombia </description>
+				<description>Conference in Medellín, Colombia on June 7 - 9, 2024. CfP: 2024-03-11 23:59:59 AoE.&lt;br /&gt;Find them here: @PyConColombia </description>
 				<pubDate>Mon, 11 Mar 2024 23:59:59 +0000</pubDate>
 				<link>https://pythondeadlin.es/conference/pycon-colombia-2024/</link>
 				<guid isPermaLink="false"></guid>
@@ -206,10 +206,10 @@
 		
 		
 			<item>
-				<title>SciPy 2024 Conference Deadline</title>
+				<title>SciPy US 2024 Conference Deadline</title>
 				<description>Conference in Tacoma, USA on July 8 - 14, 2024. CfP: 2024-02-27 23:59:00 AoE.&lt;br /&gt;Find them here: @SciPyConf </description>
 				<pubDate>Tue, 27 Feb 2024 23:59:00 +0000</pubDate>
-				<link>https://pythondeadlin.es/conference/scipy-2024/</link>
+				<link>https://pythondeadlin.es/conference/scipy-us-2024/</link>
 				<guid isPermaLink="false"></guid>
 				<category>SCIPY</category>
 			</item>
@@ -231,7 +231,7 @@
 		
 			<item>
 				<title>PyCon Namibia 2024 Conference Deadline</title>
-				<description>Conference in Windhoek, Namibia on March 4 - 8, 2024. CfP: 2024-01-21 23:59:00 AoE.&lt;br /&gt;Find them here: @PyConNA </description>
+				<description>Conference in Windhoek, Namibia on March 4 - 7, 2024. CfP: 2024-01-21 23:59:00 AoE.&lt;br /&gt;Find them here: @PyConNA </description>
 				<pubDate>Sun, 21 Jan 2024 23:59:00 +0000</pubDate>
 				<link>https://pythondeadlin.es/conference/pycon-namibia-2024/</link>
 				<guid isPermaLink="false"></guid>
@@ -255,7 +255,7 @@
 		
 			<item>
 				<title>PyTexas 2024 Conference Deadline</title>
-				<description>Conference in Austin, Texas, USA on April 19 - 21, 2024. CfP: 2024-01-14 23:59:00 AoE. </description>
+				<description>Conference in Austin, Texas, USA of America on April 19 - 21, 2024. CfP: 2024-01-14 23:59:00 AoE. </description>
 				<pubDate>Sun, 14 Jan 2024 23:59:00 +0000</pubDate>
 				<link>https://pythondeadlin.es/conference/pytexas-2024/</link>
 				<guid isPermaLink="false"></guid>

@@ -67,7 +67,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1710929925"
+      href="/static/css/js-year-calendar.min.css?t=1711210197"
       media="screen,projection"
     />
 
@@ -79,13 +79,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1710929925"
+      href="/static/css/deadlines.css?t=1711210197"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1710929925"
+      href="/static/css/calendar.css?t=1711210197"
       media="screen,projection"
     />
 
@@ -475,7 +475,11 @@
         </div>
         <div class="row">
           <div class="col-sm-12" id="conf-subs">
-            <span id="conf-subs" title="Conference subjects"> </span>
+            <span id="conf-subs" title="Conference subjects">
+              <span class="PY-tag badge badge-light conf-sub conf-PY">
+                General Python
+              </span>
+            </span>
           </div>
         </div>
       </div>
@@ -490,11 +494,8 @@
                 width="16"
                 height="16"
               />
-              <a
-                id="conf-website"
-                target="_blank"
-                href="http://www.pygrunn.org/"
-                >http://www.pygrunn.org/</a
+              <a id="conf-website" target="_blank" href="http://pygrunn.org/"
+                >http://pygrunn.org/</a
               >
             </div>
 
@@ -533,7 +534,7 @@
         </div>
         <hr />
         <div id="all_confs">
-          <div id="pygrunn-2024" class="ConfItem">
+          <div id="pygrunn-2024" class="ConfItem PY-conf">
             <div class="row conf-row">
               <div class="col-6">
                 <span class="conf-title">
@@ -549,7 +550,7 @@
                 <span class="conf-title-icon">
                   <a
                     title="Conference Website"
-                    href="http://www.pygrunn.org/"
+                    href="http://pygrunn.org/"
                     target="_blank"
                     ><img
                       src="/static/img/203-earth.svg"
@@ -632,7 +633,13 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-6"></div>
+              <div class="col-6">
+                <span
+                  title="Click to only show PY conferences"
+                  data-sub="PY"
+                  class="badge badge-light conf-sub PY-tag"
+                ></span>
+              </div>
               <div class="col-6">
                 <div class="calendar"></div>
               </div>
@@ -767,13 +774,13 @@
 
         <div class="row">
           <div
-            id="a858387f-38b6-4dd2-81c1-fe6aebc4425d"
+            id="8cdeddfb-64be-42c1-99b1-4964783a5c7a"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "a858387f-38b6-4dd2-81c1-fe6aebc4425d",
+              "8cdeddfb-64be-42c1-99b1-4964783a5c7a",
               [
                 {
                   latitude: 53.2139576,
@@ -979,6 +986,8 @@
 
 
 
+
+                $('#pygrunn-2024 .PY-tag').html(sub2name["PY"].toLocaleLowerCase());
 
 
                 $('#pygrunn-2024 .timer').html("TBA");
