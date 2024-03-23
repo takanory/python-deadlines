@@ -9,7 +9,7 @@
 		<title>Newsfeed for Python Events Calendar from Python Conference Deadlines</title>
 		<description>Countdowns to your favourite Python conferences with calls for participation and resources to submit awesome talks!</description>
 		<link>https://pythondeadlin.es/feed.xml</link>
-		<lastBuildDate>Sat, 23 Mar 2024 16:09:57 +0000</lastBuildDate>
+		<lastBuildDate>Sat, 23 Mar 2024 16:24:11 +0000</lastBuildDate>
 		
 			<item>
 				<title>PyCon India 2024 Conference Deadline</title>
@@ -87,7 +87,7 @@
 				<title>PyCamp España 2024 Conference Deadline</title>
 				<description><![CDATA[* name of the event: PyCamp España 2024<br/>* type of event: Conference <br/>* focus on Python: Yes<br/>* approximate number of attendees: Unknown<br/>* location (incl. country): Lleida, Spain<br/>* dates/times/recurrence (incl. time zone): March 29 - April 1, 2024<br/>* HTML link : <a href="https://pycamp.es/">PyCamp España 2024</a>]]></description>
 				<pubDate>Fri, 29 Mar 2024 00:00:00 +0000</pubDate>
-				<link>https://pythondeadlin.es/conference/pycamp-españa-2024/</link>
+				<link>https://pythondeadlin.es/conference/pycamp-espana-2024/</link>
 				<guid isPermaLink="false"></guid>
 				<category>PY</category>
 			</item>

@@ -53,7 +53,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711210197"
+      href="/static/css/js-year-calendar.min.css?t=1711211051"
       media="screen,projection"
     />
 
@@ -65,13 +65,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711210197"
+      href="/static/css/deadlines.css?t=1711211051"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711210197"
+      href="/static/css/calendar.css?t=1711211051"
       media="screen,projection"
     />
 
@@ -9698,20 +9698,20 @@
             <hr />
           </div>
 
-          <div id="pycamp-españa-2022" class="ConfItem PY-conf">
+          <div id="pycamp-espana-2022" class="ConfItem PY-conf">
             <div class="row conf-row">
               <div class="col-6">
                 <span class="conf-title">
                   <a
                     title="Deadline Details"
-                    href="/conference/pycamp-españa-2022/"
+                    href="/conference/pycamp-espana-2022/"
                     >PyCamp España 2022</a
                   >
                 </span>
                 <span class="conf-title-small">
                   <a
                     title="Deadline Details"
-                    href="/conference/pycamp-españa-2022/"
+                    href="/conference/pycamp-espana-2022/"
                     >PyCamp España '22</a
                   >
                 </span>
@@ -22137,7 +22137,7 @@
           cfpDate.setZone("system").toLocaleString(DateTime.DATE_HUGE)
         );
 
-        $("#pycamp-españa-2022 .PY-tag").html(
+        $("#pycamp-espana-2022 .PY-tag").html(
           sub2name["PY"].toLocaleLowerCase()
         );
 
@@ -22153,12 +22153,12 @@
           var cfpDate = DateTime.fromSQL("2022-03-15 23:59:00");
           var confDate = DateTime.fromSQL("2022-04-15");
           console.log(
-            "Invalid timezone in pycamp-españa-2022. Using system timezone instead."
+            "Invalid timezone in pycamp-espana-2022. Using system timezone instead."
           );
         }
 
         // deadline in local timezone
-        $("#pycamp-españa-2022 .deadline-time").html(
+        $("#pycamp-espana-2022 .deadline-time").html(
           cfpDate.setZone("system").toLocaleString(DateTime.DATE_HUGE)
         );
 
