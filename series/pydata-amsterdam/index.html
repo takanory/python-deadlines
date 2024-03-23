@@ -34,7 +34,7 @@
     <meta property="og:type" content="article" />
     <meta
       property="article:published_time"
-      content="2024-09-14T00:00:00+00:00"
+      content="2024-09-18T00:00:00+00:00"
     />
     <meta name="twitter:card" content="summary" />
     <meta
@@ -52,8 +52,8 @@
           "name": "Jesper Dramsch",
           "url": "https://dramsch.net"
         },
-        "dateModified": "2024-09-14T00:00:00+00:00",
-        "datePublished": "2024-09-14T00:00:00+00:00",
+        "dateModified": "2024-09-18T00:00:00+00:00",
+        "datePublished": "2024-09-18T00:00:00+00:00",
         "description": "Summary of the conference and its instances throughout the years.",
         "headline": "PyData Amsterdam Conference Summary",
         "mainEntityOfPage": {
@@ -75,7 +75,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711211051"
+      href="/static/css/js-year-calendar.min.css?t=1711215899"
       media="screen,projection"
     />
 
@@ -87,13 +87,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711211051"
+      href="/static/css/deadlines.css?t=1711215899"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711211051"
+      href="/static/css/calendar.css?t=1711215899"
       media="screen,projection"
     />
 
@@ -504,6 +504,93 @@
         </div>
         <hr />
         <div id="all_confs">
+          <div id="pydata-amsterdam-2024" class="ConfItem PYDATA-conf">
+            <div class="row conf-row">
+              <div class="col-6">
+                <span class="conf-title">
+                  <a
+                    title="Deadline Details"
+                    href="/conference/pydata-amsterdam-2024/"
+                    >PyData Amsterdam 2024</a
+                  >
+                </span>
+                <span class="conf-title-small">
+                  <a
+                    title="Deadline Details"
+                    href="/conference/pydata-amsterdam-2024/"
+                    >PyData Amsterdam '24</a
+                  >
+                </span>
+                <span class="conf-title-icon">
+                  <a
+                    title="Conference Website"
+                    href="https://amsterdam.pydata.org/"
+                    target="_blank"
+                    ><img
+                      src="/static/img/203-earth.svg"
+                      class="badge-link"
+                      alt="Link to Conference Website"
+                      width="16"
+                      height="16"
+                  /></a>
+                  &ZeroWidthSpace;
+                </span>
+
+                <span class="conf-title-icon">
+                  <a
+                    title="Sponsorship Opportunity for PyData Amsterdam"
+                    href="https://amsterdam.pydata.org/sponsor/"
+                    target="_blank"
+                    ><img
+                      src="/static/img/060-coin-dollar.svg"
+                      class="badge-link"
+                      alt="Link to Sponsorship page of PyData Amsterdam"
+                      width="16"
+                      height="16"
+                  /></a>
+                  &ZeroWidthSpace;
+                </span>
+              </div>
+              <div class="col-6">
+                <span class="timer"></span>
+                <span class="timer-small"></span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="meta">
+                  <span class="conf-date">September 18 - 20, 2024.</span>
+                  <span class="conf-place">
+                    <a href="http://maps.google.com/?q=Amsterdam, Netherlands"
+                      >Amsterdam, Netherlands</a
+                    >
+                  </span>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <div class="deadline">
+                  <div>
+                    Deadline:
+                    <span class="deadline-time">TBA</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <span
+                  title="Click to only show PYDATA conferences"
+                  data-sub="PYDATA"
+                  class="badge badge-light conf-sub PYDATA-tag"
+                ></span>
+              </div>
+              <div class="col-6">
+                <div class="calendar"></div>
+              </div>
+            </div>
+            <hr />
+          </div>
+
           <div id="pydata-amsterdam-2023" class="ConfItem PYDATA-conf">
             <div class="row conf-row">
               <div class="col-6">
@@ -825,13 +912,13 @@
 
         <div class="row">
           <div
-            id="d9e787f0-8011-4097-b709-20d44bf5e584"
+            id="ae37109e-a2da-4087-8bc5-4d38fce8aa16"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "d9e787f0-8011-4097-b709-20d44bf5e584",
+              "ae37109e-a2da-4087-8bc5-4d38fce8aa16",
               [
                 {
                   latitude: 52.3730796,
@@ -866,6 +953,16 @@
                 {
                   latitude: 52.3730796,
                   longitude: 4.8924534,
+                  title: "PyData Amsterdam Conference Summary",
+                  icon: null,
+                  url: "/series/pydata-amsterdam/",
+                  url_text: null,
+                  image: "",
+                  popup_html: "",
+                },
+                {
+                  latitude: 52.4111289,
+                  longitude: 4.877231604293446,
                   title: "PyData Amsterdam Conference Summary",
                   icon: null,
                   url: "/series/pydata-amsterdam/",
@@ -1043,6 +1140,17 @@
 
             // Set time zone to local timezone on web copy
             $('.local-timezone').text(today.toFormat('z'));
+
+
+
+
+
+                $('#pydata-amsterdam-2024 .PYDATA-tag').html(sub2name["PYDATA"].toLocaleLowerCase());
+
+
+                $('#pydata-amsterdam-2024 .timer').html("TBA");
+                $('#pydata-amsterdam-2024 .deadline-time').html("TBA");
+                $('#pydata-amsterdam-2024').attr("cfpDiff", Infinity);
 
 
 

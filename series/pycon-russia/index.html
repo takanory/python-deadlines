@@ -32,7 +32,7 @@
     <meta property="og:type" content="article" />
     <meta
       property="article:published_time"
-      content="2024-07-30T00:00:00+00:00"
+      content="2024-07-26T00:00:00+00:00"
     />
     <meta name="twitter:card" content="summary" />
     <meta property="twitter:title" content="PyCon Russia Conference Summary" />
@@ -47,8 +47,8 @@
           "name": "Jesper Dramsch",
           "url": "https://dramsch.net"
         },
-        "dateModified": "2024-07-30T00:00:00+00:00",
-        "datePublished": "2024-07-30T00:00:00+00:00",
+        "dateModified": "2024-07-26T00:00:00+00:00",
+        "datePublished": "2024-07-26T00:00:00+00:00",
         "description": "Summary of the conference and its instances throughout the years.",
         "headline": "PyCon Russia Conference Summary",
         "mainEntityOfPage": {
@@ -70,7 +70,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711211051"
+      href="/static/css/js-year-calendar.min.css?t=1711215899"
       media="screen,projection"
     />
 
@@ -82,13 +82,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711211051"
+      href="/static/css/deadlines.css?t=1711215899"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711211051"
+      href="/static/css/calendar.css?t=1711215899"
       media="screen,projection"
     />
 
@@ -320,49 +320,87 @@
                 width="16"
                 height="16"
               />
-              <a
-                id="conf-website"
-                target="_blank"
-                href="http://web.archive.org/web/20230715073901/https://pycon.ru/"
-                >http://web.archive.org/web/20230715073901/https://pycon.ru/</a
-              >
-            </div>
-
-            <div>
-              <img
-                src="/static/img/407-twitter.svg"
-                class="badge-link"
-                alt="Twitter icon"
-                width="16"
-                height="16"
-              />
-              <a
-                id="conf-twitter"
-                target="_blank"
-                href="https://twitter.com/IT_People_ru"
-                >@IT_People_ru</a
+              <a id="conf-website" target="_blank" href="http://pycon.ru/"
+                >http://pycon.ru/</a
               >
             </div>
           </div>
-          <div class="col-12 col-md-6">
-            <!-- Twitter timeline -->
-            <div id="twitter-widget">
-              <a
-                class="twitter-timeline"
-                href="https://twitter.com/"
-                data-tweet-limit="2"
-                >Tweets by IT_People_ru</a
-              >
-              <script
-                async
-                src="https://platform.twitter.com/widgets.js"
-                charset="utf-8"
-              ></script>
-            </div>
-          </div>
+          <div class="col-12 col-md-6"></div>
         </div>
         <hr />
         <div id="all_confs">
+          <div id="pycon-russia-2024" class="ConfItem PY-conf">
+            <div class="row conf-row">
+              <div class="col-6">
+                <span class="conf-title">
+                  <a
+                    title="Deadline Details"
+                    href="/conference/pycon-russia-2024/"
+                    >PyCon Russia 2024</a
+                  >
+                </span>
+                <span class="conf-title-small">
+                  <a
+                    title="Deadline Details"
+                    href="/conference/pycon-russia-2024/"
+                    >PyCon Russia '24</a
+                  >
+                </span>
+                <span class="conf-title-icon">
+                  <a
+                    title="Conference Website"
+                    href="http://pycon.ru/"
+                    target="_blank"
+                    ><img
+                      src="/static/img/203-earth.svg"
+                      class="badge-link"
+                      alt="Link to Conference Website"
+                      width="16"
+                      height="16"
+                  /></a>
+                  &ZeroWidthSpace;
+                </span>
+              </div>
+              <div class="col-6">
+                <span class="timer"></span>
+                <span class="timer-small"></span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="meta">
+                  <span class="conf-date">July 26 - 27, 2024.</span>
+                  <span class="conf-place">
+                    <a href="http://maps.google.com/?q=Moscow, Russia"
+                      >Moscow, Russia</a
+                    >
+                  </span>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <div class="deadline">
+                  <div>
+                    Deadline:
+                    <span class="deadline-time">Wednesday, 15 May 2024</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <span
+                  title="Click to only show PY conferences"
+                  data-sub="PY"
+                  class="badge badge-light conf-sub PY-tag"
+                ></span>
+              </div>
+              <div class="col-6">
+                <div class="calendar"></div>
+              </div>
+            </div>
+            <hr />
+          </div>
+
           <div id="pycon-russia-2023" class="ConfItem PY-conf">
             <div class="row conf-row">
               <div class="col-6">
@@ -1172,6 +1210,75 @@
 
             // Set time zone to local timezone on web copy
             $('.local-timezone').text(today.toFormat('z'));
+
+
+
+
+
+                $('#pycon-russia-2024 .PY-tag').html(sub2name["PY"].toLocaleLowerCase());
+
+
+
+                // Use specified timezone for deadlines if available else use AoE timezone
+
+                  var cfpDate = DateTime.fromSQL("2024-05-15 23:59:00", { zone: "UTC-12" });
+                  var confDate = DateTime.fromSQL("2024-07-26", { zone: "UTC-12" });
+
+
+                // check if timezone is valid otherwise replace by system timezone
+                if (cfpDate.invalid || confDate.invalid) {
+                  var cfpDate = DateTime.fromSQL("2024-05-15 23:59:00");
+                  var confDate = DateTime.fromSQL("2024-07-26");
+                  console.log("Invalid timezone in pycon-russia-2024. Using system timezone instead.");
+                }
+
+                // render countdown timer
+                $('#pycon-russia-2024 .timer').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+
+                // render countdown timer small
+                $('#pycon-russia-2024 .timer-small').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%Dd %H:%M:%S'));
+                });
+
+                // deadline in local timezone
+                $('#pycon-russia-2024 .deadline-time').html(cfpDate.setZone('system').toLocaleString(DateTime.DATE_HUGE));
+
+                // add calendar button
+                try {
+                  var myCalendar = createCalendarFromObject({
+                    id: 'pycon-russia-2024',
+                    title: 'PyCon Russia 2024 deadline',
+                    date: cfpDate.toJSDate(),
+                    duration: 60,
+                  });
+                  document.querySelector('#pycon-russia-2024 .calendar').appendChild(myCalendar);
+                } catch (err) {
+                  document.querySelector('#pycon-russia-2024 .calendar').appendChild("<p>Calendar not available.</p>");
+                  console.log("Error in cfp date.");
+                }
+
+                // check if date has passed, add 'past' class to it
+                cfpDiff = cfpDate.diffNow("seconds");
+                confDiff = confDate.diffNow("seconds");
+
+                $('#pycon-russia-2024').attr("cfpDiff", cfpDiff.toMillis());
+                $('#pycon-russia-2024').attr("confDiff", confDiff.toMillis());
+
+                if (cfpDiff < 0) {
+                  $('#pycon-russia-2024').addClass('pastcfp');
+                  $('#pycon-russia-2024 .timer').replaceWith($('#pycon-russia-2024 .deadline'));
+                  $('#pycon-russia-2024 .timer-small').replaceWith($('#pycon-russia-2024 .deadline'));
+                  $('#pycon-russia-2024 .calendar').remove();
+                }
+
+                if (confDiff < 0) {
+                  $('#pycon-russia-2024').addClass('pastconf');
+                  $('#pycon-russia-2024 .timer').replaceWith($('#pycon-russia-2024 .deadline'));
+                  $('#pycon-russia-2024 .timer-small').replaceWith($('#pycon-russia-2024 .deadline'));
+                  $('#pycon-russia-2024 .calendar').remove();
+                }
 
 
 

@@ -34,7 +34,7 @@
     <meta property="og:type" content="article" />
     <meta
       property="article:published_time"
-      content="2024-11-02T00:00:00+00:00"
+      content="2024-06-29T00:00:00+00:00"
     />
     <meta name="twitter:card" content="summary" />
     <meta
@@ -52,8 +52,8 @@
           "name": "Jesper Dramsch",
           "url": "https://dramsch.net"
         },
-        "dateModified": "2024-11-02T00:00:00+00:00",
-        "datePublished": "2024-11-02T00:00:00+00:00",
+        "dateModified": "2024-06-29T00:00:00+00:00",
+        "datePublished": "2024-06-29T00:00:00+00:00",
         "description": "Summary of the conference and its instances throughout the years.",
         "headline": "North Bay Python Conference Summary",
         "mainEntityOfPage": {
@@ -75,7 +75,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711211051"
+      href="/static/css/js-year-calendar.min.css?t=1711215899"
       media="screen,projection"
     />
 
@@ -87,13 +87,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711211051"
+      href="/static/css/deadlines.css?t=1711215899"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711211051"
+      href="/static/css/calendar.css?t=1711215899"
       media="screen,projection"
     />
 
@@ -196,6 +196,45 @@
       type="text/javascript"
       src="/static/js/bootstrap-multiselect.min.js"
     ></script>
+
+    <link rel="stylesheet" type="text/css" href="/static/css/mastodon.css" />
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch("https://social.northbaypython.org/@NorthBayPython.rss")
+          .then(function (response) {
+            return response.text();
+          })
+          .then(function (xmlText) {
+            var parser = new DOMParser();
+            var xml = parser.parseFromString(xmlText, "text/xml");
+            var items = xml.querySelectorAll("item");
+            var feedContainer = document.getElementById("mastodon-feed");
+            var postLimit = 2; // Number of posts to display
+
+            for (var i = 0; i < postLimit && i < items.length; i++) {
+              var item = items[i];
+              var post = item.querySelector("description").textContent;
+              var link = item.querySelector("link").textContent;
+              var pubDate = item.querySelector("pubDate").textContent;
+
+              var feedItem = document.createElement("div");
+              feedItem.setAttribute("class", "timeline-item");
+              feedItem.innerHTML =
+                '<div class="timeline-content">' +
+                post +
+                '</div><a href="' +
+                link +
+                '">' +
+                pubDate +
+                " by North Bay Python</a>";
+              feedContainer.appendChild(feedItem);
+            }
+          })
+          .catch(function (error) {
+            console.log("Error fetching Mastodon RSS feed:", error);
+          });
+      });
+    </script>
 
     <script type="text/javascript">
       /* global google */
@@ -495,8 +534,8 @@
               <a
                 id="conf-website"
                 target="_blank"
-                href="https://2023.northbaypython.org/"
-                >https://2023.northbaypython.org/</a
+                href="https://2024.northbaypython.org/"
+                >https://2024.northbaypython.org/</a
               >
             </div>
 
@@ -511,8 +550,8 @@
               <a
                 id="conf-twitter"
                 target="_blank"
-                href="https://twitter.com/NorthBayPython"
-                >@NorthBayPython</a
+                href="https://twitter.com/northbaypython"
+                >@northbaypython</a
               >
             </div>
 
@@ -527,7 +566,7 @@
               <a
                 id="conf-mastodon"
                 target="_blank"
-                href="https://floss.social/@northbaypython"
+                href="https://social.northbaypython.org/@NorthBayPython"
                 >Mastodon</a
               >
             </div>
@@ -536,11 +575,101 @@
             <!-- Mastodon timeline -->
             <div class="meta">Mastodon Posts by North Bay Python:</div>
             <div id="mastodon-feed"></div>
-            <a href="">See all Mastodon posts for North Bay Python</a>
+            <a href="https://social.northbaypython.org/@NorthBayPython"
+              >See all Mastodon posts for North Bay Python</a
+            >
           </div>
         </div>
         <hr />
         <div id="all_confs">
+          <div id="north-bay-python-2024" class="ConfItem PY-conf">
+            <div class="row conf-row">
+              <div class="col-6">
+                <span class="conf-title">
+                  <a
+                    title="Deadline Details"
+                    href="/conference/north-bay-python-2024/"
+                    >North Bay Python 2024</a
+                  >
+                </span>
+                <span class="conf-title-small">
+                  <a
+                    title="Deadline Details"
+                    href="/conference/north-bay-python-2024/"
+                    >North Bay Python '24</a
+                  >
+                </span>
+                <span class="conf-title-icon">
+                  <a
+                    title="Conference Website"
+                    href="https://2024.northbaypython.org/"
+                    target="_blank"
+                    ><img
+                      src="/static/img/203-earth.svg"
+                      class="badge-link"
+                      alt="Link to Conference Website"
+                      width="16"
+                      height="16"
+                  /></a>
+                  &ZeroWidthSpace;
+                </span>
+
+                <span class="conf-title-icon">
+                  <a
+                    title="Mastodon for North Bay Python"
+                    href="https://social.northbaypython.org/@NorthBayPython"
+                    target="_blank"
+                    ><img
+                      src="/static/img/407-mastodon.svg"
+                      class="badge-link"
+                      alt="Link to Conference Mastodon"
+                      width="16"
+                      height="16"
+                  /></a>
+                  &ZeroWidthSpace;
+                </span>
+              </div>
+              <div class="col-6">
+                <span class="timer"></span>
+                <span class="timer-small"></span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="meta">
+                  <span class="conf-date">June 29 - 30, 2024.</span>
+                  <span class="conf-place">
+                    <a
+                      href="http://maps.google.com/?q=Petaluma, California, USA"
+                      >Petaluma, California, USA</a
+                    >
+                  </span>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <div class="deadline">
+                  <div>
+                    Deadline:
+                    <span class="deadline-time">Friday, 12 April 2024</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <span
+                  title="Click to only show PY conferences"
+                  data-sub="PY"
+                  class="badge badge-light conf-sub PY-tag"
+                ></span>
+              </div>
+              <div class="col-6">
+                <div class="calendar"></div>
+              </div>
+            </div>
+            <hr />
+          </div>
+
           <div id="north-bay-python-2023" class="ConfItem PY-conf">
             <div class="row conf-row">
               <div class="col-6">
@@ -879,14 +1008,24 @@
 
         <div class="row">
           <div
-            id="86c01e0d-5fba-4c1b-af11-435acefcbc90"
+            id="1bb4adcc-2da7-4d7c-9df7-30394847dac7"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "86c01e0d-5fba-4c1b-af11-435acefcbc90",
+              "1bb4adcc-2da7-4d7c-9df7-30394847dac7",
               [
+                {
+                  latitude: 38.295411,
+                  longitude: -122.61369350203252,
+                  title: "North Bay Python Conference Summary",
+                  icon: null,
+                  url: "/series/north-bay-python/",
+                  url_text: null,
+                  image: "",
+                  popup_html: "",
+                },
                 {
                   latitude: 38.295411,
                   longitude: -122.61369350203252,
@@ -1077,6 +1216,75 @@
 
             // Set time zone to local timezone on web copy
             $('.local-timezone').text(today.toFormat('z'));
+
+
+
+
+
+                $('#north-bay-python-2024 .PY-tag').html(sub2name["PY"].toLocaleLowerCase());
+
+
+
+                // Use specified timezone for deadlines if available else use AoE timezone
+
+                  var cfpDate = DateTime.fromSQL("2024-04-12 23:59:00", { zone: "UTC-12" });
+                  var confDate = DateTime.fromSQL("2024-06-29", { zone: "UTC-12" });
+
+
+                // check if timezone is valid otherwise replace by system timezone
+                if (cfpDate.invalid || confDate.invalid) {
+                  var cfpDate = DateTime.fromSQL("2024-04-12 23:59:00");
+                  var confDate = DateTime.fromSQL("2024-06-29");
+                  console.log("Invalid timezone in north-bay-python-2024. Using system timezone instead.");
+                }
+
+                // render countdown timer
+                $('#north-bay-python-2024 .timer').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+
+                // render countdown timer small
+                $('#north-bay-python-2024 .timer-small').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%Dd %H:%M:%S'));
+                });
+
+                // deadline in local timezone
+                $('#north-bay-python-2024 .deadline-time').html(cfpDate.setZone('system').toLocaleString(DateTime.DATE_HUGE));
+
+                // add calendar button
+                try {
+                  var myCalendar = createCalendarFromObject({
+                    id: 'north-bay-python-2024',
+                    title: 'North Bay Python 2024 deadline',
+                    date: cfpDate.toJSDate(),
+                    duration: 60,
+                  });
+                  document.querySelector('#north-bay-python-2024 .calendar').appendChild(myCalendar);
+                } catch (err) {
+                  document.querySelector('#north-bay-python-2024 .calendar').appendChild("<p>Calendar not available.</p>");
+                  console.log("Error in cfp date.");
+                }
+
+                // check if date has passed, add 'past' class to it
+                cfpDiff = cfpDate.diffNow("seconds");
+                confDiff = confDate.diffNow("seconds");
+
+                $('#north-bay-python-2024').attr("cfpDiff", cfpDiff.toMillis());
+                $('#north-bay-python-2024').attr("confDiff", confDiff.toMillis());
+
+                if (cfpDiff < 0) {
+                  $('#north-bay-python-2024').addClass('pastcfp');
+                  $('#north-bay-python-2024 .timer').replaceWith($('#north-bay-python-2024 .deadline'));
+                  $('#north-bay-python-2024 .timer-small').replaceWith($('#north-bay-python-2024 .deadline'));
+                  $('#north-bay-python-2024 .calendar').remove();
+                }
+
+                if (confDiff < 0) {
+                  $('#north-bay-python-2024').addClass('pastconf');
+                  $('#north-bay-python-2024 .timer').replaceWith($('#north-bay-python-2024 .deadline'));
+                  $('#north-bay-python-2024 .timer-small').replaceWith($('#north-bay-python-2024 .deadline'));
+                  $('#north-bay-python-2024 .calendar').remove();
+                }
 
 
 

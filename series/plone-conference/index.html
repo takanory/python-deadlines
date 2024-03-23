@@ -34,7 +34,7 @@
     <meta property="og:type" content="article" />
     <meta
       property="article:published_time"
-      content="2024-10-08T00:00:00+00:00"
+      content="2024-11-25T00:00:00+00:00"
     />
     <meta name="twitter:card" content="summary" />
     <meta
@@ -52,8 +52,8 @@
           "name": "Jesper Dramsch",
           "url": "https://dramsch.net"
         },
-        "dateModified": "2024-10-08T00:00:00+00:00",
-        "datePublished": "2024-10-08T00:00:00+00:00",
+        "dateModified": "2024-11-25T00:00:00+00:00",
+        "datePublished": "2024-11-25T00:00:00+00:00",
         "description": "Summary of the conference and its instances throughout the years.",
         "headline": "Plone Conference Conference Summary",
         "mainEntityOfPage": {
@@ -75,7 +75,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711211051"
+      href="/static/css/js-year-calendar.min.css?t=1711215899"
       media="screen,projection"
     />
 
@@ -87,13 +87,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711211051"
+      href="/static/css/deadlines.css?t=1711215899"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711211051"
+      href="/static/css/calendar.css?t=1711215899"
       media="screen,projection"
     />
 
@@ -196,6 +196,45 @@
       type="text/javascript"
       src="/static/js/bootstrap-multiselect.min.js"
     ></script>
+
+    <link rel="stylesheet" type="text/css" href="/static/css/mastodon.css" />
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch("https://plone.social/@ploneconf.rss")
+          .then(function (response) {
+            return response.text();
+          })
+          .then(function (xmlText) {
+            var parser = new DOMParser();
+            var xml = parser.parseFromString(xmlText, "text/xml");
+            var items = xml.querySelectorAll("item");
+            var feedContainer = document.getElementById("mastodon-feed");
+            var postLimit = 2; // Number of posts to display
+
+            for (var i = 0; i < postLimit && i < items.length; i++) {
+              var item = items[i];
+              var post = item.querySelector("description").textContent;
+              var link = item.querySelector("link").textContent;
+              var pubDate = item.querySelector("pubDate").textContent;
+
+              var feedItem = document.createElement("div");
+              feedItem.setAttribute("class", "timeline-item");
+              feedItem.innerHTML =
+                '<div class="timeline-content">' +
+                post +
+                '</div><a href="' +
+                link +
+                '">' +
+                pubDate +
+                " by Plone Conference</a>";
+              feedContainer.appendChild(feedItem);
+            }
+          })
+          .catch(function (error) {
+            console.log("Error fetching Mastodon RSS feed:", error);
+          });
+      });
+    </script>
   </head>
 
   <body>
@@ -328,15 +367,141 @@
               <a
                 id="conf-website"
                 target="_blank"
-                href="https://2021.ploneconf.org/"
-                >https://2021.ploneconf.org/</a
+                href="https://2024.ploneconf.org/"
+                >https://2024.ploneconf.org/</a
+              >
+            </div>
+
+            <div>
+              <img
+                src="/static/img/407-twitter.svg"
+                class="badge-link"
+                alt="Twitter icon"
+                width="16"
+                height="16"
+              />
+              <a
+                id="conf-twitter"
+                target="_blank"
+                href="https://twitter.com/ploneconf"
+                >@ploneconf</a
+              >
+            </div>
+
+            <div>
+              <img
+                src="/static/img/407-mastodon.svg"
+                class="badge-link"
+                alt="Mastodon icon"
+                width="16"
+                height="16"
+              />
+              <a
+                id="conf-mastodon"
+                target="_blank"
+                href="https://plone.social/@ploneconf"
+                >Mastodon</a
               >
             </div>
           </div>
-          <div class="col-12 col-md-6"></div>
+          <div class="col-12 col-md-6">
+            <!-- Mastodon timeline -->
+            <div class="meta">Mastodon Posts by Plone Conference:</div>
+            <div id="mastodon-feed"></div>
+            <a href="https://plone.social/@ploneconf"
+              >See all Mastodon posts for Plone Conference</a
+            >
+          </div>
         </div>
         <hr />
         <div id="all_confs">
+          <div id="plone-conference-2024" class="ConfItem WEB-conf">
+            <div class="row conf-row">
+              <div class="col-6">
+                <span class="conf-title">
+                  <a
+                    title="Deadline Details"
+                    href="/conference/plone-conference-2024/"
+                    >Plone Conference 2024</a
+                  >
+                </span>
+                <span class="conf-title-small">
+                  <a
+                    title="Deadline Details"
+                    href="/conference/plone-conference-2024/"
+                    >Plone Conference '24</a
+                  >
+                </span>
+                <span class="conf-title-icon">
+                  <a
+                    title="Conference Website"
+                    href="https://2024.ploneconf.org/"
+                    target="_blank"
+                    ><img
+                      src="/static/img/203-earth.svg"
+                      class="badge-link"
+                      alt="Link to Conference Website"
+                      width="16"
+                      height="16"
+                  /></a>
+                  &ZeroWidthSpace;
+                </span>
+
+                <span class="conf-title-icon">
+                  <a
+                    title="Mastodon for Plone Conference"
+                    href="https://plone.social/@ploneconf"
+                    target="_blank"
+                    ><img
+                      src="/static/img/407-mastodon.svg"
+                      class="badge-link"
+                      alt="Link to Conference Mastodon"
+                      width="16"
+                      height="16"
+                  /></a>
+                  &ZeroWidthSpace;
+                </span>
+              </div>
+              <div class="col-6">
+                <span class="timer"></span>
+                <span class="timer-small"></span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="meta">
+                  <span class="conf-date">November 25 - December 1, 2024.</span>
+                  <span class="conf-place">
+                    <a href="http://maps.google.com/?q=Brasilia, Brazil"
+                      >Brasilia, Brazil</a
+                    >
+                  </span>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <div class="deadline">
+                  <div>
+                    Deadline:
+                    <span class="deadline-time">TBA</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <span
+                  title="Click to only show WEB conferences"
+                  data-sub="WEB"
+                  class="badge badge-light conf-sub WEB-tag"
+                ></span>
+              </div>
+              <div class="col-6">
+                <div class="calendar"></div>
+              </div>
+            </div>
+            <hr />
+          </div>
+
           <div id="plone-conference-2021" class="ConfItem WEB-conf">
             <div class="row conf-row">
               <div class="col-6">
@@ -926,6 +1091,17 @@
 
             // Set time zone to local timezone on web copy
             $('.local-timezone').text(today.toFormat('z'));
+
+
+
+
+
+                $('#plone-conference-2024 .WEB-tag').html(sub2name["WEB"].toLocaleLowerCase());
+
+
+                $('#plone-conference-2024 .timer').html("TBA");
+                $('#plone-conference-2024 .deadline-time').html("TBA");
+                $('#plone-conference-2024').attr("cfpDiff", Infinity);
 
 
 
