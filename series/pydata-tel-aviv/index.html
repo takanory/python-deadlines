@@ -34,7 +34,7 @@
     <meta property="og:type" content="article" />
     <meta
       property="article:published_time"
-      content="2022-12-13T00:00:00+00:00"
+      content="2024-11-04T00:00:00+00:00"
     />
     <meta name="twitter:card" content="summary" />
     <meta
@@ -52,8 +52,8 @@
           "name": "Jesper Dramsch",
           "url": "https://dramsch.net"
         },
-        "dateModified": "2022-12-13T00:00:00+00:00",
-        "datePublished": "2022-12-13T00:00:00+00:00",
+        "dateModified": "2024-11-04T00:00:00+00:00",
+        "datePublished": "2024-11-04T00:00:00+00:00",
         "description": "Summary of the conference and its instances throughout the years.",
         "headline": "PyData Tel Aviv Conference Summary",
         "mainEntityOfPage": {
@@ -75,7 +75,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711215899"
+      href="/static/css/js-year-calendar.min.css?t=1711223207"
       media="screen,projection"
     />
 
@@ -87,13 +87,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711215899"
+      href="/static/css/deadlines.css?t=1711223207"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711215899"
+      href="/static/css/calendar.css?t=1711223207"
       media="screen,projection"
     />
 
@@ -196,6 +196,16 @@
       type="text/javascript"
       src="/static/js/bootstrap-multiselect.min.js"
     ></script>
+
+    <style>
+      #twitter-widget {
+        width: 100%;
+      }
+
+      .twitter-timeline {
+        width: 100% !important;
+      }
+    </style>
 
     <script type="text/javascript">
       /* global google */
@@ -521,7 +531,7 @@
             <div id="twitter-widget">
               <a
                 class="twitter-timeline"
-                href="https://twitter.com/"
+                href="https://twitter.com/PyDataTLV"
                 data-tweet-limit="2"
                 >Tweets by PyDataTLV</a
               >
@@ -620,13 +630,15 @@
             <div class="row">
               <div class="col-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">November 14th, 2023.</span>
+                  <span class="conf-date">November 4th, 2024.</span>
                   <span class="conf-place">
                     <a href="http://maps.google.com/?q=Tel Aviv, Israel"
                       >Tel Aviv, Israel</a
                     >
                   </span>
                 </div>
+
+                <div class="note"><b>Note: </b>Postponed from 2023</div>
               </div>
               <div class="col-12 col-sm-6">
                 <div class="deadline">
@@ -727,13 +739,13 @@
 
         <div class="row">
           <div
-            id="4d6a008e-2caf-4b4a-bb5f-17b80c4524da"
+            id="32321dc5-c956-4a7c-bea7-a7612692971a"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "4d6a008e-2caf-4b4a-bb5f-17b80c4524da",
+              "32321dc5-c956-4a7c-bea7-a7612692971a",
               [
                 {
                   latitude: 32.0852997,
@@ -937,13 +949,13 @@
                 // Use specified timezone for deadlines if available else use AoE timezone
 
                   var cfpDate = DateTime.fromSQL("2023-07-14 23:59:00", { zone: "Asia/Jerusalem" });
-                  var confDate = DateTime.fromSQL("2023-11-14", { zone: "Asia/Jerusalem" });
+                  var confDate = DateTime.fromSQL("2024-11-04", { zone: "Asia/Jerusalem" });
 
 
                 // check if timezone is valid otherwise replace by system timezone
                 if (cfpDate.invalid || confDate.invalid) {
                   var cfpDate = DateTime.fromSQL("2023-07-14 23:59:00");
-                  var confDate = DateTime.fromSQL("2023-11-14");
+                  var confDate = DateTime.fromSQL("2024-11-04");
                   console.log("Invalid timezone in pydata-tel-aviv-2023. Using system timezone instead.");
                 }
 

@@ -9,7 +9,7 @@
 		<title>Python Conference Deadlines</title>
 		<description>Countdowns to your favourite Python conferences with calls for participation and resources to submit awesome talks!</description>
 		<link>https://pythondeadlin.es/feed.xml</link>
-		<lastBuildDate>Sat, 23 Mar 2024 17:44:59 +0000</lastBuildDate>
+		<lastBuildDate>Sat, 23 Mar 2024 19:46:47 +0000</lastBuildDate>
 		
 		
 		
@@ -38,10 +38,10 @@
 		
 		
 			<item>
-				<title>PiterPy 2024 Conference Deadline</title>
+				<title>Piter Py 2024 Conference Deadline</title>
 				<description>Conference in Saint Petersburg, Russia on September 26 - 27, 2024. CfP: 2024-06-01 23:59:00 AoE. </description>
 				<pubDate>Sat, 01 Jun 2024 23:59:00 +0000</pubDate>
-				<link>https://pythondeadlin.es/conference/piterpy-2024/</link>
+				<link>https://pythondeadlin.es/conference/piter-py-2024/</link>
 				<guid isPermaLink="false"></guid>
 				<category>PY</category>
 			</item>

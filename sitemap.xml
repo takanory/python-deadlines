@@ -66,7 +66,7 @@
 <loc>https://pythondeadlin.es/conference/pyhep-2024/</loc>
 </url>
 <url>
-<loc>https://pythondeadlin.es/conference/piterpy-2024/</loc>
+<loc>https://pythondeadlin.es/conference/piter-py-2024/</loc>
 </url>
 <url>
 <loc>https://pythondeadlin.es/conference/pycon-india-2024/</loc>
@@ -165,6 +165,9 @@
 <loc>https://pythondeadlin.es/conference/pycon-us-2024/</loc>
 </url>
 <url>
+<loc>https://pythondeadlin.es/conference/pydata-tel-aviv-2023/</loc>
+</url>
+<url>
 <loc>https://pythondeadlin.es/conference/plone-conference-2024/</loc>
 </url>
 <url>
@@ -256,9 +259,6 @@
 </url>
 <url>
 <loc>https://pythondeadlin.es/conference/pycon-indonesia-2023/</loc>
-</url>
-<url>
-<loc>https://pythondeadlin.es/conference/pydata-tel-aviv-2023/</loc>
 </url>
 <url>
 <loc>https://pythondeadlin.es/conference/djangocon-africa-2023/</loc>
@@ -1080,7 +1080,7 @@
 <loc>https://pythondeadlin.es/conference/pycon-indonesia-2019/</loc>
 </url>
 <url>
-<loc>https://pythondeadlin.es/conference/piterpy-2019/</loc>
+<loc>https://pythondeadlin.es/conference/piter-py-2019/</loc>
 </url>
 <url>
 <loc>https://pythondeadlin.es/conference/pycon-france-2019/</loc>
@@ -1239,13 +1239,13 @@
 <loc>https://pythondeadlin.es/conference/north-bay-python-2018/</loc>
 </url>
 <url>
-<loc>https://pythondeadlin.es/conference/piterpy-2018/</loc>
+<loc>https://pythondeadlin.es/conference/piter-py-2018/</loc>
 </url>
 <url>
 <loc>https://pythondeadlin.es/conference/science-hack-day-india-2018/</loc>
 </url>
 <url>
-<loc>https://pythondeadlin.es/conference/pypa-sprint-at-bloomberg-nyc-2018/</loc>
+<loc>https://pythondeadlin.es/conference/pypa-stqdm-write-at-bloomberg-nyc-2018/</loc>
 </url>
 <url>
 <loc>https://pythondeadlin.es/conference/pyday-cali-colombia-2018/</loc>
@@ -2025,7 +2025,7 @@
 <loc>https://pythondeadlin.es/conference/pygotham-tv-2014/</loc>
 </url>
 <url>
-<loc>https://pythondeadlin.es/conference/helsinki-python-sprint-2014/</loc>
+<loc>https://pythondeadlin.es/conference/helsinki-python-stqdm-write-2014/</loc>
 </url>
 <url>
 <loc>https://pythondeadlin.es/conference/pycon-australia-2014/</loc>
@@ -2433,7 +2433,7 @@
 <loc>https://pythondeadlin.es/series/pycon-indonesia/</loc>
 </url>
 <url>
-<loc>https://pythondeadlin.es/series/piterpy/</loc>
+<loc>https://pythondeadlin.es/series/piter-py/</loc>
 </url>
 <url>
 <loc>https://pythondeadlin.es/series/pycon-france/</loc>
@@ -2592,13 +2592,13 @@
 <loc>https://pythondeadlin.es/series/north-bay-python/</loc>
 </url>
 <url>
-<loc>https://pythondeadlin.es/series/piterpy/</loc>
+<loc>https://pythondeadlin.es/series/piter-py/</loc>
 </url>
 <url>
 <loc>https://pythondeadlin.es/series/science-hack-day-india/</loc>
 </url>
 <url>
-<loc>https://pythondeadlin.es/series/pypa-sprint-at-bloomberg-nyc/</loc>
+<loc>https://pythondeadlin.es/series/pypa-stqdm-write-at-bloomberg-nyc/</loc>
 </url>
 <url>
 <loc>https://pythondeadlin.es/series/pyday-cali-colombia/</loc>
@@ -3378,7 +3378,7 @@
 <loc>https://pythondeadlin.es/series/pygotham-tv/</loc>
 </url>
 <url>
-<loc>https://pythondeadlin.es/series/helsinki-python-sprint/</loc>
+<loc>https://pythondeadlin.es/series/helsinki-python-stqdm-write/</loc>
 </url>
 <url>
 <loc>https://pythondeadlin.es/series/pycon-australia/</loc>
@@ -3661,9 +3661,6 @@
 </url>
 <url>
 <loc>https://pythondeadlin.es/series/pycon-indonesia/</loc>
-</url>
-<url>
-<loc>https://pythondeadlin.es/series/pydata-tel-aviv/</loc>
 </url>
 <url>
 <loc>https://pythondeadlin.es/series/djangocon-africa/</loc>
@@ -4311,7 +4308,7 @@
 <loc>https://pythondeadlin.es/series/pyhep/</loc>
 </url>
 <url>
-<loc>https://pythondeadlin.es/series/piterpy/</loc>
+<loc>https://pythondeadlin.es/series/piter-py/</loc>
 </url>
 <url>
 <loc>https://pythondeadlin.es/series/pycon-india/</loc>
@@ -4408,6 +4405,9 @@
 </url>
 <url>
 <loc>https://pythondeadlin.es/series/pycon-us/</loc>
+</url>
+<url>
+<loc>https://pythondeadlin.es/series/pydata-tel-aviv/</loc>
 </url>
 <url>
 <loc>https://pythondeadlin.es/series/plone-conference/</loc>

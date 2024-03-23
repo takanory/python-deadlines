@@ -62,7 +62,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711215899"
+      href="/static/css/js-year-calendar.min.css?t=1711223207"
       media="screen,projection"
     />
 
@@ -74,13 +74,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711215899"
+      href="/static/css/deadlines.css?t=1711223207"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711215899"
+      href="/static/css/calendar.css?t=1711223207"
       media="screen,projection"
     />
 
@@ -783,9 +783,9 @@
 
         // add deadlines in red
         conf_list_all.push({
-          id: "piterpy-2024-deadline",
-          abbreviation: "piterpy-2024",
-          name: "PiterPy 2024 CfP ",
+          id: "piter-py-2024-deadline",
+          abbreviation: "piter-py-2024",
+          name: "Piter Py 2024 CfP ",
           color: "red",
           location: "Saint Petersburg, Russia",
           date: "September 26 - 27, 2024",
@@ -802,9 +802,9 @@
         color = "#4B8BBE";
 
         conf_list_all.push({
-          id: "piterpy-2024-conference",
-          abbreviation: "piterpy-2024",
-          name: "PiterPy 2024",
+          id: "piter-py-2024-conference",
+          abbreviation: "piter-py-2024",
+          name: "Piter Py 2024",
           color: color,
           location: "Saint Petersburg, Russia",
           date: "September 26 - 27, 2024",
@@ -1859,6 +1859,38 @@
           subject: "PY",
           startDate: Date.parse("2024-05-15"),
           endDate: Date.parse("2024-05-23"),
+        });
+
+        // add deadlines in red
+        conf_list_all.push({
+          id: "pydata-tel-aviv-2023-deadline",
+          abbreviation: "pydata-tel-aviv-2023",
+          name: "PyData Tel Aviv 2023 CfP (extended)",
+          color: "red",
+          location: "Tel Aviv, Israel",
+          date: "November 4th, 2024",
+          subject: "PYDATA",
+          startDate: Date.parse("2023-07-14 23:59:00"),
+          endDate: Date.parse("2023-07-14 23:59:00"),
+        });
+
+        // add Conferences in chosen color
+
+        var color = "black";
+        // use first sub to choose color
+
+        color = "#849324";
+
+        conf_list_all.push({
+          id: "pydata-tel-aviv-2023-conference",
+          abbreviation: "pydata-tel-aviv-2023",
+          name: "PyData Tel Aviv 2023",
+          color: color,
+          location: "Tel Aviv, Israel",
+          date: "November 4th, 2024",
+          subject: "PYDATA",
+          startDate: Date.parse("2024-11-04"),
+          endDate: Date.parse("2024-11-04"),
         });
 
         // add deadlines in red
