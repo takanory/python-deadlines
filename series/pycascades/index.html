@@ -67,7 +67,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711279569"
+      href="/static/css/js-year-calendar.min.css?t=1711286172"
       media="screen,projection"
     />
 
@@ -79,13 +79,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711279569"
+      href="/static/css/deadlines.css?t=1711286172"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711279569"
+      href="/static/css/calendar.css?t=1711286172"
       media="screen,projection"
     />
 
@@ -734,6 +734,21 @@
 
                 <span class="conf-title-icon">
                   <a
+                    title="Call for Participation for PyCascades"
+                    href="https://www.youtube.com/watch?v=p3AIkpkad6E"
+                    target="_blank"
+                    ><img
+                      src="/static/img/035-file-text.svg"
+                      class="badge-link"
+                      alt="Link to Call for Participation for PyCascades"
+                      width="16"
+                      height="16"
+                  /></a>
+                  &ZeroWidthSpace;
+                </span>
+
+                <span class="conf-title-icon">
+                  <a
                     title="Sponsorship Opportunity for PyCascades"
                     href="https://2021.pycascades.com/sponsors/become-a-sponsor/"
                     target="_blank"
@@ -755,7 +770,7 @@
             <div class="row">
               <div class="col-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">February 19 - 22, 2021.</span>
+                  <span class="conf-date">February 19 - 21, 2021.</span>
                   <span class="conf-place">
                     <a href="#">Online</a>
                   </span>
@@ -765,7 +780,7 @@
                 <div class="deadline">
                   <div>
                     Deadline:
-                    <span class="deadline-time">TBA</span>
+                    <span class="deadline-time">Sunday, 15 November 2020</span>
                   </div>
                 </div>
               </div>
@@ -810,6 +825,21 @@
                   /></a>
                   &ZeroWidthSpace;
                 </span>
+
+                <span class="conf-title-icon">
+                  <a
+                    title="Call for Participation for PyCascades"
+                    href="https://2020.pycascades.com/news/2-pycascades-2020-dates-location-cfp/"
+                    target="_blank"
+                    ><img
+                      src="/static/img/035-file-text.svg"
+                      class="badge-link"
+                      alt="Link to Call for Participation for PyCascades"
+                      width="16"
+                      height="16"
+                  /></a>
+                  &ZeroWidthSpace;
+                </span>
               </div>
               <div class="col-6">
                 <span class="timer"></span>
@@ -819,7 +849,7 @@
             <div class="row">
               <div class="col-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">February 8 - 10, 2020.</span>
+                  <span class="conf-date">February 8 - 9, 2020.</span>
                   <span class="conf-place">
                     <a href="http://maps.google.com/?q=Portland, USA"
                       >Portland, USA</a
@@ -831,7 +861,7 @@
                 <div class="deadline">
                   <div>
                     Deadline:
-                    <span class="deadline-time">TBA</span>
+                    <span class="deadline-time">Tuesday, 1 October 2019</span>
                   </div>
                 </div>
               </div>
@@ -972,6 +1002,21 @@
                   /></a>
                   &ZeroWidthSpace;
                 </span>
+
+                <span class="conf-title-icon">
+                  <a
+                    title="Call for Participation for PyCascades"
+                    href="https://www.papercall.io/pycascades-2018"
+                    target="_blank"
+                    ><img
+                      src="/static/img/035-file-text.svg"
+                      class="badge-link"
+                      alt="Link to Call for Participation for PyCascades"
+                      width="16"
+                      height="16"
+                  /></a>
+                  &ZeroWidthSpace;
+                </span>
               </div>
               <div class="col-6">
                 <span class="timer"></span>
@@ -981,11 +1026,10 @@
             <div class="row">
               <div class="col-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">January 22 - 24, 2018.</span>
+                  <span class="conf-date">January 22 - 23, 2018.</span>
                   <span class="conf-place">
-                    <a
-                      href="http://maps.google.com/?q=Granville Island Stage, Canada"
-                      >Granville Island Stage, Canada</a
+                    <a href="http://maps.google.com/?q=Vancouver, Canada"
+                      >Vancouver, Canada</a
                     >
                   </span>
                 </div>
@@ -994,7 +1038,7 @@
                 <div class="deadline">
                   <div>
                     Deadline:
-                    <span class="deadline-time">TBA</span>
+                    <span class="deadline-time">Tuesday, 29 August 2017</span>
                   </div>
                 </div>
               </div>
@@ -1378,18 +1422,134 @@
 
 
 
-                $('#pycascades-2021 .timer').html("TBA");
-                $('#pycascades-2021 .deadline-time').html("TBA");
-                $('#pycascades-2021').attr("cfpDiff", Infinity);
+
+                // Use specified timezone for deadlines if available else use AoE timezone
+
+                  var cfpDate = DateTime.fromSQL("2020-11-15 23:59:00", { zone: "UTC-12" });
+                  var confDate = DateTime.fromSQL("2021-02-19", { zone: "UTC-12" });
+
+
+                // check if timezone is valid otherwise replace by system timezone
+                if (cfpDate.invalid || confDate.invalid) {
+                  var cfpDate = DateTime.fromSQL("2020-11-15 23:59:00");
+                  var confDate = DateTime.fromSQL("2021-02-19");
+                  console.log("Invalid timezone in pycascades-2021. Using system timezone instead.");
+                }
+
+                // render countdown timer
+                $('#pycascades-2021 .timer').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+
+                // render countdown timer small
+                $('#pycascades-2021 .timer-small').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%Dd %H:%M:%S'));
+                });
+
+                // deadline in local timezone
+                $('#pycascades-2021 .deadline-time').html(cfpDate.setZone('system').toLocaleString(DateTime.DATE_HUGE));
+
+                // add calendar button
+                try {
+                  var myCalendar = createCalendarFromObject({
+                    id: 'pycascades-2021',
+                    title: 'PyCascades 2021 deadline',
+                    date: cfpDate.toJSDate(),
+                    duration: 60,
+                  });
+                  document.querySelector('#pycascades-2021 .calendar').appendChild(myCalendar);
+                } catch (err) {
+                  document.querySelector('#pycascades-2021 .calendar').appendChild("<p>Calendar not available.</p>");
+                  console.log("Error in cfp date.");
+                }
+
+                // check if date has passed, add 'past' class to it
+                cfpDiff = cfpDate.diffNow("seconds");
+                confDiff = confDate.diffNow("seconds");
+
+                $('#pycascades-2021').attr("cfpDiff", cfpDiff.toMillis());
+                $('#pycascades-2021').attr("confDiff", confDiff.toMillis());
+
+                if (cfpDiff < 0) {
+                  $('#pycascades-2021').addClass('pastcfp');
+                  $('#pycascades-2021 .timer').replaceWith($('#pycascades-2021 .deadline'));
+                  $('#pycascades-2021 .timer-small').replaceWith($('#pycascades-2021 .deadline'));
+                  $('#pycascades-2021 .calendar').remove();
+                }
+
+                if (confDiff < 0) {
+                  $('#pycascades-2021').addClass('pastconf');
+                  $('#pycascades-2021 .timer').replaceWith($('#pycascades-2021 .deadline'));
+                  $('#pycascades-2021 .timer-small').replaceWith($('#pycascades-2021 .deadline'));
+                  $('#pycascades-2021 .calendar').remove();
+                }
 
 
 
 
 
 
-                $('#pycascades-2020 .timer').html("TBA");
-                $('#pycascades-2020 .deadline-time').html("TBA");
-                $('#pycascades-2020').attr("cfpDiff", Infinity);
+
+                // Use specified timezone for deadlines if available else use AoE timezone
+
+                  var cfpDate = DateTime.fromSQL("2019-10-01 23:59:00", { zone: "UTC-12" });
+                  var confDate = DateTime.fromSQL("2020-02-08", { zone: "UTC-12" });
+
+
+                // check if timezone is valid otherwise replace by system timezone
+                if (cfpDate.invalid || confDate.invalid) {
+                  var cfpDate = DateTime.fromSQL("2019-10-01 23:59:00");
+                  var confDate = DateTime.fromSQL("2020-02-08");
+                  console.log("Invalid timezone in pycascades-2020. Using system timezone instead.");
+                }
+
+                // render countdown timer
+                $('#pycascades-2020 .timer').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+
+                // render countdown timer small
+                $('#pycascades-2020 .timer-small').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%Dd %H:%M:%S'));
+                });
+
+                // deadline in local timezone
+                $('#pycascades-2020 .deadline-time').html(cfpDate.setZone('system').toLocaleString(DateTime.DATE_HUGE));
+
+                // add calendar button
+                try {
+                  var myCalendar = createCalendarFromObject({
+                    id: 'pycascades-2020',
+                    title: 'PyCascades 2020 deadline',
+                    date: cfpDate.toJSDate(),
+                    duration: 60,
+                  });
+                  document.querySelector('#pycascades-2020 .calendar').appendChild(myCalendar);
+                } catch (err) {
+                  document.querySelector('#pycascades-2020 .calendar').appendChild("<p>Calendar not available.</p>");
+                  console.log("Error in cfp date.");
+                }
+
+                // check if date has passed, add 'past' class to it
+                cfpDiff = cfpDate.diffNow("seconds");
+                confDiff = confDate.diffNow("seconds");
+
+                $('#pycascades-2020').attr("cfpDiff", cfpDiff.toMillis());
+                $('#pycascades-2020').attr("confDiff", confDiff.toMillis());
+
+                if (cfpDiff < 0) {
+                  $('#pycascades-2020').addClass('pastcfp');
+                  $('#pycascades-2020 .timer').replaceWith($('#pycascades-2020 .deadline'));
+                  $('#pycascades-2020 .timer-small').replaceWith($('#pycascades-2020 .deadline'));
+                  $('#pycascades-2020 .calendar').remove();
+                }
+
+                if (confDiff < 0) {
+                  $('#pycascades-2020').addClass('pastconf');
+                  $('#pycascades-2020 .timer').replaceWith($('#pycascades-2020 .deadline'));
+                  $('#pycascades-2020 .timer-small').replaceWith($('#pycascades-2020 .deadline'));
+                  $('#pycascades-2020 .calendar').remove();
+                }
 
 
 
@@ -1463,9 +1623,67 @@
 
 
 
-                $('#pycascades-2018 .timer').html("TBA");
-                $('#pycascades-2018 .deadline-time').html("TBA");
-                $('#pycascades-2018').attr("cfpDiff", Infinity);
+
+                // Use specified timezone for deadlines if available else use AoE timezone
+
+                  var cfpDate = DateTime.fromSQL("2017-08-29 12:00:00", { zone: "UTC" });
+                  var confDate = DateTime.fromSQL("2018-01-22", { zone: "UTC" });
+
+
+                // check if timezone is valid otherwise replace by system timezone
+                if (cfpDate.invalid || confDate.invalid) {
+                  var cfpDate = DateTime.fromSQL("2017-08-29 12:00:00");
+                  var confDate = DateTime.fromSQL("2018-01-22");
+                  console.log("Invalid timezone in pycascades-2018. Using system timezone instead.");
+                }
+
+                // render countdown timer
+                $('#pycascades-2018 .timer').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+
+                // render countdown timer small
+                $('#pycascades-2018 .timer-small').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%Dd %H:%M:%S'));
+                });
+
+                // deadline in local timezone
+                $('#pycascades-2018 .deadline-time').html(cfpDate.setZone('system').toLocaleString(DateTime.DATE_HUGE));
+
+                // add calendar button
+                try {
+                  var myCalendar = createCalendarFromObject({
+                    id: 'pycascades-2018',
+                    title: 'PyCascades 2018 deadline',
+                    date: cfpDate.toJSDate(),
+                    duration: 60,
+                  });
+                  document.querySelector('#pycascades-2018 .calendar').appendChild(myCalendar);
+                } catch (err) {
+                  document.querySelector('#pycascades-2018 .calendar').appendChild("<p>Calendar not available.</p>");
+                  console.log("Error in cfp date.");
+                }
+
+                // check if date has passed, add 'past' class to it
+                cfpDiff = cfpDate.diffNow("seconds");
+                confDiff = confDate.diffNow("seconds");
+
+                $('#pycascades-2018').attr("cfpDiff", cfpDiff.toMillis());
+                $('#pycascades-2018').attr("confDiff", confDiff.toMillis());
+
+                if (cfpDiff < 0) {
+                  $('#pycascades-2018').addClass('pastcfp');
+                  $('#pycascades-2018 .timer').replaceWith($('#pycascades-2018 .deadline'));
+                  $('#pycascades-2018 .timer-small').replaceWith($('#pycascades-2018 .deadline'));
+                  $('#pycascades-2018 .calendar').remove();
+                }
+
+                if (confDiff < 0) {
+                  $('#pycascades-2018').addClass('pastconf');
+                  $('#pycascades-2018 .timer').replaceWith($('#pycascades-2018 .deadline'));
+                  $('#pycascades-2018 .timer-small').replaceWith($('#pycascades-2018 .deadline'));
+                  $('#pycascades-2018 .calendar').remove();
+                }
 
 
 

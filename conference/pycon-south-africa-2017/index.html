@@ -77,7 +77,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711279569"
+      href="/static/css/js-year-calendar.min.css?t=1711286172"
       media="screen,projection"
     />
 
@@ -89,13 +89,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711279569"
+      href="/static/css/deadlines.css?t=1711286172"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711279569"
+      href="/static/css/calendar.css?t=1711286172"
       media="screen,projection"
     />
 
@@ -474,7 +474,7 @@
       </div>
       <div id="page-content">
         <div id="conf-deadline-timer" class="row">
-          <div id="cfp-timer" class="col-12 conf-timer">TBA</div>
+          <div id="cfp-timer" class="col-12 conf-timer"></div>
         </div>
         <div id="conf-key-facts" class="row">
           <div class="col-12 col-md-6">
@@ -486,7 +486,7 @@
                 width="16"
                 height="16"
               />
-              <span id="conf-date">October 4 - 9, 2017</span>
+              <span id="conf-date">October 4 - 8, 2017</span>
             </div>
             <div>
               <img
@@ -511,8 +511,27 @@
                 width="16"
                 height="16"
               />
-              <a id="conf-website" target="_blank" href="https://za.pycon.org/"
-                >https://za.pycon.org/</a
+              <a
+                id="conf-website"
+                target="_blank"
+                href="https://web.archive.org/web/20170801125832/https://za.pycon.org/"
+                >https://web.archive.org/web/20170801125832/https://za.pycon.org/</a
+              >
+            </div>
+
+            <div>
+              <img
+                src="/static/img/035-file-text.svg"
+                class="badge-link"
+                alt="Document Icon for CfP link"
+                width="16"
+                height="16"
+              />
+              <a
+                id="conf-cfp_link"
+                target="_blank"
+                href="https://2017.za.pycon.org/archived/submit-talk/"
+                >Call for Participation</a
               >
             </div>
 
@@ -596,13 +615,13 @@
         </div>
         <div class="row">
           <div
-            id="dae11233-eb5f-484c-b382-94b6a276fa05"
+            id="8bb11d7e-7c2a-4fb0-8588-2dd011689dc6"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "dae11233-eb5f-484c-b382-94b6a276fa05",
+              "8bb11d7e-7c2a-4fb0-8588-2dd011689dc6",
               [
                 {
                   latitude: -33.928992,
@@ -745,9 +764,48 @@
 
         // other
 
-        $("#cfp-timer").html("TBA");
-        $(".deadline-time").html("TBA");
-        $(".deadline-local-time").html("TBA");
+        // Use specified timezone for deadlines if available else use AoE timezone
+
+        var confDeadline = DateTime.fromSQL("2017-10-01 23:59:00", {
+          zone: "UTC-12",
+        });
+
+        // check if timezone is valid otherwise replace by system timezone
+        if (confDeadline.invalid) {
+          var confDeadline = DateTime.fromSQL("2017-10-01 23:59:00");
+          console.log("Invalid timezone. Using system timezone instead.");
+        }
+
+        // add calendar
+        var conferenceDeadlineCalendar = createCalendarFromObject({
+          id: "pycon-south-africa-2017",
+          title: "PyCon South Africa 2017 Conference Deadlines",
+          date: confDeadline.toJSDate(),
+          duration: 60,
+        });
+        document
+          .querySelector("#conference-deadline")
+          .appendChild(conferenceDeadlineCalendar);
+
+        // render countdown timer
+        $("#cfp-timer").countdown(confDeadline.toJSDate(), function (event) {
+          $(this).html(event.strftime("%D days %Hh %Mm %Ss"));
+        });
+
+        // render deadline conference time
+
+        $(".deadline-time").html(
+          confDeadline
+            .setZone("UTC-12")
+            .toLocaleString(DateTime.DATETIME_HUGE_WITH_SECONDS)
+        );
+
+        // render deadline in local timezone
+        $(".deadline-local-time").html(
+          confDeadline
+            .setZone("system")
+            .toLocaleString(DateTime.DATETIME_HUGE_WITH_SECONDS)
+        );
       });
     </script>
     <script async defer>

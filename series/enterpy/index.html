@@ -67,7 +67,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711279569"
+      href="/static/css/js-year-calendar.min.css?t=1711286172"
       media="screen,projection"
     />
 
@@ -79,13 +79,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711279569"
+      href="/static/css/deadlines.css?t=1711286172"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711279569"
+      href="/static/css/calendar.css?t=1711286172"
       media="screen,projection"
     />
 
@@ -298,7 +298,11 @@
         </div>
         <div class="row">
           <div class="col-sm-12" id="conf-subs">
-            <span id="conf-subs" title="Conference subjects"> </span>
+            <span id="conf-subs" title="Conference subjects">
+              <span class="BIZ-tag badge badge-light conf-sub conf-BIZ">
+                Python for Business
+              </span>
+            </span>
           </div>
         </div>
       </div>
@@ -325,7 +329,7 @@
         </div>
         <hr />
         <div id="all_confs">
-          <div id="enterpy-2020" class="ConfItem">
+          <div id="enterpy-2020" class="ConfItem BIZ-conf">
             <div class="row conf-row">
               <div class="col-6">
                 <span class="conf-title">
@@ -379,7 +383,13 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-6"></div>
+              <div class="col-6">
+                <span
+                  title="Click to only show BIZ conferences"
+                  data-sub="BIZ"
+                  class="badge badge-light conf-sub BIZ-tag"
+                ></span>
+              </div>
               <div class="col-6">
                 <div class="calendar"></div>
               </div>
@@ -548,6 +558,8 @@
 
 
 
+
+                $('#enterpy-2020 .BIZ-tag').html(sub2name["BIZ"].toLocaleLowerCase());
 
 
                 $('#enterpy-2020 .timer').html("TBA");
