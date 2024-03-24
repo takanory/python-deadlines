@@ -789,6 +789,9 @@
 <loc>https://pythondeadlin.es/conference/python-nordeste-2018/</loc>
 </url>
 <url>
+<loc>https://pythondeadlin.es/conference/pydata-berlin-2018/</loc>
+</url>
+<url>
 <loc>https://pythondeadlin.es/conference/pycon-us-2018/</loc>
 </url>
 <url>
@@ -928,6 +931,9 @@
 </url>
 <url>
 <loc>https://pythondeadlin.es/conference/pycon-india-2014/</loc>
+</url>
+<url>
+<loc>https://pythondeadlin.es/conference/pydata-berlin-2014/</loc>
 </url>
 <url>
 <loc>https://pythondeadlin.es/conference/python-nordeste-2014/</loc>
@@ -2154,9 +2160,6 @@
 <loc>https://pythondeadlin.es/conference/pyohio-2014/</loc>
 </url>
 <url>
-<loc>https://pythondeadlin.es/conference/pydata-berlin-2014/</loc>
-</url>
-<url>
 <loc>https://pythondeadlin.es/conference/pyohio-2014/</loc>
 </url>
 <url>
@@ -3375,9 +3378,6 @@
 <loc>https://pythondeadlin.es/series/pyohio/</loc>
 </url>
 <url>
-<loc>https://pythondeadlin.es/series/pydata-berlin/</loc>
-</url>
-<url>
 <loc>https://pythondeadlin.es/series/pyohio/</loc>
 </url>
 <url>
@@ -4146,6 +4146,9 @@
 <loc>https://pythondeadlin.es/series/python-nordeste/</loc>
 </url>
 <url>
+<loc>https://pythondeadlin.es/series/pydata-berlin/</loc>
+</url>
+<url>
 <loc>https://pythondeadlin.es/series/pycon-us/</loc>
 </url>
 <url>
@@ -4285,6 +4288,9 @@
 </url>
 <url>
 <loc>https://pythondeadlin.es/series/pycon-india/</loc>
+</url>
+<url>
+<loc>https://pythondeadlin.es/series/pydata-berlin/</loc>
 </url>
 <url>
 <loc>https://pythondeadlin.es/series/python-nordeste/</loc>
