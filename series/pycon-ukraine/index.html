@@ -72,7 +72,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711249432"
+      href="/static/css/js-year-calendar.min.css?t=1711279161"
       media="screen,projection"
     />
 
@@ -84,13 +84,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711249432"
+      href="/static/css/deadlines.css?t=1711279161"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711249432"
+      href="/static/css/calendar.css?t=1711279161"
       media="screen,projection"
     />
 
@@ -325,8 +325,8 @@
               <a
                 id="conf-website"
                 target="_blank"
-                href="https://web.archive.org/web/20160419232557/http://ua.pycon.org/"
-                >https://web.archive.org/web/20160419232557/http://ua.pycon.org/</a
+                href="https://web.archive.org/web/20170607211814/https://ua.pycon.org/"
+                >https://web.archive.org/web/20170607211814/https://ua.pycon.org/</a
               >
             </div>
           </div>
@@ -334,6 +334,78 @@
         </div>
         <hr />
         <div id="all_confs">
+          <div id="pycon-ukraine-2017" class="ConfItem PY-conf">
+            <div class="row conf-row">
+              <div class="col-6">
+                <span class="conf-title">
+                  <a
+                    title="Deadline Details"
+                    href="/conference/pycon-ukraine-2017/"
+                    >PyCon Ukraine 2017</a
+                  >
+                </span>
+                <span class="conf-title-small">
+                  <a
+                    title="Deadline Details"
+                    href="/conference/pycon-ukraine-2017/"
+                    >PyCon Ukraine '17</a
+                  >
+                </span>
+                <span class="conf-title-icon">
+                  <a
+                    title="Conference Website"
+                    href="https://web.archive.org/web/20170607211814/https://ua.pycon.org/"
+                    target="_blank"
+                    ><img
+                      src="/static/img/203-earth.svg"
+                      class="badge-link"
+                      alt="Link to Conference Website"
+                      width="16"
+                      height="16"
+                  /></a>
+                  &ZeroWidthSpace;
+                </span>
+              </div>
+              <div class="col-6">
+                <span class="timer"></span>
+                <span class="timer-small"></span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="meta">
+                  <span class="conf-date">April 8 - 10, 2017.</span>
+                  <span class="conf-place">
+                    <a href="http://maps.google.com/?q=Lviv City, Ukraine"
+                      >Lviv City, Ukraine</a
+                    >
+                  </span>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <div class="deadline">
+                  <div>
+                    Deadline:
+                    <span class="deadline-time">TBA</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <span
+                  title="Click to only show PY conferences"
+                  data-sub="PY"
+                  class="badge badge-light conf-sub PY-tag"
+                ></span>
+              </div>
+              <div class="col-6">
+                <div class="calendar"></div>
+              </div>
+            </div>
+            <hr />
+          </div>
+
           <div id="pycon-ukraine-2016" class="ConfItem PY-conf">
             <div class="row conf-row">
               <div class="col-6">
@@ -635,6 +707,17 @@
 
             // Set time zone to local timezone on web copy
             $('.local-timezone').text(today.toFormat('z'));
+
+
+
+
+
+                $('#pycon-ukraine-2017 .PY-tag').html(sub2name["PY"].toLocaleLowerCase());
+
+
+                $('#pycon-ukraine-2017 .timer').html("TBA");
+                $('#pycon-ukraine-2017 .deadline-time').html("TBA");
+                $('#pycon-ukraine-2017').attr("cfpDiff", Infinity);
 
 
 

@@ -72,7 +72,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711249432"
+      href="/static/css/js-year-calendar.min.css?t=1711279161"
       media="screen,projection"
     />
 
@@ -84,13 +84,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711249432"
+      href="/static/css/deadlines.css?t=1711279161"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711249432"
+      href="/static/css/calendar.css?t=1711279161"
       media="screen,projection"
     />
 
@@ -1025,6 +1025,21 @@
                   /></a>
                   &ZeroWidthSpace;
                 </span>
+
+                <span class="conf-title-icon">
+                  <a
+                    title="Call for Participation for PyData London"
+                    href="https://web.archive.org/web/20170226122558/https://pydata.org/london2017/cfp"
+                    target="_blank"
+                    ><img
+                      src="/static/img/035-file-text.svg"
+                      class="badge-link"
+                      alt="Link to Call for Participation for PyData London"
+                      width="16"
+                      height="16"
+                  /></a>
+                  &ZeroWidthSpace;
+                </span>
               </div>
               <div class="col-6">
                 <span class="timer"></span>
@@ -1034,7 +1049,7 @@
             <div class="row">
               <div class="col-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">May 5 - 8, 2017.</span>
+                  <span class="conf-date">May 5 - 7, 2017.</span>
                   <span class="conf-place">
                     <a href="http://maps.google.com/?q=London, UK"
                       >London, UK</a
@@ -1046,7 +1061,7 @@
                 <div class="deadline">
                   <div>
                     Deadline:
-                    <span class="deadline-time">TBA</span>
+                    <span class="deadline-time">Friday, 24 February 2017</span>
                   </div>
                 </div>
               </div>
@@ -1106,7 +1121,7 @@
             <div class="row">
               <div class="col-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">May 6 - 9, 2016.</span>
+                  <span class="conf-date">May 6 - 8, 2016.</span>
                   <span class="conf-place">
                     <a href="http://maps.google.com/?q=London, UK"
                       >London, UK</a
@@ -1118,7 +1133,7 @@
                 <div class="deadline">
                   <div>
                     Deadline:
-                    <span class="deadline-time">TBA</span>
+                    <span class="deadline-time">Monday, 7 March 2016</span>
                   </div>
                 </div>
               </div>
@@ -1285,13 +1300,13 @@
 
         <div class="row">
           <div
-            id="6940b8f4-3f0d-4a56-8624-4f2925ddd543"
+            id="5dab7cd7-a77e-499a-a2ae-8103f0528583"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "6940b8f4-3f0d-4a56-8624-4f2925ddd543",
+              "5dab7cd7-a77e-499a-a2ae-8103f0528583",
               [
                 {
                   latitude: 51.5073359,
@@ -1314,38 +1329,38 @@
                   popup_html: "",
                 },
                 {
+                  latitude: 51.5074456,
+                  longitude: -0.1277653,
+                  title: "PyData London Conference Summary",
+                  icon: null,
+                  url: "/series/pydata-london/",
+                  url_text: null,
+                  image: "",
+                  popup_html: "",
+                },
+                {
+                  latitude: 51.5074456,
+                  longitude: -0.1277653,
+                  title: "PyData London Conference Summary",
+                  icon: null,
+                  url: "/series/pydata-london/",
+                  url_text: null,
+                  image: "",
+                  popup_html: "",
+                },
+                {
+                  latitude: 51.5074456,
+                  longitude: -0.1277653,
+                  title: "PyData London Conference Summary",
+                  icon: null,
+                  url: "/series/pydata-london/",
+                  url_text: null,
+                  image: "",
+                  popup_html: "",
+                },
+                {
                   latitude: 51.512773,
                   longitude: -0.0906448,
-                  title: "PyData London Conference Summary",
-                  icon: null,
-                  url: "/series/pydata-london/",
-                  url_text: null,
-                  image: "",
-                  popup_html: "",
-                },
-                {
-                  latitude: 51.5074456,
-                  longitude: -0.1277653,
-                  title: "PyData London Conference Summary",
-                  icon: null,
-                  url: "/series/pydata-london/",
-                  url_text: null,
-                  image: "",
-                  popup_html: "",
-                },
-                {
-                  latitude: 51.5074456,
-                  longitude: -0.1277653,
-                  title: "PyData London Conference Summary",
-                  icon: null,
-                  url: "/series/pydata-london/",
-                  url_text: null,
-                  image: "",
-                  popup_html: "",
-                },
-                {
-                  latitude: 51.5074456,
-                  longitude: -0.1277653,
                   title: "PyData London Conference Summary",
                   icon: null,
                   url: "/series/pydata-london/",
@@ -1848,9 +1863,67 @@
                 $('#pydata-london-2017 .PYDATA-tag').html(sub2name["PYDATA"].toLocaleLowerCase());
 
 
-                $('#pydata-london-2017 .timer').html("TBA");
-                $('#pydata-london-2017 .deadline-time').html("TBA");
-                $('#pydata-london-2017').attr("cfpDiff", Infinity);
+
+                // Use specified timezone for deadlines if available else use AoE timezone
+
+                  var cfpDate = DateTime.fromSQL("2017-02-24 23:59:00", { zone: "Europe/London" });
+                  var confDate = DateTime.fromSQL("2017-05-05", { zone: "Europe/London" });
+
+
+                // check if timezone is valid otherwise replace by system timezone
+                if (cfpDate.invalid || confDate.invalid) {
+                  var cfpDate = DateTime.fromSQL("2017-02-24 23:59:00");
+                  var confDate = DateTime.fromSQL("2017-05-05");
+                  console.log("Invalid timezone in pydata-london-2017. Using system timezone instead.");
+                }
+
+                // render countdown timer
+                $('#pydata-london-2017 .timer').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+
+                // render countdown timer small
+                $('#pydata-london-2017 .timer-small').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%Dd %H:%M:%S'));
+                });
+
+                // deadline in local timezone
+                $('#pydata-london-2017 .deadline-time').html(cfpDate.setZone('system').toLocaleString(DateTime.DATE_HUGE));
+
+                // add calendar button
+                try {
+                  var myCalendar = createCalendarFromObject({
+                    id: 'pydata-london-2017',
+                    title: 'PyData London 2017 deadline',
+                    date: cfpDate.toJSDate(),
+                    duration: 60,
+                  });
+                  document.querySelector('#pydata-london-2017 .calendar').appendChild(myCalendar);
+                } catch (err) {
+                  document.querySelector('#pydata-london-2017 .calendar').appendChild("<p>Calendar not available.</p>");
+                  console.log("Error in cfp date.");
+                }
+
+                // check if date has passed, add 'past' class to it
+                cfpDiff = cfpDate.diffNow("seconds");
+                confDiff = confDate.diffNow("seconds");
+
+                $('#pydata-london-2017').attr("cfpDiff", cfpDiff.toMillis());
+                $('#pydata-london-2017').attr("confDiff", confDiff.toMillis());
+
+                if (cfpDiff < 0) {
+                  $('#pydata-london-2017').addClass('pastcfp');
+                  $('#pydata-london-2017 .timer').replaceWith($('#pydata-london-2017 .deadline'));
+                  $('#pydata-london-2017 .timer-small').replaceWith($('#pydata-london-2017 .deadline'));
+                  $('#pydata-london-2017 .calendar').remove();
+                }
+
+                if (confDiff < 0) {
+                  $('#pydata-london-2017').addClass('pastconf');
+                  $('#pydata-london-2017 .timer').replaceWith($('#pydata-london-2017 .deadline'));
+                  $('#pydata-london-2017 .timer-small').replaceWith($('#pydata-london-2017 .deadline'));
+                  $('#pydata-london-2017 .calendar').remove();
+                }
 
 
 
@@ -1859,9 +1932,67 @@
                 $('#pydata-london-2016 .PYDATA-tag').html(sub2name["PYDATA"].toLocaleLowerCase());
 
 
-                $('#pydata-london-2016 .timer').html("TBA");
-                $('#pydata-london-2016 .deadline-time').html("TBA");
-                $('#pydata-london-2016').attr("cfpDiff", Infinity);
+
+                // Use specified timezone for deadlines if available else use AoE timezone
+
+                  var cfpDate = DateTime.fromSQL("2016-03-07 23:59:00", { zone: "UTC-12" });
+                  var confDate = DateTime.fromSQL("2016-05-06", { zone: "UTC-12" });
+
+
+                // check if timezone is valid otherwise replace by system timezone
+                if (cfpDate.invalid || confDate.invalid) {
+                  var cfpDate = DateTime.fromSQL("2016-03-07 23:59:00");
+                  var confDate = DateTime.fromSQL("2016-05-06");
+                  console.log("Invalid timezone in pydata-london-2016. Using system timezone instead.");
+                }
+
+                // render countdown timer
+                $('#pydata-london-2016 .timer').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+
+                // render countdown timer small
+                $('#pydata-london-2016 .timer-small').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%Dd %H:%M:%S'));
+                });
+
+                // deadline in local timezone
+                $('#pydata-london-2016 .deadline-time').html(cfpDate.setZone('system').toLocaleString(DateTime.DATE_HUGE));
+
+                // add calendar button
+                try {
+                  var myCalendar = createCalendarFromObject({
+                    id: 'pydata-london-2016',
+                    title: 'PyData London 2016 deadline',
+                    date: cfpDate.toJSDate(),
+                    duration: 60,
+                  });
+                  document.querySelector('#pydata-london-2016 .calendar').appendChild(myCalendar);
+                } catch (err) {
+                  document.querySelector('#pydata-london-2016 .calendar').appendChild("<p>Calendar not available.</p>");
+                  console.log("Error in cfp date.");
+                }
+
+                // check if date has passed, add 'past' class to it
+                cfpDiff = cfpDate.diffNow("seconds");
+                confDiff = confDate.diffNow("seconds");
+
+                $('#pydata-london-2016').attr("cfpDiff", cfpDiff.toMillis());
+                $('#pydata-london-2016').attr("confDiff", confDiff.toMillis());
+
+                if (cfpDiff < 0) {
+                  $('#pydata-london-2016').addClass('pastcfp');
+                  $('#pydata-london-2016 .timer').replaceWith($('#pydata-london-2016 .deadline'));
+                  $('#pydata-london-2016 .timer-small').replaceWith($('#pydata-london-2016 .deadline'));
+                  $('#pydata-london-2016 .calendar').remove();
+                }
+
+                if (confDiff < 0) {
+                  $('#pydata-london-2016').addClass('pastconf');
+                  $('#pydata-london-2016 .timer').replaceWith($('#pydata-london-2016 .deadline'));
+                  $('#pydata-london-2016 .timer-small').replaceWith($('#pydata-london-2016 .deadline'));
+                  $('#pydata-london-2016 .calendar').remove();
+                }
 
 
 

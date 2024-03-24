@@ -79,7 +79,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711249432"
+      href="/static/css/js-year-calendar.min.css?t=1711279161"
       media="screen,projection"
     />
 
@@ -91,13 +91,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711249432"
+      href="/static/css/deadlines.css?t=1711279161"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711249432"
+      href="/static/css/calendar.css?t=1711279161"
       media="screen,projection"
     />
 
@@ -1316,7 +1316,7 @@
             <div class="row">
               <div class="col-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">June 30 - July 3, 2017.</span>
+                  <span class="conf-date">June 30 - July 2, 2017.</span>
                   <span class="conf-place">
                     <a href="http://maps.google.com/?q=Berlin, Germany"
                       >Berlin, Germany</a
@@ -1328,7 +1328,7 @@
                 <div class="deadline">
                   <div>
                     Deadline:
-                    <span class="deadline-time">TBA</span>
+                    <span class="deadline-time">Sunday, 23 April 2017</span>
                   </div>
                 </div>
               </div>
@@ -1475,7 +1475,7 @@
             <div class="row">
               <div class="col-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">May 20 - 22, 2016.</span>
+                  <span class="conf-date">May 20 - 21, 2016.</span>
                   <span class="conf-place">
                     <a href="http://maps.google.com/?q=Berlin, Germany"
                       >Berlin, Germany</a
@@ -1487,7 +1487,7 @@
                 <div class="deadline">
                   <div>
                     Deadline:
-                    <span class="deadline-time">TBA</span>
+                    <span class="deadline-time">Tuesday, 8 March 2016</span>
                   </div>
                 </div>
               </div>
@@ -1619,7 +1619,7 @@
             <div class="row">
               <div class="col-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">May 29 - 31, 2015.</span>
+                  <span class="conf-date">May 29 - 30, 2015.</span>
                   <span class="conf-place">
                     <a href="http://maps.google.com/?q=Berlin, Germany"
                       >Berlin, Germany</a
@@ -1631,7 +1631,7 @@
                 <div class="deadline">
                   <div>
                     Deadline:
-                    <span class="deadline-time">TBA</span>
+                    <span class="deadline-time">Thursday, 30 April 2015</span>
                   </div>
                 </div>
               </div>
@@ -1942,13 +1942,13 @@
 
         <div class="row">
           <div
-            id="57f0ea43-cae0-450e-b5f6-32fee443fe68"
+            id="6c5f2fdb-a810-4a05-8bbe-c16313046ddc"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "57f0ea43-cae0-450e-b5f6-32fee443fe68",
+              "6c5f2fdb-a810-4a05-8bbe-c16313046ddc",
               [
                 {
                   latitude: 52.5170365,
@@ -2621,9 +2621,67 @@
                 $('#pydata-berlin-2017 .PYDATA-tag').html(sub2name["PYDATA"].toLocaleLowerCase());
 
 
-                $('#pydata-berlin-2017 .timer').html("TBA");
-                $('#pydata-berlin-2017 .deadline-time').html("TBA");
-                $('#pydata-berlin-2017').attr("cfpDiff", Infinity);
+
+                // Use specified timezone for deadlines if available else use AoE timezone
+
+                  var cfpDate = DateTime.fromSQL("2017-04-23 23:59:59", { zone: "Europe/Berlin" });
+                  var confDate = DateTime.fromSQL("2017-06-30", { zone: "Europe/Berlin" });
+
+
+                // check if timezone is valid otherwise replace by system timezone
+                if (cfpDate.invalid || confDate.invalid) {
+                  var cfpDate = DateTime.fromSQL("2017-04-23 23:59:59");
+                  var confDate = DateTime.fromSQL("2017-06-30");
+                  console.log("Invalid timezone in pydata-berlin-2017. Using system timezone instead.");
+                }
+
+                // render countdown timer
+                $('#pydata-berlin-2017 .timer').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+
+                // render countdown timer small
+                $('#pydata-berlin-2017 .timer-small').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%Dd %H:%M:%S'));
+                });
+
+                // deadline in local timezone
+                $('#pydata-berlin-2017 .deadline-time').html(cfpDate.setZone('system').toLocaleString(DateTime.DATE_HUGE));
+
+                // add calendar button
+                try {
+                  var myCalendar = createCalendarFromObject({
+                    id: 'pydata-berlin-2017',
+                    title: 'PyData Berlin 2017 deadline',
+                    date: cfpDate.toJSDate(),
+                    duration: 60,
+                  });
+                  document.querySelector('#pydata-berlin-2017 .calendar').appendChild(myCalendar);
+                } catch (err) {
+                  document.querySelector('#pydata-berlin-2017 .calendar').appendChild("<p>Calendar not available.</p>");
+                  console.log("Error in cfp date.");
+                }
+
+                // check if date has passed, add 'past' class to it
+                cfpDiff = cfpDate.diffNow("seconds");
+                confDiff = confDate.diffNow("seconds");
+
+                $('#pydata-berlin-2017').attr("cfpDiff", cfpDiff.toMillis());
+                $('#pydata-berlin-2017').attr("confDiff", confDiff.toMillis());
+
+                if (cfpDiff < 0) {
+                  $('#pydata-berlin-2017').addClass('pastcfp');
+                  $('#pydata-berlin-2017 .timer').replaceWith($('#pydata-berlin-2017 .deadline'));
+                  $('#pydata-berlin-2017 .timer-small').replaceWith($('#pydata-berlin-2017 .deadline'));
+                  $('#pydata-berlin-2017 .calendar').remove();
+                }
+
+                if (confDiff < 0) {
+                  $('#pydata-berlin-2017').addClass('pastconf');
+                  $('#pydata-berlin-2017 .timer').replaceWith($('#pydata-berlin-2017 .deadline'));
+                  $('#pydata-berlin-2017 .timer-small').replaceWith($('#pydata-berlin-2017 .deadline'));
+                  $('#pydata-berlin-2017 .calendar').remove();
+                }
 
 
 
@@ -2701,9 +2759,67 @@
                 $('#pydata-berlin-2016 .PYDATA-tag').html(sub2name["PYDATA"].toLocaleLowerCase());
 
 
-                $('#pydata-berlin-2016 .timer').html("TBA");
-                $('#pydata-berlin-2016 .deadline-time').html("TBA");
-                $('#pydata-berlin-2016').attr("cfpDiff", Infinity);
+
+                // Use specified timezone for deadlines if available else use AoE timezone
+
+                  var cfpDate = DateTime.fromSQL("2016-03-08 23:59:00", { zone: "UTC-12" });
+                  var confDate = DateTime.fromSQL("2016-05-20", { zone: "UTC-12" });
+
+
+                // check if timezone is valid otherwise replace by system timezone
+                if (cfpDate.invalid || confDate.invalid) {
+                  var cfpDate = DateTime.fromSQL("2016-03-08 23:59:00");
+                  var confDate = DateTime.fromSQL("2016-05-20");
+                  console.log("Invalid timezone in pydata-berlin-2016. Using system timezone instead.");
+                }
+
+                // render countdown timer
+                $('#pydata-berlin-2016 .timer').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+
+                // render countdown timer small
+                $('#pydata-berlin-2016 .timer-small').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%Dd %H:%M:%S'));
+                });
+
+                // deadline in local timezone
+                $('#pydata-berlin-2016 .deadline-time').html(cfpDate.setZone('system').toLocaleString(DateTime.DATE_HUGE));
+
+                // add calendar button
+                try {
+                  var myCalendar = createCalendarFromObject({
+                    id: 'pydata-berlin-2016',
+                    title: 'PyData Berlin 2016 deadline',
+                    date: cfpDate.toJSDate(),
+                    duration: 60,
+                  });
+                  document.querySelector('#pydata-berlin-2016 .calendar').appendChild(myCalendar);
+                } catch (err) {
+                  document.querySelector('#pydata-berlin-2016 .calendar').appendChild("<p>Calendar not available.</p>");
+                  console.log("Error in cfp date.");
+                }
+
+                // check if date has passed, add 'past' class to it
+                cfpDiff = cfpDate.diffNow("seconds");
+                confDiff = confDate.diffNow("seconds");
+
+                $('#pydata-berlin-2016').attr("cfpDiff", cfpDiff.toMillis());
+                $('#pydata-berlin-2016').attr("confDiff", confDiff.toMillis());
+
+                if (cfpDiff < 0) {
+                  $('#pydata-berlin-2016').addClass('pastcfp');
+                  $('#pydata-berlin-2016 .timer').replaceWith($('#pydata-berlin-2016 .deadline'));
+                  $('#pydata-berlin-2016 .timer-small').replaceWith($('#pydata-berlin-2016 .deadline'));
+                  $('#pydata-berlin-2016 .calendar').remove();
+                }
+
+                if (confDiff < 0) {
+                  $('#pydata-berlin-2016').addClass('pastconf');
+                  $('#pydata-berlin-2016 .timer').replaceWith($('#pydata-berlin-2016 .deadline'));
+                  $('#pydata-berlin-2016 .timer-small').replaceWith($('#pydata-berlin-2016 .deadline'));
+                  $('#pydata-berlin-2016 .calendar').remove();
+                }
 
 
 
@@ -2781,9 +2897,67 @@
                 $('#pydata-berlin-2015 .PYDATA-tag').html(sub2name["PYDATA"].toLocaleLowerCase());
 
 
-                $('#pydata-berlin-2015 .timer').html("TBA");
-                $('#pydata-berlin-2015 .deadline-time').html("TBA");
-                $('#pydata-berlin-2015').attr("cfpDiff", Infinity);
+
+                // Use specified timezone for deadlines if available else use AoE timezone
+
+                  var cfpDate = DateTime.fromSQL("2015-04-30 23:59:59", { zone: "Europe/Berlin" });
+                  var confDate = DateTime.fromSQL("2015-05-29", { zone: "Europe/Berlin" });
+
+
+                // check if timezone is valid otherwise replace by system timezone
+                if (cfpDate.invalid || confDate.invalid) {
+                  var cfpDate = DateTime.fromSQL("2015-04-30 23:59:59");
+                  var confDate = DateTime.fromSQL("2015-05-29");
+                  console.log("Invalid timezone in pydata-berlin-2015. Using system timezone instead.");
+                }
+
+                // render countdown timer
+                $('#pydata-berlin-2015 .timer').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+
+                // render countdown timer small
+                $('#pydata-berlin-2015 .timer-small').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%Dd %H:%M:%S'));
+                });
+
+                // deadline in local timezone
+                $('#pydata-berlin-2015 .deadline-time').html(cfpDate.setZone('system').toLocaleString(DateTime.DATE_HUGE));
+
+                // add calendar button
+                try {
+                  var myCalendar = createCalendarFromObject({
+                    id: 'pydata-berlin-2015',
+                    title: 'PyData Berlin 2015 deadline',
+                    date: cfpDate.toJSDate(),
+                    duration: 60,
+                  });
+                  document.querySelector('#pydata-berlin-2015 .calendar').appendChild(myCalendar);
+                } catch (err) {
+                  document.querySelector('#pydata-berlin-2015 .calendar').appendChild("<p>Calendar not available.</p>");
+                  console.log("Error in cfp date.");
+                }
+
+                // check if date has passed, add 'past' class to it
+                cfpDiff = cfpDate.diffNow("seconds");
+                confDiff = confDate.diffNow("seconds");
+
+                $('#pydata-berlin-2015').attr("cfpDiff", cfpDiff.toMillis());
+                $('#pydata-berlin-2015').attr("confDiff", confDiff.toMillis());
+
+                if (cfpDiff < 0) {
+                  $('#pydata-berlin-2015').addClass('pastcfp');
+                  $('#pydata-berlin-2015 .timer').replaceWith($('#pydata-berlin-2015 .deadline'));
+                  $('#pydata-berlin-2015 .timer-small').replaceWith($('#pydata-berlin-2015 .deadline'));
+                  $('#pydata-berlin-2015 .calendar').remove();
+                }
+
+                if (confDiff < 0) {
+                  $('#pydata-berlin-2015').addClass('pastconf');
+                  $('#pydata-berlin-2015 .timer').replaceWith($('#pydata-berlin-2015 .deadline'));
+                  $('#pydata-berlin-2015 .timer-small').replaceWith($('#pydata-berlin-2015 .deadline'));
+                  $('#pydata-berlin-2015 .calendar').remove();
+                }
 
 
 

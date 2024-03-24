@@ -77,7 +77,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711249432"
+      href="/static/css/js-year-calendar.min.css?t=1711279161"
       media="screen,projection"
     />
 
@@ -89,13 +89,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711249432"
+      href="/static/css/deadlines.css?t=1711279161"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711249432"
+      href="/static/css/calendar.css?t=1711279161"
       media="screen,projection"
     />
 
@@ -472,7 +472,7 @@
       </div>
       <div id="page-content">
         <div id="conf-deadline-timer" class="row">
-          <div id="cfp-timer" class="col-12 conf-timer">TBA</div>
+          <div id="cfp-timer" class="col-12 conf-timer"></div>
         </div>
         <div id="conf-key-facts" class="row">
           <div class="col-12 col-md-6">
@@ -484,7 +484,7 @@
                 width="16"
                 height="16"
               />
-              <span id="conf-date">May 12 - 14, 2015</span>
+              <span id="conf-date">May 12 - 13, 2015</span>
             </div>
             <div>
               <img
@@ -497,8 +497,8 @@
               <a
                 id="conf-place"
                 target="_blank"
-                href="https://maps.google.com/?q=Hilton Stockholm Slussen Hotel, Sweden"
-                >Hilton Stockholm Slussen Hotel, Sweden</a
+                href="https://maps.google.com/?q=Stockholm, Sweden"
+                >Stockholm, Sweden</a
               >
             </div>
             <div>
@@ -509,8 +509,11 @@
                 width="16"
                 height="16"
               />
-              <a id="conf-website" target="_blank" href="https://www.pycon.se/"
-                >https://www.pycon.se/</a
+              <a
+                id="conf-website"
+                target="_blank"
+                href="https://web.archive.org/web/20150325001531/http://www.pycon.se/"
+                >https://web.archive.org/web/20150325001531/http://www.pycon.se/</a
               >
             </div>
 
@@ -594,13 +597,13 @@
         </div>
         <div class="row">
           <div
-            id="c3772769-0544-480e-90e3-d698980cd58b"
+            id="d14222af-9f88-43e5-8684-5503a82883e1"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "c3772769-0544-480e-90e3-d698980cd58b",
+              "d14222af-9f88-43e5-8684-5503a82883e1",
               [
                 {
                   latitude: 59.3204755,
@@ -743,9 +746,48 @@
 
         // other
 
-        $("#cfp-timer").html("TBA");
-        $(".deadline-time").html("TBA");
-        $(".deadline-local-time").html("TBA");
+        // Use specified timezone for deadlines if available else use AoE timezone
+
+        var confDeadline = DateTime.fromSQL("2015-02-16 23:59:00", {
+          zone: "Europe/Stockholm",
+        });
+
+        // check if timezone is valid otherwise replace by system timezone
+        if (confDeadline.invalid) {
+          var confDeadline = DateTime.fromSQL("2015-02-16 23:59:00");
+          console.log("Invalid timezone. Using system timezone instead.");
+        }
+
+        // add calendar
+        var conferenceDeadlineCalendar = createCalendarFromObject({
+          id: "pycon-sweden-2015",
+          title: "PyCon Sweden 2015 Conference Deadlines",
+          date: confDeadline.toJSDate(),
+          duration: 60,
+        });
+        document
+          .querySelector("#conference-deadline")
+          .appendChild(conferenceDeadlineCalendar);
+
+        // render countdown timer
+        $("#cfp-timer").countdown(confDeadline.toJSDate(), function (event) {
+          $(this).html(event.strftime("%D days %Hh %Mm %Ss"));
+        });
+
+        // render deadline conference time
+
+        $(".deadline-time").html(
+          confDeadline
+            .setZone("Europe/Stockholm")
+            .toLocaleString(DateTime.DATETIME_HUGE_WITH_SECONDS)
+        );
+
+        // render deadline in local timezone
+        $(".deadline-local-time").html(
+          confDeadline
+            .setZone("system")
+            .toLocaleString(DateTime.DATETIME_HUGE_WITH_SECONDS)
+        );
       });
     </script>
     <script async defer>
