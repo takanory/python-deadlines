@@ -67,7 +67,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711223207"
+      href="/static/css/js-year-calendar.min.css?t=1711249432"
       media="screen,projection"
     />
 
@@ -79,13 +79,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711223207"
+      href="/static/css/deadlines.css?t=1711249432"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711223207"
+      href="/static/css/calendar.css?t=1711249432"
       media="screen,projection"
     />
 
@@ -913,7 +913,7 @@
             <div class="row">
               <div class="col-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">November 2 - 6, 2017.</span>
+                  <span class="conf-date">November 2 - 5, 2017.</span>
                   <span class="conf-place">
                     <a href="http://maps.google.com/?q=Delhi, India"
                       >Delhi, India</a
@@ -925,7 +925,7 @@
                 <div class="deadline">
                   <div>
                     Deadline:
-                    <span class="deadline-time">TBA</span>
+                    <span class="deadline-time">Thursday, 31 August 2017</span>
                   </div>
                 </div>
               </div>
@@ -985,7 +985,7 @@
             <div class="row">
               <div class="col-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">September 23 - 26, 2016.</span>
+                  <span class="conf-date">September 23 - 25, 2016.</span>
                   <span class="conf-place">
                     <a href="http://maps.google.com/?q=New Delhi, India"
                       >New Delhi, India</a
@@ -997,7 +997,7 @@
                 <div class="deadline">
                   <div>
                     Deadline:
-                    <span class="deadline-time">TBA</span>
+                    <span class="deadline-time">Thursday, 30 June 2016</span>
                   </div>
                 </div>
               </div>
@@ -1057,7 +1057,7 @@
             <div class="row">
               <div class="col-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">October 2 - 5, 2015.</span>
+                  <span class="conf-date">October 2 - 4, 2015.</span>
                   <span class="conf-place">
                     <a href="http://maps.google.com/?q=Bengaluru, India"
                       >Bengaluru, India</a
@@ -1069,7 +1069,7 @@
                 <div class="deadline">
                   <div>
                     Deadline:
-                    <span class="deadline-time">TBA</span>
+                    <span class="deadline-time">Sunday, 31 May 2015</span>
                   </div>
                 </div>
               </div>
@@ -1129,7 +1129,7 @@
             <div class="row">
               <div class="col-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">September 26 - 29, 2014.</span>
+                  <span class="conf-date">September 26 - 28, 2014.</span>
                   <span class="conf-place">
                     <a href="http://maps.google.com/?q=Bangalore, India"
                       >Bangalore, India</a
@@ -1141,7 +1141,7 @@
                 <div class="deadline">
                   <div>
                     Deadline:
-                    <span class="deadline-time">TBA</span>
+                    <span class="deadline-time">Friday, 30 May 2014</span>
                   </div>
                 </div>
               </div>
@@ -1201,7 +1201,7 @@
             <div class="row">
               <div class="col-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">August 31 - September 2, 2013.</span>
+                  <span class="conf-date">August 31 - September 1, 2013.</span>
                   <span class="conf-place">
                     <a href="http://maps.google.com/?q=Bangalore, India"
                       >Bangalore, India</a
@@ -1213,7 +1213,7 @@
                 <div class="deadline">
                   <div>
                     Deadline:
-                    <span class="deadline-time">TBA</span>
+                    <span class="deadline-time">Monday, 15 July 2013</span>
                   </div>
                 </div>
               </div>
@@ -1273,7 +1273,7 @@
             <div class="row">
               <div class="col-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">September 28 - October 1, 2012.</span>
+                  <span class="conf-date">September 28 - 30, 2012.</span>
                   <span class="conf-place">
                     <a href="http://maps.google.com/?q=Bangalore, India"
                       >Bangalore, India</a
@@ -1285,7 +1285,7 @@
                 <div class="deadline">
                   <div>
                     Deadline:
-                    <span class="deadline-time">TBA</span>
+                    <span class="deadline-time">Saturday, 25 August 2012</span>
                   </div>
                 </div>
               </div>
@@ -1710,9 +1710,67 @@
                 $('#pycon-india-2017 .PY-tag').html(sub2name["PY"].toLocaleLowerCase());
 
 
-                $('#pycon-india-2017 .timer').html("TBA");
-                $('#pycon-india-2017 .deadline-time').html("TBA");
-                $('#pycon-india-2017').attr("cfpDiff", Infinity);
+
+                // Use specified timezone for deadlines if available else use AoE timezone
+
+                  var cfpDate = DateTime.fromSQL("2017-08-31 23:59:00", { zone: "Asia/Kolkata" });
+                  var confDate = DateTime.fromSQL("2017-11-02", { zone: "Asia/Kolkata" });
+
+
+                // check if timezone is valid otherwise replace by system timezone
+                if (cfpDate.invalid || confDate.invalid) {
+                  var cfpDate = DateTime.fromSQL("2017-08-31 23:59:00");
+                  var confDate = DateTime.fromSQL("2017-11-02");
+                  console.log("Invalid timezone in pycon-india-2017. Using system timezone instead.");
+                }
+
+                // render countdown timer
+                $('#pycon-india-2017 .timer').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+
+                // render countdown timer small
+                $('#pycon-india-2017 .timer-small').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%Dd %H:%M:%S'));
+                });
+
+                // deadline in local timezone
+                $('#pycon-india-2017 .deadline-time').html(cfpDate.setZone('system').toLocaleString(DateTime.DATE_HUGE));
+
+                // add calendar button
+                try {
+                  var myCalendar = createCalendarFromObject({
+                    id: 'pycon-india-2017',
+                    title: 'PyCon India 2017 deadline',
+                    date: cfpDate.toJSDate(),
+                    duration: 60,
+                  });
+                  document.querySelector('#pycon-india-2017 .calendar').appendChild(myCalendar);
+                } catch (err) {
+                  document.querySelector('#pycon-india-2017 .calendar').appendChild("<p>Calendar not available.</p>");
+                  console.log("Error in cfp date.");
+                }
+
+                // check if date has passed, add 'past' class to it
+                cfpDiff = cfpDate.diffNow("seconds");
+                confDiff = confDate.diffNow("seconds");
+
+                $('#pycon-india-2017').attr("cfpDiff", cfpDiff.toMillis());
+                $('#pycon-india-2017').attr("confDiff", confDiff.toMillis());
+
+                if (cfpDiff < 0) {
+                  $('#pycon-india-2017').addClass('pastcfp');
+                  $('#pycon-india-2017 .timer').replaceWith($('#pycon-india-2017 .deadline'));
+                  $('#pycon-india-2017 .timer-small').replaceWith($('#pycon-india-2017 .deadline'));
+                  $('#pycon-india-2017 .calendar').remove();
+                }
+
+                if (confDiff < 0) {
+                  $('#pycon-india-2017').addClass('pastconf');
+                  $('#pycon-india-2017 .timer').replaceWith($('#pycon-india-2017 .deadline'));
+                  $('#pycon-india-2017 .timer-small').replaceWith($('#pycon-india-2017 .deadline'));
+                  $('#pycon-india-2017 .calendar').remove();
+                }
 
 
 
@@ -1721,9 +1779,67 @@
                 $('#pycon-india-2016 .PY-tag').html(sub2name["PY"].toLocaleLowerCase());
 
 
-                $('#pycon-india-2016 .timer').html("TBA");
-                $('#pycon-india-2016 .deadline-time').html("TBA");
-                $('#pycon-india-2016').attr("cfpDiff", Infinity);
+
+                // Use specified timezone for deadlines if available else use AoE timezone
+
+                  var cfpDate = DateTime.fromSQL("2016-06-30 23:59:00", { zone: "Asia/Kolkata" });
+                  var confDate = DateTime.fromSQL("2016-09-23", { zone: "Asia/Kolkata" });
+
+
+                // check if timezone is valid otherwise replace by system timezone
+                if (cfpDate.invalid || confDate.invalid) {
+                  var cfpDate = DateTime.fromSQL("2016-06-30 23:59:00");
+                  var confDate = DateTime.fromSQL("2016-09-23");
+                  console.log("Invalid timezone in pycon-india-2016. Using system timezone instead.");
+                }
+
+                // render countdown timer
+                $('#pycon-india-2016 .timer').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+
+                // render countdown timer small
+                $('#pycon-india-2016 .timer-small').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%Dd %H:%M:%S'));
+                });
+
+                // deadline in local timezone
+                $('#pycon-india-2016 .deadline-time').html(cfpDate.setZone('system').toLocaleString(DateTime.DATE_HUGE));
+
+                // add calendar button
+                try {
+                  var myCalendar = createCalendarFromObject({
+                    id: 'pycon-india-2016',
+                    title: 'PyCon India 2016 deadline',
+                    date: cfpDate.toJSDate(),
+                    duration: 60,
+                  });
+                  document.querySelector('#pycon-india-2016 .calendar').appendChild(myCalendar);
+                } catch (err) {
+                  document.querySelector('#pycon-india-2016 .calendar').appendChild("<p>Calendar not available.</p>");
+                  console.log("Error in cfp date.");
+                }
+
+                // check if date has passed, add 'past' class to it
+                cfpDiff = cfpDate.diffNow("seconds");
+                confDiff = confDate.diffNow("seconds");
+
+                $('#pycon-india-2016').attr("cfpDiff", cfpDiff.toMillis());
+                $('#pycon-india-2016').attr("confDiff", confDiff.toMillis());
+
+                if (cfpDiff < 0) {
+                  $('#pycon-india-2016').addClass('pastcfp');
+                  $('#pycon-india-2016 .timer').replaceWith($('#pycon-india-2016 .deadline'));
+                  $('#pycon-india-2016 .timer-small').replaceWith($('#pycon-india-2016 .deadline'));
+                  $('#pycon-india-2016 .calendar').remove();
+                }
+
+                if (confDiff < 0) {
+                  $('#pycon-india-2016').addClass('pastconf');
+                  $('#pycon-india-2016 .timer').replaceWith($('#pycon-india-2016 .deadline'));
+                  $('#pycon-india-2016 .timer-small').replaceWith($('#pycon-india-2016 .deadline'));
+                  $('#pycon-india-2016 .calendar').remove();
+                }
 
 
 
@@ -1732,9 +1848,67 @@
                 $('#pycon-india-2015 .PY-tag').html(sub2name["PY"].toLocaleLowerCase());
 
 
-                $('#pycon-india-2015 .timer').html("TBA");
-                $('#pycon-india-2015 .deadline-time').html("TBA");
-                $('#pycon-india-2015').attr("cfpDiff", Infinity);
+
+                // Use specified timezone for deadlines if available else use AoE timezone
+
+                  var cfpDate = DateTime.fromSQL("2015-05-31 23:59:00", { zone: "Asia/Kolkata" });
+                  var confDate = DateTime.fromSQL("2015-10-02", { zone: "Asia/Kolkata" });
+
+
+                // check if timezone is valid otherwise replace by system timezone
+                if (cfpDate.invalid || confDate.invalid) {
+                  var cfpDate = DateTime.fromSQL("2015-05-31 23:59:00");
+                  var confDate = DateTime.fromSQL("2015-10-02");
+                  console.log("Invalid timezone in pycon-india-2015. Using system timezone instead.");
+                }
+
+                // render countdown timer
+                $('#pycon-india-2015 .timer').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+
+                // render countdown timer small
+                $('#pycon-india-2015 .timer-small').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%Dd %H:%M:%S'));
+                });
+
+                // deadline in local timezone
+                $('#pycon-india-2015 .deadline-time').html(cfpDate.setZone('system').toLocaleString(DateTime.DATE_HUGE));
+
+                // add calendar button
+                try {
+                  var myCalendar = createCalendarFromObject({
+                    id: 'pycon-india-2015',
+                    title: 'PyCon India 2015 deadline',
+                    date: cfpDate.toJSDate(),
+                    duration: 60,
+                  });
+                  document.querySelector('#pycon-india-2015 .calendar').appendChild(myCalendar);
+                } catch (err) {
+                  document.querySelector('#pycon-india-2015 .calendar').appendChild("<p>Calendar not available.</p>");
+                  console.log("Error in cfp date.");
+                }
+
+                // check if date has passed, add 'past' class to it
+                cfpDiff = cfpDate.diffNow("seconds");
+                confDiff = confDate.diffNow("seconds");
+
+                $('#pycon-india-2015').attr("cfpDiff", cfpDiff.toMillis());
+                $('#pycon-india-2015').attr("confDiff", confDiff.toMillis());
+
+                if (cfpDiff < 0) {
+                  $('#pycon-india-2015').addClass('pastcfp');
+                  $('#pycon-india-2015 .timer').replaceWith($('#pycon-india-2015 .deadline'));
+                  $('#pycon-india-2015 .timer-small').replaceWith($('#pycon-india-2015 .deadline'));
+                  $('#pycon-india-2015 .calendar').remove();
+                }
+
+                if (confDiff < 0) {
+                  $('#pycon-india-2015').addClass('pastconf');
+                  $('#pycon-india-2015 .timer').replaceWith($('#pycon-india-2015 .deadline'));
+                  $('#pycon-india-2015 .timer-small').replaceWith($('#pycon-india-2015 .deadline'));
+                  $('#pycon-india-2015 .calendar').remove();
+                }
 
 
 
@@ -1743,9 +1917,67 @@
                 $('#pycon-india-2014 .PY-tag').html(sub2name["PY"].toLocaleLowerCase());
 
 
-                $('#pycon-india-2014 .timer').html("TBA");
-                $('#pycon-india-2014 .deadline-time').html("TBA");
-                $('#pycon-india-2014').attr("cfpDiff", Infinity);
+
+                // Use specified timezone for deadlines if available else use AoE timezone
+
+                  var cfpDate = DateTime.fromSQL("2014-05-30 23:59:00", { zone: "UTC-12" });
+                  var confDate = DateTime.fromSQL("2014-09-26", { zone: "UTC-12" });
+
+
+                // check if timezone is valid otherwise replace by system timezone
+                if (cfpDate.invalid || confDate.invalid) {
+                  var cfpDate = DateTime.fromSQL("2014-05-30 23:59:00");
+                  var confDate = DateTime.fromSQL("2014-09-26");
+                  console.log("Invalid timezone in pycon-india-2014. Using system timezone instead.");
+                }
+
+                // render countdown timer
+                $('#pycon-india-2014 .timer').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+
+                // render countdown timer small
+                $('#pycon-india-2014 .timer-small').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%Dd %H:%M:%S'));
+                });
+
+                // deadline in local timezone
+                $('#pycon-india-2014 .deadline-time').html(cfpDate.setZone('system').toLocaleString(DateTime.DATE_HUGE));
+
+                // add calendar button
+                try {
+                  var myCalendar = createCalendarFromObject({
+                    id: 'pycon-india-2014',
+                    title: 'PyCon India 2014 deadline',
+                    date: cfpDate.toJSDate(),
+                    duration: 60,
+                  });
+                  document.querySelector('#pycon-india-2014 .calendar').appendChild(myCalendar);
+                } catch (err) {
+                  document.querySelector('#pycon-india-2014 .calendar').appendChild("<p>Calendar not available.</p>");
+                  console.log("Error in cfp date.");
+                }
+
+                // check if date has passed, add 'past' class to it
+                cfpDiff = cfpDate.diffNow("seconds");
+                confDiff = confDate.diffNow("seconds");
+
+                $('#pycon-india-2014').attr("cfpDiff", cfpDiff.toMillis());
+                $('#pycon-india-2014').attr("confDiff", confDiff.toMillis());
+
+                if (cfpDiff < 0) {
+                  $('#pycon-india-2014').addClass('pastcfp');
+                  $('#pycon-india-2014 .timer').replaceWith($('#pycon-india-2014 .deadline'));
+                  $('#pycon-india-2014 .timer-small').replaceWith($('#pycon-india-2014 .deadline'));
+                  $('#pycon-india-2014 .calendar').remove();
+                }
+
+                if (confDiff < 0) {
+                  $('#pycon-india-2014').addClass('pastconf');
+                  $('#pycon-india-2014 .timer').replaceWith($('#pycon-india-2014 .deadline'));
+                  $('#pycon-india-2014 .timer-small').replaceWith($('#pycon-india-2014 .deadline'));
+                  $('#pycon-india-2014 .calendar').remove();
+                }
 
 
 
@@ -1754,9 +1986,67 @@
                 $('#pycon-india-2013 .PY-tag').html(sub2name["PY"].toLocaleLowerCase());
 
 
-                $('#pycon-india-2013 .timer').html("TBA");
-                $('#pycon-india-2013 .deadline-time').html("TBA");
-                $('#pycon-india-2013').attr("cfpDiff", Infinity);
+
+                // Use specified timezone for deadlines if available else use AoE timezone
+
+                  var cfpDate = DateTime.fromSQL("2013-07-15 23:59:00", { zone: "Asia/Kolkata" });
+                  var confDate = DateTime.fromSQL("2013-08-31", { zone: "Asia/Kolkata" });
+
+
+                // check if timezone is valid otherwise replace by system timezone
+                if (cfpDate.invalid || confDate.invalid) {
+                  var cfpDate = DateTime.fromSQL("2013-07-15 23:59:00");
+                  var confDate = DateTime.fromSQL("2013-08-31");
+                  console.log("Invalid timezone in pycon-india-2013. Using system timezone instead.");
+                }
+
+                // render countdown timer
+                $('#pycon-india-2013 .timer').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+
+                // render countdown timer small
+                $('#pycon-india-2013 .timer-small').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%Dd %H:%M:%S'));
+                });
+
+                // deadline in local timezone
+                $('#pycon-india-2013 .deadline-time').html(cfpDate.setZone('system').toLocaleString(DateTime.DATE_HUGE));
+
+                // add calendar button
+                try {
+                  var myCalendar = createCalendarFromObject({
+                    id: 'pycon-india-2013',
+                    title: 'PyCon India 2013 deadline',
+                    date: cfpDate.toJSDate(),
+                    duration: 60,
+                  });
+                  document.querySelector('#pycon-india-2013 .calendar').appendChild(myCalendar);
+                } catch (err) {
+                  document.querySelector('#pycon-india-2013 .calendar').appendChild("<p>Calendar not available.</p>");
+                  console.log("Error in cfp date.");
+                }
+
+                // check if date has passed, add 'past' class to it
+                cfpDiff = cfpDate.diffNow("seconds");
+                confDiff = confDate.diffNow("seconds");
+
+                $('#pycon-india-2013').attr("cfpDiff", cfpDiff.toMillis());
+                $('#pycon-india-2013').attr("confDiff", confDiff.toMillis());
+
+                if (cfpDiff < 0) {
+                  $('#pycon-india-2013').addClass('pastcfp');
+                  $('#pycon-india-2013 .timer').replaceWith($('#pycon-india-2013 .deadline'));
+                  $('#pycon-india-2013 .timer-small').replaceWith($('#pycon-india-2013 .deadline'));
+                  $('#pycon-india-2013 .calendar').remove();
+                }
+
+                if (confDiff < 0) {
+                  $('#pycon-india-2013').addClass('pastconf');
+                  $('#pycon-india-2013 .timer').replaceWith($('#pycon-india-2013 .deadline'));
+                  $('#pycon-india-2013 .timer-small').replaceWith($('#pycon-india-2013 .deadline'));
+                  $('#pycon-india-2013 .calendar').remove();
+                }
 
 
 
@@ -1765,9 +2055,67 @@
                 $('#pycon-india-2012 .PY-tag').html(sub2name["PY"].toLocaleLowerCase());
 
 
-                $('#pycon-india-2012 .timer').html("TBA");
-                $('#pycon-india-2012 .deadline-time').html("TBA");
-                $('#pycon-india-2012').attr("cfpDiff", Infinity);
+
+                // Use specified timezone for deadlines if available else use AoE timezone
+
+                  var cfpDate = DateTime.fromSQL("2012-08-25 23:59:00", { zone: "Asia/Kolkata" });
+                  var confDate = DateTime.fromSQL("2012-09-28", { zone: "Asia/Kolkata" });
+
+
+                // check if timezone is valid otherwise replace by system timezone
+                if (cfpDate.invalid || confDate.invalid) {
+                  var cfpDate = DateTime.fromSQL("2012-08-25 23:59:00");
+                  var confDate = DateTime.fromSQL("2012-09-28");
+                  console.log("Invalid timezone in pycon-india-2012. Using system timezone instead.");
+                }
+
+                // render countdown timer
+                $('#pycon-india-2012 .timer').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+
+                // render countdown timer small
+                $('#pycon-india-2012 .timer-small').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%Dd %H:%M:%S'));
+                });
+
+                // deadline in local timezone
+                $('#pycon-india-2012 .deadline-time').html(cfpDate.setZone('system').toLocaleString(DateTime.DATE_HUGE));
+
+                // add calendar button
+                try {
+                  var myCalendar = createCalendarFromObject({
+                    id: 'pycon-india-2012',
+                    title: 'PyCon India 2012 deadline',
+                    date: cfpDate.toJSDate(),
+                    duration: 60,
+                  });
+                  document.querySelector('#pycon-india-2012 .calendar').appendChild(myCalendar);
+                } catch (err) {
+                  document.querySelector('#pycon-india-2012 .calendar').appendChild("<p>Calendar not available.</p>");
+                  console.log("Error in cfp date.");
+                }
+
+                // check if date has passed, add 'past' class to it
+                cfpDiff = cfpDate.diffNow("seconds");
+                confDiff = confDate.diffNow("seconds");
+
+                $('#pycon-india-2012').attr("cfpDiff", cfpDiff.toMillis());
+                $('#pycon-india-2012').attr("confDiff", confDiff.toMillis());
+
+                if (cfpDiff < 0) {
+                  $('#pycon-india-2012').addClass('pastcfp');
+                  $('#pycon-india-2012 .timer').replaceWith($('#pycon-india-2012 .deadline'));
+                  $('#pycon-india-2012 .timer-small').replaceWith($('#pycon-india-2012 .deadline'));
+                  $('#pycon-india-2012 .calendar').remove();
+                }
+
+                if (confDiff < 0) {
+                  $('#pycon-india-2012').addClass('pastconf');
+                  $('#pycon-india-2012 .timer').replaceWith($('#pycon-india-2012 .deadline'));
+                  $('#pycon-india-2012 .timer-small').replaceWith($('#pycon-india-2012 .deadline'));
+                  $('#pycon-india-2012 .calendar').remove();
+                }
 
 
 

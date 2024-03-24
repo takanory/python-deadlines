@@ -67,7 +67,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711223207"
+      href="/static/css/js-year-calendar.min.css?t=1711249432"
       media="screen,projection"
     />
 
@@ -79,13 +79,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711223207"
+      href="/static/css/deadlines.css?t=1711249432"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711223207"
+      href="/static/css/calendar.css?t=1711249432"
       media="screen,projection"
     />
 
@@ -970,7 +970,7 @@
             <div class="row">
               <div class="col-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">July 10 - 15, 2017.</span>
+                  <span class="conf-date">July 10 - 16, 2017.</span>
                   <span class="conf-place">
                     <a href="http://maps.google.com/?q=Austin, USA"
                       >Austin, USA</a
@@ -982,7 +982,7 @@
                 <div class="deadline">
                   <div>
                     Deadline:
-                    <span class="deadline-time">TBA</span>
+                    <span class="deadline-time">Monday, 27 March 2017</span>
                   </div>
                 </div>
               </div>
@@ -1796,9 +1796,67 @@
                 $('#scipy-us-2017 .SCIPY-tag').html(sub2name["SCIPY"].toLocaleLowerCase());
 
 
-                $('#scipy-us-2017 .timer').html("TBA");
-                $('#scipy-us-2017 .deadline-time').html("TBA");
-                $('#scipy-us-2017').attr("cfpDiff", Infinity);
+
+                // Use specified timezone for deadlines if available else use AoE timezone
+
+                  var cfpDate = DateTime.fromSQL("2017-03-27 23:59:00", { zone: "America/Chicago" });
+                  var confDate = DateTime.fromSQL("2017-07-10", { zone: "America/Chicago" });
+
+
+                // check if timezone is valid otherwise replace by system timezone
+                if (cfpDate.invalid || confDate.invalid) {
+                  var cfpDate = DateTime.fromSQL("2017-03-27 23:59:00");
+                  var confDate = DateTime.fromSQL("2017-07-10");
+                  console.log("Invalid timezone in scipy-us-2017. Using system timezone instead.");
+                }
+
+                // render countdown timer
+                $('#scipy-us-2017 .timer').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+
+                // render countdown timer small
+                $('#scipy-us-2017 .timer-small').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%Dd %H:%M:%S'));
+                });
+
+                // deadline in local timezone
+                $('#scipy-us-2017 .deadline-time').html(cfpDate.setZone('system').toLocaleString(DateTime.DATE_HUGE));
+
+                // add calendar button
+                try {
+                  var myCalendar = createCalendarFromObject({
+                    id: 'scipy-us-2017',
+                    title: 'SciPy US 2017 deadline',
+                    date: cfpDate.toJSDate(),
+                    duration: 60,
+                  });
+                  document.querySelector('#scipy-us-2017 .calendar').appendChild(myCalendar);
+                } catch (err) {
+                  document.querySelector('#scipy-us-2017 .calendar').appendChild("<p>Calendar not available.</p>");
+                  console.log("Error in cfp date.");
+                }
+
+                // check if date has passed, add 'past' class to it
+                cfpDiff = cfpDate.diffNow("seconds");
+                confDiff = confDate.diffNow("seconds");
+
+                $('#scipy-us-2017').attr("cfpDiff", cfpDiff.toMillis());
+                $('#scipy-us-2017').attr("confDiff", confDiff.toMillis());
+
+                if (cfpDiff < 0) {
+                  $('#scipy-us-2017').addClass('pastcfp');
+                  $('#scipy-us-2017 .timer').replaceWith($('#scipy-us-2017 .deadline'));
+                  $('#scipy-us-2017 .timer-small').replaceWith($('#scipy-us-2017 .deadline'));
+                  $('#scipy-us-2017 .calendar').remove();
+                }
+
+                if (confDiff < 0) {
+                  $('#scipy-us-2017').addClass('pastconf');
+                  $('#scipy-us-2017 .timer').replaceWith($('#scipy-us-2017 .deadline'));
+                  $('#scipy-us-2017 .timer-small').replaceWith($('#scipy-us-2017 .deadline'));
+                  $('#scipy-us-2017 .calendar').remove();
+                }
 
 
 

@@ -79,7 +79,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711223207"
+      href="/static/css/js-year-calendar.min.css?t=1711249432"
       media="screen,projection"
     />
 
@@ -91,13 +91,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711223207"
+      href="/static/css/deadlines.css?t=1711249432"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711223207"
+      href="/static/css/calendar.css?t=1711249432"
       media="screen,projection"
     />
 
@@ -869,10 +869,10 @@
             <div class="row">
               <div class="col-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">October 8 - 13, 2012.</span>
+                  <span class="conf-date">October 8 - 14, 2012.</span>
                   <span class="conf-place">
-                    <a href="http://maps.google.com/?q=Arnheim, Netherlands"
-                      >Arnheim, Netherlands</a
+                    <a href="http://maps.google.com/?q=Arnhem, Netherlands"
+                      >Arnhem, Netherlands</a
                     >
                   </span>
                 </div>
@@ -881,7 +881,7 @@
                 <div class="deadline">
                   <div>
                     Deadline:
-                    <span class="deadline-time">TBA</span>
+                    <span class="deadline-time">Wednesday, 15 August 2012</span>
                   </div>
                 </div>
               </div>
@@ -1132,9 +1132,67 @@
                 $('#plone-conference-2012 .WEB-tag').html(sub2name["WEB"].toLocaleLowerCase());
 
 
-                $('#plone-conference-2012 .timer').html("TBA");
-                $('#plone-conference-2012 .deadline-time').html("TBA");
-                $('#plone-conference-2012').attr("cfpDiff", Infinity);
+
+                // Use specified timezone for deadlines if available else use AoE timezone
+
+                  var cfpDate = DateTime.fromSQL("2012-08-19 23:59:00", { zone: "UTC-12" });
+                  var confDate = DateTime.fromSQL("2012-10-08", { zone: "UTC-12" });
+
+
+                // check if timezone is valid otherwise replace by system timezone
+                if (cfpDate.invalid || confDate.invalid) {
+                  var cfpDate = DateTime.fromSQL("2012-08-19 23:59:00");
+                  var confDate = DateTime.fromSQL("2012-10-08");
+                  console.log("Invalid timezone in plone-conference-2012. Using system timezone instead.");
+                }
+
+                // render countdown timer
+                $('#plone-conference-2012 .timer').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+
+                // render countdown timer small
+                $('#plone-conference-2012 .timer-small').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%Dd %H:%M:%S'));
+                });
+
+                // deadline in local timezone
+                $('#plone-conference-2012 .deadline-time').html(cfpDate.setZone('system').toLocaleString(DateTime.DATE_HUGE));
+
+                // add calendar button
+                try {
+                  var myCalendar = createCalendarFromObject({
+                    id: 'plone-conference-2012',
+                    title: 'Plone Conference 2012 deadline',
+                    date: cfpDate.toJSDate(),
+                    duration: 60,
+                  });
+                  document.querySelector('#plone-conference-2012 .calendar').appendChild(myCalendar);
+                } catch (err) {
+                  document.querySelector('#plone-conference-2012 .calendar').appendChild("<p>Calendar not available.</p>");
+                  console.log("Error in cfp date.");
+                }
+
+                // check if date has passed, add 'past' class to it
+                cfpDiff = cfpDate.diffNow("seconds");
+                confDiff = confDate.diffNow("seconds");
+
+                $('#plone-conference-2012').attr("cfpDiff", cfpDiff.toMillis());
+                $('#plone-conference-2012').attr("confDiff", confDiff.toMillis());
+
+                if (cfpDiff < 0) {
+                  $('#plone-conference-2012').addClass('pastcfp');
+                  $('#plone-conference-2012 .timer').replaceWith($('#plone-conference-2012 .deadline'));
+                  $('#plone-conference-2012 .timer-small').replaceWith($('#plone-conference-2012 .deadline'));
+                  $('#plone-conference-2012 .calendar').remove();
+                }
+
+                if (confDiff < 0) {
+                  $('#plone-conference-2012').addClass('pastconf');
+                  $('#plone-conference-2012 .timer').replaceWith($('#plone-conference-2012 .deadline'));
+                  $('#plone-conference-2012 .timer-small').replaceWith($('#plone-conference-2012 .deadline'));
+                  $('#plone-conference-2012 .calendar').remove();
+                }
 
 
 

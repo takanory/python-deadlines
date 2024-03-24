@@ -77,7 +77,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711223207"
+      href="/static/css/js-year-calendar.min.css?t=1711249432"
       media="screen,projection"
     />
 
@@ -89,13 +89,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711223207"
+      href="/static/css/deadlines.css?t=1711249432"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711223207"
+      href="/static/css/calendar.css?t=1711249432"
       media="screen,projection"
     />
 
@@ -470,7 +470,7 @@
       </div>
       <div id="page-content">
         <div id="conf-deadline-timer" class="row">
-          <div id="cfp-timer" class="col-12 conf-timer">TBA</div>
+          <div id="cfp-timer" class="col-12 conf-timer"></div>
         </div>
         <div id="conf-key-facts" class="row">
           <div class="col-12 col-md-6">
@@ -482,7 +482,7 @@
                 width="16"
                 height="16"
               />
-              <span id="conf-date">October 25 - 28, 2017</span>
+              <span id="conf-date">October 25 - 27, 2017</span>
             </div>
             <div>
               <img
@@ -512,6 +512,22 @@
                 target="_blank"
                 href="https://web.archive.org/web/20171030134448/https://de.pycon.org/"
                 >https://web.archive.org/web/20171030134448/https://de.pycon.org/</a
+              >
+            </div>
+
+            <div>
+              <img
+                src="/static/img/035-file-text.svg"
+                class="badge-link"
+                alt="Document Icon for CfP link"
+                width="16"
+                height="16"
+              />
+              <a
+                id="conf-cfp_link"
+                target="_blank"
+                href="https://www.papercall.io/pyconde2017"
+                >Call for Participation</a
               >
             </div>
 
@@ -595,13 +611,13 @@
         </div>
         <div class="row">
           <div
-            id="288cfba0-a917-4146-ab22-58148eeef2cf"
+            id="99e69c70-774c-42ee-9657-4ae54d27ed87"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "288cfba0-a917-4146-ab22-58148eeef2cf",
+              "99e69c70-774c-42ee-9657-4ae54d27ed87",
               [
                 {
                   latitude: 49.0068705,
@@ -744,9 +760,48 @@
 
         // other
 
-        $("#cfp-timer").html("TBA");
-        $(".deadline-time").html("TBA");
-        $(".deadline-local-time").html("TBA");
+        // Use specified timezone for deadlines if available else use AoE timezone
+
+        var confDeadline = DateTime.fromSQL("2017-08-06 23:59:00", {
+          zone: "Europe/Berlin",
+        });
+
+        // check if timezone is valid otherwise replace by system timezone
+        if (confDeadline.invalid) {
+          var confDeadline = DateTime.fromSQL("2017-08-06 23:59:00");
+          console.log("Invalid timezone. Using system timezone instead.");
+        }
+
+        // add calendar
+        var conferenceDeadlineCalendar = createCalendarFromObject({
+          id: "pycon-germany-2017",
+          title: "PyCon Germany 2017 Conference Deadlines",
+          date: confDeadline.toJSDate(),
+          duration: 60,
+        });
+        document
+          .querySelector("#conference-deadline")
+          .appendChild(conferenceDeadlineCalendar);
+
+        // render countdown timer
+        $("#cfp-timer").countdown(confDeadline.toJSDate(), function (event) {
+          $(this).html(event.strftime("%D days %Hh %Mm %Ss"));
+        });
+
+        // render deadline conference time
+
+        $(".deadline-time").html(
+          confDeadline
+            .setZone("Europe/Berlin")
+            .toLocaleString(DateTime.DATETIME_HUGE_WITH_SECONDS)
+        );
+
+        // render deadline in local timezone
+        $(".deadline-local-time").html(
+          confDeadline
+            .setZone("system")
+            .toLocaleString(DateTime.DATETIME_HUGE_WITH_SECONDS)
+        );
       });
     </script>
     <script async defer>

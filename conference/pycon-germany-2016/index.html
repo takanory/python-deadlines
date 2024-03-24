@@ -77,7 +77,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711223207"
+      href="/static/css/js-year-calendar.min.css?t=1711249432"
       media="screen,projection"
     />
 
@@ -89,13 +89,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711223207"
+      href="/static/css/deadlines.css?t=1711249432"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711223207"
+      href="/static/css/calendar.css?t=1711249432"
       media="screen,projection"
     />
 
@@ -456,6 +456,8 @@
                 >PyCon Germany 2016</span
               >
             </h1>
+
+            <h3 id="conf-subtitle">a.k.a. PyMunich 2016</h3>
           </div>
         </div>
         <div class="row">
@@ -470,7 +472,7 @@
       </div>
       <div id="page-content">
         <div id="conf-deadline-timer" class="row">
-          <div id="cfp-timer" class="col-12 conf-timer">TBA</div>
+          <div id="cfp-timer" class="col-12 conf-timer"></div>
         </div>
         <div id="conf-key-facts" class="row">
           <div class="col-12 col-md-6">
@@ -482,7 +484,7 @@
                 width="16"
                 height="16"
               />
-              <span id="conf-date">October 28 - 31, 2016</span>
+              <span id="conf-date">October 28 - 30, 2016</span>
             </div>
             <div>
               <img
@@ -495,8 +497,8 @@
               <a
                 id="conf-place"
                 target="_blank"
-                href="https://maps.google.com/?q=Leonardo Royal Hotel Munich, Germany"
-                >Leonardo Royal Hotel Munich, Germany</a
+                href="https://maps.google.com/?q=Munich, Germany"
+                >Munich, Germany</a
               >
             </div>
             <div>
@@ -510,8 +512,8 @@
               <a
                 id="conf-website"
                 target="_blank"
-                href="https://web.archive.org/web/20120426155127/http://pycon.de/"
-                >https://web.archive.org/web/20120426155127/http://pycon.de/</a
+                href="https://web.archive.org/web/20161015212639/http://www.pymunich.com/"
+                >https://web.archive.org/web/20161015212639/http://www.pymunich.com/</a
               >
             </div>
 
@@ -595,17 +597,17 @@
         </div>
         <div class="row">
           <div
-            id="91eed457-993f-4798-9572-1aca676da207"
+            id="5b94e6be-7cd3-42c6-b8aa-ee91314510ef"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "91eed457-993f-4798-9572-1aca676da207",
+              "5b94e6be-7cd3-42c6-b8aa-ee91314510ef",
               [
                 {
-                  latitude: 48.187077450000004,
-                  longitude: 11.543213224361129,
+                  latitude: 48.18707745,
+                  longitude: 11.54321322,
                   title: "PyCon Germany 2016 Conference Deadlines",
                   icon: null,
                   url: "/conference/pycon-germany-2016/",
@@ -744,9 +746,48 @@
 
         // other
 
-        $("#cfp-timer").html("TBA");
-        $(".deadline-time").html("TBA");
-        $(".deadline-local-time").html("TBA");
+        // Use specified timezone for deadlines if available else use AoE timezone
+
+        var confDeadline = DateTime.fromSQL("2016-09-12 00:00:00", {
+          zone: "Europe/Berlin",
+        });
+
+        // check if timezone is valid otherwise replace by system timezone
+        if (confDeadline.invalid) {
+          var confDeadline = DateTime.fromSQL("2016-09-12 00:00:00");
+          console.log("Invalid timezone. Using system timezone instead.");
+        }
+
+        // add calendar
+        var conferenceDeadlineCalendar = createCalendarFromObject({
+          id: "pycon-germany-2016",
+          title: "PyCon Germany 2016 Conference Deadlines",
+          date: confDeadline.toJSDate(),
+          duration: 60,
+        });
+        document
+          .querySelector("#conference-deadline")
+          .appendChild(conferenceDeadlineCalendar);
+
+        // render countdown timer
+        $("#cfp-timer").countdown(confDeadline.toJSDate(), function (event) {
+          $(this).html(event.strftime("%D days %Hh %Mm %Ss"));
+        });
+
+        // render deadline conference time
+
+        $(".deadline-time").html(
+          confDeadline
+            .setZone("Europe/Berlin")
+            .toLocaleString(DateTime.DATETIME_HUGE_WITH_SECONDS)
+        );
+
+        // render deadline in local timezone
+        $(".deadline-local-time").html(
+          confDeadline
+            .setZone("system")
+            .toLocaleString(DateTime.DATETIME_HUGE_WITH_SECONDS)
+        );
       });
     </script>
     <script async defer>
