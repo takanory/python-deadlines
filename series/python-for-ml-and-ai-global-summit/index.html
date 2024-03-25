@@ -79,7 +79,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711286172"
+      href="/static/css/js-year-calendar.min.css?t=1711332691"
       media="screen,projection"
     />
 
@@ -91,13 +91,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711286172"
+      href="/static/css/deadlines.css?t=1711332691"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711286172"
+      href="/static/css/calendar.css?t=1711332691"
       media="screen,projection"
     />
 
@@ -337,8 +337,8 @@
               <a
                 id="conf-website"
                 target="_blank"
-                href="https://link.geekle.us/python/offsite"
-                >https://link.geekle.us/python/offsite</a
+                href="https://web.archive.org/web/20220106000100/https://wp.geekle.us/python"
+                >https://web.archive.org/web/20220106000100/https://wp.geekle.us/python</a
               >
             </div>
           </div>
@@ -369,12 +369,27 @@
                 <span class="conf-title-icon">
                   <a
                     title="Conference Website"
-                    href="https://link.geekle.us/python/offsite"
+                    href="https://web.archive.org/web/20220106000100/https://wp.geekle.us/python"
                     target="_blank"
                     ><img
                       src="/static/img/203-earth.svg"
                       class="badge-link"
                       alt="Link to Conference Website"
+                      width="16"
+                      height="16"
+                  /></a>
+                  &ZeroWidthSpace;
+                </span>
+
+                <span class="conf-title-icon">
+                  <a
+                    title="Call for Participation for Python for ML and AI Global Summit"
+                    href="https://forms.gle/ryKkiJtqBgs6zT119"
+                    target="_blank"
+                    ><img
+                      src="/static/img/035-file-text.svg"
+                      class="badge-link"
+                      alt="Link to Call for Participation for Python for ML and AI Global Summit"
                       width="16"
                       height="16"
                   /></a>
@@ -389,7 +404,7 @@
             <div class="row">
               <div class="col-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">April 8 - 10, 2021.</span>
+                  <span class="conf-date">April 8 - 9, 2021.</span>
                   <span class="conf-place">
                     <a href="#">Online</a>
                   </span>
@@ -399,7 +414,7 @@
                 <div class="deadline">
                   <div>
                     Deadline:
-                    <span class="deadline-time">TBA</span>
+                    <span class="deadline-time">Tuesday, 30 March 2021</span>
                   </div>
                 </div>
               </div>
@@ -584,9 +599,67 @@
                 $('#python-for-ml-and-ai-global-summit-2021 .PY-tag').html(sub2name["PY"].toLocaleLowerCase());
 
 
-                $('#python-for-ml-and-ai-global-summit-2021 .timer').html("TBA");
-                $('#python-for-ml-and-ai-global-summit-2021 .deadline-time').html("TBA");
-                $('#python-for-ml-and-ai-global-summit-2021').attr("cfpDiff", Infinity);
+
+                // Use specified timezone for deadlines if available else use AoE timezone
+
+                  var cfpDate = DateTime.fromSQL("2021-03-30 23:59:00", { zone: "UTC-12" });
+                  var confDate = DateTime.fromSQL("2021-04-08", { zone: "UTC-12" });
+
+
+                // check if timezone is valid otherwise replace by system timezone
+                if (cfpDate.invalid || confDate.invalid) {
+                  var cfpDate = DateTime.fromSQL("2021-03-30 23:59:00");
+                  var confDate = DateTime.fromSQL("2021-04-08");
+                  console.log("Invalid timezone in python-for-ml-and-ai-global-summit-2021. Using system timezone instead.");
+                }
+
+                // render countdown timer
+                $('#python-for-ml-and-ai-global-summit-2021 .timer').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+
+                // render countdown timer small
+                $('#python-for-ml-and-ai-global-summit-2021 .timer-small').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%Dd %H:%M:%S'));
+                });
+
+                // deadline in local timezone
+                $('#python-for-ml-and-ai-global-summit-2021 .deadline-time').html(cfpDate.setZone('system').toLocaleString(DateTime.DATE_HUGE));
+
+                // add calendar button
+                try {
+                  var myCalendar = createCalendarFromObject({
+                    id: 'python-for-ml-and-ai-global-summit-2021',
+                    title: 'Python for ML and AI Global Summit 2021 deadline',
+                    date: cfpDate.toJSDate(),
+                    duration: 60,
+                  });
+                  document.querySelector('#python-for-ml-and-ai-global-summit-2021 .calendar').appendChild(myCalendar);
+                } catch (err) {
+                  document.querySelector('#python-for-ml-and-ai-global-summit-2021 .calendar').appendChild("<p>Calendar not available.</p>");
+                  console.log("Error in cfp date.");
+                }
+
+                // check if date has passed, add 'past' class to it
+                cfpDiff = cfpDate.diffNow("seconds");
+                confDiff = confDate.diffNow("seconds");
+
+                $('#python-for-ml-and-ai-global-summit-2021').attr("cfpDiff", cfpDiff.toMillis());
+                $('#python-for-ml-and-ai-global-summit-2021').attr("confDiff", confDiff.toMillis());
+
+                if (cfpDiff < 0) {
+                  $('#python-for-ml-and-ai-global-summit-2021').addClass('pastcfp');
+                  $('#python-for-ml-and-ai-global-summit-2021 .timer').replaceWith($('#python-for-ml-and-ai-global-summit-2021 .deadline'));
+                  $('#python-for-ml-and-ai-global-summit-2021 .timer-small').replaceWith($('#python-for-ml-and-ai-global-summit-2021 .deadline'));
+                  $('#python-for-ml-and-ai-global-summit-2021 .calendar').remove();
+                }
+
+                if (confDiff < 0) {
+                  $('#python-for-ml-and-ai-global-summit-2021').addClass('pastconf');
+                  $('#python-for-ml-and-ai-global-summit-2021 .timer').replaceWith($('#python-for-ml-and-ai-global-summit-2021 .deadline'));
+                  $('#python-for-ml-and-ai-global-summit-2021 .timer-small').replaceWith($('#python-for-ml-and-ai-global-summit-2021 .deadline'));
+                  $('#python-for-ml-and-ai-global-summit-2021 .calendar').remove();
+                }
 
 
 

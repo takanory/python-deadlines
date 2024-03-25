@@ -33,7 +33,7 @@
     <meta property="og:type" content="article" />
     <meta
       property="article:published_time"
-      content="2024-10-20T00:00:00+00:00"
+      content="2012-10-20T00:00:00+00:00"
     />
     <meta name="twitter:card" content="summary" />
     <meta
@@ -51,8 +51,8 @@
           "name": "Jesper Dramsch",
           "url": "https://dramsch.net"
         },
-        "dateModified": "2024-10-20T00:00:00+00:00",
-        "datePublished": "2024-10-20T00:00:00+00:00",
+        "dateModified": "2012-10-20T00:00:00+00:00",
+        "datePublished": "2012-10-20T00:00:00+00:00",
         "description": "Countdown for the Call for Participation of this conference including conference dates and details.",
         "headline": "PyCon China 2012 Conference Deadlines",
         "mainEntityOfPage": {
@@ -74,7 +74,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711286172"
+      href="/static/css/js-year-calendar.min.css?t=1711332691"
       media="screen,projection"
     />
 
@@ -86,13 +86,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711286172"
+      href="/static/css/deadlines.css?t=1711332691"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711286172"
+      href="/static/css/calendar.css?t=1711332691"
       media="screen,projection"
     />
 
@@ -467,7 +467,7 @@
       </div>
       <div id="page-content">
         <div id="conf-deadline-timer" class="row">
-          <div id="cfp-timer" class="col-12 conf-timer">TBA</div>
+          <div id="cfp-timer" class="col-12 conf-timer"></div>
         </div>
         <div id="conf-key-facts" class="row">
           <div class="col-12 col-md-6">
@@ -479,7 +479,7 @@
                 width="16"
                 height="16"
               />
-              <span id="conf-date">October 20 - 22, 2012</span>
+              <span id="conf-date">October 20th, 2012</span>
             </div>
             <div>
               <img
@@ -492,8 +492,8 @@
               <a
                 id="conf-place"
                 target="_blank"
-                href="https://maps.google.com/?q=Wuhan, China"
-                >Wuhan, China</a
+                href="https://maps.google.com/?q=Beijing, China"
+                >Beijing, China</a
               >
             </div>
             <div>
@@ -507,8 +507,8 @@
               <a
                 id="conf-website"
                 target="_blank"
-                href="https://cn.pycon.org/2023/"
-                >https://cn.pycon.org/2023/</a
+                href="https://web.archive.org/web/20121012230445/https://cn.pycon.org/2012/"
+                >https://web.archive.org/web/20121012230445/https://cn.pycon.org/2012/</a
               >
             </div>
 
@@ -592,40 +592,30 @@
         </div>
         <div class="row">
           <div
-            id="1a197612-b26c-41ab-99da-d0bcc781d90d"
+            id="aa6f600a-2819-48c7-b41a-109d4cba2190"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "1a197612-b26c-41ab-99da-d0bcc781d90d",
+              "aa6f600a-2819-48c7-b41a-109d4cba2190",
               [
+                {
+                  latitude: 40.190632,
+                  longitude: 116.412144,
+                  title: "PyCon China 2012 Conference Deadlines",
+                  icon: null,
+                  url: "",
+                  url_text: null,
+                  image: "",
+                  popup_html: "",
+                },
                 {
                   latitude: 31.2323437,
                   longitude: 121.4691024,
                   title: "PyCon China 2012 Conference Deadlines",
                   icon: null,
-                  url: "/conference/pycon-china-2012/",
-                  url_text: null,
-                  image: "",
-                  popup_html: "",
-                },
-                {
-                  latitude: 31.8665676,
-                  longitude: 117.281428,
-                  title: "PyCon China 2012 Conference Deadlines",
-                  icon: null,
-                  url: "/conference/pycon-china-2012/",
-                  url_text: null,
-                  image: "",
-                  popup_html: "",
-                },
-                {
-                  latitude: 30.5951051,
-                  longitude: 114.2999353,
-                  title: "PyCon China 2012 Conference Deadlines",
-                  icon: null,
-                  url: "/conference/pycon-china-2012/",
+                  url: "",
                   url_text: null,
                   image: "",
                   popup_html: "",
@@ -761,9 +751,48 @@
 
         // other
 
-        $("#cfp-timer").html("TBA");
-        $(".deadline-time").html("TBA");
-        $(".deadline-local-time").html("TBA");
+        // Use specified timezone for deadlines if available else use AoE timezone
+
+        var confDeadline = DateTime.fromSQL("2012-10-01 23:59:00", {
+          zone: "UTC-12",
+        });
+
+        // check if timezone is valid otherwise replace by system timezone
+        if (confDeadline.invalid) {
+          var confDeadline = DateTime.fromSQL("2012-10-01 23:59:00");
+          console.log("Invalid timezone. Using system timezone instead.");
+        }
+
+        // add calendar
+        var conferenceDeadlineCalendar = createCalendarFromObject({
+          id: "pycon-china-2012",
+          title: "PyCon China 2012 Conference Deadlines",
+          date: confDeadline.toJSDate(),
+          duration: 60,
+        });
+        document
+          .querySelector("#conference-deadline")
+          .appendChild(conferenceDeadlineCalendar);
+
+        // render countdown timer
+        $("#cfp-timer").countdown(confDeadline.toJSDate(), function (event) {
+          $(this).html(event.strftime("%D days %Hh %Mm %Ss"));
+        });
+
+        // render deadline conference time
+
+        $(".deadline-time").html(
+          confDeadline
+            .setZone("UTC-12")
+            .toLocaleString(DateTime.DATETIME_HUGE_WITH_SECONDS)
+        );
+
+        // render deadline in local timezone
+        $(".deadline-local-time").html(
+          confDeadline
+            .setZone("system")
+            .toLocaleString(DateTime.DATETIME_HUGE_WITH_SECONDS)
+        );
       });
     </script>
     <script async defer>

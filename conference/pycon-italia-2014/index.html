@@ -77,7 +77,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711286172"
+      href="/static/css/js-year-calendar.min.css?t=1711332691"
       media="screen,projection"
     />
 
@@ -89,13 +89,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711286172"
+      href="/static/css/deadlines.css?t=1711332691"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711286172"
+      href="/static/css/calendar.css?t=1711332691"
       media="screen,projection"
     />
 
@@ -472,7 +472,7 @@
       </div>
       <div id="page-content">
         <div id="conf-deadline-timer" class="row">
-          <div id="cfp-timer" class="col-12 conf-timer">TBA</div>
+          <div id="cfp-timer" class="col-12 conf-timer"></div>
         </div>
         <div id="conf-key-facts" class="row">
           <div class="col-12 col-md-6">
@@ -512,8 +512,8 @@
               <a
                 id="conf-website"
                 target="_blank"
-                href="https://web.archive.org/web/20140702054546/https://www.pycon.it/"
-                >https://web.archive.org/web/20140702054546/https://www.pycon.it/</a
+                href="https://web.archive.org/web/20140808133512/https://www.pycon.it/"
+                >https://web.archive.org/web/20140808133512/https://www.pycon.it/</a
               >
             </div>
 
@@ -597,20 +597,20 @@
         </div>
         <div class="row">
           <div
-            id="787e66bd-b640-4302-9b48-f84003d89ea9"
+            id="405525c8-8347-401a-aa4e-ebbfc2f0eb86"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "787e66bd-b640-4302-9b48-f84003d89ea9",
+              "405525c8-8347-401a-aa4e-ebbfc2f0eb86",
               [
                 {
-                  latitude: 43.7698712,
-                  longitude: 11.2555757,
+                  latitude: 40.038064,
+                  longitude: 18.4633105,
                   title: "PyCon Italia 2014 Conference Deadlines",
                   icon: null,
-                  url: "/conference/pycon-italia-2014/",
+                  url: "",
                   url_text: null,
                   image: "",
                   popup_html: "",
@@ -746,9 +746,48 @@
 
         // other
 
-        $("#cfp-timer").html("TBA");
-        $(".deadline-time").html("TBA");
-        $(".deadline-local-time").html("TBA");
+        // Use specified timezone for deadlines if available else use AoE timezone
+
+        var confDeadline = DateTime.fromSQL("2014-02-21 23:59:00", {
+          zone: "UTC-12",
+        });
+
+        // check if timezone is valid otherwise replace by system timezone
+        if (confDeadline.invalid) {
+          var confDeadline = DateTime.fromSQL("2014-02-21 23:59:00");
+          console.log("Invalid timezone. Using system timezone instead.");
+        }
+
+        // add calendar
+        var conferenceDeadlineCalendar = createCalendarFromObject({
+          id: "pycon-italia-2014",
+          title: "PyCon Italia 2014 Conference Deadlines",
+          date: confDeadline.toJSDate(),
+          duration: 60,
+        });
+        document
+          .querySelector("#conference-deadline")
+          .appendChild(conferenceDeadlineCalendar);
+
+        // render countdown timer
+        $("#cfp-timer").countdown(confDeadline.toJSDate(), function (event) {
+          $(this).html(event.strftime("%D days %Hh %Mm %Ss"));
+        });
+
+        // render deadline conference time
+
+        $(".deadline-time").html(
+          confDeadline
+            .setZone("UTC-12")
+            .toLocaleString(DateTime.DATETIME_HUGE_WITH_SECONDS)
+        );
+
+        // render deadline in local timezone
+        $(".deadline-local-time").html(
+          confDeadline
+            .setZone("system")
+            .toLocaleString(DateTime.DATETIME_HUGE_WITH_SECONDS)
+        );
       });
     </script>
     <script async defer>

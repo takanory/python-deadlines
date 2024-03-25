@@ -74,7 +74,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711286172"
+      href="/static/css/js-year-calendar.min.css?t=1711332691"
       media="screen,projection"
     />
 
@@ -86,13 +86,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711286172"
+      href="/static/css/deadlines.css?t=1711332691"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711286172"
+      href="/static/css/calendar.css?t=1711332691"
       media="screen,projection"
     />
 
@@ -467,7 +467,7 @@
       </div>
       <div id="page-content">
         <div id="conf-deadline-timer" class="row">
-          <div id="cfp-timer" class="col-12 conf-timer">TBA</div>
+          <div id="cfp-timer" class="col-12 conf-timer"></div>
         </div>
         <div id="conf-key-facts" class="row">
           <div class="col-12 col-md-6">
@@ -507,8 +507,8 @@
               <a
                 id="conf-website"
                 target="_blank"
-                href="https://cn.pycon.org/2023/"
-                >https://cn.pycon.org/2023/</a
+                href="https://cn.pycon.org/2013/"
+                >https://cn.pycon.org/2013/</a
               >
             </div>
 
@@ -592,20 +592,50 @@
         </div>
         <div class="row">
           <div
-            id="ad238226-8e9f-4e2f-92a0-b7e730403f8a"
+            id="392d830c-faa7-4901-b4fb-0a86b8b5dc13"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "ad238226-8e9f-4e2f-92a0-b7e730403f8a",
+              "392d830c-faa7-4901-b4fb-0a86b8b5dc13",
               [
+                {
+                  latitude: 40.190632,
+                  longitude: 116.412144,
+                  title: "PyCon China 2013 Conference Deadlines",
+                  icon: null,
+                  url: "",
+                  url_text: null,
+                  image: "",
+                  popup_html: "",
+                },
                 {
                   latitude: 31.2323437,
                   longitude: 121.4691024,
                   title: "PyCon China 2013 Conference Deadlines",
                   icon: null,
-                  url: "/conference/pycon-china-2013/",
+                  url: "",
+                  url_text: null,
+                  image: "",
+                  popup_html: "",
+                },
+                {
+                  latitude: 22.273734,
+                  longitude: 113.5721327,
+                  title: "PyCon China 2013 Conference Deadlines",
+                  icon: null,
+                  url: "",
+                  url_text: null,
+                  image: "",
+                  popup_html: "",
+                },
+                {
+                  latitude: 30.2489634,
+                  longitude: 120.2052342,
+                  title: "PyCon China 2013 Conference Deadlines",
+                  icon: null,
+                  url: "",
                   url_text: null,
                   image: "",
                   popup_html: "",
@@ -741,9 +771,48 @@
 
         // other
 
-        $("#cfp-timer").html("TBA");
-        $(".deadline-time").html("TBA");
-        $(".deadline-local-time").html("TBA");
+        // Use specified timezone for deadlines if available else use AoE timezone
+
+        var confDeadline = DateTime.fromSQL("2013-11-01 23:59:00", {
+          zone: "UTC-12",
+        });
+
+        // check if timezone is valid otherwise replace by system timezone
+        if (confDeadline.invalid) {
+          var confDeadline = DateTime.fromSQL("2013-11-01 23:59:00");
+          console.log("Invalid timezone. Using system timezone instead.");
+        }
+
+        // add calendar
+        var conferenceDeadlineCalendar = createCalendarFromObject({
+          id: "pycon-china-2013",
+          title: "PyCon China 2013 Conference Deadlines",
+          date: confDeadline.toJSDate(),
+          duration: 60,
+        });
+        document
+          .querySelector("#conference-deadline")
+          .appendChild(conferenceDeadlineCalendar);
+
+        // render countdown timer
+        $("#cfp-timer").countdown(confDeadline.toJSDate(), function (event) {
+          $(this).html(event.strftime("%D days %Hh %Mm %Ss"));
+        });
+
+        // render deadline conference time
+
+        $(".deadline-time").html(
+          confDeadline
+            .setZone("UTC-12")
+            .toLocaleString(DateTime.DATETIME_HUGE_WITH_SECONDS)
+        );
+
+        // render deadline in local timezone
+        $(".deadline-local-time").html(
+          confDeadline
+            .setZone("system")
+            .toLocaleString(DateTime.DATETIME_HUGE_WITH_SECONDS)
+        );
       });
     </script>
     <script async defer>

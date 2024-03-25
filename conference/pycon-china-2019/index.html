@@ -74,7 +74,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711286172"
+      href="/static/css/js-year-calendar.min.css?t=1711332691"
       media="screen,projection"
     />
 
@@ -86,13 +86,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711286172"
+      href="/static/css/deadlines.css?t=1711332691"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711286172"
+      href="/static/css/calendar.css?t=1711332691"
       media="screen,projection"
     />
 
@@ -467,7 +467,7 @@
       </div>
       <div id="page-content">
         <div id="conf-deadline-timer" class="row">
-          <div id="cfp-timer" class="col-12 conf-timer">TBA</div>
+          <div id="cfp-timer" class="col-12 conf-timer"></div>
         </div>
         <div id="conf-key-facts" class="row">
           <div class="col-12 col-md-6">
@@ -507,8 +507,8 @@
               <a
                 id="conf-website"
                 target="_blank"
-                href="https://cn.pycon.org/2023/"
-                >https://cn.pycon.org/2023/</a
+                href="https://cn.pycon.org/2019/en/"
+                >https://cn.pycon.org/2019/en/</a
               >
             </div>
 
@@ -592,20 +592,70 @@
         </div>
         <div class="row">
           <div
-            id="fc435829-bf53-4ae7-9ad1-6e58bac1e564"
+            id="bb94becb-9f50-44ae-963d-97dfb8c109b9"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "fc435829-bf53-4ae7-9ad1-6e58bac1e564",
+              "bb94becb-9f50-44ae-963d-97dfb8c109b9",
               [
                 {
                   latitude: 31.2323437,
                   longitude: 121.4691024,
                   title: "PyCon China 2019 Conference Deadlines",
                   icon: null,
-                  url: "/conference/pycon-china-2019/",
+                  url: "",
+                  url_text: null,
+                  image: "",
+                  popup_html: "",
+                },
+                {
+                  latitude: 40.190632,
+                  longitude: 116.412144,
+                  title: "PyCon China 2019 Conference Deadlines",
+                  icon: null,
+                  url: "",
+                  url_text: null,
+                  image: "",
+                  popup_html: "",
+                },
+                {
+                  latitude: 30.2489634,
+                  longitude: 120.2052342,
+                  title: "PyCon China 2019 Conference Deadlines",
+                  icon: null,
+                  url: "",
+                  url_text: null,
+                  image: "",
+                  popup_html: "",
+                },
+                {
+                  latitude: 22.5445741,
+                  longitude: 114.0545429,
+                  title: "PyCon China 2019 Conference Deadlines",
+                  icon: null,
+                  url: "",
+                  url_text: null,
+                  image: "",
+                  popup_html: "",
+                },
+                {
+                  latitude: 34.127,
+                  longitude: 105.422,
+                  title: "PyCon China 2019 Conference Deadlines",
+                  icon: null,
+                  url: "",
+                  url_text: null,
+                  image: "",
+                  popup_html: "",
+                },
+                {
+                  latitude: 22.8193063,
+                  longitude: 108.3627211,
+                  title: "PyCon China 2019 Conference Deadlines",
+                  icon: null,
+                  url: "",
                   url_text: null,
                   image: "",
                   popup_html: "",
@@ -741,9 +791,48 @@
 
         // other
 
-        $("#cfp-timer").html("TBA");
-        $(".deadline-time").html("TBA");
-        $(".deadline-local-time").html("TBA");
+        // Use specified timezone for deadlines if available else use AoE timezone
+
+        var confDeadline = DateTime.fromSQL("2019-08-10 23:59:00", {
+          zone: "UTC-12",
+        });
+
+        // check if timezone is valid otherwise replace by system timezone
+        if (confDeadline.invalid) {
+          var confDeadline = DateTime.fromSQL("2019-08-10 23:59:00");
+          console.log("Invalid timezone. Using system timezone instead.");
+        }
+
+        // add calendar
+        var conferenceDeadlineCalendar = createCalendarFromObject({
+          id: "pycon-china-2019",
+          title: "PyCon China 2019 Conference Deadlines",
+          date: confDeadline.toJSDate(),
+          duration: 60,
+        });
+        document
+          .querySelector("#conference-deadline")
+          .appendChild(conferenceDeadlineCalendar);
+
+        // render countdown timer
+        $("#cfp-timer").countdown(confDeadline.toJSDate(), function (event) {
+          $(this).html(event.strftime("%D days %Hh %Mm %Ss"));
+        });
+
+        // render deadline conference time
+
+        $(".deadline-time").html(
+          confDeadline
+            .setZone("UTC-12")
+            .toLocaleString(DateTime.DATETIME_HUGE_WITH_SECONDS)
+        );
+
+        // render deadline in local timezone
+        $(".deadline-local-time").html(
+          confDeadline
+            .setZone("system")
+            .toLocaleString(DateTime.DATETIME_HUGE_WITH_SECONDS)
+        );
       });
     </script>
     <script async defer>

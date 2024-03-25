@@ -9,7 +9,7 @@
 		<title>Newsfeed for Python Events Calendar from Python Conference Deadlines</title>
 		<description>Countdowns to your favourite Python conferences with calls for participation and resources to submit awesome talks!</description>
 		<link>https://pythondeadlin.es/feed.xml</link>
-		<lastBuildDate>Sun, 24 Mar 2024 13:16:12 +0000</lastBuildDate>
+		<lastBuildDate>Mon, 25 Mar 2024 02:11:31 +0000</lastBuildDate>
 		
 			<item>
 				<title>PyCon Poland 2024 Conference Deadline</title>
@@ -94,7 +94,7 @@
 		
 			<item>
 				<title>North Bay Python 2024 Conference Deadline</title>
-				<description><![CDATA[* name of the event: North Bay Python 2024<br/>* type of event: Conference <br/>* focus on Python: Yes<br/>* approximate number of attendees: Unknown<br/>* location (incl. country): Petaluma, California, USA<br/>* dates/times/recurrence (incl. time zone): June 29 - 30, 2024<br/>* HTML link : <a href="https://2024.northbaypython.org/">North Bay Python 2024</a>]]></description>
+				<description><![CDATA[* name of the event: North Bay Python 2024<br/>* type of event: Conference <br/>* focus on Python: Yes<br/>* approximate number of attendees: Unknown<br/>* location (incl. country): Petaluma, USA<br/>* dates/times/recurrence (incl. time zone): June 29 - 30, 2024<br/>* HTML link : <a href="https://2024.northbaypython.org/">North Bay Python 2024</a>]]></description>
 				<pubDate>Sat, 29 Jun 2024 00:00:00 +0000</pubDate>
 				<link>https://pythondeadlin.es/conference/north-bay-python-2024/</link>
 				<guid isPermaLink="false"></guid>

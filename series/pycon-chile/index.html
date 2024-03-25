@@ -29,7 +29,7 @@
     <meta property="og:type" content="article" />
     <meta
       property="article:published_time"
-      content="2024-11-24T00:00:00+00:00"
+      content="2024-11-05T00:00:00+00:00"
     />
     <meta name="twitter:card" content="summary" />
     <meta property="twitter:title" content="PyCon Chile Conference Summary" />
@@ -44,8 +44,8 @@
           "name": "Jesper Dramsch",
           "url": "https://dramsch.net"
         },
-        "dateModified": "2024-11-24T00:00:00+00:00",
-        "datePublished": "2024-11-24T00:00:00+00:00",
+        "dateModified": "2024-11-05T00:00:00+00:00",
+        "datePublished": "2024-11-05T00:00:00+00:00",
         "description": "Summary of the conference and its instances throughout the years.",
         "headline": "PyCon Chile Conference Summary",
         "mainEntityOfPage": {
@@ -67,7 +67,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711286172"
+      href="/static/css/js-year-calendar.min.css?t=1711332691"
       media="screen,projection"
     />
 
@@ -79,13 +79,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711286172"
+      href="/static/css/deadlines.css?t=1711332691"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711286172"
+      href="/static/css/calendar.css?t=1711332691"
       media="screen,projection"
     />
 
@@ -188,16 +188,6 @@
       type="text/javascript"
       src="/static/js/bootstrap-multiselect.min.js"
     ></script>
-
-    <style>
-      #twitter-widget {
-        width: 100%;
-      }
-
-      .twitter-timeline {
-        width: 100% !important;
-      }
-    </style>
   </head>
 
   <body>
@@ -353,7 +343,7 @@
             <div id="twitter-widget">
               <a
                 class="twitter-timeline"
-                href="https://twitter.com/PythonChileDev"
+                href="https://twitter.com/"
                 data-tweet-limit="2"
                 >Tweets by PythonChileDev</a
               >
@@ -424,10 +414,11 @@
                 <div class="meta">
                   <span class="conf-date">November 24 - 26, 2023.</span>
                   <span class="conf-place">
-                    <a
-                      href="http://maps.google.com/?q=Valparaiso, Chile & Online"
-                      >Valparaiso, Chile & Online</a
+                    <a href="http://maps.google.com/?q=Valparaiso, Chile"
+                      >Valparaiso, Chile</a
                     >
+
+                    & <a href="http://maps.google.com/?q=Online">Online</a>
                   </span>
                 </div>
 
@@ -440,6 +431,80 @@
                   <div>
                     Deadline:
                     <span class="deadline-time">Friday, 15 September 2023</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <span
+                  title="Click to only show PY conferences"
+                  data-sub="PY"
+                  class="badge badge-light conf-sub PY-tag"
+                ></span>
+              </div>
+              <div class="col-6">
+                <div class="calendar"></div>
+              </div>
+            </div>
+            <hr />
+          </div>
+
+          <div id="pycon-chile-2022" class="ConfItem PY-conf">
+            <div class="row conf-row">
+              <div class="col-6">
+                <span class="conf-title">
+                  <a
+                    title="Deadline Details"
+                    href="/conference/pycon-chile-2022/"
+                    >PyCon Chile 2022</a
+                  >
+                </span>
+                <span class="conf-title-small">
+                  <a
+                    title="Deadline Details"
+                    href="/conference/pycon-chile-2022/"
+                    >PyCon Chile '22</a
+                  >
+                </span>
+                <span class="conf-title-icon">
+                  <a
+                    title="Conference Website"
+                    href="https://pycon.cl/2022/"
+                    target="_blank"
+                    ><img
+                      src="/static/img/203-earth.svg"
+                      class="badge-link"
+                      alt="Link to Conference Website"
+                      width="16"
+                      height="16"
+                  /></a>
+                  &ZeroWidthSpace;
+                </span>
+              </div>
+              <div class="col-6">
+                <span class="timer"></span>
+                <span class="timer-small"></span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="meta">
+                  <span class="conf-date">December 2 - 4, 2022.</span>
+                  <span class="conf-place">
+                    <a href="http://maps.google.com/?q=Santiago, Chile"
+                      >Santiago, Chile</a
+                    >
+                  </span>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <div class="deadline">
+                  <div>
+                    Deadline:
+                    <span class="deadline-time"
+                      >Saturday, 12 November 2022</span
+                    >
                   </div>
                 </div>
               </div>
@@ -509,7 +574,7 @@
                 <div class="deadline">
                   <div>
                     Deadline:
-                    <span class="deadline-time">TBA</span>
+                    <span class="deadline-time">Tuesday, 31 August 2021</span>
                   </div>
                 </div>
               </div>
@@ -760,12 +825,139 @@
 
 
 
+                $('#pycon-chile-2022 .PY-tag').html(sub2name["PY"].toLocaleLowerCase());
+
+
+
+                // Use specified timezone for deadlines if available else use AoE timezone
+
+                  var cfpDate = DateTime.fromSQL("2022-11-12 23:59:00", { zone: "America/Santiago" });
+                  var confDate = DateTime.fromSQL("2022-12-02", { zone: "America/Santiago" });
+
+
+                // check if timezone is valid otherwise replace by system timezone
+                if (cfpDate.invalid || confDate.invalid) {
+                  var cfpDate = DateTime.fromSQL("2022-11-12 23:59:00");
+                  var confDate = DateTime.fromSQL("2022-12-02");
+                  console.log("Invalid timezone in pycon-chile-2022. Using system timezone instead.");
+                }
+
+                // render countdown timer
+                $('#pycon-chile-2022 .timer').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+
+                // render countdown timer small
+                $('#pycon-chile-2022 .timer-small').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%Dd %H:%M:%S'));
+                });
+
+                // deadline in local timezone
+                $('#pycon-chile-2022 .deadline-time').html(cfpDate.setZone('system').toLocaleString(DateTime.DATE_HUGE));
+
+                // add calendar button
+                try {
+                  var myCalendar = createCalendarFromObject({
+                    id: 'pycon-chile-2022',
+                    title: 'PyCon Chile 2022 deadline',
+                    date: cfpDate.toJSDate(),
+                    duration: 60,
+                  });
+                  document.querySelector('#pycon-chile-2022 .calendar').appendChild(myCalendar);
+                } catch (err) {
+                  document.querySelector('#pycon-chile-2022 .calendar').appendChild("<p>Calendar not available.</p>");
+                  console.log("Error in cfp date.");
+                }
+
+                // check if date has passed, add 'past' class to it
+                cfpDiff = cfpDate.diffNow("seconds");
+                confDiff = confDate.diffNow("seconds");
+
+                $('#pycon-chile-2022').attr("cfpDiff", cfpDiff.toMillis());
+                $('#pycon-chile-2022').attr("confDiff", confDiff.toMillis());
+
+                if (cfpDiff < 0) {
+                  $('#pycon-chile-2022').addClass('pastcfp');
+                  $('#pycon-chile-2022 .timer').replaceWith($('#pycon-chile-2022 .deadline'));
+                  $('#pycon-chile-2022 .timer-small').replaceWith($('#pycon-chile-2022 .deadline'));
+                  $('#pycon-chile-2022 .calendar').remove();
+                }
+
+                if (confDiff < 0) {
+                  $('#pycon-chile-2022').addClass('pastconf');
+                  $('#pycon-chile-2022 .timer').replaceWith($('#pycon-chile-2022 .deadline'));
+                  $('#pycon-chile-2022 .timer-small').replaceWith($('#pycon-chile-2022 .deadline'));
+                  $('#pycon-chile-2022 .calendar').remove();
+                }
+
+
+
+
+
                 $('#pycon-chile-2021 .PY-tag').html(sub2name["PY"].toLocaleLowerCase());
 
 
-                $('#pycon-chile-2021 .timer').html("TBA");
-                $('#pycon-chile-2021 .deadline-time').html("TBA");
-                $('#pycon-chile-2021').attr("cfpDiff", Infinity);
+
+                // Use specified timezone for deadlines if available else use AoE timezone
+
+                  var cfpDate = DateTime.fromSQL("2021-09-12 23:59:00", { zone: "America/Santiago" });
+                  var confDate = DateTime.fromSQL("2021-11-05", { zone: "America/Santiago" });
+
+
+                // check if timezone is valid otherwise replace by system timezone
+                if (cfpDate.invalid || confDate.invalid) {
+                  var cfpDate = DateTime.fromSQL("2021-09-12 23:59:00");
+                  var confDate = DateTime.fromSQL("2021-11-05");
+                  console.log("Invalid timezone in pycon-chile-2021. Using system timezone instead.");
+                }
+
+                // render countdown timer
+                $('#pycon-chile-2021 .timer').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+
+                // render countdown timer small
+                $('#pycon-chile-2021 .timer-small').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%Dd %H:%M:%S'));
+                });
+
+                // deadline in local timezone
+                $('#pycon-chile-2021 .deadline-time').html(cfpDate.setZone('system').toLocaleString(DateTime.DATE_HUGE));
+
+                // add calendar button
+                try {
+                  var myCalendar = createCalendarFromObject({
+                    id: 'pycon-chile-2021',
+                    title: 'PyCon Chile 2021 deadline',
+                    date: cfpDate.toJSDate(),
+                    duration: 60,
+                  });
+                  document.querySelector('#pycon-chile-2021 .calendar').appendChild(myCalendar);
+                } catch (err) {
+                  document.querySelector('#pycon-chile-2021 .calendar').appendChild("<p>Calendar not available.</p>");
+                  console.log("Error in cfp date.");
+                }
+
+                // check if date has passed, add 'past' class to it
+                cfpDiff = cfpDate.diffNow("seconds");
+                confDiff = confDate.diffNow("seconds");
+
+                $('#pycon-chile-2021').attr("cfpDiff", cfpDiff.toMillis());
+                $('#pycon-chile-2021').attr("confDiff", confDiff.toMillis());
+
+                if (cfpDiff < 0) {
+                  $('#pycon-chile-2021').addClass('pastcfp');
+                  $('#pycon-chile-2021 .timer').replaceWith($('#pycon-chile-2021 .deadline'));
+                  $('#pycon-chile-2021 .timer-small').replaceWith($('#pycon-chile-2021 .deadline'));
+                  $('#pycon-chile-2021 .calendar').remove();
+                }
+
+                if (confDiff < 0) {
+                  $('#pycon-chile-2021').addClass('pastconf');
+                  $('#pycon-chile-2021 .timer').replaceWith($('#pycon-chile-2021 .deadline'));
+                  $('#pycon-chile-2021 .timer-small').replaceWith($('#pycon-chile-2021 .deadline'));
+                  $('#pycon-chile-2021 .calendar').remove();
+                }
 
 
 
