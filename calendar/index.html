@@ -62,7 +62,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711332691"
+      href="/static/css/js-year-calendar.min.css?t=1711387075"
       media="screen,projection"
     />
 
@@ -74,13 +74,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711332691"
+      href="/static/css/deadlines.css?t=1711387075"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711332691"
+      href="/static/css/calendar.css?t=1711387075"
       media="screen,projection"
     />
 
@@ -716,6 +716,38 @@
       function load_conference_list() {
         // Gather data
         var conf_list_all = [];
+
+        // add deadlines in red
+        conf_list_all.push({
+          id: "pydata-eindhoven-2024-deadline",
+          abbreviation: "pydata-eindhoven-2024",
+          name: "PyData Eindhoven 2024 CfP ",
+          color: "red",
+          location: "Eindhoven, the Netherlands",
+          date: "July 11, 2024",
+          subject: "PY",
+          startDate: Date.parse("2024-05-13 23:59:00"),
+          endDate: Date.parse("2024-05-13 23:59:00"),
+        });
+
+        // add Conferences in chosen color
+
+        var color = "black";
+        // use first sub to choose color
+
+        color = "#4B8BBE";
+
+        conf_list_all.push({
+          id: "pydata-eindhoven-2024-conference",
+          abbreviation: "pydata-eindhoven-2024",
+          name: "PyData Eindhoven 2024",
+          color: color,
+          location: "Eindhoven, the Netherlands",
+          date: "July 11, 2024",
+          subject: "PY",
+          startDate: Date.parse("2024-07-11"),
+          endDate: Date.parse("2024-07-11"),
+        });
 
         // add deadlines in red
         conf_list_all.push({

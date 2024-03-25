@@ -9,7 +9,19 @@
 		<title>Python Conference Deadlines</title>
 		<description>Countdowns to your favourite Python conferences with calls for participation and resources to submit awesome talks!</description>
 		<link>https://pythondeadlin.es/feed.xml</link>
-		<lastBuildDate>Mon, 25 Mar 2024 02:11:31 +0000</lastBuildDate>
+		<lastBuildDate>Mon, 25 Mar 2024 17:17:55 +0000</lastBuildDate>
+		
+		
+		
+			<item>
+				<title>PyData Eindhoven 2024 Conference Deadline</title>
+				<description>Conference in Eindhoven, the Netherlands on July 11, 2024. CfP: 2024-05-13 23:59:00 AoE. </description>
+				<pubDate>Mon, 13 May 2024 23:59:00 +0000</pubDate>
+				<link>https://pythondeadlin.es/conference/pydata-eindhoven-2024/</link>
+				<guid isPermaLink="false"></guid>
+				<category>PY</category>
+			</item>
+		
 		
 		
 		
@@ -272,18 +284,6 @@
 				<link>https://pythondeadlin.es/conference/djangocon-europe-2024/</link>
 				<guid isPermaLink="false"></guid>
 				<category>WEB</category>
-			</item>
-		
-		
-		
-		
-			<item>
-				<title>SciPy US 2024 Conference Deadline</title>
-				<description>Conference in Tacoma, USA on July 8 - 14, 2024. CfP: 2024-02-27 23:59:00 AoE.&lt;br /&gt;Find them here: @SciPyConf </description>
-				<pubDate>Tue, 27 Feb 2024 23:59:00 +0000</pubDate>
-				<link>https://pythondeadlin.es/conference/scipy-us-2024/</link>
-				<guid isPermaLink="false"></guid>
-				<category>SCIPY</category>
 			</item>
 		
 		

@@ -60,6 +60,9 @@
 <loc>https://pythondeadlin.es/legal/terms-conditions/</loc>
 </url>
 <url>
+<loc>https://pythondeadlin.es/conference/pydata-eindhoven-2024/</loc>
+</url>
+<url>
 <loc>https://pythondeadlin.es/conference/pycon-poland-2024/</loc>
 </url>
 <url>
@@ -4540,6 +4543,9 @@
 </url>
 <url>
 <loc>https://pythondeadlin.es/series/europython/</loc>
+</url>
+<url>
+<loc>https://pythondeadlin.es/series/pydata-eindhoven/</loc>
 </url>
 <url>
 <loc>https://pythondeadlin.es/series/pycon-poland/</loc>
