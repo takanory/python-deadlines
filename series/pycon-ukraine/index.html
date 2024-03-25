@@ -72,7 +72,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711387075"
+      href="/static/css/js-year-calendar.min.css?t=1711387107"
       media="screen,projection"
     />
 
@@ -84,13 +84,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711387075"
+      href="/static/css/deadlines.css?t=1711387107"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711387075"
+      href="/static/css/calendar.css?t=1711387107"
       media="screen,projection"
     />
 
@@ -498,7 +498,7 @@
                 <span class="conf-title-icon">
                   <a
                     title="Conference Website"
-                    href="https://web.archive.org/web/20160419232557/http://ua.pycon.org/"
+                    href="https://web.archive.org/web/20120419232557/http://ua.pycon.org/"
                     target="_blank"
                     ><img
                       src="/static/img/203-earth.svg"
@@ -530,7 +530,9 @@
                 <div class="deadline">
                   <div>
                     Deadline:
-                    <span class="deadline-time">TBA</span>
+                    <span class="deadline-time"
+                      >Thursday, 20 September 2012</span
+                    >
                   </div>
                 </div>
               </div>
@@ -737,9 +739,67 @@
                 $('#pycon-ukraine-2012 .PY-tag').html(sub2name["PY"].toLocaleLowerCase());
 
 
-                $('#pycon-ukraine-2012 .timer').html("TBA");
-                $('#pycon-ukraine-2012 .deadline-time').html("TBA");
-                $('#pycon-ukraine-2012').attr("cfpDiff", Infinity);
+
+                // Use specified timezone for deadlines if available else use AoE timezone
+
+                  var cfpDate = DateTime.fromSQL("2012-09-20 23:59:00", { zone: "UTC-12" });
+                  var confDate = DateTime.fromSQL("2012-10-20", { zone: "UTC-12" });
+
+
+                // check if timezone is valid otherwise replace by system timezone
+                if (cfpDate.invalid || confDate.invalid) {
+                  var cfpDate = DateTime.fromSQL("2012-09-20 23:59:00");
+                  var confDate = DateTime.fromSQL("2012-10-20");
+                  console.log("Invalid timezone in pycon-ukraine-2012. Using system timezone instead.");
+                }
+
+                // render countdown timer
+                $('#pycon-ukraine-2012 .timer').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+
+                // render countdown timer small
+                $('#pycon-ukraine-2012 .timer-small').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%Dd %H:%M:%S'));
+                });
+
+                // deadline in local timezone
+                $('#pycon-ukraine-2012 .deadline-time').html(cfpDate.setZone('system').toLocaleString(DateTime.DATE_HUGE));
+
+                // add calendar button
+                try {
+                  var myCalendar = createCalendarFromObject({
+                    id: 'pycon-ukraine-2012',
+                    title: 'PyCon Ukraine 2012 deadline',
+                    date: cfpDate.toJSDate(),
+                    duration: 60,
+                  });
+                  document.querySelector('#pycon-ukraine-2012 .calendar').appendChild(myCalendar);
+                } catch (err) {
+                  document.querySelector('#pycon-ukraine-2012 .calendar').appendChild("<p>Calendar not available.</p>");
+                  console.log("Error in cfp date.");
+                }
+
+                // check if date has passed, add 'past' class to it
+                cfpDiff = cfpDate.diffNow("seconds");
+                confDiff = confDate.diffNow("seconds");
+
+                $('#pycon-ukraine-2012').attr("cfpDiff", cfpDiff.toMillis());
+                $('#pycon-ukraine-2012').attr("confDiff", confDiff.toMillis());
+
+                if (cfpDiff < 0) {
+                  $('#pycon-ukraine-2012').addClass('pastcfp');
+                  $('#pycon-ukraine-2012 .timer').replaceWith($('#pycon-ukraine-2012 .deadline'));
+                  $('#pycon-ukraine-2012 .timer-small').replaceWith($('#pycon-ukraine-2012 .deadline'));
+                  $('#pycon-ukraine-2012 .calendar').remove();
+                }
+
+                if (confDiff < 0) {
+                  $('#pycon-ukraine-2012').addClass('pastconf');
+                  $('#pycon-ukraine-2012 .timer').replaceWith($('#pycon-ukraine-2012 .deadline'));
+                  $('#pycon-ukraine-2012 .timer-small').replaceWith($('#pycon-ukraine-2012 .deadline'));
+                  $('#pycon-ukraine-2012 .calendar').remove();
+                }
 
 
 

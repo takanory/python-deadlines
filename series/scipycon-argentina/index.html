@@ -75,7 +75,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711387075"
+      href="/static/css/js-year-calendar.min.css?t=1711387107"
       media="screen,projection"
     />
 
@@ -87,13 +87,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711387075"
+      href="/static/css/deadlines.css?t=1711387107"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711387075"
+      href="/static/css/calendar.css?t=1711387107"
       media="screen,projection"
     />
 
@@ -737,7 +737,7 @@
             <div class="row">
               <div class="col-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">November 12 - 18, 2012.</span>
+                  <span class="conf-date">November 12 - 17, 2012.</span>
                   <span class="conf-place">
                     <a href="http://maps.google.com/?q=Buenos Aires, Argentina"
                       >Buenos Aires, Argentina</a
@@ -749,7 +749,7 @@
                 <div class="deadline">
                   <div>
                     Deadline:
-                    <span class="deadline-time">TBA</span>
+                    <span class="deadline-time">Sunday, 15 July 2012</span>
                   </div>
                 </div>
               </div>
@@ -989,9 +989,67 @@
                 $('#pycon-argentina-2012 .PY-tag').html(sub2name["PY"].toLocaleLowerCase());
 
 
-                $('#pycon-argentina-2012 .timer').html("TBA");
-                $('#pycon-argentina-2012 .deadline-time').html("TBA");
-                $('#pycon-argentina-2012').attr("cfpDiff", Infinity);
+
+                // Use specified timezone for deadlines if available else use AoE timezone
+
+                  var cfpDate = DateTime.fromSQL("2012-07-15 23:59:00", { zone: "UTC-12" });
+                  var confDate = DateTime.fromSQL("2012-11-12", { zone: "UTC-12" });
+
+
+                // check if timezone is valid otherwise replace by system timezone
+                if (cfpDate.invalid || confDate.invalid) {
+                  var cfpDate = DateTime.fromSQL("2012-07-15 23:59:00");
+                  var confDate = DateTime.fromSQL("2012-11-12");
+                  console.log("Invalid timezone in pycon-argentina-2012. Using system timezone instead.");
+                }
+
+                // render countdown timer
+                $('#pycon-argentina-2012 .timer').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+
+                // render countdown timer small
+                $('#pycon-argentina-2012 .timer-small').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%Dd %H:%M:%S'));
+                });
+
+                // deadline in local timezone
+                $('#pycon-argentina-2012 .deadline-time').html(cfpDate.setZone('system').toLocaleString(DateTime.DATE_HUGE));
+
+                // add calendar button
+                try {
+                  var myCalendar = createCalendarFromObject({
+                    id: 'pycon-argentina-2012',
+                    title: 'PyCon Argentina 2012 deadline',
+                    date: cfpDate.toJSDate(),
+                    duration: 60,
+                  });
+                  document.querySelector('#pycon-argentina-2012 .calendar').appendChild(myCalendar);
+                } catch (err) {
+                  document.querySelector('#pycon-argentina-2012 .calendar').appendChild("<p>Calendar not available.</p>");
+                  console.log("Error in cfp date.");
+                }
+
+                // check if date has passed, add 'past' class to it
+                cfpDiff = cfpDate.diffNow("seconds");
+                confDiff = confDate.diffNow("seconds");
+
+                $('#pycon-argentina-2012').attr("cfpDiff", cfpDiff.toMillis());
+                $('#pycon-argentina-2012').attr("confDiff", confDiff.toMillis());
+
+                if (cfpDiff < 0) {
+                  $('#pycon-argentina-2012').addClass('pastcfp');
+                  $('#pycon-argentina-2012 .timer').replaceWith($('#pycon-argentina-2012 .deadline'));
+                  $('#pycon-argentina-2012 .timer-small').replaceWith($('#pycon-argentina-2012 .deadline'));
+                  $('#pycon-argentina-2012 .calendar').remove();
+                }
+
+                if (confDiff < 0) {
+                  $('#pycon-argentina-2012').addClass('pastconf');
+                  $('#pycon-argentina-2012 .timer').replaceWith($('#pycon-argentina-2012 .deadline'));
+                  $('#pycon-argentina-2012 .timer-small').replaceWith($('#pycon-argentina-2012 .deadline'));
+                  $('#pycon-argentina-2012 .calendar').remove();
+                }
 
 
 

@@ -70,7 +70,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711387075"
+      href="/static/css/js-year-calendar.min.css?t=1711387107"
       media="screen,projection"
     />
 
@@ -82,13 +82,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711387075"
+      href="/static/css/deadlines.css?t=1711387107"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711387075"
+      href="/static/css/calendar.css?t=1711387107"
       media="screen,projection"
     />
 
@@ -909,7 +909,7 @@
                 <div class="deadline">
                   <div>
                     Deadline:
-                    <span class="deadline-time">TBA</span>
+                    <span class="deadline-time">Sunday, 15 September 2013</span>
                   </div>
                 </div>
               </div>
@@ -1567,9 +1567,67 @@
                 $('#pycon-france-2013 .PY-tag').html(sub2name["PY"].toLocaleLowerCase());
 
 
-                $('#pycon-france-2013 .timer').html("TBA");
-                $('#pycon-france-2013 .deadline-time').html("TBA");
-                $('#pycon-france-2013').attr("cfpDiff", Infinity);
+
+                // Use specified timezone for deadlines if available else use AoE timezone
+
+                  var cfpDate = DateTime.fromSQL("2013-09-15 23:59:00", { zone: "UTC-12" });
+                  var confDate = DateTime.fromSQL("2013-10-26", { zone: "UTC-12" });
+
+
+                // check if timezone is valid otherwise replace by system timezone
+                if (cfpDate.invalid || confDate.invalid) {
+                  var cfpDate = DateTime.fromSQL("2013-09-15 23:59:00");
+                  var confDate = DateTime.fromSQL("2013-10-26");
+                  console.log("Invalid timezone in pycon-france-2013. Using system timezone instead.");
+                }
+
+                // render countdown timer
+                $('#pycon-france-2013 .timer').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+
+                // render countdown timer small
+                $('#pycon-france-2013 .timer-small').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%Dd %H:%M:%S'));
+                });
+
+                // deadline in local timezone
+                $('#pycon-france-2013 .deadline-time').html(cfpDate.setZone('system').toLocaleString(DateTime.DATE_HUGE));
+
+                // add calendar button
+                try {
+                  var myCalendar = createCalendarFromObject({
+                    id: 'pycon-france-2013',
+                    title: 'PyCon France 2013 deadline',
+                    date: cfpDate.toJSDate(),
+                    duration: 60,
+                  });
+                  document.querySelector('#pycon-france-2013 .calendar').appendChild(myCalendar);
+                } catch (err) {
+                  document.querySelector('#pycon-france-2013 .calendar').appendChild("<p>Calendar not available.</p>");
+                  console.log("Error in cfp date.");
+                }
+
+                // check if date has passed, add 'past' class to it
+                cfpDiff = cfpDate.diffNow("seconds");
+                confDiff = confDate.diffNow("seconds");
+
+                $('#pycon-france-2013').attr("cfpDiff", cfpDiff.toMillis());
+                $('#pycon-france-2013').attr("confDiff", confDiff.toMillis());
+
+                if (cfpDiff < 0) {
+                  $('#pycon-france-2013').addClass('pastcfp');
+                  $('#pycon-france-2013 .timer').replaceWith($('#pycon-france-2013 .deadline'));
+                  $('#pycon-france-2013 .timer-small').replaceWith($('#pycon-france-2013 .deadline'));
+                  $('#pycon-france-2013 .calendar').remove();
+                }
+
+                if (confDiff < 0) {
+                  $('#pycon-france-2013').addClass('pastconf');
+                  $('#pycon-france-2013 .timer').replaceWith($('#pycon-france-2013 .deadline'));
+                  $('#pycon-france-2013 .timer-small').replaceWith($('#pycon-france-2013 .deadline'));
+                  $('#pycon-france-2013 .calendar').remove();
+                }
 
 
 

@@ -72,7 +72,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711387075"
+      href="/static/css/js-year-calendar.min.css?t=1711387107"
       media="screen,projection"
     />
 
@@ -84,13 +84,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711387075"
+      href="/static/css/deadlines.css?t=1711387107"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711387075"
+      href="/static/css/calendar.css?t=1711387107"
       media="screen,projection"
     />
 
@@ -675,7 +675,7 @@
                 <div class="deadline">
                   <div>
                     Deadline:
-                    <span class="deadline-time">TBA</span>
+                    <span class="deadline-time">Monday, 1 October 2012</span>
                   </div>
                 </div>
               </div>
@@ -904,9 +904,67 @@
                 $('#pycon-finland-2012 .PY-tag').html(sub2name["PY"].toLocaleLowerCase());
 
 
-                $('#pycon-finland-2012 .timer').html("TBA");
-                $('#pycon-finland-2012 .deadline-time').html("TBA");
-                $('#pycon-finland-2012').attr("cfpDiff", Infinity);
+
+                // Use specified timezone for deadlines if available else use AoE timezone
+
+                  var cfpDate = DateTime.fromSQL("2012-10-01 23:59:00", { zone: "UTC-12" });
+                  var confDate = DateTime.fromSQL("2012-10-22", { zone: "UTC-12" });
+
+
+                // check if timezone is valid otherwise replace by system timezone
+                if (cfpDate.invalid || confDate.invalid) {
+                  var cfpDate = DateTime.fromSQL("2012-10-01 23:59:00");
+                  var confDate = DateTime.fromSQL("2012-10-22");
+                  console.log("Invalid timezone in pycon-finland-2012. Using system timezone instead.");
+                }
+
+                // render countdown timer
+                $('#pycon-finland-2012 .timer').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+
+                // render countdown timer small
+                $('#pycon-finland-2012 .timer-small').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%Dd %H:%M:%S'));
+                });
+
+                // deadline in local timezone
+                $('#pycon-finland-2012 .deadline-time').html(cfpDate.setZone('system').toLocaleString(DateTime.DATE_HUGE));
+
+                // add calendar button
+                try {
+                  var myCalendar = createCalendarFromObject({
+                    id: 'pycon-finland-2012',
+                    title: 'PyCon Finland 2012 deadline',
+                    date: cfpDate.toJSDate(),
+                    duration: 60,
+                  });
+                  document.querySelector('#pycon-finland-2012 .calendar').appendChild(myCalendar);
+                } catch (err) {
+                  document.querySelector('#pycon-finland-2012 .calendar').appendChild("<p>Calendar not available.</p>");
+                  console.log("Error in cfp date.");
+                }
+
+                // check if date has passed, add 'past' class to it
+                cfpDiff = cfpDate.diffNow("seconds");
+                confDiff = confDate.diffNow("seconds");
+
+                $('#pycon-finland-2012').attr("cfpDiff", cfpDiff.toMillis());
+                $('#pycon-finland-2012').attr("confDiff", confDiff.toMillis());
+
+                if (cfpDiff < 0) {
+                  $('#pycon-finland-2012').addClass('pastcfp');
+                  $('#pycon-finland-2012 .timer').replaceWith($('#pycon-finland-2012 .deadline'));
+                  $('#pycon-finland-2012 .timer-small').replaceWith($('#pycon-finland-2012 .deadline'));
+                  $('#pycon-finland-2012 .calendar').remove();
+                }
+
+                if (confDiff < 0) {
+                  $('#pycon-finland-2012').addClass('pastconf');
+                  $('#pycon-finland-2012 .timer').replaceWith($('#pycon-finland-2012 .deadline'));
+                  $('#pycon-finland-2012 .timer-small').replaceWith($('#pycon-finland-2012 .deadline'));
+                  $('#pycon-finland-2012 .calendar').remove();
+                }
 
 
 
