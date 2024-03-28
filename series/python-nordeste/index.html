@@ -75,7 +75,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711387107"
+      href="/static/css/js-year-calendar.min.css?t=1711644106"
       media="screen,projection"
     />
 
@@ -87,13 +87,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711387107"
+      href="/static/css/deadlines.css?t=1711644106"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711387107"
+      href="/static/css/calendar.css?t=1711644106"
       media="screen,projection"
     />
 
@@ -1598,22 +1598,32 @@
 
       function createCalendarFromObject(data) {
         return createCalendar({
-          options: {
-            class: "calendar-obj",
+      		options: {
+      			class: 'calendar-obj',
 
-            // You can pass an ID. If you don't, one will be generated for you
-            id: data.id,
-          },
-          data: {
-            // Event title
-            title: data.conference,
+      			// You can pass an ID. If you don't, one will be generated for you
+      			id: data.id,
+      		},
+      		data: {
+      			// Event title
+      			title: data.title,
 
-            // Event start date
-            start: data.date,
+      			// Event start date
+      			start: data.start_date,
 
-            // Event duration
+            // Event duration (minutes)
             duration: 60,
-          },
+
+      			// You can also choose to set an end time
+      			// If an end time is set, this will take precedence over duration
+      			end: data.end_date,
+
+      			// Event Address
+      			address: data.place,
+
+      			// Event Description
+      			description: '<a href='+data.link+'>'+data.title+'</a>',
+      		},
         });
       }
 
@@ -1709,8 +1719,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'python-nordeste-2024',
                     title: 'Python Nordeste 2024 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Natal, Brazil',
+                    link: 'https://2024.pythonnordeste.org/'
                   });
                   document.querySelector('#python-nordeste-2024 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1778,8 +1790,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'python-nordeste-2023',
                     title: 'Python Nordeste 2023 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Salvador, Brazil',
+                    link: 'https://2023.pythonnordeste.org/'
                   });
                   document.querySelector('#python-nordeste-2023 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1847,8 +1861,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'python-nordeste-2022',
                     title: 'Python Nordeste 2022 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Aracaju, Brazil',
+                    link: 'https://2022.pythonnordeste.org/'
                   });
                   document.querySelector('#python-nordeste-2022 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1916,8 +1932,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'python-nordeste-2021',
                     title: 'Python Nordeste 2021 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Online',
+                    link: 'https://2020.pythonnordeste.org/'
                   });
                   document.querySelector('#python-nordeste-2021 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1996,8 +2014,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'python-nordeste-2019',
                     title: 'Python Nordeste 2019 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Recife, Brazil',
+                    link: 'https://2019.pythonnordeste.org/'
                   });
                   document.querySelector('#python-nordeste-2019 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -2065,8 +2085,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'python-nordeste-2018',
                     title: 'Python Nordeste 2018 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Campina Grande, Brazil',
+                    link: 'https://web.archive.org/web/20181220005202/https://2018.pythonnordeste.org/'
                   });
                   document.querySelector('#python-nordeste-2018 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -2134,8 +2156,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'python-nordeste-2017',
                     title: 'Python Nordeste 2017 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'São Luís, Brazil',
+                    link: 'https://web.archive.org/web/20170609010039/http://2017.pythonnordeste.org/'
                   });
                   document.querySelector('#python-nordeste-2017 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -2203,8 +2227,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'python-nordeste-2016',
                     title: 'Python Nordeste 2016 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'São Luís, Brazil',
+                    link: 'https://web.archive.org/web/20160614023844/http://2016.pythonnordeste.org/'
                   });
                   document.querySelector('#python-nordeste-2016 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -2272,8 +2298,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'python-nordeste-2015',
                     title: 'Python Nordeste 2015 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Natal, Brazil',
+                    link: 'https://web.archive.org/web/20150428210556/http://2015.pythonnordeste.org/'
                   });
                   document.querySelector('#python-nordeste-2015 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -2341,8 +2369,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'python-nordeste-2014',
                     title: 'Python Nordeste 2014 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Salvador, Brazil',
+                    link: 'https://web.archive.org/web/20140411192842/http://2014.pythonnordeste.org/'
                   });
                   document.querySelector('#python-nordeste-2014 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -2410,8 +2440,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'python-nordeste-2013',
                     title: 'Python Nordeste 2013 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Fortaleza, Brazil',
+                    link: 'https://web.archive.org/web/20160708210325/http://2013.pythonnordeste.org/'
                   });
                   document.querySelector('#python-nordeste-2013 .calendar').appendChild(myCalendar);
                 } catch (err) {

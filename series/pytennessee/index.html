@@ -67,7 +67,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711387107"
+      href="/static/css/js-year-calendar.min.css?t=1711644106"
       media="screen,projection"
     />
 
@@ -79,13 +79,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711387107"
+      href="/static/css/deadlines.css?t=1711644106"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711387107"
+      href="/static/css/calendar.css?t=1711644106"
       media="screen,projection"
     />
 
@@ -694,7 +694,7 @@
             <div class="row">
               <div class="col-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">February 4 - 6, 2017.</span>
+                  <span class="conf-date">February 4 - 5, 2017.</span>
                   <span class="conf-place">
                     <a href="http://maps.google.com/?q=Nashville, USA"
                       >Nashville, USA</a
@@ -855,13 +855,13 @@
 
         <div class="row">
           <div
-            id="20722bb6-2049-495c-9c5f-54af912213ce"
+            id="b7a5d196-2b68-4c59-bd7e-f9a696206d6f"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "20722bb6-2049-495c-9c5f-54af912213ce",
+              "b7a5d196-2b68-4c59-bd7e-f9a696206d6f",
               [
                 {
                   latitude: 36.1622767,
@@ -1012,22 +1012,32 @@
 
       function createCalendarFromObject(data) {
         return createCalendar({
-          options: {
-            class: "calendar-obj",
+      		options: {
+      			class: 'calendar-obj',
 
-            // You can pass an ID. If you don't, one will be generated for you
-            id: data.id,
-          },
-          data: {
-            // Event title
-            title: data.conference,
+      			// You can pass an ID. If you don't, one will be generated for you
+      			id: data.id,
+      		},
+      		data: {
+      			// Event title
+      			title: data.title,
 
-            // Event start date
-            start: data.date,
+      			// Event start date
+      			start: data.start_date,
 
-            // Event duration
+            // Event duration (minutes)
             duration: 60,
-          },
+
+      			// You can also choose to set an end time
+      			// If an end time is set, this will take precedence over duration
+      			end: data.end_date,
+
+      			// Event Address
+      			address: data.place,
+
+      			// Event Description
+      			description: '<a href='+data.link+'>'+data.title+'</a>',
+      		},
         });
       }
 
@@ -1121,8 +1131,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pytennessee-2019',
                     title: 'PyTennessee 2019 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Nashville, USA',
+                    link: 'https://web.archive.org/web/20190301154334/http://www.pytennessee.org/'
                   });
                   document.querySelector('#pytennessee-2019 .calendar').appendChild(myCalendar);
                 } catch (err) {

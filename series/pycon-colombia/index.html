@@ -75,7 +75,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711387107"
+      href="/static/css/js-year-calendar.min.css?t=1711644106"
       media="screen,projection"
     />
 
@@ -87,13 +87,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711387107"
+      href="/static/css/deadlines.css?t=1711644106"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711387107"
+      href="/static/css/calendar.css?t=1711644106"
       media="screen,projection"
     />
 
@@ -984,22 +984,32 @@
 
       function createCalendarFromObject(data) {
         return createCalendar({
-          options: {
-            class: "calendar-obj",
+      		options: {
+      			class: 'calendar-obj',
 
-            // You can pass an ID. If you don't, one will be generated for you
-            id: data.id,
-          },
-          data: {
-            // Event title
-            title: data.conference,
+      			// You can pass an ID. If you don't, one will be generated for you
+      			id: data.id,
+      		},
+      		data: {
+      			// Event title
+      			title: data.title,
 
-            // Event start date
-            start: data.date,
+      			// Event start date
+      			start: data.start_date,
 
-            // Event duration
+            // Event duration (minutes)
             duration: 60,
-          },
+
+      			// You can also choose to set an end time
+      			// If an end time is set, this will take precedence over duration
+      			end: data.end_date,
+
+      			// Event Address
+      			address: data.place,
+
+      			// Event Description
+      			description: '<a href='+data.link+'>'+data.title+'</a>',
+      		},
         });
       }
 
@@ -1095,8 +1105,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-colombia-2024',
                     title: 'PyCon Colombia 2024 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Medellín, Colombia',
+                    link: 'https://2024.pycon.co/en'
                   });
                   document.querySelector('#pycon-colombia-2024 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1164,8 +1176,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-colombia-2023',
                     title: 'PyCon Colombia 2023 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Online',
+                    link: 'https://2023.pycon.co/'
                   });
                   document.querySelector('#pycon-colombia-2023 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1233,8 +1247,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-colombia-2022',
                     title: 'PyCon Colombia 2022 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Online',
+                    link: 'https://2022.pycon.co/'
                   });
                   document.querySelector('#pycon-colombia-2022 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1302,8 +1318,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-colombia-2019',
                     title: 'PyCon Colombia 2019 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Medellin, Colombia',
+                    link: 'https://web.archive.org/web/20190208183622/https://www.pycon.co/'
                   });
                   document.querySelector('#pycon-colombia-2019 .calendar').appendChild(myCalendar);
                 } catch (err) {

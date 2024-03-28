@@ -78,7 +78,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711387107"
+      href="/static/css/js-year-calendar.min.css?t=1711644106"
       media="screen,projection"
     />
 
@@ -90,13 +90,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711387107"
+      href="/static/css/deadlines.css?t=1711644106"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711387107"
+      href="/static/css/calendar.css?t=1711644106"
       media="screen,projection"
     />
 
@@ -921,12 +921,12 @@
 
         <div class="row">
           <div
-            id="3c666e9a-3416-40e4-9c2d-80f64078a4b2"
+            id="abf35cf0-5617-4bcd-b0f9-d9a22fae388c"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
-            jekyllMaps.register("3c666e9a-3416-40e4-9c2d-80f64078a4b2", [], {
+            jekyllMaps.register("abf35cf0-5617-4bcd-b0f9-d9a22fae388c", [], {
               baseUrl: "/",
               useCluster: true,
               showMarker: true,
@@ -1023,22 +1023,32 @@
 
       function createCalendarFromObject(data) {
         return createCalendar({
-          options: {
-            class: "calendar-obj",
+      		options: {
+      			class: 'calendar-obj',
 
-            // You can pass an ID. If you don't, one will be generated for you
-            id: data.id,
-          },
-          data: {
-            // Event title
-            title: data.conference,
+      			// You can pass an ID. If you don't, one will be generated for you
+      			id: data.id,
+      		},
+      		data: {
+      			// Event title
+      			title: data.title,
 
-            // Event start date
-            start: data.date,
+      			// Event start date
+      			start: data.start_date,
 
-            // Event duration
+            // Event duration (minutes)
             duration: 60,
-          },
+
+      			// You can also choose to set an end time
+      			// If an end time is set, this will take precedence over duration
+      			end: data.end_date,
+
+      			// Event Address
+      			address: data.place,
+
+      			// Event Description
+      			description: '<a href='+data.link+'>'+data.title+'</a>',
+      		},
         });
       }
 
@@ -1134,8 +1144,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'python-web-conference-2023',
                     title: 'Python Web Conference 2023 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Online',
+                    link: 'https://2023.pythonwebconf.com/'
                   });
                   document.querySelector('#python-web-conference-2023 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1203,8 +1215,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'python-web-conference-2022',
                     title: 'Python Web Conference 2022 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Online',
+                    link: 'https://pythonwebconference.com/'
                   });
                   document.querySelector('#python-web-conference-2022 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1272,8 +1286,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'python-web-conference-2021',
                     title: 'Python Web Conference 2021 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Online',
+                    link: 'https://pythonwebconference.com'
                   });
                   document.querySelector('#python-web-conference-2021 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1341,8 +1357,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'python-web-conference-2020',
                     title: 'Python Web Conference 2020 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Online',
+                    link: 'https://2020.pythonwebconf.com/'
                   });
                   document.querySelector('#python-web-conference-2020 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1410,8 +1428,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'python-web-conference-2019',
                     title: 'Python Web Conference 2019 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Online',
+                    link: 'https://web.archive.org/web/20191220043242/https://2019.indypy.org/webconf/'
                   });
                   document.querySelector('#python-web-conference-2019 .calendar').appendChild(myCalendar);
                 } catch (err) {

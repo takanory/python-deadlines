@@ -67,7 +67,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711387107"
+      href="/static/css/js-year-calendar.min.css?t=1711644106"
       media="screen,projection"
     />
 
@@ -79,13 +79,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711387107"
+      href="/static/css/deadlines.css?t=1711644106"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711387107"
+      href="/static/css/calendar.css?t=1711644106"
       media="screen,projection"
     />
 
@@ -1020,13 +1020,13 @@
 
         <div class="row">
           <div
-            id="4897fd07-e5c7-4d2d-8b4e-b5f485e8590a"
+            id="e73571dd-c25d-4506-8eae-6d92fdc3a9b7"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "4897fd07-e5c7-4d2d-8b4e-b5f485e8590a",
+              "e73571dd-c25d-4506-8eae-6d92fdc3a9b7",
               [
                 {
                   latitude: 30.2711286,
@@ -1177,22 +1177,32 @@
 
       function createCalendarFromObject(data) {
         return createCalendar({
-          options: {
-            class: "calendar-obj",
+      		options: {
+      			class: 'calendar-obj',
 
-            // You can pass an ID. If you don't, one will be generated for you
-            id: data.id,
-          },
-          data: {
-            // Event title
-            title: data.conference,
+      			// You can pass an ID. If you don't, one will be generated for you
+      			id: data.id,
+      		},
+      		data: {
+      			// Event title
+      			title: data.title,
 
-            // Event start date
-            start: data.date,
+      			// Event start date
+      			start: data.start_date,
 
-            // Event duration
+            // Event duration (minutes)
             duration: 60,
-          },
+
+      			// You can also choose to set an end time
+      			// If an end time is set, this will take precedence over duration
+      			end: data.end_date,
+
+      			// Event Address
+      			address: data.place,
+
+      			// Event Description
+      			description: '<a href='+data.link+'>'+data.title+'</a>',
+      		},
         });
       }
 
@@ -1288,8 +1298,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pytexas-2024',
                     title: 'PyTexas 2024 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Austin, USA',
+                    link: 'https://pytexas.org/2024/'
                   });
                   document.querySelector('#pytexas-2024 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1357,8 +1369,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pytexas-2023',
                     title: 'PyTexas 2023 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Austin, USA',
+                    link: 'https://pytexas.org'
                   });
                   document.querySelector('#pytexas-2023 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1424,8 +1438,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pytexas-2022',
                     title: 'PyTexas 2022 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Austin, USA',
+                    link: 'https://web.archive.org/web/20220131171842/https://www.pytexas.org/'
                   });
                   document.querySelector('#pytexas-2022 .calendar').appendChild(myCalendar);
                 } catch (err) {

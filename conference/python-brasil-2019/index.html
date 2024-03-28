@@ -77,7 +77,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711387107"
+      href="/static/css/js-year-calendar.min.css?t=1711644106"
       media="screen,projection"
     />
 
@@ -89,13 +89,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711387107"
+      href="/static/css/deadlines.css?t=1711644106"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711387107"
+      href="/static/css/calendar.css?t=1711644106"
       media="screen,projection"
     />
 
@@ -456,6 +456,8 @@
                 >Python Brasil 2019</span
               >
             </h1>
+
+            <h3 id="conf-subtitle">a.k.a. PythonBrasil[15] 2019</h3>
           </div>
         </div>
         <div class="row">
@@ -470,7 +472,7 @@
       </div>
       <div id="page-content">
         <div id="conf-deadline-timer" class="row">
-          <div id="cfp-timer" class="col-12 conf-timer">TBA</div>
+          <div id="cfp-timer" class="col-12 conf-timer"></div>
         </div>
         <div id="conf-key-facts" class="row">
           <div class="col-12 col-md-6">
@@ -510,24 +512,8 @@
               <a
                 id="conf-website"
                 target="_blank"
-                href="https://pythonbrasil.org.br/"
-                >https://pythonbrasil.org.br/</a
-              >
-            </div>
-
-            <div>
-              <img
-                src="/static/img/035-file-text.svg"
-                class="badge-link"
-                alt="Document Icon for CfP link"
-                width="16"
-                height="16"
-              />
-              <a
-                id="conf-cfp_link"
-                target="_blank"
-                href="https://2019.pythonbrasil.org.br/submissao-de-palestras"
-                >Call for Participation</a
+                href="https://web.archive.org/web/20190615021525/https://2019.pythonbrasil.org.br/"
+                >https://web.archive.org/web/20190615021525/https://2019.pythonbrasil.org.br/</a
               >
             </div>
 
@@ -563,8 +549,10 @@
         </div>
         <div id="conf-deadlines" class="row">
           <div class="col-12 col-md-6">
-            <div class="meta deadline">Download Conference deadline:</div>
+            <div class="meta deadline">Download Conference Deadline:</div>
             <div id="conference-deadline" class="calendar meta"></div>
+            <div class="meta deadline">Download Conference Dates:</div>
+            <div id="conference-calendar" class="calendar meta"></div>
             <div class="meta deadline">
               Deadline in timezone from conference website:
             </div>
@@ -627,13 +615,13 @@
         </div>
         <div class="row">
           <div
-            id="f63c2a45-1fcc-4afc-9405-4a7f3f279c3e"
+            id="8bb4b046-565a-40f4-a9f8-ab5c4c198df3"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "f63c2a45-1fcc-4afc-9405-4a7f3f279c3e",
+              "8bb4b046-565a-40f4-a9f8-ab5c4c198df3",
               [
                 {
                   latitude: -21.1776315,
@@ -761,13 +749,23 @@
             },
             data: {
               // Event title
-              title: data.conference,
+              title: data.title,
 
               // Event start date
-              start: data.date,
+              start: data.start_date,
 
-              // Event duration
+              // Event duration (minutes)
               duration: 60,
+
+              // You can also choose to set an end time
+              // If an end time is set, this will take precedence over duration
+              end: data.end_date,
+
+              // Event Address
+              address: data.place,
+
+              // Event Description
+              description: "<a href=" + data.link + ">" + data.title + "</a>",
             },
           });
         }
@@ -776,9 +774,65 @@
 
         // other
 
-        $("#cfp-timer").html("TBA");
-        $(".deadline-time").html("TBA");
-        $(".deadline-local-time").html("TBA");
+        // Use specified timezone for deadlines if available else use AoE timezone
+
+        var confDeadline = DateTime.fromSQL("2019-08-05 23:59:00", {
+          zone: "UTC-12",
+        });
+
+        // check if timezone is valid otherwise replace by system timezone
+        if (confDeadline.invalid) {
+          var confDeadline = DateTime.fromSQL("2019-08-05 23:59:00");
+          console.log("Invalid timezone. Using system timezone instead.");
+        }
+
+        // add calendar
+
+        var conferenceDeadlineCalendar = createCalendarFromObject({
+          id: "python-brasil-2019",
+          title: "Python Brasil 2019 deadline",
+          start_date: confDeadline.toJSDate(),
+          duration: 60,
+          place: "Ribeirão Preto, Brazil",
+          link:
+            "https://web.archive.org/web/20190615021525/https://2019.pythonbrasil.org.br/",
+        });
+        document
+          .querySelector("#conference-deadline")
+          .appendChild(conferenceDeadlineCalendar);
+
+        var conferenceCalendar = createCalendarFromObject({
+          id: "python-brasil-2019",
+          title: "Python Brasil 2019",
+          start_date: DateTime.fromSQL("2019-10-23").toJSDate(),
+          end_date: DateTime.fromSQL("2019-10-28").toJSDate(),
+          place: "Ribeirão Preto, Brazil",
+          link:
+            "https://web.archive.org/web/20190615021525/https://2019.pythonbrasil.org.br/",
+        });
+        document
+          .querySelector("#conference-calendar")
+          .appendChild(conferenceCalendar);
+
+        // render countdown timer
+        $("#cfp-timer").countdown(confDeadline.toJSDate(), function (event) {
+          $(this).html(event.strftime("%D days %Hh %Mm %Ss"));
+        });
+
+        // render deadline conference time
+
+        $(".deadline-time").html(
+          confDeadline
+            .setZone("UTC-12")
+            .toLocaleString(DateTime.DATETIME_HUGE_WITH_SECONDS)
+        );
+
+        // render deadline in local timezone
+        $(".deadline-local-time").html(
+          confDeadline
+            .setZone("system")
+            .toLocaleString(DateTime.DATETIME_HUGE_WITH_SECONDS)
+        );
       });
     </script>
     <script async defer>

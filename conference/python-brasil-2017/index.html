@@ -77,7 +77,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711387107"
+      href="/static/css/js-year-calendar.min.css?t=1711644106"
       media="screen,projection"
     />
 
@@ -89,13 +89,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711387107"
+      href="/static/css/deadlines.css?t=1711644106"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711387107"
+      href="/static/css/calendar.css?t=1711644106"
       media="screen,projection"
     />
 
@@ -456,6 +456,8 @@
                 >Python Brasil 2017</span
               >
             </h1>
+
+            <h3 id="conf-subtitle">a.k.a. PythonBrasil[13] 2017</h3>
           </div>
         </div>
         <div class="row">
@@ -470,7 +472,7 @@
       </div>
       <div id="page-content">
         <div id="conf-deadline-timer" class="row">
-          <div id="cfp-timer" class="col-12 conf-timer">TBA</div>
+          <div id="cfp-timer" class="col-12 conf-timer"></div>
         </div>
         <div id="conf-key-facts" class="row">
           <div class="col-12 col-md-6">
@@ -482,7 +484,7 @@
                 width="16"
                 height="16"
               />
-              <span id="conf-date">October 6 - 12, 2017</span>
+              <span id="conf-date">October 6 - 11, 2017</span>
             </div>
             <div>
               <img
@@ -531,8 +533,10 @@
         </div>
         <div id="conf-deadlines" class="row">
           <div class="col-12 col-md-6">
-            <div class="meta deadline">Download Conference deadline:</div>
+            <div class="meta deadline">Download Conference Deadline:</div>
             <div id="conference-deadline" class="calendar meta"></div>
+            <div class="meta deadline">Download Conference Dates:</div>
+            <div id="conference-calendar" class="calendar meta"></div>
             <div class="meta deadline">
               Deadline in timezone from conference website:
             </div>
@@ -595,13 +599,13 @@
         </div>
         <div class="row">
           <div
-            id="5184c1f5-eb9e-4650-bbb3-cb4e436b7cdd"
+            id="8d9aacda-10f2-421f-9af3-a00a30dd038a"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "5184c1f5-eb9e-4650-bbb3-cb4e436b7cdd",
+              "8d9aacda-10f2-421f-9af3-a00a30dd038a",
               [
                 {
                   latitude: -19.9227318,
@@ -729,13 +733,23 @@
             },
             data: {
               // Event title
-              title: data.conference,
+              title: data.title,
 
               // Event start date
-              start: data.date,
+              start: data.start_date,
 
-              // Event duration
+              // Event duration (minutes)
               duration: 60,
+
+              // You can also choose to set an end time
+              // If an end time is set, this will take precedence over duration
+              end: data.end_date,
+
+              // Event Address
+              address: data.place,
+
+              // Event Description
+              description: "<a href=" + data.link + ">" + data.title + "</a>",
             },
           });
         }
@@ -744,9 +758,65 @@
 
         // other
 
-        $("#cfp-timer").html("TBA");
-        $(".deadline-time").html("TBA");
-        $(".deadline-local-time").html("TBA");
+        // Use specified timezone for deadlines if available else use AoE timezone
+
+        var confDeadline = DateTime.fromSQL("2017-06-25 23:59:00", {
+          zone: "UTC-12",
+        });
+
+        // check if timezone is valid otherwise replace by system timezone
+        if (confDeadline.invalid) {
+          var confDeadline = DateTime.fromSQL("2017-06-25 23:59:00");
+          console.log("Invalid timezone. Using system timezone instead.");
+        }
+
+        // add calendar
+
+        var conferenceDeadlineCalendar = createCalendarFromObject({
+          id: "python-brasil-2017",
+          title: "Python Brasil 2017 deadline",
+          start_date: confDeadline.toJSDate(),
+          duration: 60,
+          place: "Belo Horizonte, Brazil",
+          link:
+            "https://web.archive.org/web/20170929071852/http://2017.pythonbrasil.org.br/",
+        });
+        document
+          .querySelector("#conference-deadline")
+          .appendChild(conferenceDeadlineCalendar);
+
+        var conferenceCalendar = createCalendarFromObject({
+          id: "python-brasil-2017",
+          title: "Python Brasil 2017",
+          start_date: DateTime.fromSQL("2017-10-06").toJSDate(),
+          end_date: DateTime.fromSQL("2017-10-11").toJSDate(),
+          place: "Belo Horizonte, Brazil",
+          link:
+            "https://web.archive.org/web/20170929071852/http://2017.pythonbrasil.org.br/",
+        });
+        document
+          .querySelector("#conference-calendar")
+          .appendChild(conferenceCalendar);
+
+        // render countdown timer
+        $("#cfp-timer").countdown(confDeadline.toJSDate(), function (event) {
+          $(this).html(event.strftime("%D days %Hh %Mm %Ss"));
+        });
+
+        // render deadline conference time
+
+        $(".deadline-time").html(
+          confDeadline
+            .setZone("UTC-12")
+            .toLocaleString(DateTime.DATETIME_HUGE_WITH_SECONDS)
+        );
+
+        // render deadline in local timezone
+        $(".deadline-local-time").html(
+          confDeadline
+            .setZone("system")
+            .toLocaleString(DateTime.DATETIME_HUGE_WITH_SECONDS)
+        );
       });
     </script>
     <script async defer>

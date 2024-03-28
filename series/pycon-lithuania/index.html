@@ -75,7 +75,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711387107"
+      href="/static/css/js-year-calendar.min.css?t=1711644106"
       media="screen,projection"
     />
 
@@ -87,13 +87,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711387107"
+      href="/static/css/deadlines.css?t=1711644106"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711387107"
+      href="/static/css/calendar.css?t=1711644106"
       media="screen,projection"
     />
 
@@ -797,13 +797,13 @@
 
         <div class="row">
           <div
-            id="2f952fa9-1439-4ca3-86f3-c9226d75533a"
+            id="68641d4b-18cb-4aaa-9d54-4e4474122d7b"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "2f952fa9-1439-4ca3-86f3-c9226d75533a",
+              "68641d4b-18cb-4aaa-9d54-4e4474122d7b",
               [
                 {
                   latitude: 54.6870458,
@@ -934,22 +934,32 @@
 
       function createCalendarFromObject(data) {
         return createCalendar({
-          options: {
-            class: "calendar-obj",
+      		options: {
+      			class: 'calendar-obj',
 
-            // You can pass an ID. If you don't, one will be generated for you
-            id: data.id,
-          },
-          data: {
-            // Event title
-            title: data.conference,
+      			// You can pass an ID. If you don't, one will be generated for you
+      			id: data.id,
+      		},
+      		data: {
+      			// Event title
+      			title: data.title,
 
-            // Event start date
-            start: data.date,
+      			// Event start date
+      			start: data.start_date,
 
-            // Event duration
+            // Event duration (minutes)
             duration: 60,
-          },
+
+      			// You can also choose to set an end time
+      			// If an end time is set, this will take precedence over duration
+      			end: data.end_date,
+
+      			// Event Address
+      			address: data.place,
+
+      			// Event Description
+      			description: '<a href='+data.link+'>'+data.title+'</a>',
+      		},
         });
       }
 
@@ -1045,8 +1055,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-lithuania-2024',
                     title: 'PyCon Lithuania 2024 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Vilnius, Lithuania',
+                    link: 'https://pycon.lt/2024'
                   });
                   document.querySelector('#pycon-lithuania-2024 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1114,8 +1126,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-lithuania-2023',
                     title: 'PyCon Lithuania 2023 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Vilnius, Lithuania',
+                    link: 'https://pycon.lt/2024'
                   });
                   document.querySelector('#pycon-lithuania-2023 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1183,8 +1197,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-lithuania-2022',
                     title: 'PyCon Lithuania 2022 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Vilnius, Lithuania',
+                    link: 'https://pycon.lt/'
                   });
                   document.querySelector('#pycon-lithuania-2022 .calendar').appendChild(myCalendar);
                 } catch (err) {

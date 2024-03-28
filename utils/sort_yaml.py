@@ -24,7 +24,7 @@ from tidy_conf.titles import tidy_titles
 from tidy_conf.utils import Loader, get_schema, query_yes_no
 
 dateformat = "%Y-%m-%d %H:%M:%S"
-tba_words = ["tba", "tbd", "cancelled"]
+tba_words = ["tba", "tbd", "cancelled", "none", "na", "n/a", "nan", "n.a."]
 
 
 def sort_by_cfp(data):
@@ -106,6 +106,10 @@ def split_data(data):
     """
     conf, tba, expired, legacy = [], [], [], []
     for q in tqdm(data):
+        if q["cfp"].lower() not in tba_words and " " not in q["cfp"]:
+            q["cfp"] += " 23:59:00"
+        if "cfp_ext" in q and " " not in q["cfp_ext"]:
+            q["cfp_ext"] += " 23:59:00"
         if q.get("end", datetime.datetime.utcnow().replace(microsecond=0).date()) < datetime.datetime.utcnow().replace(
             microsecond=0
         ).date() - datetime.timedelta(days=37):
@@ -119,8 +123,6 @@ def split_data(data):
             if q["cfp"].lower() in tba_words:
                 tba.append(q)
             else:
-                if " " not in q["cfp"]:
-                    q["cfp"] += " 23:59:00"
                 conf.append(q)
         except KeyError:
             print(data["cfp"].lower(), tba_words)

@@ -67,7 +67,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711387107"
+      href="/static/css/js-year-calendar.min.css?t=1711644106"
       media="screen,projection"
     />
 
@@ -79,13 +79,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711387107"
+      href="/static/css/deadlines.css?t=1711644106"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711387107"
+      href="/static/css/calendar.css?t=1711644106"
       media="screen,projection"
     />
 
@@ -1244,13 +1244,13 @@
 
         <div class="row">
           <div
-            id="9572c385-7bb2-4120-917c-e672c1b7623f"
+            id="e6a2f46d-91aa-4c50-a92b-548f3d8a4ded"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "9572c385-7bb2-4120-917c-e672c1b7623f",
+              "e6a2f46d-91aa-4c50-a92b-548f3d8a4ded",
               [
                 {
                   latitude: 35.718741949999995,
@@ -1441,22 +1441,32 @@
 
       function createCalendarFromObject(data) {
         return createCalendar({
-          options: {
-            class: "calendar-obj",
+      		options: {
+      			class: 'calendar-obj',
 
-            // You can pass an ID. If you don't, one will be generated for you
-            id: data.id,
-          },
-          data: {
-            // Event title
-            title: data.conference,
+      			// You can pass an ID. If you don't, one will be generated for you
+      			id: data.id,
+      		},
+      		data: {
+      			// Event title
+      			title: data.title,
 
-            // Event start date
-            start: data.date,
+      			// Event start date
+      			start: data.start_date,
 
-            // Event duration
+            // Event duration (minutes)
             duration: 60,
-          },
+
+      			// You can also choose to set an end time
+      			// If an end time is set, this will take precedence over duration
+      			end: data.end_date,
+
+      			// Event Address
+      			address: data.place,
+
+      			// Event Description
+      			description: '<a href='+data.link+'>'+data.title+'</a>',
+      		},
         });
       }
 
@@ -1552,8 +1562,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-japan-2022',
                     title: 'PyCon Japan 2022 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Tokyo, Japan',
+                    link: 'https://2022.pycon.jp/'
                   });
                   document.querySelector('#pycon-japan-2022 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1621,8 +1633,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-japan-2021',
                     title: 'PyCon Japan 2021 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Tokyo, Japan',
+                    link: 'https://2021.pycon.jp/'
                   });
                   document.querySelector('#pycon-japan-2021 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1690,8 +1704,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-japan-2020',
                     title: 'PyCon Japan 2020 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Online',
+                    link: 'https://pycon.jp/2020/'
                   });
                   document.querySelector('#pycon-japan-2020 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1759,8 +1775,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-japan-2019',
                     title: 'PyCon Japan 2019 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Tokyo, Japan',
+                    link: 'https://pycon.jp/2019/'
                   });
                   document.querySelector('#pycon-japan-2019 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1828,8 +1846,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-japan-2018',
                     title: 'PyCon Japan 2018 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Tokyo, Japan',
+                    link: 'https://web.archive.org/web/20180914150246/https://pycon.jp/2018/'
                   });
                   document.querySelector('#pycon-japan-2018 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1897,8 +1917,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-japan-2017',
                     title: 'PyCon Japan 2017 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Tokyo, Japan',
+                    link: 'https://web.archive.org/web/20171017043010/https://pycon.jp/2017/en/'
                   });
                   document.querySelector('#pycon-japan-2017 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1966,8 +1988,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-japan-2016',
                     title: 'PyCon Japan 2016 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Tokyo, Japan',
+                    link: 'https://web.archive.org/web/20161017222234/https://pycon.jp/2016/en/'
                   });
                   document.querySelector('#pycon-japan-2016 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -2035,8 +2059,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-japan-2015',
                     title: 'PyCon Japan 2015 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Tokyo, Japan',
+                    link: 'https://web.archive.org/web/20160807221928/https://pycon.jp/2015/en/'
                   });
                   document.querySelector('#pycon-japan-2015 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -2104,8 +2130,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-japan-2014',
                     title: 'PyCon Japan 2014 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Tokyo, Japan',
+                    link: 'https://web.archive.org/web/20140907073857/https://pycon.jp/2014/'
                   });
                   document.querySelector('#pycon-japan-2014 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -2173,8 +2201,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-japan-2012',
                     title: 'PyCon Japan 2012 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Tokyo, Japan',
+                    link: 'https://web.archive.org/web/20120916084616/http://2012.pycon.jp/en/index.html'
                   });
                   document.querySelector('#pycon-japan-2012 .calendar').appendChild(myCalendar);
                 } catch (err) {

@@ -69,7 +69,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711387107"
+      href="/static/css/js-year-calendar.min.css?t=1711644106"
       media="screen,projection"
     />
 
@@ -81,13 +81,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711387107"
+      href="/static/css/deadlines.css?t=1711644106"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711387107"
+      href="/static/css/calendar.css?t=1711644106"
       media="screen,projection"
     />
 
@@ -498,8 +498,8 @@
               <a
                 id="conf-website"
                 target="_blank"
-                href="https://www.dlr.de/sc/desktopdefault.aspx/tabid-7632/12996_read-32676/"
-                >https://www.dlr.de/sc/desktopdefault.aspx/tabid-7632/12996_read-32676/</a
+                href="https://web.archive.org/web/20130923035222/http://www.dlr.de/sc/desktopdefault.aspx/tabid-7632/12996_read-32676/"
+                >https://web.archive.org/web/20130923035222/http://www.dlr.de/sc/desktopdefault.aspx/tabid-7632/12996_read-32676/</a
               >
             </div>
 
@@ -517,8 +517,10 @@
         </div>
         <div id="conf-deadlines" class="row">
           <div class="col-12 col-md-6">
-            <div class="meta deadline">Download Conference deadline:</div>
+            <div class="meta deadline">Download Conference Deadline:</div>
             <div id="conference-deadline" class="calendar meta"></div>
+            <div class="meta deadline">Download Conference Dates:</div>
+            <div id="conference-calendar" class="calendar meta"></div>
             <div class="meta deadline">
               Deadline in timezone from conference website:
             </div>
@@ -581,13 +583,13 @@
         </div>
         <div class="row">
           <div
-            id="823c03e1-fc2c-4323-98ed-b3038453b414"
+            id="f8698309-e605-4dc8-83d7-3f43e62f25f6"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "823c03e1-fc2c-4323-98ed-b3038453b414",
+              "f8698309-e605-4dc8-83d7-3f43e62f25f6",
               [
                 {
                   latitude: 47.6038321,
@@ -715,13 +717,23 @@
             },
             data: {
               // Event title
-              title: data.conference,
+              title: data.title,
 
               // Event start date
-              start: data.date,
+              start: data.start_date,
 
-              // Event duration
+              // Event duration (minutes)
               duration: 60,
+
+              // You can also choose to set an end time
+              // If an end time is set, this will take precedence over duration
+              end: data.end_date,
+
+              // Event Address
+              address: data.place,
+
+              // Event Description
+              description: "<a href=" + data.link + ">" + data.title + "</a>",
             },
           });
         }
@@ -743,15 +755,32 @@
         }
 
         // add calendar
+
         var conferenceDeadlineCalendar = createCalendarFromObject({
           id: "pyhpc-2011",
-          title: "PyHPC 2011 Conference Deadlines",
-          date: confDeadline.toJSDate(),
+          title: "PyHPC 2011 deadline",
+          start_date: confDeadline.toJSDate(),
           duration: 60,
+          place: "Seattle, USA",
+          link:
+            "https://web.archive.org/web/20130923035222/http://www.dlr.de/sc/desktopdefault.aspx/tabid-7632/12996_read-32676/",
         });
         document
           .querySelector("#conference-deadline")
           .appendChild(conferenceDeadlineCalendar);
+
+        var conferenceCalendar = createCalendarFromObject({
+          id: "pyhpc-2011",
+          title: "PyHPC 2011",
+          start_date: DateTime.fromSQL("2011-11-18").toJSDate(),
+          end_date: DateTime.fromSQL("2011-11-18").toJSDate(),
+          place: "Seattle, USA",
+          link:
+            "https://web.archive.org/web/20130923035222/http://www.dlr.de/sc/desktopdefault.aspx/tabid-7632/12996_read-32676/",
+        });
+        document
+          .querySelector("#conference-calendar")
+          .appendChild(conferenceCalendar);
 
         // render countdown timer
         $("#cfp-timer").countdown(confDeadline.toJSDate(), function (event) {

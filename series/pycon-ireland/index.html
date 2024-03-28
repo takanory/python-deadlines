@@ -72,7 +72,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711387107"
+      href="/static/css/js-year-calendar.min.css?t=1711644106"
       media="screen,projection"
     />
 
@@ -84,13 +84,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711387107"
+      href="/static/css/deadlines.css?t=1711644106"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711387107"
+      href="/static/css/calendar.css?t=1711644106"
       media="screen,projection"
     />
 
@@ -1413,13 +1413,13 @@
 
         <div class="row">
           <div
-            id="ba4c6241-bce9-4090-a834-9634a1de752e"
+            id="caa6ffa1-2577-4564-809b-63b890024186"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "ba4c6241-bce9-4090-a834-9634a1de752e",
+              "caa6ffa1-2577-4564-809b-63b890024186",
               [
                 {
                   latitude: 53.3498006,
@@ -1640,22 +1640,32 @@
 
       function createCalendarFromObject(data) {
         return createCalendar({
-          options: {
-            class: "calendar-obj",
+      		options: {
+      			class: 'calendar-obj',
 
-            // You can pass an ID. If you don't, one will be generated for you
-            id: data.id,
-          },
-          data: {
-            // Event title
-            title: data.conference,
+      			// You can pass an ID. If you don't, one will be generated for you
+      			id: data.id,
+      		},
+      		data: {
+      			// Event title
+      			title: data.title,
 
-            // Event start date
-            start: data.date,
+      			// Event start date
+      			start: data.start_date,
 
-            // Event duration
+            // Event duration (minutes)
             duration: 60,
-          },
+
+      			// You can also choose to set an end time
+      			// If an end time is set, this will take precedence over duration
+      			end: data.end_date,
+
+      			// Event Address
+      			address: data.place,
+
+      			// Event Description
+      			description: '<a href='+data.link+'>'+data.title+'</a>',
+      		},
         });
       }
 
@@ -1751,8 +1761,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-ireland-2023',
                     title: 'PyCon Ireland 2023 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Dublin, Ireland',
+                    link: 'https://python.ie/pycon-2023/'
                   });
                   document.querySelector('#pycon-ireland-2023 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1820,8 +1832,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-ireland-2022',
                     title: 'PyCon Ireland 2022 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Dublin, Ireland',
+                    link: 'http://python.ie/previous-pycons/pycon-2022/'
                   });
                   document.querySelector('#pycon-ireland-2022 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1889,8 +1903,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-ireland-2019',
                     title: 'PyCon Ireland 2019 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Dublin, Ireland',
+                    link: 'https://web.archive.org/web/20191029092941/http://python.ie/pycon-2019/'
                   });
                   document.querySelector('#pycon-ireland-2019 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1958,8 +1974,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-ireland-2018',
                     title: 'PyCon Ireland 2018 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Dublin, Ireland',
+                    link: 'https://web.archive.org/web/20180828133458/https://pyconie18.python.ie/'
                   });
                   document.querySelector('#pycon-ireland-2018 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -2027,8 +2045,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-ireland-2017',
                     title: 'PyCon Ireland 2017 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Dublin, Ireland',
+                    link: 'https://web.archive.org/web/20171025025454/http://pyconie17.python.ie/'
                   });
                   document.querySelector('#pycon-ireland-2017 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -2096,8 +2116,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-ireland-2016',
                     title: 'PyCon Ireland 2016 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Dublin, Ireland',
+                    link: 'https://web.archive.org/web/20161025084155/http://python.ie/pycon-2016/'
                   });
                   document.querySelector('#pycon-ireland-2016 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -2165,8 +2187,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-ireland-2015',
                     title: 'PyCon Ireland 2015 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Dublin, Ireland',
+                    link: 'https://web.archive.org/web/20160521024356/http://python.ie/previous-pycons/pycon-2015/'
                   });
                   document.querySelector('#pycon-ireland-2015 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -2234,8 +2258,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-ireland-2014',
                     title: 'PyCon Ireland 2014 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Dublin, Ireland',
+                    link: 'http://python.ie/pycon/'
                   });
                   document.querySelector('#pycon-ireland-2014 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -2303,8 +2329,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-ireland-2013',
                     title: 'PyCon Ireland 2013 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Dublin, Ireland',
+                    link: 'https://web.archive.org/web/20130802043511/http://python.ie:80/pycon/2013/'
                   });
                   document.querySelector('#pycon-ireland-2013 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -2372,8 +2400,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-ireland-2012',
                     title: 'PyCon Ireland 2012 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Dublin, Ireland',
+                    link: 'https://web.archive.org/web/20121101011018/http://python.ie/pycon/2012/'
                   });
                   document.querySelector('#pycon-ireland-2012 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -2441,8 +2471,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-ireland-2011',
                     title: 'PyCon Ireland 2011 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Dublin, Ireland',
+                    link: 'https://web.archive.org/web/20111101011018/http://python.ie/pycon/2011/'
                   });
                   document.querySelector('#pycon-ireland-2011 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -2510,8 +2542,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-ireland-2010',
                     title: 'PyCon Ireland 2010 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Dublin, Ireland',
+                    link: 'https://web.archive.org/web/20100604053232/http://www.python.ie/pyconireland'
                   });
                   document.querySelector('#pycon-ireland-2010 .calendar').appendChild(myCalendar);
                 } catch (err) {

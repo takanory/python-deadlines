@@ -70,7 +70,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711387107"
+      href="/static/css/js-year-calendar.min.css?t=1711644106"
       media="screen,projection"
     />
 
@@ -82,13 +82,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711387107"
+      href="/static/css/deadlines.css?t=1711644106"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711387107"
+      href="/static/css/calendar.css?t=1711644106"
       media="screen,projection"
     />
 
@@ -1375,22 +1375,32 @@
 
       function createCalendarFromObject(data) {
         return createCalendar({
-          options: {
-            class: "calendar-obj",
+      		options: {
+      			class: 'calendar-obj',
 
-            // You can pass an ID. If you don't, one will be generated for you
-            id: data.id,
-          },
-          data: {
-            // Event title
-            title: data.conference,
+      			// You can pass an ID. If you don't, one will be generated for you
+      			id: data.id,
+      		},
+      		data: {
+      			// Event title
+      			title: data.title,
 
-            // Event start date
-            start: data.date,
+      			// Event start date
+      			start: data.start_date,
 
-            // Event duration
+            // Event duration (minutes)
             duration: 60,
-          },
+
+      			// You can also choose to set an end time
+      			// If an end time is set, this will take precedence over duration
+      			end: data.end_date,
+
+      			// Event Address
+      			address: data.place,
+
+      			// Event Description
+      			description: '<a href='+data.link+'>'+data.title+'</a>',
+      		},
         });
       }
 
@@ -1497,8 +1507,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-france-2023',
                     title: 'PyCon France 2023 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Bordeaux, France',
+                    link: 'https://pycon.fr/2023/'
                   });
                   document.querySelector('#pycon-france-2023 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1599,8 +1611,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-france-2013',
                     title: 'PyCon France 2013 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Strasbourg, France',
+                    link: 'https://web.archive.org/web/20131027125621/http://www.pycon.fr/2013/'
                   });
                   document.querySelector('#pycon-france-2013 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1668,8 +1682,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-france-2012',
                     title: 'PyCon France 2012 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Paris, France',
+                    link: 'https://web.archive.org/web/20120919110354/http://www.pycon.fr/2012/'
                   });
                   document.querySelector('#pycon-france-2012 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1737,8 +1753,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-france-2011',
                     title: 'PyCon France 2011 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Paris, France',
+                    link: 'https://web.archive.org/web/20231209152547/https://www.pycon.fr/2011/category/conference.html'
                   });
                   document.querySelector('#pycon-france-2011 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1806,8 +1824,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-france-2010',
                     title: 'PyCon France 2010 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Paris, France',
+                    link: 'https://www.pycon.fr/2010/category/conference.html'
                   });
                   document.querySelector('#pycon-france-2010 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1875,8 +1895,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-france-2009',
                     title: 'PyCon France 2009 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Paris, France',
+                    link: 'https://web.archive.org/web/20090307100440/http://www.pycon.fr/sessions'
                   });
                   document.querySelector('#pycon-france-2009 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1944,8 +1966,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-france-2008',
                     title: 'PyCon France 2008 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Paris, France',
+                    link: 'https://web.archive.org/web/20080513070424/http://fr.pycon.org/'
                   });
                   document.querySelector('#pycon-france-2008 .calendar').appendChild(myCalendar);
                 } catch (err) {

@@ -75,7 +75,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711387107"
+      href="/static/css/js-year-calendar.min.css?t=1711644106"
       media="screen,projection"
     />
 
@@ -87,13 +87,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711387107"
+      href="/static/css/deadlines.css?t=1711644106"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711387107"
+      href="/static/css/calendar.css?t=1711644106"
       media="screen,projection"
     />
 
@@ -1005,13 +1005,13 @@
 
         <div class="row">
           <div
-            id="356bd0a2-45db-4957-b6bd-f77c35c86d48"
+            id="c97ec3be-5245-4e6d-a3bc-72f48d093f21"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "356bd0a2-45db-4957-b6bd-f77c35c86d48",
+              "c97ec3be-5245-4e6d-a3bc-72f48d093f21",
               [
                 {
                   latitude: 38.2325829,
@@ -1162,22 +1162,32 @@
 
       function createCalendarFromObject(data) {
         return createCalendar({
-          options: {
-            class: "calendar-obj",
+      		options: {
+      			class: 'calendar-obj',
 
-            // You can pass an ID. If you don't, one will be generated for you
-            id: data.id,
-          },
-          data: {
-            // Event title
-            title: data.conference,
+      			// You can pass an ID. If you don't, one will be generated for you
+      			id: data.id,
+      		},
+      		data: {
+      			// Event title
+      			title: data.title,
 
-            // Event start date
-            start: data.date,
+      			// Event start date
+      			start: data.start_date,
 
-            // Event duration
+            // Event duration (minutes)
             duration: 60,
-          },
+
+      			// You can also choose to set an end time
+      			// If an end time is set, this will take precedence over duration
+      			end: data.end_date,
+
+      			// Event Address
+      			address: data.place,
+
+      			// Event Description
+      			description: '<a href='+data.link+'>'+data.title+'</a>',
+      		},
         });
       }
 
@@ -1273,8 +1283,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'north-bay-python-2024',
                     title: 'North Bay Python 2024 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Petaluma, USA',
+                    link: 'https://2024.northbaypython.org/'
                   });
                   document.querySelector('#north-bay-python-2024 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1342,8 +1354,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'north-bay-python-2023',
                     title: 'North Bay Python 2023 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Petaluma, USA',
+                    link: 'https://2023.northbaypython.org/'
                   });
                   document.querySelector('#north-bay-python-2023 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1411,8 +1425,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'north-bay-python-2019',
                     title: 'North Bay Python 2019 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Petaluma, USA',
+                    link: 'https://2019.northbaypython.org/'
                   });
                   document.querySelector('#north-bay-python-2019 .calendar').appendChild(myCalendar);
                 } catch (err) {

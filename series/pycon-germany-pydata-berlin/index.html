@@ -79,7 +79,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711387107"
+      href="/static/css/js-year-calendar.min.css?t=1711644106"
       media="screen,projection"
     />
 
@@ -91,13 +91,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711387107"
+      href="/static/css/deadlines.css?t=1711644106"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711387107"
+      href="/static/css/calendar.css?t=1711644106"
       media="screen,projection"
     />
 
@@ -1455,7 +1455,7 @@
                 <span class="conf-title-icon">
                   <a
                     title="Call for Participation for PyCon Germany"
-                    href="https://www.papercall.io/pyconde2017"
+                    href="https://web.archive.org/web/20190329183841/https://www.papercall.io/pyconde2017"
                     target="_blank"
                     ><img
                       src="/static/img/035-file-text.svg"
@@ -2014,13 +2014,13 @@
 
         <div class="row">
           <div
-            id="36c1d66a-504e-4384-95b9-2b40d216a70e"
+            id="7844bd48-88f7-4423-80a0-da1149dcb42d"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "36c1d66a-504e-4384-95b9-2b40d216a70e",
+              "7844bd48-88f7-4423-80a0-da1149dcb42d",
               [
                 {
                   latitude: 52.5170365,
@@ -2181,22 +2181,32 @@
 
       function createCalendarFromObject(data) {
         return createCalendar({
-          options: {
-            class: "calendar-obj",
+      		options: {
+      			class: 'calendar-obj',
 
-            // You can pass an ID. If you don't, one will be generated for you
-            id: data.id,
-          },
-          data: {
-            // Event title
-            title: data.conference,
+      			// You can pass an ID. If you don't, one will be generated for you
+      			id: data.id,
+      		},
+      		data: {
+      			// Event title
+      			title: data.title,
 
-            // Event start date
-            start: data.date,
+      			// Event start date
+      			start: data.start_date,
 
-            // Event duration
+            // Event duration (minutes)
             duration: 60,
-          },
+
+      			// You can also choose to set an end time
+      			// If an end time is set, this will take precedence over duration
+      			end: data.end_date,
+
+      			// Event Address
+      			address: data.place,
+
+      			// Event Description
+      			description: '<a href='+data.link+'>'+data.title+'</a>',
+      		},
         });
       }
 
@@ -2294,8 +2304,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-germany-pydata-berlin-2024',
                     title: 'PyCon Germany & PyData Berlin 2024 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Berlin, Germany',
+                    link: 'https://pycon.de/'
                   });
                   document.querySelector('#pycon-germany-pydata-berlin-2024 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -2365,8 +2377,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-germany-pydata-berlin-2023',
                     title: 'PyCon Germany & PyData Berlin 2023 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Berlin, Germany',
+                    link: 'https://2023.pycon.de/'
                   });
                   document.querySelector('#pycon-germany-pydata-berlin-2023 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -2436,8 +2450,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-germany-pydata-berlin-2022',
                     title: 'PyCon Germany & PyData Berlin 2022 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Berlin, Germany',
+                    link: 'https://2022.pycon.de/'
                   });
                   document.querySelector('#pycon-germany-pydata-berlin-2022 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -2516,8 +2532,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-germany-pydata-berlin-2020',
                     title: 'PyCon Germany & PyData Berlin 2020 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Berlin, Germany',
+                    link: 'https://de.pycon.org/'
                   });
                   document.querySelector('#pycon-germany-pydata-berlin-2020 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -2587,8 +2605,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-germany-pydata-berlin-2019',
                     title: 'PyCon Germany & PyData Berlin 2019 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Berlin, Germany',
+                    link: 'https://2019.pycon.de/'
                   });
                   document.querySelector('#pycon-germany-pydata-berlin-2019 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -2656,8 +2676,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pydata-berlin-2018',
                     title: 'PyData Berlin 2018 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Berlin, Germany',
+                    link: 'https://web.archive.org/web/20190112064656/https://pydata.org/berlin2018/'
                   });
                   document.querySelector('#pydata-berlin-2018 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -2725,8 +2747,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-germany-2018',
                     title: 'PyCon Germany 2018 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Karlsruhe, Germany',
+                    link: 'https://web.archive.org/web/20180419145724/https://de.pycon.org/'
                   });
                   document.querySelector('#pycon-germany-2018 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -2794,8 +2818,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pydata-berlin-2017',
                     title: 'PyData Berlin 2017 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Berlin, Germany',
+                    link: 'https://web.archive.org/web/20170623225603/http://pydata.org/berlin2017/'
                   });
                   document.querySelector('#pydata-berlin-2017 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -2863,8 +2889,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-germany-2017',
                     title: 'PyCon Germany 2017 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Karlsruhe, Germany',
+                    link: 'https://web.archive.org/web/20171030134448/https://de.pycon.org/'
                   });
                   document.querySelector('#pycon-germany-2017 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -2932,8 +2960,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pydata-berlin-2016',
                     title: 'PyData Berlin 2016 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Berlin, Germany',
+                    link: 'https://web.archive.org/web/20160521214556/http://pydata.org/berlin2016/'
                   });
                   document.querySelector('#pydata-berlin-2016 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -3001,8 +3031,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-germany-2016',
                     title: 'PyCon Germany 2016 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Munich, Germany',
+                    link: 'https://web.archive.org/web/20161015212639/http://www.pymunich.com/'
                   });
                   document.querySelector('#pycon-germany-2016 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -3070,8 +3102,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pydata-berlin-2015',
                     title: 'PyData Berlin 2015 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Berlin, Germany',
+                    link: 'https://web.archive.org/web/20150520195754/http://pydata.org/berlin2015/'
                   });
                   document.querySelector('#pydata-berlin-2015 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -3139,8 +3173,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pydata-berlin-2014',
                     title: 'PyData Berlin 2014 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Berlin, Germany',
+                    link: 'https://web.archive.org/web/20230328013334/https://pydata.org/berlin2014/'
                   });
                   document.querySelector('#pydata-berlin-2014 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -3208,8 +3244,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-germany-2013',
                     title: 'PyCon Germany 2013 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Cologne, Germany',
+                    link: 'https://web.archive.org/web/20131028065946/http://2013.de.pycon.org/'
                   });
                   document.querySelector('#pycon-germany-2013 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -3277,8 +3315,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-germany-2012',
                     title: 'PyCon Germany 2012 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Leipzig, Germany',
+                    link: 'https://web.archive.org/web/20121028040216/http://2012.de.pycon.org/'
                   });
                   document.querySelector('#pycon-germany-2012 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -3346,8 +3386,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-germany-2011',
                     title: 'PyCon Germany 2011 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Leipzig, Germany',
+                    link: 'https://web.archive.org/web/20120728002815/http://2011.de.pycon.org/2011/home/'
                   });
                   document.querySelector('#pycon-germany-2011 .calendar').appendChild(myCalendar);
                 } catch (err) {

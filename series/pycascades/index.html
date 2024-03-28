@@ -67,7 +67,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711387107"
+      href="/static/css/js-year-calendar.min.css?t=1711644106"
       media="screen,projection"
     />
 
@@ -79,13 +79,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711387107"
+      href="/static/css/deadlines.css?t=1711644106"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711387107"
+      href="/static/css/calendar.css?t=1711644106"
       media="screen,projection"
     />
 
@@ -1006,7 +1006,7 @@
                 <span class="conf-title-icon">
                   <a
                     title="Call for Participation for PyCascades"
-                    href="https://www.papercall.io/pycascades-2018"
+                    href="https://web.archive.org/web/20170813050314/https://www.papercall.io/pycascades-2018"
                     target="_blank"
                     ><img
                       src="/static/img/035-file-text.svg"
@@ -1138,22 +1138,32 @@
 
       function createCalendarFromObject(data) {
         return createCalendar({
-          options: {
-            class: "calendar-obj",
+      		options: {
+      			class: 'calendar-obj',
 
-            // You can pass an ID. If you don't, one will be generated for you
-            id: data.id,
-          },
-          data: {
-            // Event title
-            title: data.conference,
+      			// You can pass an ID. If you don't, one will be generated for you
+      			id: data.id,
+      		},
+      		data: {
+      			// Event title
+      			title: data.title,
 
-            // Event start date
-            start: data.date,
+      			// Event start date
+      			start: data.start_date,
 
-            // Event duration
+            // Event duration (minutes)
             duration: 60,
-          },
+
+      			// You can also choose to set an end time
+      			// If an end time is set, this will take precedence over duration
+      			end: data.end_date,
+
+      			// Event Address
+      			address: data.place,
+
+      			// Event Description
+      			description: '<a href='+data.link+'>'+data.title+'</a>',
+      		},
         });
       }
 
@@ -1249,8 +1259,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycascades-2024',
                     title: 'PyCascades 2024 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Seattle, USA',
+                    link: 'https://2024.pycascades.com/'
                   });
                   document.querySelector('#pycascades-2024 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1318,8 +1330,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycascades-2023',
                     title: 'PyCascades 2023 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Vancouver, Canada',
+                    link: 'https://2023.pycascades.com/'
                   });
                   document.querySelector('#pycascades-2023 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1387,8 +1401,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycascades-2022',
                     title: 'PyCascades 2022 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Online',
+                    link: 'https://2022.pycascades.com/'
                   });
                   document.querySelector('#pycascades-2022 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1454,8 +1470,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycascades-2021',
                     title: 'PyCascades 2021 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Online',
+                    link: 'https://2021.pycascades.com/'
                   });
                   document.querySelector('#pycascades-2021 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1521,8 +1539,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycascades-2020',
                     title: 'PyCascades 2020 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Portland, USA',
+                    link: 'https://2020.pycascades.com/'
                   });
                   document.querySelector('#pycascades-2020 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1588,8 +1608,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycascades-2019',
                     title: 'PyCascades 2019 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Seattle, USA',
+                    link: 'https://web.archive.org/web/20190221030506/https://2019.pycascades.com/'
                   });
                   document.querySelector('#pycascades-2019 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1655,8 +1677,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycascades-2018',
                     title: 'PyCascades 2018 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Vancouver, Canada',
+                    link: 'https://web.archive.org/web/20200812235103/https://2018.pycascades.com/'
                   });
                   document.querySelector('#pycascades-2018 .calendar').appendChild(myCalendar);
                 } catch (err) {

@@ -62,7 +62,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711387107"
+      href="/static/css/js-year-calendar.min.css?t=1711644106"
       media="screen,projection"
     />
 
@@ -74,13 +74,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711387107"
+      href="/static/css/deadlines.css?t=1711644106"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711387107"
+      href="/static/css/calendar.css?t=1711644106"
       media="screen,projection"
     />
 
@@ -271,8 +271,23 @@
       <h1>Calendar Overview of Python Conference Deadlines and Dates</h1>
       <div class="row">
         <div class="meta col-sm-12">
-          Overview of deadlines and conference dates in a calendar. Also,
-          <a href="/">countdowns</a> to Python conference deadlines.
+          <p>Overview of deadlines and conference dates in a calendar.</p>
+          <p>
+            You can optionally export all deadlines to
+            <a
+              href="https://calendar.google.com/calendar/r?cid=https://pythondeadlin.es/python-deadlines.ics"
+              >Google Calendar</a
+            >
+            or
+            <a href="/python-deadlines.ics">iCal</a>
+            And subscribe to upcoming Python events on your
+            <a
+              href="https://calendar.google.com/calendar/r?cid=https://pythondeadlin.es/python-conferences.ics"
+              >Google Calendar</a
+            >
+            or
+            <a href="/python-conferences.ics">iCal</a>
+          </p>
         </div>
         <br />
       </div>
@@ -539,13 +554,23 @@
           },
           data: {
             // Event title
-            title: data.conference,
+            title: data.title,
 
             // Event start date
-            start: data.date,
+            start: data.start_date,
 
-            // Event duration
+            // Event duration (minutes)
             duration: 60,
+
+            // You can also choose to set an end time
+            // If an end time is set, this will take precedence over duration
+            end: data.end_date,
+
+            // Event Address
+            address: data.place,
+
+            // Event Description
+            description: "<a href=" + data.link + ">" + data.title + "</a>",
           },
         });
       }
@@ -716,38 +741,6 @@
       function load_conference_list() {
         // Gather data
         var conf_list_all = [];
-
-        // add deadlines in red
-        conf_list_all.push({
-          id: "pydata-eindhoven-2024-deadline",
-          abbreviation: "pydata-eindhoven-2024",
-          name: "PyData Eindhoven 2024 CfP ",
-          color: "red",
-          location: "Eindhoven, the Netherlands",
-          date: "July 11, 2024",
-          subject: "PY",
-          startDate: Date.parse("2024-05-13 23:59:00"),
-          endDate: Date.parse("2024-05-13 23:59:00"),
-        });
-
-        // add Conferences in chosen color
-
-        var color = "black";
-        // use first sub to choose color
-
-        color = "#4B8BBE";
-
-        conf_list_all.push({
-          id: "pydata-eindhoven-2024-conference",
-          abbreviation: "pydata-eindhoven-2024",
-          name: "PyData Eindhoven 2024",
-          color: color,
-          location: "Eindhoven, the Netherlands",
-          date: "July 11, 2024",
-          subject: "PY",
-          startDate: Date.parse("2024-07-11"),
-          endDate: Date.parse("2024-07-11"),
-        });
 
         // add deadlines in red
         conf_list_all.push({
@@ -951,6 +944,38 @@
           subject: "PY",
           startDate: Date.parse("2024-07-26"),
           endDate: Date.parse("2024-07-27"),
+        });
+
+        // add deadlines in red
+        conf_list_all.push({
+          id: "pydata-eindhoven-2024-deadline",
+          abbreviation: "pydata-eindhoven-2024",
+          name: "PyData Eindhoven 2024 CfP ",
+          color: "red",
+          location: "Eindhoven, Netherlands",
+          date: "July 11th, 2024",
+          subject: "PY",
+          startDate: Date.parse("2024-05-13 23:59:00"),
+          endDate: Date.parse("2024-05-13 23:59:00"),
+        });
+
+        // add Conferences in chosen color
+
+        var color = "black";
+        // use first sub to choose color
+
+        color = "#4B8BBE";
+
+        conf_list_all.push({
+          id: "pydata-eindhoven-2024-conference",
+          abbreviation: "pydata-eindhoven-2024",
+          name: "PyData Eindhoven 2024",
+          color: color,
+          location: "Eindhoven, Netherlands",
+          date: "July 11th, 2024",
+          subject: "PY",
+          startDate: Date.parse("2024-07-11"),
+          endDate: Date.parse("2024-07-11"),
         });
 
         // add deadlines in red

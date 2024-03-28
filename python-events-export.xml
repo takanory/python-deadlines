@@ -9,16 +9,7 @@
 		<title>Newsfeed for Python Events Calendar from Python Conference Deadlines</title>
 		<description>Countdowns to your favourite Python conferences with calls for participation and resources to submit awesome talks!</description>
 		<link>https://pythondeadlin.es/feed.xml</link>
-		<lastBuildDate>Mon, 25 Mar 2024 17:18:27 +0000</lastBuildDate>
-		
-			<item>
-				<title>PyData Eindhoven 2024 Conference Deadline</title>
-				<description><![CDATA[* name of the event: PyData Eindhoven 2024<br/>* type of event: Conference <br/>* focus on Python: Yes<br/>* approximate number of attendees: Unknown<br/>* location (incl. country): Eindhoven, the Netherlands<br/>* dates/times/recurrence (incl. time zone): July 11, 2024<br/>* HTML link : <a href="https://pydata.org/eindhoven2024/call-for-proposals">PyData Eindhoven 2024</a>]]></description>
-				<pubDate>Thu, 11 Jul 2024 00:00:00 +0000</pubDate>
-				<link>https://pythondeadlin.es/conference/pydata-eindhoven-2024/</link>
-				<guid isPermaLink="false"></guid>
-				<category>PY</category>
-			</item>
+		<lastBuildDate>Thu, 28 Mar 2024 16:41:46 +0000</lastBuildDate>
 		
 			<item>
 				<title>PyCon Poland 2024 Conference Deadline</title>
@@ -70,6 +61,15 @@
 				<description><![CDATA[* name of the event: PyCon Russia 2024<br/>* type of event: Conference <br/>* focus on Python: Yes<br/>* approximate number of attendees: Unknown<br/>* location (incl. country): Moscow, Russia<br/>* dates/times/recurrence (incl. time zone): July 26 - 27, 2024<br/>* HTML link : <a href="https://www.pycon.ru/">PyCon Russia 2024</a>]]></description>
 				<pubDate>Fri, 26 Jul 2024 00:00:00 +0000</pubDate>
 				<link>https://pythondeadlin.es/conference/pycon-russia-2024/</link>
+				<guid isPermaLink="false"></guid>
+				<category>PY</category>
+			</item>
+		
+			<item>
+				<title>PyData Eindhoven 2024 Conference Deadline</title>
+				<description><![CDATA[* name of the event: PyData Eindhoven 2024<br/>* type of event: Conference <br/>* focus on Python: Yes<br/>* approximate number of attendees: Unknown<br/>* location (incl. country): Eindhoven, Netherlands<br/>* dates/times/recurrence (incl. time zone): July 11th, 2024<br/>* HTML link : <a href="https://pydata.org/eindhoven2024/call-for-proposals">PyData Eindhoven 2024</a>]]></description>
+				<pubDate>Thu, 11 Jul 2024 00:00:00 +0000</pubDate>
+				<link>https://pythondeadlin.es/conference/pydata-eindhoven-2024/</link>
 				<guid isPermaLink="false"></guid>
 				<category>PY</category>
 			</item>

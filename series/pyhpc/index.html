@@ -64,7 +64,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711387107"
+      href="/static/css/js-year-calendar.min.css?t=1711644106"
       media="screen,projection"
     />
 
@@ -76,13 +76,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711387107"
+      href="/static/css/deadlines.css?t=1711644106"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711387107"
+      href="/static/css/calendar.css?t=1711644106"
       media="screen,projection"
     />
 
@@ -395,7 +395,7 @@
                 <span class="conf-title-icon">
                   <a
                     title="Conference Website"
-                    href="https://www.dlr.de/sc/desktopdefault.aspx/tabid-12954/22625_read-52397/"
+                    href="https://web.archive.org/web/20201023081255/https://www.dlr.de/sc/desktopdefault.aspx/tabid-12954/22625_read-52397/"
                     target="_blank"
                     ><img
                       src="/static/img/203-earth.svg"
@@ -581,7 +581,7 @@
                 <span class="conf-title-icon">
                   <a
                     title="Conference Website"
-                    href="https://www.dlr.de/sc/desktopdefault.aspx/tabid-10388/17849_read-42322/"
+                    href="https://web.archive.org/web/20150829112426/http://www.dlr.de/sc/desktopdefault.aspx/tabid-10388/17849_read-42322"
                     target="_blank"
                     ><img
                       src="/static/img/203-earth.svg"
@@ -705,7 +705,7 @@
                 <span class="conf-title-icon">
                   <a
                     title="Conference Website"
-                    href="https://www.dlr.de/sc/desktopdefault.aspx/tabid-8685/14943_read-37157/"
+                    href="https://web.archive.org/web/20131118193245/http://www.dlr.de/sc/desktopdefault.aspx/tabid-8685/14943_read-37157/"
                     target="_blank"
                     ><img
                       src="/static/img/203-earth.svg"
@@ -829,7 +829,7 @@
                 <span class="conf-title-icon">
                   <a
                     title="Conference Website"
-                    href="https://www.dlr.de/sc/desktopdefault.aspx/tabid-7632/12996_read-32676/"
+                    href="https://web.archive.org/web/20130923035222/http://www.dlr.de/sc/desktopdefault.aspx/tabid-7632/12996_read-32676/"
                     target="_blank"
                     ><img
                       src="/static/img/203-earth.svg"
@@ -961,22 +961,32 @@
 
       function createCalendarFromObject(data) {
         return createCalendar({
-          options: {
-            class: "calendar-obj",
+      		options: {
+      			class: 'calendar-obj',
 
-            // You can pass an ID. If you don't, one will be generated for you
-            id: data.id,
-          },
-          data: {
-            // Event title
-            title: data.conference,
+      			// You can pass an ID. If you don't, one will be generated for you
+      			id: data.id,
+      		},
+      		data: {
+      			// Event title
+      			title: data.title,
 
-            // Event start date
-            start: data.date,
+      			// Event start date
+      			start: data.start_date,
 
-            // Event duration
+            // Event duration (minutes)
             duration: 60,
-          },
+
+      			// You can also choose to set an end time
+      			// If an end time is set, this will take precedence over duration
+      			end: data.end_date,
+
+      			// Event Address
+      			address: data.place,
+
+      			// Event Description
+      			description: '<a href='+data.link+'>'+data.title+'</a>',
+      		},
         });
       }
 
@@ -1041,13 +1051,13 @@
 
                 // Use specified timezone for deadlines if available else use AoE timezone
 
-                  var cfpDate = DateTime.fromSQL("2020-09-11", { zone: "UTC-12" });
+                  var cfpDate = DateTime.fromSQL("2020-09-11 23:59:00", { zone: "UTC-12" });
                   var confDate = DateTime.fromSQL("2020-11-15", { zone: "UTC-12" });
 
 
                 // check if timezone is valid otherwise replace by system timezone
                 if (cfpDate.invalid || confDate.invalid) {
-                  var cfpDate = DateTime.fromSQL("2020-09-11");
+                  var cfpDate = DateTime.fromSQL("2020-09-11 23:59:00");
                   var confDate = DateTime.fromSQL("2020-11-15");
                   console.log("Invalid timezone in pyhpc-2020. Using system timezone instead.");
                 }
@@ -1070,8 +1080,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pyhpc-2020',
                     title: 'PyHPC 2020 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Online',
+                    link: 'https://www.pyhpc.io/'
                   });
                   document.querySelector('#pyhpc-2020 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1137,8 +1149,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pyhpc-2018',
                     title: 'PyHPC 2018 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Dallas, USA',
+                    link: 'https://web.archive.org/web/20201023081255/https://www.dlr.de/sc/desktopdefault.aspx/tabid-12954/22625_read-52397/'
                   });
                   document.querySelector('#pyhpc-2018 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1204,8 +1218,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pyhpc-2017',
                     title: 'PyHPC 2017 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Denver, USA',
+                    link: 'https://web.archive.org/web/20171116191554/http://www.dlr.de/sc/desktopdefault.aspx/tabid-11992/21071_read-48990'
                   });
                   document.querySelector('#pyhpc-2017 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1242,13 +1258,13 @@
 
                 // Use specified timezone for deadlines if available else use AoE timezone
 
-                  var cfpDate = DateTime.fromSQL("2014-09-12", { zone: "UTC-12" });
+                  var cfpDate = DateTime.fromSQL("2014-09-12 23:59:00", { zone: "UTC-12" });
                   var confDate = DateTime.fromSQL("2016-11-14", { zone: "UTC-12" });
 
 
                 // check if timezone is valid otherwise replace by system timezone
                 if (cfpDate.invalid || confDate.invalid) {
-                  var cfpDate = DateTime.fromSQL("2014-09-12");
+                  var cfpDate = DateTime.fromSQL("2014-09-12 23:59:00");
                   var confDate = DateTime.fromSQL("2016-11-14");
                   console.log("Invalid timezone in pyhpc-2016. Using system timezone instead.");
                 }
@@ -1271,8 +1287,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pyhpc-2016',
                     title: 'PyHPC 2016 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Salt Lake City, USA',
+                    link: 'https://web.archive.org/web/20161109035636/http://www.dlr.de/sc/desktopdefault.aspx/tabid-11229/19729_read-46082/'
                   });
                   document.querySelector('#pyhpc-2016 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1338,8 +1356,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pyhpc-2015',
                     title: 'PyHPC 2015 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Austin, USA',
+                    link: 'https://web.archive.org/web/20150829112426/http://www.dlr.de/sc/desktopdefault.aspx/tabid-10388/17849_read-42322'
                   });
                   document.querySelector('#pyhpc-2015 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1376,13 +1396,13 @@
 
                 // Use specified timezone for deadlines if available else use AoE timezone
 
-                  var cfpDate = DateTime.fromSQL("2014-09-12", { zone: "UTC-12" });
+                  var cfpDate = DateTime.fromSQL("2014-09-12 23:59:00", { zone: "UTC-12" });
                   var confDate = DateTime.fromSQL("2014-11-17", { zone: "UTC-12" });
 
 
                 // check if timezone is valid otherwise replace by system timezone
                 if (cfpDate.invalid || confDate.invalid) {
-                  var cfpDate = DateTime.fromSQL("2014-09-12");
+                  var cfpDate = DateTime.fromSQL("2014-09-12 23:59:00");
                   var confDate = DateTime.fromSQL("2014-11-17");
                   console.log("Invalid timezone in pyhpc-2014. Using system timezone instead.");
                 }
@@ -1405,8 +1425,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pyhpc-2014',
                     title: 'PyHPC 2014 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'New Orleans, USA',
+                    link: 'https://web.archive.org/web/20141117032857/http://www.dlr.de/sc/desktopdefault.aspx/tabid-9506/16384_read-40102'
                   });
                   document.querySelector('#pyhpc-2014 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1472,8 +1494,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pyhpc-2013',
                     title: 'PyHPC 2013 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Denver, USA',
+                    link: 'https://web.archive.org/web/20131118193245/http://www.dlr.de/sc/desktopdefault.aspx/tabid-8685/14943_read-37157/'
                   });
                   document.querySelector('#pyhpc-2013 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1539,8 +1563,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pyhpc-2012',
                     title: 'PyHPC 2012 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Salt Lake City, USA',
+                    link: 'https://web.archive.org/web/20121115022259/http://www.dlr.de/sc/desktopdefault.aspx/tabid-8028/13765_read-34936/'
                   });
                   document.querySelector('#pyhpc-2012 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1606,8 +1632,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pyhpc-2011',
                     title: 'PyHPC 2011 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Seattle, USA',
+                    link: 'https://web.archive.org/web/20130923035222/http://www.dlr.de/sc/desktopdefault.aspx/tabid-7632/12996_read-32676/'
                   });
                   document.querySelector('#pyhpc-2011 .calendar').appendChild(myCalendar);
                 } catch (err) {

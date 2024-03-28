@@ -67,7 +67,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711387107"
+      href="/static/css/js-year-calendar.min.css?t=1711644106"
       media="screen,projection"
     />
 
@@ -79,13 +79,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711387107"
+      href="/static/css/deadlines.css?t=1711644106"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711387107"
+      href="/static/css/calendar.css?t=1711644106"
       media="screen,projection"
     />
 
@@ -1685,22 +1685,32 @@
 
       function createCalendarFromObject(data) {
         return createCalendar({
-          options: {
-            class: "calendar-obj",
+      		options: {
+      			class: 'calendar-obj',
 
-            // You can pass an ID. If you don't, one will be generated for you
-            id: data.id,
-          },
-          data: {
-            // Event title
-            title: data.conference,
+      			// You can pass an ID. If you don't, one will be generated for you
+      			id: data.id,
+      		},
+      		data: {
+      			// Event title
+      			title: data.title,
 
-            // Event start date
-            start: data.date,
+      			// Event start date
+      			start: data.start_date,
 
-            // Event duration
+            // Event duration (minutes)
             duration: 60,
-          },
+
+      			// You can also choose to set an end time
+      			// If an end time is set, this will take precedence over duration
+      			end: data.end_date,
+
+      			// Event Address
+      			address: data.place,
+
+      			// Event Description
+      			description: '<a href='+data.link+'>'+data.title+'</a>',
+      		},
         });
       }
 
@@ -1796,8 +1806,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-uk-2023',
                     title: 'PyCon UK 2023 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Cardiff, UK',
+                    link: 'https://2023.pyconuk.org/'
                   });
                   document.querySelector('#pycon-uk-2023 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1865,8 +1877,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-uk-2022',
                     title: 'PyCon UK 2022 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Cardiff, UK',
+                    link: 'https://2022.pyconuk.org/'
                   });
                   document.querySelector('#pycon-uk-2022 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1945,8 +1959,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-uk-2019',
                     title: 'PyCon UK 2019 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Cardiff, UK',
+                    link: 'https://web.archive.org/web/20190905015126/http://2019.pyconuk.org/'
                   });
                   document.querySelector('#pycon-uk-2019 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -2014,8 +2030,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-uk-2018',
                     title: 'PyCon UK 2018 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Cardiff, UK',
+                    link: 'https://web.archive.org/web/20180612191355/https://2018.pyconuk.org/'
                   });
                   document.querySelector('#pycon-uk-2018 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -2083,8 +2101,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-uk-2017',
                     title: 'PyCon UK 2017 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Cardiff, UK',
+                    link: 'https://web.archive.org/web/20171023090724/http://2017.pyconuk.org/'
                   });
                   document.querySelector('#pycon-uk-2017 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -2152,8 +2172,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-uk-2016',
                     title: 'PyCon UK 2016 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Cardiff, UK',
+                    link: 'https://web.archive.org/web/20160915163722/http://2016.pyconuk.org/'
                   });
                   document.querySelector('#pycon-uk-2016 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -2221,8 +2243,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-uk-2015',
                     title: 'PyCon UK 2015 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Coventry, UK',
+                    link: 'https://web.archive.org/web/20150706194946/http://www.pyconuk.org/'
                   });
                   document.querySelector('#pycon-uk-2015 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -2290,8 +2314,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-uk-2014',
                     title: 'PyCon UK 2014 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Coventry, UK',
+                    link: 'https://web.archive.org/web/20140615103455/http://www.pyconuk.org/'
                   });
                   document.querySelector('#pycon-uk-2014 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -2359,8 +2385,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-uk-2013',
                     title: 'PyCon UK 2013 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Coventry, UK',
+                    link: 'https://web.archive.org/web/20130612041903/http://www.pyconuk.org/'
                   });
                   document.querySelector('#pycon-uk-2013 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -2428,8 +2456,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-uk-2012',
                     title: 'PyCon UK 2012 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Coventry, UK',
+                    link: 'https://web.archive.org/web/20120902022819/http://www.pyconuk.org/'
                   });
                   document.querySelector('#pycon-uk-2012 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -2508,8 +2538,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-uk-2010',
                     title: 'PyCon UK 2010 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Birmingham, UK',
+                    link: 'https://web.archive.org/web/20110720142211/http://www.pyconuk.org/'
                   });
                   document.querySelector('#pycon-uk-2010 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -2577,8 +2609,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-uk-2009',
                     title: 'PyCon UK 2009 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Birmingham, UK',
+                    link: 'https://web.archive.org/web/20090927081122/http://www.pyconuk.org/'
                   });
                   document.querySelector('#pycon-uk-2009 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -2646,8 +2680,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-uk-2008',
                     title: 'PyCon UK 2008 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Birmingham, UK',
+                    link: 'https://web.archive.org/web/20080630193740/http://www.pyconuk.org/'
                   });
                   document.querySelector('#pycon-uk-2008 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -2715,8 +2751,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-uk-2007',
                     title: 'PyCon UK 2007 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Birmingham, UK',
+                    link: 'https://web.archive.org/web/20070630193740/http://www.pyconuk.org/'
                   });
                   document.querySelector('#pycon-uk-2007 .calendar').appendChild(myCalendar);
                 } catch (err) {

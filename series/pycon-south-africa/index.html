@@ -75,7 +75,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711387107"
+      href="/static/css/js-year-calendar.min.css?t=1711644106"
       media="screen,projection"
     />
 
@@ -87,13 +87,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711387107"
+      href="/static/css/deadlines.css?t=1711644106"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711387107"
+      href="/static/css/calendar.css?t=1711644106"
       media="screen,projection"
     />
 
@@ -406,7 +406,7 @@
                 <span class="conf-title-icon">
                   <a
                     title="Call for Participation for PyCon South Africa"
-                    href="https://za.pycon.org/talks/how-to-submit-a-talk/"
+                    href="https://web.archive.org/web/20231004163314/https://za.pycon.org/talks/how-to-submit-a-talk/"
                     target="_blank"
                     ><img
                       src="/static/img/035-file-text.svg"
@@ -826,7 +826,7 @@
                 <span class="conf-title-icon">
                   <a
                     title="Call for Participation for PyCon South Africa"
-                    href="https://2017.za.pycon.org/archived/submit-talk/"
+                    href="https://web.archive.org/web/20210815075207/https://2017.za.pycon.org/archived/submit-talk/"
                     target="_blank"
                     ><img
                       src="/static/img/035-file-text.svg"
@@ -1329,22 +1329,32 @@
 
       function createCalendarFromObject(data) {
         return createCalendar({
-          options: {
-            class: "calendar-obj",
+      		options: {
+      			class: 'calendar-obj',
 
-            // You can pass an ID. If you don't, one will be generated for you
-            id: data.id,
-          },
-          data: {
-            // Event title
-            title: data.conference,
+      			// You can pass an ID. If you don't, one will be generated for you
+      			id: data.id,
+      		},
+      		data: {
+      			// Event title
+      			title: data.title,
 
-            // Event start date
-            start: data.date,
+      			// Event start date
+      			start: data.start_date,
 
-            // Event duration
+            // Event duration (minutes)
             duration: 60,
-          },
+
+      			// You can also choose to set an end time
+      			// If an end time is set, this will take precedence over duration
+      			end: data.end_date,
+
+      			// Event Address
+      			address: data.place,
+
+      			// Event Description
+      			description: '<a href='+data.link+'>'+data.title+'</a>',
+      		},
         });
       }
 
@@ -1440,8 +1450,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-south-africa-2023',
                     title: 'PyCon South Africa 2023 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Durban, South Africa',
+                    link: 'https://za.pycon.org/'
                   });
                   document.querySelector('#pycon-south-africa-2023 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1509,8 +1521,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-south-africa-2022',
                     title: 'PyCon South Africa 2022 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Durban, South Africa',
+                    link: 'https://za.pycon.org/'
                   });
                   document.querySelector('#pycon-south-africa-2022 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1578,8 +1592,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-south-africa-2021',
                     title: 'PyCon South Africa 2021 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Online',
+                    link: 'https://2021.za.pycon.org/'
                   });
                   document.querySelector('#pycon-south-africa-2021 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1647,8 +1663,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-south-africa-2019',
                     title: 'PyCon South Africa 2019 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Johannesburg, South Africa',
+                    link: 'https://web.archive.org/web/20191008045812/https://za.pycon.org/'
                   });
                   document.querySelector('#pycon-south-africa-2019 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1716,8 +1734,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-south-africa-2018',
                     title: 'PyCon South Africa 2018 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Johannesburg, South Africa',
+                    link: 'https://web.archive.org/web/20180419141939/https://za.pycon.org/'
                   });
                   document.querySelector('#pycon-south-africa-2018 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1785,8 +1805,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-south-africa-2017',
                     title: 'PyCon South Africa 2017 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Cape Town, South Africa',
+                    link: 'https://web.archive.org/web/20170801125832/https://za.pycon.org/'
                   });
                   document.querySelector('#pycon-south-africa-2017 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1854,8 +1876,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-south-africa-2016',
                     title: 'PyCon South Africa 2016 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Johannesburg, South Africa',
+                    link: 'https://web.archive.org/web/20160422045615/https://za.pycon.org/'
                   });
                   document.querySelector('#pycon-south-africa-2016 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1923,8 +1947,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-south-africa-2015',
                     title: 'PyCon South Africa 2015 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Johannesburg, South Africa',
+                    link: 'https://web.archive.org/web/20150924233205/https://za.pycon.org/'
                   });
                   document.querySelector('#pycon-south-africa-2015 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1992,8 +2018,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-south-africa-2014',
                     title: 'PyCon South Africa 2014 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Johannesburg, South Africa',
+                    link: 'https://web.archive.org/web/20140712234719/https://za.pycon.org/'
                   });
                   document.querySelector('#pycon-south-africa-2014 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -2072,8 +2100,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pycon-south-africa-2012',
                     title: 'PyCon South Africa 2012 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Cape Town, South Africa',
+                    link: 'https://web.archive.org/web/20120825164659/http://za.pycon.org/#&panel1-3'
                   });
                   document.querySelector('#pycon-south-africa-2012 .calendar').appendChild(myCalendar);
                 } catch (err) {

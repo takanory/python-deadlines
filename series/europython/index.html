@@ -67,7 +67,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711387107"
+      href="/static/css/js-year-calendar.min.css?t=1711644106"
       media="screen,projection"
     />
 
@@ -79,13 +79,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711387107"
+      href="/static/css/deadlines.css?t=1711644106"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711387107"
+      href="/static/css/calendar.css?t=1711644106"
       media="screen,projection"
     />
 
@@ -1589,7 +1589,7 @@
                 <span class="conf-title-icon">
                   <a
                     title="Conference Website"
-                    href="https://ep2012.europython.eu/"
+                    href="https://web.archive.org/web/20120724122915/https://ep2012.europython.eu/"
                     target="_blank"
                     ><img
                       src="/static/img/203-earth.svg"
@@ -1661,7 +1661,7 @@
                 <span class="conf-title-icon">
                   <a
                     title="Conference Website"
-                    href="https://ep2011.europython.eu/"
+                    href="https://web.archive.org/web/20110626073356/http://ep2011.europython.eu/"
                     target="_blank"
                     ><img
                       src="/static/img/203-earth.svg"
@@ -1733,7 +1733,7 @@
                 <span class="conf-title-icon">
                   <a
                     title="Conference Website"
-                    href="https://ep2010.europython.eu"
+                    href="https://web.archive.org/web/20110414144119/http://ep2010.europython.eu/"
                     target="_blank"
                     ><img
                       src="/static/img/203-earth.svg"
@@ -1805,7 +1805,7 @@
                 <span class="conf-title-icon">
                   <a
                     title="Conference Website"
-                    href="https://ep2009.europython.eu/"
+                    href="https://web.archive.org/web/20100429204959/http://ep2009.europython.eu/"
                     target="_blank"
                     ><img
                       src="/static/img/203-earth.svg"
@@ -1877,7 +1877,7 @@
                 <span class="conf-title-icon">
                   <a
                     title="Conference Website"
-                    href="http://www.europython.org/"
+                    href="https://web.archive.org/web/20080706103533/http://www.europython.org/"
                     target="_blank"
                     ><img
                       src="/static/img/203-earth.svg"
@@ -1949,7 +1949,7 @@
                 <span class="conf-title-icon">
                   <a
                     title="Conference Website"
-                    href="http://www.europython.org/"
+                    href="https://web.archive.org/web/20070709123745/http://www.europython.org/"
                     target="_blank"
                     ><img
                       src="/static/img/203-earth.svg"
@@ -2021,7 +2021,7 @@
                 <span class="conf-title-icon">
                   <a
                     title="Conference Website"
-                    href="http://www.europython.org/"
+                    href="https://web.archive.org/web/20060701045949/http://www.europython.org/"
                     target="_blank"
                     ><img
                       src="/static/img/203-earth.svg"
@@ -2364,13 +2364,13 @@
 
         <div class="row">
           <div
-            id="106dea38-8ac7-4514-aa97-1ab9cd101dde"
+            id="0bb4f4e4-8911-4636-a15a-611587189bee"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "106dea38-8ac7-4514-aa97-1ab9cd101dde",
+              "0bb4f4e4-8911-4636-a15a-611587189bee",
               [
                 {
                   latitude: 50.0874654,
@@ -2491,22 +2491,32 @@
 
       function createCalendarFromObject(data) {
         return createCalendar({
-          options: {
-            class: "calendar-obj",
+      		options: {
+      			class: 'calendar-obj',
 
-            // You can pass an ID. If you don't, one will be generated for you
-            id: data.id,
-          },
-          data: {
-            // Event title
-            title: data.conference,
+      			// You can pass an ID. If you don't, one will be generated for you
+      			id: data.id,
+      		},
+      		data: {
+      			// Event title
+      			title: data.title,
 
-            // Event start date
-            start: data.date,
+      			// Event start date
+      			start: data.start_date,
 
-            // Event duration
+            // Event duration (minutes)
             duration: 60,
-          },
+
+      			// You can also choose to set an end time
+      			// If an end time is set, this will take precedence over duration
+      			end: data.end_date,
+
+      			// Event Address
+      			address: data.place,
+
+      			// Event Description
+      			description: '<a href='+data.link+'>'+data.title+'</a>',
+      		},
         });
       }
 
@@ -2602,8 +2612,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'europython-2024',
                     title: 'EuroPython 2024 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Prague, Czechia',
+                    link: 'https://ep2024.europython.eu/'
                   });
                   document.querySelector('#europython-2024 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -2671,8 +2683,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'europython-2023',
                     title: 'EuroPython 2023 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Prague, Czechia',
+                    link: 'https://ep2023.europython.eu/'
                   });
                   document.querySelector('#europython-2023 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -2740,8 +2754,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'europython-2022',
                     title: 'EuroPython 2022 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Dublin, Ireland',
+                    link: 'https://ep2022.europython.eu/'
                   });
                   document.querySelector('#europython-2022 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -2809,8 +2825,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'europython-2021',
                     title: 'EuroPython 2021 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Online',
+                    link: 'https://www.europython.eu/'
                   });
                   document.querySelector('#europython-2021 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -2878,8 +2896,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'europython-2020',
                     title: 'EuroPython 2020 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Online',
+                    link: 'https://ep2020.europython.eu/'
                   });
                   document.querySelector('#europython-2020 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -2947,8 +2967,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'europython-2019',
                     title: 'EuroPython 2019 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Basel, Switzerland',
+                    link: 'https://ep2019.europython.eu/'
                   });
                   document.querySelector('#europython-2019 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -3016,8 +3038,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'europython-2018',
                     title: 'EuroPython 2018 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Edinburgh, UK',
+                    link: 'https://web.archive.org/web/20180728144400/https://ep2018.europython.eu/en/'
                   });
                   document.querySelector('#europython-2018 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -3085,8 +3109,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'europython-2017',
                     title: 'EuroPython 2017 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Rimini, Italy',
+                    link: 'https://web.archive.org/web/20170316094425/http://ep2017.europython.eu/'
                   });
                   document.querySelector('#europython-2017 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -3154,8 +3180,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'europython-2016',
                     title: 'EuroPython 2016 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'ECC, Spain',
+                    link: 'https://web.archive.org/web/20160129180633/http://ep2016.europython.eu/'
                   });
                   document.querySelector('#europython-2016 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -3223,8 +3251,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'europython-2015',
                     title: 'EuroPython 2015 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Bilbao, Spain',
+                    link: 'https://web.archive.org/web/20150224103848/http://ep2015.europython.eu/'
                   });
                   document.querySelector('#europython-2015 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -3292,8 +3322,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'europython-2014',
                     title: 'EuroPython 2014 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Berlin, Germany',
+                    link: 'https://web.archive.org/web/20140706142751/https://ep2014.europython.eu/en/'
                   });
                   document.querySelector('#europython-2014 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -3361,8 +3393,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'europython-2013',
                     title: 'EuroPython 2013 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Florence, Italy',
+                    link: 'https://web.archive.org/web/20130603032549/https://ep2013.europython.eu/'
                   });
                   document.querySelector('#europython-2013 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -3430,8 +3464,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'europython-2012',
                     title: 'EuroPython 2012 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Florence, Italy',
+                    link: 'https://web.archive.org/web/20120724122915/https://ep2012.europython.eu/'
                   });
                   document.querySelector('#europython-2012 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -3499,8 +3535,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'europython-2011',
                     title: 'EuroPython 2011 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Florence, Italy',
+                    link: 'https://web.archive.org/web/20110626073356/http://ep2011.europython.eu/'
                   });
                   document.querySelector('#europython-2011 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -3568,8 +3606,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'europython-2010',
                     title: 'EuroPython 2010 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Birmingham, UK',
+                    link: 'https://web.archive.org/web/20110414144119/http://ep2010.europython.eu/'
                   });
                   document.querySelector('#europython-2010 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -3637,8 +3677,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'europython-2009',
                     title: 'EuroPython 2009 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Birmingham, UK',
+                    link: 'https://web.archive.org/web/20100429204959/http://ep2009.europython.eu/'
                   });
                   document.querySelector('#europython-2009 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -3706,8 +3748,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'europython-2008',
                     title: 'EuroPython 2008 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Vilnius, Lithuania',
+                    link: 'https://web.archive.org/web/20080706103533/http://www.europython.org/'
                   });
                   document.querySelector('#europython-2008 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -3775,8 +3819,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'europython-2007',
                     title: 'EuroPython 2007 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Vilnius, Lithuania',
+                    link: 'https://web.archive.org/web/20070709123745/http://www.europython.org/'
                   });
                   document.querySelector('#europython-2007 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -3844,8 +3890,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'europython-2006',
                     title: 'EuroPython 2006 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Geneva, Switzerland',
+                    link: 'https://web.archive.org/web/20060701045949/http://www.europython.org/'
                   });
                   document.querySelector('#europython-2006 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -3913,8 +3961,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'europython-2005',
                     title: 'EuroPython 2005 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Gothenburg, Sweden',
+                    link: 'https://web.archive.org/web/20050829082959/http://www.europython.org/'
                   });
                   document.querySelector('#europython-2005 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -3982,8 +4032,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'europython-2004',
                     title: 'EuroPython 2004 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Gothenburg, Sweden',
+                    link: 'https://web.archive.org/web/20040623210324/http://www.europython.org:80/'
                   });
                   document.querySelector('#europython-2004 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -4051,8 +4103,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'europython-2003',
                     title: 'EuroPython 2003 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Charleroi, Belgium',
+                    link: 'https://web.archive.org/web/20030804085245/http://www.europython.org/'
                   });
                   document.querySelector('#europython-2003 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -4120,8 +4174,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'europython-2002',
                     title: 'EuroPython 2002 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Charleroi, Belgium',
+                    link: 'https://web.archive.org/web/20020802042807/http://www.europython.org/'
                   });
                   document.querySelector('#europython-2002 .calendar').appendChild(myCalendar);
                 } catch (err) {

@@ -9,19 +9,7 @@
 		<title>Python Conference Deadlines</title>
 		<description>Countdowns to your favourite Python conferences with calls for participation and resources to submit awesome talks!</description>
 		<link>https://pythondeadlin.es/feed.xml</link>
-		<lastBuildDate>Mon, 25 Mar 2024 17:18:27 +0000</lastBuildDate>
-		
-		
-		
-			<item>
-				<title>PyData Eindhoven 2024 Conference Deadline</title>
-				<description>Conference in Eindhoven, the Netherlands on July 11, 2024. CfP: 2024-05-13 23:59:00 AoE. </description>
-				<pubDate>Mon, 13 May 2024 23:59:00 +0000</pubDate>
-				<link>https://pythondeadlin.es/conference/pydata-eindhoven-2024/</link>
-				<guid isPermaLink="false"></guid>
-				<category>PY</category>
-			</item>
-		
+		<lastBuildDate>Thu, 28 Mar 2024 16:41:46 +0000</lastBuildDate>
 		
 		
 		
@@ -90,6 +78,18 @@
 				<description>Conference in Moscow, Russia on July 26 - 27, 2024. CfP: 2024-05-15 23:59:00 AoE. </description>
 				<pubDate>Wed, 15 May 2024 23:59:00 +0000</pubDate>
 				<link>https://pythondeadlin.es/conference/pycon-russia-2024/</link>
+				<guid isPermaLink="false"></guid>
+				<category>PY</category>
+			</item>
+		
+		
+		
+		
+			<item>
+				<title>PyData Eindhoven 2024 Conference Deadline</title>
+				<description>Conference in Eindhoven, Netherlands on July 11th, 2024. CfP: 2024-05-13 23:59:00 AoE. </description>
+				<pubDate>Mon, 13 May 2024 23:59:00 +0000</pubDate>
+				<link>https://pythondeadlin.es/conference/pydata-eindhoven-2024/</link>
 				<guid isPermaLink="false"></guid>
 				<category>PY</category>
 			</item>

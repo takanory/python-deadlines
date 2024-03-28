@@ -74,7 +74,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711387107"
+      href="/static/css/js-year-calendar.min.css?t=1711644106"
       media="screen,projection"
     />
 
@@ -86,13 +86,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711387107"
+      href="/static/css/deadlines.css?t=1711644106"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711387107"
+      href="/static/css/calendar.css?t=1711644106"
       media="screen,projection"
     />
 
@@ -467,7 +467,7 @@
       </div>
       <div id="page-content">
         <div id="conf-deadline-timer" class="row">
-          <div id="cfp-timer" class="col-12 conf-timer"></div>
+          <div id="cfp-timer" class="col-12 conf-timer">Cancelled</div>
         </div>
         <div id="conf-key-facts" class="row">
           <div class="col-12 col-md-6">
@@ -523,8 +523,10 @@
         </div>
         <div id="conf-deadlines" class="row">
           <div class="col-12 col-md-6">
-            <div class="meta deadline">Download Conference deadline:</div>
+            <div class="meta deadline">Download Conference Deadline:</div>
             <div id="conference-deadline" class="calendar meta"></div>
+            <div class="meta deadline">Download Conference Dates:</div>
+            <div id="conference-calendar" class="calendar meta"></div>
             <div class="meta deadline">
               Deadline in timezone from conference website:
             </div>
@@ -587,13 +589,13 @@
         </div>
         <div class="row">
           <div
-            id="62122e6e-d9e5-4cc4-ac74-2d4dc004cc55"
+            id="6b7f3fb0-0852-404d-bc11-283b2e855d54"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "62122e6e-d9e5-4cc4-ac74-2d4dc004cc55",
+              "6b7f3fb0-0852-404d-bc11-283b2e855d54",
               [
                 {
                   latitude: 44.9379672,
@@ -721,13 +723,23 @@
             },
             data: {
               // Event title
-              title: data.conference,
+              title: data.title,
 
               // Event start date
-              start: data.date,
+              start: data.start_date,
 
-              // Event duration
+              // Event duration (minutes)
               duration: 60,
+
+              // You can also choose to set an end time
+              // If an end time is set, this will take precedence over duration
+              end: data.end_date,
+
+              // Event Address
+              address: data.place,
+
+              // Event Description
+              description: "<a href=" + data.link + ">" + data.title + "</a>",
             },
           });
         }
@@ -736,48 +748,9 @@
 
         // other
 
-        // Use specified timezone for deadlines if available else use AoE timezone
-
-        var confDeadline = DateTime.fromSQL("Cancelled", {
-          zone: "Asia/Tehran",
-        });
-
-        // check if timezone is valid otherwise replace by system timezone
-        if (confDeadline.invalid) {
-          var confDeadline = DateTime.fromSQL("Cancelled");
-          console.log("Invalid timezone. Using system timezone instead.");
-        }
-
-        // add calendar
-        var conferenceDeadlineCalendar = createCalendarFromObject({
-          id: "pycon-iran-2022",
-          title: "PyCon Iran 2022 Conference Deadlines",
-          date: confDeadline.toJSDate(),
-          duration: 60,
-        });
-        document
-          .querySelector("#conference-deadline")
-          .appendChild(conferenceDeadlineCalendar);
-
-        // render countdown timer
-        $("#cfp-timer").countdown(confDeadline.toJSDate(), function (event) {
-          $(this).html(event.strftime("%D days %Hh %Mm %Ss"));
-        });
-
-        // render deadline conference time
-
-        $(".deadline-time").html(
-          confDeadline
-            .setZone("Asia/Tehran")
-            .toLocaleString(DateTime.DATETIME_HUGE_WITH_SECONDS)
-        );
-
-        // render deadline in local timezone
-        $(".deadline-local-time").html(
-          confDeadline
-            .setZone("system")
-            .toLocaleString(DateTime.DATETIME_HUGE_WITH_SECONDS)
-        );
+        $("#cfp-timer").html("Cancelled");
+        $(".deadline-time").html("Cancelled");
+        $(".deadline-local-time").html("Cancelled");
       });
     </script>
     <script async defer>

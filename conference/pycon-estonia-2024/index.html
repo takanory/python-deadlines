@@ -77,7 +77,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711387107"
+      href="/static/css/js-year-calendar.min.css?t=1711644106"
       media="screen,projection"
     />
 
@@ -89,13 +89,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711387107"
+      href="/static/css/deadlines.css?t=1711644106"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711387107"
+      href="/static/css/calendar.css?t=1711644106"
       media="screen,projection"
     />
 
@@ -588,8 +588,10 @@
         </div>
         <div id="conf-deadlines" class="row">
           <div class="col-12 col-md-6">
-            <div class="meta deadline">Download Conference deadline:</div>
+            <div class="meta deadline">Download Conference Deadline:</div>
             <div id="conference-deadline" class="calendar meta"></div>
+            <div class="meta deadline">Download Conference Dates:</div>
+            <div id="conference-calendar" class="calendar meta"></div>
             <div class="meta deadline">
               Deadline in timezone from conference website:
             </div>
@@ -667,13 +669,13 @@
         </div>
         <div class="row">
           <div
-            id="98761e78-5ed7-4772-ae0c-584f1b3087c5"
+            id="f7f90031-2061-4a39-9e52-d62cdaf0d78f"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "98761e78-5ed7-4772-ae0c-584f1b3087c5",
+              "f7f90031-2061-4a39-9e52-d62cdaf0d78f",
               [
                 {
                   latitude: 59.4372155,
@@ -801,13 +803,23 @@
             },
             data: {
               // Event title
-              title: data.conference,
+              title: data.title,
 
               // Event start date
-              start: data.date,
+              start: data.start_date,
 
-              // Event duration
+              // Event duration (minutes)
               duration: 60,
+
+              // You can also choose to set an end time
+              // If an end time is set, this will take precedence over duration
+              end: data.end_date,
+
+              // Event Address
+              address: data.place,
+
+              // Event Description
+              description: "<a href=" + data.link + ">" + data.title + "</a>",
             },
           });
         }
@@ -829,15 +841,30 @@
         }
 
         // add calendar
+
         var conferenceDeadlineCalendar = createCalendarFromObject({
           id: "pycon-estonia-2024",
-          title: "PyCon Estonia 2024 Conference Deadlines",
-          date: confDeadline.toJSDate(),
+          title: "PyCon Estonia 2024 deadline",
+          start_date: confDeadline.toJSDate(),
           duration: 60,
+          place: "Tallinn, Estonia",
+          link: "https://pycon.ee/",
         });
         document
           .querySelector("#conference-deadline")
           .appendChild(conferenceDeadlineCalendar);
+
+        var conferenceCalendar = createCalendarFromObject({
+          id: "pycon-estonia-2024",
+          title: "PyCon Estonia 2024",
+          start_date: DateTime.fromSQL("2024-09-05").toJSDate(),
+          end_date: DateTime.fromSQL("2024-09-06").toJSDate(),
+          place: "Tallinn, Estonia",
+          link: "https://pycon.ee/",
+        });
+        document
+          .querySelector("#conference-calendar")
+          .appendChild(conferenceCalendar);
 
         // render countdown timer
         $("#cfp-timer").countdown(confDeadline.toJSDate(), function (event) {

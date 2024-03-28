@@ -64,7 +64,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711387107"
+      href="/static/css/js-year-calendar.min.css?t=1711644106"
       media="screen,projection"
     />
 
@@ -76,13 +76,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711387107"
+      href="/static/css/deadlines.css?t=1711644106"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711387107"
+      href="/static/css/calendar.css?t=1711644106"
       media="screen,projection"
     />
 
@@ -776,13 +776,13 @@
 
         <div class="row">
           <div
-            id="2c04fac1-a5ea-4653-8022-b05fae0876fd"
+            id="aa4a87b1-c617-46a0-b21c-f8b2036bf206"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "2c04fac1-a5ea-4653-8022-b05fae0876fd",
+              "aa4a87b1-c617-46a0-b21c-f8b2036bf206",
               [
                 {
                   latitude: 37.7681571,
@@ -923,22 +923,32 @@
 
       function createCalendarFromObject(data) {
         return createCalendar({
-          options: {
-            class: "calendar-obj",
+      		options: {
+      			class: 'calendar-obj',
 
-            // You can pass an ID. If you don't, one will be generated for you
-            id: data.id,
-          },
-          data: {
-            // Event title
-            title: data.conference,
+      			// You can pass an ID. If you don't, one will be generated for you
+      			id: data.id,
+      		},
+      		data: {
+      			// Event title
+      			title: data.title,
 
-            // Event start date
-            start: data.date,
+      			// Event start date
+      			start: data.start_date,
 
-            // Event duration
+            // Event duration (minutes)
             duration: 60,
-          },
+
+      			// You can also choose to set an end time
+      			// If an end time is set, this will take precedence over duration
+      			end: data.end_date,
+
+      			// Event Address
+      			address: data.place,
+
+      			// Event Description
+      			description: '<a href='+data.link+'>'+data.title+'</a>',
+      		},
         });
       }
 
@@ -1034,8 +1044,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pybay-2022',
                     title: 'PyBay 2022 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'San Francisco, USA',
+                    link: 'https://web.archive.org/web/20220901001232/http://pybay.com/'
                   });
                   document.querySelector('#pybay-2022 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1101,8 +1113,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'pybay-2019',
                     title: 'PyBay 2019 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'San Francisco, USA',
+                    link: 'https://web.archive.org/web/20190815015012/http://pybay.com/'
                   });
                   document.querySelector('#pybay-2019 .calendar').appendChild(myCalendar);
                 } catch (err) {

@@ -67,7 +67,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711387107"
+      href="/static/css/js-year-calendar.min.css?t=1711644106"
       media="screen,projection"
     />
 
@@ -79,13 +79,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711387107"
+      href="/static/css/deadlines.css?t=1711644106"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711387107"
+      href="/static/css/calendar.css?t=1711644106"
       media="screen,projection"
     />
 
@@ -868,22 +868,32 @@
 
       function createCalendarFromObject(data) {
         return createCalendar({
-          options: {
-            class: "calendar-obj",
+      		options: {
+      			class: 'calendar-obj',
 
-            // You can pass an ID. If you don't, one will be generated for you
-            id: data.id,
-          },
-          data: {
-            // Event title
-            title: data.conference,
+      			// You can pass an ID. If you don't, one will be generated for you
+      			id: data.id,
+      		},
+      		data: {
+      			// Event title
+      			title: data.title,
 
-            // Event start date
-            start: data.date,
+      			// Event start date
+      			start: data.start_date,
 
-            // Event duration
+            // Event duration (minutes)
             duration: 60,
-          },
+
+      			// You can also choose to set an end time
+      			// If an end time is set, this will take precedence over duration
+      			end: data.end_date,
+
+      			// Event Address
+      			address: data.place,
+
+      			// Event Description
+      			description: '<a href='+data.link+'>'+data.title+'</a>',
+      		},
         });
       }
 
@@ -990,8 +1000,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'flask-con-2023',
                     title: 'Flask Con 2023 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Online',
+                    link: 'https://flaskcon.com/2023/'
                   });
                   document.querySelector('#flask-con-2023 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1059,8 +1071,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'flask-con-2021',
                     title: 'Flask Con 2021 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Online',
+                    link: 'https://web.archive.org/web/20211130204922/http://flaskcon.com/y/2021/'
                   });
                   document.querySelector('#flask-con-2021 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1128,8 +1142,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'flask-con-2020',
                     title: 'Flask Con 2020 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Online',
+                    link: 'https://web.archive.org/web/20200611021621/https://flaskcon.com/'
                   });
                   document.querySelector('#flask-con-2020 .calendar').appendChild(myCalendar);
                 } catch (err) {
@@ -1197,8 +1213,10 @@
                   var myCalendar = createCalendarFromObject({
                     id: 'flask-conf-brasil-2019',
                     title: 'Flask Conf Brasil 2019 deadline',
-                    date: cfpDate.toJSDate(),
+                    start_date: cfpDate.toJSDate(),
                     duration: 60,
+                    place: 'Florianópolis, Brazil',
+                    link: 'https://2019.flask.python.org.br/'
                   });
                   document.querySelector('#flask-conf-brasil-2019 .calendar').appendChild(myCalendar);
                 } catch (err) {
