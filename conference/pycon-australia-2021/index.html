@@ -77,7 +77,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711655349"
+      href="/static/css/js-year-calendar.min.css?t=1711727963"
       media="screen,projection"
     />
 
@@ -89,13 +89,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711655349"
+      href="/static/css/deadlines.css?t=1711727963"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711655349"
+      href="/static/css/calendar.css?t=1711727963"
       media="screen,projection"
     />
 
@@ -307,7 +307,7 @@
       </div>
       <div id="page-content">
         <div id="conf-deadline-timer" class="row">
-          <div id="cfp-timer" class="col-12 conf-timer">TBA</div>
+          <div id="cfp-timer" class="col-12 conf-timer"></div>
         </div>
         <div id="conf-key-facts" class="row">
           <div class="col-12 col-md-6">
@@ -319,7 +319,7 @@
                 width="16"
                 height="16"
               />
-              <span id="conf-date">September 10 - 13, 2021</span>
+              <span id="conf-date">September 10 - 12, 2021</span>
             </div>
             <div>
               <img
@@ -556,9 +556,63 @@
 
         // other
 
-        $("#cfp-timer").html("TBA");
-        $(".deadline-time").html("TBA");
-        $(".deadline-local-time").html("TBA");
+        // Use specified timezone for deadlines if available else use AoE timezone
+
+        var confDeadline = DateTime.fromSQL("2021-07-11 23:59:00", {
+          zone: "UTC-12",
+        });
+
+        // check if timezone is valid otherwise replace by system timezone
+        if (confDeadline.invalid) {
+          var confDeadline = DateTime.fromSQL("2021-07-11 23:59:00");
+          console.log("Invalid timezone. Using system timezone instead.");
+        }
+
+        // add calendar
+
+        var conferenceDeadlineCalendar = createCalendarFromObject({
+          id: "pycon-australia-2021",
+          title: "PyCon Australia 2021 deadline",
+          start_date: confDeadline.toJSDate(),
+          duration: 60,
+          place: "Online",
+          link: "https://2021.pycon.org.au/",
+        });
+        document
+          .querySelector("#conference-deadline")
+          .appendChild(conferenceDeadlineCalendar);
+
+        var conferenceCalendar = createCalendarFromObject({
+          id: "pycon-australia-2021",
+          title: "PyCon Australia 2021",
+          start_date: DateTime.fromSQL("2021-09-10").toJSDate(),
+          end_date: DateTime.fromSQL("2021-09-12").toJSDate(),
+          place: "Online",
+          link: "https://2021.pycon.org.au/",
+        });
+        document
+          .querySelector("#conference-calendar")
+          .appendChild(conferenceCalendar);
+
+        // render countdown timer
+        $("#cfp-timer").countdown(confDeadline.toJSDate(), function (event) {
+          $(this).html(event.strftime("%D days %Hh %Mm %Ss"));
+        });
+
+        // render deadline conference time
+
+        $(".deadline-time").html(
+          confDeadline
+            .setZone("UTC-12")
+            .toLocaleString(DateTime.DATETIME_HUGE_WITH_SECONDS)
+        );
+
+        // render deadline in local timezone
+        $(".deadline-local-time").html(
+          confDeadline
+            .setZone("system")
+            .toLocaleString(DateTime.DATETIME_HUGE_WITH_SECONDS)
+        );
       });
     </script>
   </body>

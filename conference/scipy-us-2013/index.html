@@ -74,7 +74,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711655349"
+      href="/static/css/js-year-calendar.min.css?t=1711727963"
       media="screen,projection"
     />
 
@@ -86,13 +86,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711655349"
+      href="/static/css/deadlines.css?t=1711727963"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711655349"
+      href="/static/css/calendar.css?t=1711727963"
       media="screen,projection"
     />
 
@@ -469,7 +469,7 @@
       </div>
       <div id="page-content">
         <div id="conf-deadline-timer" class="row">
-          <div id="cfp-timer" class="col-12 conf-timer">TBA</div>
+          <div id="cfp-timer" class="col-12 conf-timer"></div>
         </div>
         <div id="conf-key-facts" class="row">
           <div class="col-12 col-md-6">
@@ -481,7 +481,7 @@
                 width="16"
                 height="16"
               />
-              <span id="conf-date">June 24 - 30, 2013</span>
+              <span id="conf-date">June 24 - 29, 2013</span>
             </div>
             <div>
               <img
@@ -596,13 +596,13 @@
         </div>
         <div class="row">
           <div
-            id="8b138b0a-8aa8-4c15-8256-a65be9b204ff"
+            id="d9ee8de3-a280-449e-85c4-a01bbd222a61"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "8b138b0a-8aa8-4c15-8256-a65be9b204ff",
+              "d9ee8de3-a280-449e-85c4-a01bbd222a61",
               [
                 {
                   latitude: 30.2711286,
@@ -755,9 +755,65 @@
 
         // other
 
-        $("#cfp-timer").html("TBA");
-        $(".deadline-time").html("TBA");
-        $(".deadline-local-time").html("TBA");
+        // Use specified timezone for deadlines if available else use AoE timezone
+
+        var confDeadline = DateTime.fromSQL("2013-03-20 23:59:00", {
+          zone: "UTC-12",
+        });
+
+        // check if timezone is valid otherwise replace by system timezone
+        if (confDeadline.invalid) {
+          var confDeadline = DateTime.fromSQL("2013-03-20 23:59:00");
+          console.log("Invalid timezone. Using system timezone instead.");
+        }
+
+        // add calendar
+
+        var conferenceDeadlineCalendar = createCalendarFromObject({
+          id: "scipy-us-2013",
+          title: "SciPy US 2013 deadline",
+          start_date: confDeadline.toJSDate(),
+          duration: 60,
+          place: "Austin, USA",
+          link:
+            "https://web.archive.org/web/20130621023952/http://conference.scipy.org/scipy2013/",
+        });
+        document
+          .querySelector("#conference-deadline")
+          .appendChild(conferenceDeadlineCalendar);
+
+        var conferenceCalendar = createCalendarFromObject({
+          id: "scipy-us-2013",
+          title: "SciPy US 2013",
+          start_date: DateTime.fromSQL("2013-06-24").toJSDate(),
+          end_date: DateTime.fromSQL("2013-06-29").toJSDate(),
+          place: "Austin, USA",
+          link:
+            "https://web.archive.org/web/20130621023952/http://conference.scipy.org/scipy2013/",
+        });
+        document
+          .querySelector("#conference-calendar")
+          .appendChild(conferenceCalendar);
+
+        // render countdown timer
+        $("#cfp-timer").countdown(confDeadline.toJSDate(), function (event) {
+          $(this).html(event.strftime("%D days %Hh %Mm %Ss"));
+        });
+
+        // render deadline conference time
+
+        $(".deadline-time").html(
+          confDeadline
+            .setZone("UTC-12")
+            .toLocaleString(DateTime.DATETIME_HUGE_WITH_SECONDS)
+        );
+
+        // render deadline in local timezone
+        $(".deadline-local-time").html(
+          confDeadline
+            .setZone("system")
+            .toLocaleString(DateTime.DATETIME_HUGE_WITH_SECONDS)
+        );
       });
     </script>
     <script async defer>

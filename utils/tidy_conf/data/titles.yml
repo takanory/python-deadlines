@@ -1,4 +1,6 @@
 alt_name:
+    DjangoCon Australia:
+        - DjangoCon AU
     FOSDEM:
         - Python Devroom @ FOSDEM
     Kiwi PyCon:
@@ -72,6 +74,9 @@ alt_name:
         - PyCon TW
     PyCon Ukraine:
         - PyCon UA
+    Python Brasil:
+        - PythonBrasil
+        - Python Brazil
     Python Niger:
         - Launching Python Niger
     Python Pizza Prague:

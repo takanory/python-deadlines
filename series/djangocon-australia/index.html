@@ -37,7 +37,7 @@
     <meta property="og:type" content="article" />
     <meta
       property="article:published_time"
-      content="2023-08-18T00:00:00+00:00"
+      content="2024-08-04T00:00:00+00:00"
     />
     <meta name="twitter:card" content="summary" />
     <meta
@@ -55,8 +55,8 @@
           "name": "Jesper Dramsch",
           "url": "https://dramsch.net"
         },
-        "dateModified": "2023-08-18T00:00:00+00:00",
-        "datePublished": "2023-08-18T00:00:00+00:00",
+        "dateModified": "2024-08-04T00:00:00+00:00",
+        "datePublished": "2024-08-04T00:00:00+00:00",
         "description": "Summary of the conference and its instances throughout the years.",
         "headline": "DjangoCon Australia Conference Summary",
         "mainEntityOfPage": {
@@ -78,7 +78,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711655349"
+      href="/static/css/js-year-calendar.min.css?t=1711727963"
       media="screen,projection"
     />
 
@@ -90,13 +90,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711655349"
+      href="/static/css/deadlines.css?t=1711727963"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711655349"
+      href="/static/css/calendar.css?t=1711727963"
       media="screen,projection"
     />
 
@@ -199,45 +199,6 @@
       type="text/javascript"
       src="/static/js/bootstrap-multiselect.min.js"
     ></script>
-
-    <link rel="stylesheet" type="text/css" href="/static/css/mastodon.css" />
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        fetch("https://fosstodon.org/@djangoconau.rss")
-          .then(function (response) {
-            return response.text();
-          })
-          .then(function (xmlText) {
-            var parser = new DOMParser();
-            var xml = parser.parseFromString(xmlText, "text/xml");
-            var items = xml.querySelectorAll("item");
-            var feedContainer = document.getElementById("mastodon-feed");
-            var postLimit = 2; // Number of posts to display
-
-            for (var i = 0; i < postLimit && i < items.length; i++) {
-              var item = items[i];
-              var post = item.querySelector("description").textContent;
-              var link = item.querySelector("link").textContent;
-              var pubDate = item.querySelector("pubDate").textContent;
-
-              var feedItem = document.createElement("div");
-              feedItem.setAttribute("class", "timeline-item");
-              feedItem.innerHTML =
-                '<div class="timeline-content">' +
-                post +
-                '</div><a href="' +
-                link +
-                '">' +
-                pubDate +
-                " by DjangoCon Australia</a>";
-              feedContainer.appendChild(feedItem);
-            }
-          })
-          .catch(function (error) {
-            console.log("Error fetching Mastodon RSS feed:", error);
-          });
-      });
-    </script>
   </head>
 
   <body>
@@ -411,9 +372,7 @@
             <!-- Mastodon timeline -->
             <div class="meta">Mastodon Posts by DjangoCon Australia:</div>
             <div id="mastodon-feed"></div>
-            <a href="https://fosstodon.org/@djangoconau"
-              >See all Mastodon posts for DjangoCon Australia</a
-            >
+            <a href="">See all Mastodon posts for DjangoCon Australia</a>
           </div>
         </div>
         <hr />
@@ -517,6 +476,298 @@
                   <div>
                     Deadline:
                     <span class="deadline-time">Sunday, 14 May 2023</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <span
+                  title="Click to only show WEB conferences"
+                  data-sub="WEB"
+                  class="badge badge-light conf-sub WEB-tag"
+                ></span>
+              </div>
+              <div class="col-6">
+                <div class="calendar"></div>
+              </div>
+            </div>
+            <hr />
+          </div>
+
+          <div id="djangocon-australia-2020" class="ConfItem WEB-conf">
+            <div class="row conf-row">
+              <div class="col-6">
+                <span class="conf-title">
+                  <a
+                    title="Deadline Details"
+                    href="/conference/djangocon-australia-2020/"
+                    >DjangoCon Australia 2020</a
+                  >
+                </span>
+                <span class="conf-title-small">
+                  <a
+                    title="Deadline Details"
+                    href="/conference/djangocon-australia-2020/"
+                    >DjangoCon Australia '20</a
+                  >
+                </span>
+                <span class="conf-title-icon">
+                  <a
+                    title="Conference Website"
+                    href="https://web.archive.org/web/20200508100008/https://2020.djangocon.com.au/"
+                    target="_blank"
+                    ><img
+                      src="/static/img/203-earth.svg"
+                      class="badge-link"
+                      alt="Link to Conference Website"
+                      width="16"
+                      height="16"
+                  /></a>
+                  &ZeroWidthSpace;
+                </span>
+              </div>
+              <div class="col-6">
+                <span class="timer"></span>
+                <span class="timer-small"></span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="meta">
+                  <span class="conf-date">September 4th, 2020.</span>
+                  <span class="conf-place">
+                    <a href="#">Online</a>
+                  </span>
+                </div>
+
+                <div class="note"><b>Note: </b>Alongside PyCon Australia</div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <div class="deadline">
+                  <div>
+                    Deadline:
+                    <span class="deadline-time">Sunday, 12 July 2020</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <span
+                  title="Click to only show WEB conferences"
+                  data-sub="WEB"
+                  class="badge badge-light conf-sub WEB-tag"
+                ></span>
+              </div>
+              <div class="col-6">
+                <div class="calendar"></div>
+              </div>
+            </div>
+            <hr />
+          </div>
+
+          <div id="djangocon-australia-2019" class="ConfItem WEB-conf">
+            <div class="row conf-row">
+              <div class="col-6">
+                <span class="conf-title">
+                  <a
+                    title="Deadline Details"
+                    href="/conference/djangocon-australia-2019/"
+                    >DjangoCon Australia 2019</a
+                  >
+                </span>
+                <span class="conf-title-small">
+                  <a
+                    title="Deadline Details"
+                    href="/conference/djangocon-australia-2019/"
+                    >DjangoCon Australia '19</a
+                  >
+                </span>
+                <span class="conf-title-icon">
+                  <a
+                    title="Conference Website"
+                    href="https://2019.djangocon.com.au/"
+                    target="_blank"
+                    ><img
+                      src="/static/img/203-earth.svg"
+                      class="badge-link"
+                      alt="Link to Conference Website"
+                      width="16"
+                      height="16"
+                  /></a>
+                  &ZeroWidthSpace;
+                </span>
+              </div>
+              <div class="col-6">
+                <span class="timer"></span>
+                <span class="timer-small"></span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="meta">
+                  <span class="conf-date">August 2nd, 2019.</span>
+                  <span class="conf-place">
+                    <a href="http://maps.google.com/?q=Sydney, Australia"
+                      >Sydney, Australia</a
+                    >
+                  </span>
+                </div>
+
+                <div class="note">
+                  <b>Note: </b>Specialist track at PyCon Australia
+                </div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <div class="deadline">
+                  <div>
+                    Deadline:
+                    <span class="deadline-time">Sunday, 5 May 2019</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <span
+                  title="Click to only show WEB conferences"
+                  data-sub="WEB"
+                  class="badge badge-light conf-sub WEB-tag"
+                ></span>
+              </div>
+              <div class="col-6">
+                <div class="calendar"></div>
+              </div>
+            </div>
+            <hr />
+          </div>
+
+          <div id="djangocon-australia-2018" class="ConfItem WEB-conf">
+            <div class="row conf-row">
+              <div class="col-6">
+                <span class="conf-title">
+                  <a
+                    title="Deadline Details"
+                    href="/conference/djangocon-australia-2018/"
+                    >DjangoCon Australia 2018</a
+                  >
+                </span>
+                <span class="conf-title-small">
+                  <a
+                    title="Deadline Details"
+                    href="/conference/djangocon-australia-2018/"
+                    >DjangoCon Australia '18</a
+                  >
+                </span>
+                <span class="conf-title-icon">
+                  <a
+                    title="Conference Website"
+                    href="https://web.archive.org/web/20180508100008/https://2018.djangocon.com.au/"
+                    target="_blank"
+                    ><img
+                      src="/static/img/203-earth.svg"
+                      class="badge-link"
+                      alt="Link to Conference Website"
+                      width="16"
+                      height="16"
+                  /></a>
+                  &ZeroWidthSpace;
+                </span>
+              </div>
+              <div class="col-6">
+                <span class="timer"></span>
+                <span class="timer-small"></span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="meta">
+                  <span class="conf-date">August 24 - 28, 2018.</span>
+                  <span class="conf-place">
+                    <a href="http://maps.google.com/?q=Sydney, Australia"
+                      >Sydney, Australia</a
+                    >
+                  </span>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <div class="deadline">
+                  <div>
+                    Deadline:
+                    <span class="deadline-time">Monday, 28 May 2018</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <span
+                  title="Click to only show WEB conferences"
+                  data-sub="WEB"
+                  class="badge badge-light conf-sub WEB-tag"
+                ></span>
+              </div>
+              <div class="col-6">
+                <div class="calendar"></div>
+              </div>
+            </div>
+            <hr />
+          </div>
+
+          <div id="djangocon-australia-2017" class="ConfItem WEB-conf">
+            <div class="row conf-row">
+              <div class="col-6">
+                <span class="conf-title">
+                  <a
+                    title="Deadline Details"
+                    href="/conference/djangocon-australia-2017/"
+                    >DjangoCon Australia 2017</a
+                  >
+                </span>
+                <span class="conf-title-small">
+                  <a
+                    title="Deadline Details"
+                    href="/conference/djangocon-australia-2017/"
+                    >DjangoCon Australia '17</a
+                  >
+                </span>
+                <span class="conf-title-icon">
+                  <a
+                    title="Conference Website"
+                    href="https://web.archive.org/web/20170508100008/https://2017.djangocon.com.au/"
+                    target="_blank"
+                    ><img
+                      src="/static/img/203-earth.svg"
+                      class="badge-link"
+                      alt="Link to Conference Website"
+                      width="16"
+                      height="16"
+                  /></a>
+                  &ZeroWidthSpace;
+                </span>
+              </div>
+              <div class="col-6">
+                <span class="timer"></span>
+                <span class="timer-small"></span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="meta">
+                  <span class="conf-date">August 4 - 8, 2017.</span>
+                  <span class="conf-place">
+                    <a href="http://maps.google.com/?q=Melbourne, Australia"
+                      >Melbourne, Australia</a
+                    >
+                  </span>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <div class="deadline">
+                  <div>
+                    Deadline:
+                    <span class="deadline-time">Sunday, 7 May 2017</span>
                   </div>
                 </div>
               </div>
@@ -773,6 +1024,290 @@
                   $('#djangocon-australia-2023 .timer').replaceWith($('#djangocon-australia-2023 .deadline'));
                   $('#djangocon-australia-2023 .timer-small').replaceWith($('#djangocon-australia-2023 .deadline'));
                   $('#djangocon-australia-2023 .calendar').remove();
+                }
+
+
+
+
+
+                $('#djangocon-australia-2020 .WEB-tag').html(sub2name["WEB"].toLocaleLowerCase());
+
+
+
+                // Use specified timezone for deadlines if available else use AoE timezone
+
+                  var cfpDate = DateTime.fromSQL("2020-07-12 23:59:00", { zone: "UTC-12" });
+                  var confDate = DateTime.fromSQL("2020-09-04", { zone: "UTC-12" });
+
+
+                // check if timezone is valid otherwise replace by system timezone
+                if (cfpDate.invalid || confDate.invalid) {
+                  var cfpDate = DateTime.fromSQL("2020-07-12 23:59:00");
+                  var confDate = DateTime.fromSQL("2020-09-04");
+                  console.log("Invalid timezone in djangocon-australia-2020. Using system timezone instead.");
+                }
+
+                // render countdown timer
+                $('#djangocon-australia-2020 .timer').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+
+                // render countdown timer small
+                $('#djangocon-australia-2020 .timer-small').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%Dd %H:%M:%S'));
+                });
+
+                // deadline in local timezone
+                $('#djangocon-australia-2020 .deadline-time').html(cfpDate.setZone('system').toLocaleString(DateTime.DATE_HUGE));
+
+                // add calendar button
+                try {
+                  var myCalendar = createCalendarFromObject({
+                    id: 'djangocon-australia-2020',
+                    title: 'DjangoCon Australia 2020 deadline',
+                    start_date: cfpDate.toJSDate(),
+                    duration: 60,
+                    place: 'Online',
+                    link: 'https://web.archive.org/web/20200508100008/https://2020.djangocon.com.au/'
+                  });
+                  document.querySelector('#djangocon-australia-2020 .calendar').appendChild(myCalendar);
+                } catch (err) {
+                  document.querySelector('#djangocon-australia-2020 .calendar').appendChild("<p>Calendar not available.</p>");
+                  console.log("Error in cfp date.");
+                }
+
+                // check if date has passed, add 'past' class to it
+                cfpDiff = cfpDate.diffNow("seconds");
+                confDiff = confDate.diffNow("seconds");
+
+                $('#djangocon-australia-2020').attr("cfpDiff", cfpDiff.toMillis());
+                $('#djangocon-australia-2020').attr("confDiff", confDiff.toMillis());
+
+                if (cfpDiff < 0) {
+                  $('#djangocon-australia-2020').addClass('pastcfp');
+                  $('#djangocon-australia-2020 .timer').replaceWith($('#djangocon-australia-2020 .deadline'));
+                  $('#djangocon-australia-2020 .timer-small').replaceWith($('#djangocon-australia-2020 .deadline'));
+                  $('#djangocon-australia-2020 .calendar').remove();
+                }
+
+                if (confDiff < 0) {
+                  $('#djangocon-australia-2020').addClass('pastconf');
+                  $('#djangocon-australia-2020 .timer').replaceWith($('#djangocon-australia-2020 .deadline'));
+                  $('#djangocon-australia-2020 .timer-small').replaceWith($('#djangocon-australia-2020 .deadline'));
+                  $('#djangocon-australia-2020 .calendar').remove();
+                }
+
+
+
+
+
+                $('#djangocon-australia-2019 .WEB-tag').html(sub2name["WEB"].toLocaleLowerCase());
+
+
+
+                // Use specified timezone for deadlines if available else use AoE timezone
+
+                  var cfpDate = DateTime.fromSQL("2019-05-05 23:59:00", { zone: "UTC-12" });
+                  var confDate = DateTime.fromSQL("2019-08-02", { zone: "UTC-12" });
+
+
+                // check if timezone is valid otherwise replace by system timezone
+                if (cfpDate.invalid || confDate.invalid) {
+                  var cfpDate = DateTime.fromSQL("2019-05-05 23:59:00");
+                  var confDate = DateTime.fromSQL("2019-08-02");
+                  console.log("Invalid timezone in djangocon-australia-2019. Using system timezone instead.");
+                }
+
+                // render countdown timer
+                $('#djangocon-australia-2019 .timer').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+
+                // render countdown timer small
+                $('#djangocon-australia-2019 .timer-small').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%Dd %H:%M:%S'));
+                });
+
+                // deadline in local timezone
+                $('#djangocon-australia-2019 .deadline-time').html(cfpDate.setZone('system').toLocaleString(DateTime.DATE_HUGE));
+
+                // add calendar button
+                try {
+                  var myCalendar = createCalendarFromObject({
+                    id: 'djangocon-australia-2019',
+                    title: 'DjangoCon Australia 2019 deadline',
+                    start_date: cfpDate.toJSDate(),
+                    duration: 60,
+                    place: 'Sydney, Australia',
+                    link: 'https://2019.djangocon.com.au/'
+                  });
+                  document.querySelector('#djangocon-australia-2019 .calendar').appendChild(myCalendar);
+                } catch (err) {
+                  document.querySelector('#djangocon-australia-2019 .calendar').appendChild("<p>Calendar not available.</p>");
+                  console.log("Error in cfp date.");
+                }
+
+                // check if date has passed, add 'past' class to it
+                cfpDiff = cfpDate.diffNow("seconds");
+                confDiff = confDate.diffNow("seconds");
+
+                $('#djangocon-australia-2019').attr("cfpDiff", cfpDiff.toMillis());
+                $('#djangocon-australia-2019').attr("confDiff", confDiff.toMillis());
+
+                if (cfpDiff < 0) {
+                  $('#djangocon-australia-2019').addClass('pastcfp');
+                  $('#djangocon-australia-2019 .timer').replaceWith($('#djangocon-australia-2019 .deadline'));
+                  $('#djangocon-australia-2019 .timer-small').replaceWith($('#djangocon-australia-2019 .deadline'));
+                  $('#djangocon-australia-2019 .calendar').remove();
+                }
+
+                if (confDiff < 0) {
+                  $('#djangocon-australia-2019').addClass('pastconf');
+                  $('#djangocon-australia-2019 .timer').replaceWith($('#djangocon-australia-2019 .deadline'));
+                  $('#djangocon-australia-2019 .timer-small').replaceWith($('#djangocon-australia-2019 .deadline'));
+                  $('#djangocon-australia-2019 .calendar').remove();
+                }
+
+
+
+
+
+                $('#djangocon-australia-2018 .WEB-tag').html(sub2name["WEB"].toLocaleLowerCase());
+
+
+
+                // Use specified timezone for deadlines if available else use AoE timezone
+
+                  var cfpDate = DateTime.fromSQL("2018-05-28 23:59:00", { zone: "UTC-12" });
+                  var confDate = DateTime.fromSQL("2018-08-24", { zone: "UTC-12" });
+
+
+                // check if timezone is valid otherwise replace by system timezone
+                if (cfpDate.invalid || confDate.invalid) {
+                  var cfpDate = DateTime.fromSQL("2018-05-28 23:59:00");
+                  var confDate = DateTime.fromSQL("2018-08-24");
+                  console.log("Invalid timezone in djangocon-australia-2018. Using system timezone instead.");
+                }
+
+                // render countdown timer
+                $('#djangocon-australia-2018 .timer').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+
+                // render countdown timer small
+                $('#djangocon-australia-2018 .timer-small').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%Dd %H:%M:%S'));
+                });
+
+                // deadline in local timezone
+                $('#djangocon-australia-2018 .deadline-time').html(cfpDate.setZone('system').toLocaleString(DateTime.DATE_HUGE));
+
+                // add calendar button
+                try {
+                  var myCalendar = createCalendarFromObject({
+                    id: 'djangocon-australia-2018',
+                    title: 'DjangoCon Australia 2018 deadline',
+                    start_date: cfpDate.toJSDate(),
+                    duration: 60,
+                    place: 'Sydney, Australia',
+                    link: 'https://web.archive.org/web/20180508100008/https://2018.djangocon.com.au/'
+                  });
+                  document.querySelector('#djangocon-australia-2018 .calendar').appendChild(myCalendar);
+                } catch (err) {
+                  document.querySelector('#djangocon-australia-2018 .calendar').appendChild("<p>Calendar not available.</p>");
+                  console.log("Error in cfp date.");
+                }
+
+                // check if date has passed, add 'past' class to it
+                cfpDiff = cfpDate.diffNow("seconds");
+                confDiff = confDate.diffNow("seconds");
+
+                $('#djangocon-australia-2018').attr("cfpDiff", cfpDiff.toMillis());
+                $('#djangocon-australia-2018').attr("confDiff", confDiff.toMillis());
+
+                if (cfpDiff < 0) {
+                  $('#djangocon-australia-2018').addClass('pastcfp');
+                  $('#djangocon-australia-2018 .timer').replaceWith($('#djangocon-australia-2018 .deadline'));
+                  $('#djangocon-australia-2018 .timer-small').replaceWith($('#djangocon-australia-2018 .deadline'));
+                  $('#djangocon-australia-2018 .calendar').remove();
+                }
+
+                if (confDiff < 0) {
+                  $('#djangocon-australia-2018').addClass('pastconf');
+                  $('#djangocon-australia-2018 .timer').replaceWith($('#djangocon-australia-2018 .deadline'));
+                  $('#djangocon-australia-2018 .timer-small').replaceWith($('#djangocon-australia-2018 .deadline'));
+                  $('#djangocon-australia-2018 .calendar').remove();
+                }
+
+
+
+
+
+                $('#djangocon-australia-2017 .WEB-tag').html(sub2name["WEB"].toLocaleLowerCase());
+
+
+
+                // Use specified timezone for deadlines if available else use AoE timezone
+
+                  var cfpDate = DateTime.fromSQL("2017-05-07 23:59:00", { zone: "UTC-12" });
+                  var confDate = DateTime.fromSQL("2017-08-04", { zone: "UTC-12" });
+
+
+                // check if timezone is valid otherwise replace by system timezone
+                if (cfpDate.invalid || confDate.invalid) {
+                  var cfpDate = DateTime.fromSQL("2017-05-07 23:59:00");
+                  var confDate = DateTime.fromSQL("2017-08-04");
+                  console.log("Invalid timezone in djangocon-australia-2017. Using system timezone instead.");
+                }
+
+                // render countdown timer
+                $('#djangocon-australia-2017 .timer').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+
+                // render countdown timer small
+                $('#djangocon-australia-2017 .timer-small').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%Dd %H:%M:%S'));
+                });
+
+                // deadline in local timezone
+                $('#djangocon-australia-2017 .deadline-time').html(cfpDate.setZone('system').toLocaleString(DateTime.DATE_HUGE));
+
+                // add calendar button
+                try {
+                  var myCalendar = createCalendarFromObject({
+                    id: 'djangocon-australia-2017',
+                    title: 'DjangoCon Australia 2017 deadline',
+                    start_date: cfpDate.toJSDate(),
+                    duration: 60,
+                    place: 'Melbourne, Australia',
+                    link: 'https://web.archive.org/web/20170508100008/https://2017.djangocon.com.au/'
+                  });
+                  document.querySelector('#djangocon-australia-2017 .calendar').appendChild(myCalendar);
+                } catch (err) {
+                  document.querySelector('#djangocon-australia-2017 .calendar').appendChild("<p>Calendar not available.</p>");
+                  console.log("Error in cfp date.");
+                }
+
+                // check if date has passed, add 'past' class to it
+                cfpDiff = cfpDate.diffNow("seconds");
+                confDiff = confDate.diffNow("seconds");
+
+                $('#djangocon-australia-2017').attr("cfpDiff", cfpDiff.toMillis());
+                $('#djangocon-australia-2017').attr("confDiff", confDiff.toMillis());
+
+                if (cfpDiff < 0) {
+                  $('#djangocon-australia-2017').addClass('pastcfp');
+                  $('#djangocon-australia-2017 .timer').replaceWith($('#djangocon-australia-2017 .deadline'));
+                  $('#djangocon-australia-2017 .timer-small').replaceWith($('#djangocon-australia-2017 .deadline'));
+                  $('#djangocon-australia-2017 .calendar').remove();
+                }
+
+                if (confDiff < 0) {
+                  $('#djangocon-australia-2017').addClass('pastconf');
+                  $('#djangocon-australia-2017 .timer').replaceWith($('#djangocon-australia-2017 .deadline'));
+                  $('#djangocon-australia-2017 .timer-small').replaceWith($('#djangocon-australia-2017 .deadline'));
+                  $('#djangocon-australia-2017 .calendar').remove();
                 }
 
 

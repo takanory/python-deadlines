@@ -70,7 +70,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711655349"
+      href="/static/css/js-year-calendar.min.css?t=1711727963"
       media="screen,projection"
     />
 
@@ -82,13 +82,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711655349"
+      href="/static/css/deadlines.css?t=1711727963"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711655349"
+      href="/static/css/calendar.css?t=1711727963"
       media="screen,projection"
     />
 
@@ -382,7 +382,7 @@
                 <div class="deadline">
                   <div>
                     Deadline:
-                    <span class="deadline-time">TBA</span>
+                    <span class="deadline-time">Sunday, 1 March 2020</span>
                   </div>
                 </div>
               </div>
@@ -577,9 +577,69 @@
                 $('#djangocon-eu-2020 .WEB-tag').html(sub2name["WEB"].toLocaleLowerCase());
 
 
-                $('#djangocon-eu-2020 .timer').html("TBA");
-                $('#djangocon-eu-2020 .deadline-time').html("TBA");
-                $('#djangocon-eu-2020').attr("cfpDiff", Infinity);
+
+                // Use specified timezone for deadlines if available else use AoE timezone
+
+                  var cfpDate = DateTime.fromSQL("2020-03-01 11:59:00", { zone: "UTC-12" });
+                  var confDate = DateTime.fromSQL("2020-09-18", { zone: "UTC-12" });
+
+
+                // check if timezone is valid otherwise replace by system timezone
+                if (cfpDate.invalid || confDate.invalid) {
+                  var cfpDate = DateTime.fromSQL("2020-03-01 11:59:00");
+                  var confDate = DateTime.fromSQL("2020-09-18");
+                  console.log("Invalid timezone in djangocon-eu-2020. Using system timezone instead.");
+                }
+
+                // render countdown timer
+                $('#djangocon-eu-2020 .timer').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+
+                // render countdown timer small
+                $('#djangocon-eu-2020 .timer-small').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%Dd %H:%M:%S'));
+                });
+
+                // deadline in local timezone
+                $('#djangocon-eu-2020 .deadline-time').html(cfpDate.setZone('system').toLocaleString(DateTime.DATE_HUGE));
+
+                // add calendar button
+                try {
+                  var myCalendar = createCalendarFromObject({
+                    id: 'djangocon-eu-2020',
+                    title: 'DjangoCon EU 2020 deadline',
+                    start_date: cfpDate.toJSDate(),
+                    duration: 60,
+                    place: 'Online',
+                    link: 'https://2020.djangocon.eu/'
+                  });
+                  document.querySelector('#djangocon-eu-2020 .calendar').appendChild(myCalendar);
+                } catch (err) {
+                  document.querySelector('#djangocon-eu-2020 .calendar').appendChild("<p>Calendar not available.</p>");
+                  console.log("Error in cfp date.");
+                }
+
+                // check if date has passed, add 'past' class to it
+                cfpDiff = cfpDate.diffNow("seconds");
+                confDiff = confDate.diffNow("seconds");
+
+                $('#djangocon-eu-2020').attr("cfpDiff", cfpDiff.toMillis());
+                $('#djangocon-eu-2020').attr("confDiff", confDiff.toMillis());
+
+                if (cfpDiff < 0) {
+                  $('#djangocon-eu-2020').addClass('pastcfp');
+                  $('#djangocon-eu-2020 .timer').replaceWith($('#djangocon-eu-2020 .deadline'));
+                  $('#djangocon-eu-2020 .timer-small').replaceWith($('#djangocon-eu-2020 .deadline'));
+                  $('#djangocon-eu-2020 .calendar').remove();
+                }
+
+                if (confDiff < 0) {
+                  $('#djangocon-eu-2020').addClass('pastconf');
+                  $('#djangocon-eu-2020 .timer').replaceWith($('#djangocon-eu-2020 .deadline'));
+                  $('#djangocon-eu-2020 .timer-small').replaceWith($('#djangocon-eu-2020 .deadline'));
+                  $('#djangocon-eu-2020 .calendar').remove();
+                }
 
 
 

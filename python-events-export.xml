@@ -9,7 +9,7 @@
 		<title>Newsfeed for Python Events Calendar from Python Conference Deadlines</title>
 		<description>Countdowns to your favourite Python conferences with calls for participation and resources to submit awesome talks!</description>
 		<link>https://pythondeadlin.es/feed.xml</link>
-		<lastBuildDate>Thu, 28 Mar 2024 19:49:09 +0000</lastBuildDate>
+		<lastBuildDate>Fri, 29 Mar 2024 15:59:23 +0000</lastBuildDate>
 		
 			<item>
 				<title>PyCon Poland 2024 Conference Deadline</title>
@@ -34,6 +34,15 @@
 				<description><![CDATA[* name of the event: Piter Py 2024<br/>* type of event: Conference <br/>* focus on Python: Yes<br/>* approximate number of attendees: Unknown<br/>* location (incl. country): Saint Petersburg, Russia<br/>* dates/times/recurrence (incl. time zone): September 26 - 27, 2024<br/>* HTML link : <a href="https://piterpy.com/en/">Piter Py 2024</a>]]></description>
 				<pubDate>Thu, 26 Sep 2024 00:00:00 +0000</pubDate>
 				<link>https://pythondeadlin.es/conference/piter-py-2024/</link>
+				<guid isPermaLink="false"></guid>
+				<category>PY</category>
+			</item>
+		
+			<item>
+				<title>PyCon MEA 2024 Conference Deadline</title>
+				<description><![CDATA[* name of the event: PyCon MEA 2024<br/>* type of event: Conference <br/>* focus on Python: Yes<br/>* approximate number of attendees: Unknown<br/>* location (incl. country): Dubai, UAE<br/>* dates/times/recurrence (incl. time zone): October 14 - 18, 2024<br/>* HTML link : <a href="https://globaldevslam.com/">PyCon MEA 2024</a>]]></description>
+				<pubDate>Mon, 14 Oct 2024 00:00:00 +0000</pubDate>
+				<link>https://pythondeadlin.es/conference/pycon-mea-2024/</link>
 				<guid isPermaLink="false"></guid>
 				<category>PY</category>
 			</item>
@@ -207,15 +216,6 @@
 				<link>https://pythondeadlin.es/conference/pydata-london-2024/</link>
 				<guid isPermaLink="false"></guid>
 				<category>PYDATA</category>
-			</item>
-		
-			<item>
-				<title>DjangoCon Europe 2024 Conference Deadline</title>
-				<description><![CDATA[* name of the event: DjangoCon Europe 2024<br/>* type of event: Conference <br/>* focus on Python: Yes<br/>* approximate number of attendees: Unknown<br/>* location (incl. country): Vigo, Spain<br/>* dates/times/recurrence (incl. time zone): June 5 - 9, 2024<br/>* HTML link : <a href="https://2024.djangocon.eu/">DjangoCon Europe 2024</a>]]></description>
-				<pubDate>Wed, 05 Jun 2024 00:00:00 +0000</pubDate>
-				<link>https://pythondeadlin.es/conference/djangocon-europe-2024/</link>
-				<guid isPermaLink="false"></guid>
-				<category>WEB</category>
 			</item>
 		
 	</channel>

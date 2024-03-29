@@ -63,7 +63,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711655349"
+      href="/static/css/js-year-calendar.min.css?t=1711727963"
       media="screen,projection"
     />
 
@@ -75,13 +75,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711655349"
+      href="/static/css/deadlines.css?t=1711727963"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711655349"
+      href="/static/css/calendar.css?t=1711727963"
       media="screen,projection"
     />
 
@@ -548,6 +548,89 @@
                   <div>
                     Deadline:
                     <span class="deadline-time">Saturday, 1 June 2024</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <span
+                  title="Click to only show PY conferences"
+                  data-sub="PY"
+                  class="badge badge-light conf-sub PY-tag"
+                ></span>
+              </div>
+              <div class="col-6">
+                <div class="calendar"></div>
+              </div>
+            </div>
+            <hr />
+          </div>
+
+          <div id="pycon-mea-2024" class="ConfItem PY-conf">
+            <div class="row conf-row">
+              <div class="col-6">
+                <span class="conf-title">
+                  <a title="Deadline Details" href="/conference/pycon-mea-2024/"
+                    >PyCon MEA 2024</a
+                  >
+                </span>
+                <span class="conf-title-small">
+                  <a title="Deadline Details" href="/conference/pycon-mea-2024/"
+                    >PyCon MEA '24</a
+                  >
+                </span>
+                <span class="conf-title-icon">
+                  <a
+                    title="Conference Website"
+                    href="https://globaldevslam.com/"
+                    target="_blank"
+                    ><img
+                      src="/static/img/203-earth.svg"
+                      class="badge-link"
+                      alt="Link to Conference Website"
+                      width="16"
+                      height="16"
+                  /></a>
+                  &ZeroWidthSpace;
+                </span>
+
+                <span class="conf-title-icon">
+                  <a
+                    title="Twitter for PyCon MEA"
+                    href="https://twitter.com/GlobalDevSlam"
+                    target="_blank"
+                    ><img
+                      src="/static/img/407-twitter.svg"
+                      class="badge-link"
+                      alt="Link to Conference Twitter"
+                      width="16"
+                      height="16"
+                  /></a>
+                  &ZeroWidthSpace;
+                </span>
+              </div>
+              <div class="col-6">
+                <span class="timer"></span>
+                <span class="timer-small"></span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="meta">
+                  <span class="conf-date">October 14 - 18, 2024.</span>
+                  <span class="conf-place">
+                    <a href="http://maps.google.com/?q=Dubai, UAE"
+                      >Dubai, UAE</a
+                    >
+                  </span>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <div class="deadline">
+                  <div>
+                    Deadline:
+                    <span class="deadline-time">Friday, 31 May 2024</span>
                   </div>
                 </div>
               </div>
@@ -5127,6 +5210,95 @@
             $("#piter-py-2024 .deadline")
           );
           $("#piter-py-2024 .calendar").remove();
+        }
+
+        $("#pycon-mea-2024 .PY-tag").html(sub2name["PY"].toLocaleLowerCase());
+
+        // Use specified timezone for deadlines if available else use AoE timezone
+
+        var cfpDate = DateTime.fromSQL("2024-05-31 23:59:00", {
+          zone: "Asia/Dubai",
+        });
+        var confDate = DateTime.fromSQL("2024-10-14", { zone: "Asia/Dubai" });
+
+        // check if timezone is valid otherwise replace by system timezone
+        if (cfpDate.invalid || confDate.invalid) {
+          var cfpDate = DateTime.fromSQL("2024-05-31 23:59:00");
+          var confDate = DateTime.fromSQL("2024-10-14");
+          console.log(
+            "Invalid timezone in pycon-mea-2024. Using system timezone instead."
+          );
+        }
+
+        // render countdown timer
+        $("#pycon-mea-2024 .timer").countdown(cfpDate.toJSDate(), function (
+          event
+        ) {
+          $(this).html(event.strftime("%D days %Hh %Mm %Ss"));
+        });
+
+        // render countdown timer small
+        $("#pycon-mea-2024 .timer-small").countdown(
+          cfpDate.toJSDate(),
+          function (event) {
+            $(this).html(event.strftime("%Dd %H:%M:%S"));
+          }
+        );
+
+        // deadline in local timezone
+        $("#pycon-mea-2024 .deadline-time").html(
+          cfpDate.setZone("system").toLocaleString(DateTime.DATE_HUGE)
+        );
+
+        // add calendar button
+        try {
+          var myCalendar = createCalendarFromObject({
+            id: "pycon-mea-2024",
+            title: "PyCon MEA 2024 deadline",
+            start_date: cfpDate.toJSDate(),
+            duration: 60,
+            place: "Dubai, UAE",
+            link: "https://globaldevslam.com/",
+          });
+          document
+            .querySelector("#pycon-mea-2024 .calendar")
+            .appendChild(myCalendar);
+        } catch (err) {
+          document
+            .querySelector("#pycon-mea-2024 .calendar")
+            .appendChild("<p>Calendar not available.</p>");
+          console.log("Error in cfp date.");
+        }
+
+        // check if date has passed, add 'past' class to it
+        cfpDiff = cfpDate.diffNow("seconds");
+        confDiff = confDate.diffNow("seconds");
+
+        $("#pycon-mea-2024").attr("cfpDiff", cfpDiff.toMillis());
+        $("#pycon-mea-2024").attr("confDiff", confDiff.toMillis());
+
+        if (cfpDiff < 0) {
+          $("#pycon-mea-2024").addClass("pastcfp");
+          $("#pycon-mea-2024").appendTo($("#past_cfps"));
+          $("#pycon-mea-2024 .timer").replaceWith(
+            $("#pycon-mea-2024 .deadline")
+          );
+          $("#pycon-mea-2024 .timer-small").replaceWith(
+            $("#pycon-mea-2024 .deadline")
+          );
+          $("#pycon-mea-2024 .calendar").remove();
+        }
+
+        if (confDiff < 0) {
+          $("#pycon-mea-2024").addClass("pastconf");
+          $("#pycon-mea-2024").appendTo($("#past_confs"));
+          $("#pycon-mea-2024 .timer").replaceWith(
+            $("#pycon-mea-2024 .deadline")
+          );
+          $("#pycon-mea-2024 .timer-small").replaceWith(
+            $("#pycon-mea-2024 .deadline")
+          );
+          $("#pycon-mea-2024 .calendar").remove();
         }
 
         $("#pycon-india-2024 .PY-tag").html(sub2name["PY"].toLocaleLowerCase());
