@@ -63,7 +63,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711727963"
+      href="/static/css/js-year-calendar.min.css?t=1711729876"
       media="screen,projection"
     />
 
@@ -75,13 +75,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711727963"
+      href="/static/css/deadlines.css?t=1711729876"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711727963"
+      href="/static/css/calendar.css?t=1711729876"
       media="screen,projection"
     />
 
@@ -912,7 +912,7 @@
             <hr />
           </div>
 
-          <div id="pydata-eindhoven-2024" class="ConfItem PY-conf">
+          <div id="pydata-eindhoven-2024" class="ConfItem PYDATA-conf">
             <div class="row conf-row">
               <div class="col-6">
                 <span class="conf-title">
@@ -932,7 +932,7 @@
                 <span class="conf-title-icon">
                   <a
                     title="Conference Website"
-                    href="https://pydata.org/eindhoven2024/call-for-proposals"
+                    href="https://pydata.org/eindhoven2024/"
                     target="_blank"
                     ><img
                       src="/static/img/203-earth.svg"
@@ -987,9 +987,9 @@
             <div class="row">
               <div class="col-6">
                 <span
-                  title="Click to only show PY conferences"
-                  data-sub="PY"
-                  class="badge badge-light conf-sub PY-tag"
+                  title="Click to only show PYDATA conferences"
+                  data-sub="PYDATA"
+                  class="badge badge-light conf-sub PYDATA-tag"
                 ></span>
               </div>
               <div class="col-6">
@@ -1229,21 +1229,6 @@
                       src="/static/img/203-earth.svg"
                       class="badge-link"
                       alt="Link to Conference Website"
-                      width="16"
-                      height="16"
-                  /></a>
-                  &ZeroWidthSpace;
-                </span>
-
-                <span class="conf-title-icon">
-                  <a
-                    title="Sponsorship Opportunity for PyCon Estonia"
-                    href="https://pydata.org/paris2024/sponsorship-opportunites"
-                    target="_blank"
-                    ><img
-                      src="/static/img/060-coin-dollar.svg"
-                      class="badge-link"
-                      alt="Link to Sponsorship page of PyCon Estonia"
                       width="16"
                       height="16"
                   /></a>
@@ -1505,6 +1490,21 @@
                       src="/static/img/203-earth.svg"
                       class="badge-link"
                       alt="Link to Conference Website"
+                      width="16"
+                      height="16"
+                  /></a>
+                  &ZeroWidthSpace;
+                </span>
+
+                <span class="conf-title-icon">
+                  <a
+                    title="Sponsorship Opportunity for PyData Paris"
+                    href="https://pydata.org/paris2024/sponsorship-opportunites"
+                    target="_blank"
+                    ><img
+                      src="/static/img/060-coin-dollar.svg"
+                      class="badge-link"
+                      alt="Link to Sponsorship page of PyData Paris"
                       width="16"
                       height="16"
                   /></a>
@@ -5572,8 +5572,8 @@
           $("#pycon-russia-2024 .calendar").remove();
         }
 
-        $("#pydata-eindhoven-2024 .PY-tag").html(
-          sub2name["PY"].toLocaleLowerCase()
+        $("#pydata-eindhoven-2024 .PYDATA-tag").html(
+          sub2name["PYDATA"].toLocaleLowerCase()
         );
 
         // Use specified timezone for deadlines if available else use AoE timezone
@@ -5623,7 +5623,7 @@
             start_date: cfpDate.toJSDate(),
             duration: 60,
             place: "Eindhoven, Netherlands",
-            link: "https://pydata.org/eindhoven2024/call-for-proposals",
+            link: "https://pydata.org/eindhoven2024/",
           });
           document
             .querySelector("#pydata-eindhoven-2024 .calendar")
