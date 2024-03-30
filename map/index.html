@@ -4,15 +4,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <title>Map Overview of Python Conferences</title>
+    <title>Map Overview of Python Conferences | PythonDeadlin.es</title>
     <!-- Begin Jekyll SEO tag v2.8.0 -->
-    <title>
-      Map Overview of Python Conferences | Python Conference Deadlines
-    </title>
     <meta name="generator" content="Jekyll v4.3.3" />
-    <meta property="og:title" content="Map Overview of Python Conferences" />
+    <meta property="og:title" content="titles.map" />
     <meta name="author" content="Jesper Dramsch" />
-    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale" content="en" />
     <meta
       name="description"
       content="Countdowns to your favourite Python conferences with calls for participation and resources to submit awesome talks!"
@@ -26,10 +23,7 @@
     <meta property="og:site_name" content="Python Conference Deadlines" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary" />
-    <meta
-      property="twitter:title"
-      content="Map Overview of Python Conferences"
-    />
+    <meta property="twitter:title" content="titles.map" />
     <meta name="twitter:site" content="@jesperdramsch" />
     <meta name="twitter:creator" content="@jesperdramsch" />
     <script type="application/ld+json">
@@ -42,7 +36,7 @@
           "url": "https://dramsch.net"
         },
         "description": "Countdowns to your favourite Python conferences with calls for participation and resources to submit awesome talks!",
-        "headline": "Map Overview of Python Conferences",
+        "headline": "titles.map",
         "url": "https://pythondeadlin.es/map/"
       }
     </script>
@@ -58,7 +52,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711729876"
+      href="/static/css/js-year-calendar.min.css?t=1711757833"
       media="screen,projection"
     />
 
@@ -70,13 +64,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711729876"
+      href="/static/css/deadlines.css?t=1711757833"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711729876"
+      href="/static/css/calendar.css?t=1711757833"
       media="screen,projection"
     />
 
@@ -387,42 +381,59 @@
               >
             </li>
             <li>
-              <a href="/calendar" class="nav-link" style="border-bottom: none"
+              <a href="/calendar/" class="nav-link" style="border-bottom: none"
                 >Calendar</a
               >
             </li>
             <li>
-              <a href="/map" class="nav-link" style="border-bottom: none"
+              <a href="/map/" class="nav-link" style="border-bottom: none"
                 >Map</a
               >
             </li>
             <li>
-              <a href="/series" class="nav-link" style="border-bottom: none"
+              <a href="/series/" class="nav-link" style="border-bottom: none"
                 >Series</a
               >
             </li>
             <li>
-              <a href="/resources" class="nav-link" style="border-bottom: none"
+              <a href="/resources/" class="nav-link" style="border-bottom: none"
                 >Resources</a
               >
             </li>
           </ul>
-          <div class="twitter-github-icons">
-            <iframe
-              src="https://ghbtns.com/github-btn.html?user=jesperdramsch&repo=python-deadlines&type=star&count=true"
-              frameborder="0"
-              scrolling="0"
-              width="95px"
-              height="20px"
-            ></iframe>
-          </div>
+          <ul class="navbar-nav ml-auto my-2 my-lg-0">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdownMenuLink"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                en
+              </a>
+              <div
+                class="dropdown-menu dropdown-menu-right"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <h6 class="dropdown-header">Choose Language</h6>
+
+                <a class="dropdown-item active" href="/map/">English</a>
+
+                <a class="dropdown-item" href="/es/mapa/">Español</a>
+
+                <a class="dropdown-item" href="/de/karte/">Deutsch</a>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
     </nav>
 
     <div class="container">
       <div id="breadcrumbs">
-        <a href="/">Home</a>
+        <a href="">Home</a>
 
         / <a href="#">Map Overview of Python Conferences</a>
       </div>
@@ -430,8 +441,12 @@
       <h1>Map Overview of Python Conferences</h1>
       <div class="row">
         <div class="meta col-sm-12">
-          Overview of deadlines and conference dates on a map. Also,
-          <a href="/">countdowns</a> to Python conference deadlines.
+          <p>Overview of deadlines and conference dates on a map.</p>
+
+          <p>
+            Below are all the future Python conferences listed on
+            PythonDeadlin.es in a nice spatial format.
+          </p>
         </div>
         <br />
       </div>
@@ -951,7 +966,7 @@
               },
             ],
             {
-              baseUrl: "/",
+              baseUrl: "",
               useCluster: false,
               showMarker: true,
               showMarkerPopup: true,
@@ -966,27 +981,30 @@
         <hr />
         <div class="row">
           <div class="col-12 col-sm-12">
-            <a href="/">pythondeadlin.es</a>
-            is maintained by
-            <a href="https://dramsch.net/">Jesper Dramsch</a> since 2022.<br />
-            It was inspired (and originally coded) by the fantastic
-            <a href="https://aideadlin.es">aideadlin.es</a>. No guarantee for
-            correctness, please correct mistakes by
-            <a href="https://github.com/JesperDramsch/python-deadlines/"
-              >submitting a pull request</a
-            >.<br />
+            <p>
+              <a href="">pythondeadlin.es</a> is maintained by
+              <a href="https://dramsch.net/">Jesper Dramsch</a> since 2022.
+              <br />It was inspired (and originally coded) by the fantastic
+              <a href="https://aideadlin.es">aideadlin.es</a>. No guarantee for
+              correctness, please correct mistakes by
+              <a href="https://github.com/JesperDramsch/python-deadlines/"
+                >submitting a pull request</a
+              >.
+            </p>
           </div>
         </div>
         <div class="row">
           <div class="col-12 col-sm-12">
             <div class="footer-links">
-              <a href="/legal/terms-conditions/">Terms</a> &
-              <a href="/legal/privacy-policy/">Privacy Policy</a>
-              from <a href="https://dramsch.net">Jesper Dramsch,</a> creator of
-              <a href="https://ml.recipes">ML.recipes</a>,
-              <a href="https://data-science-gui.de">data-science-gui.de</a>,
-              <a href="https://late.email">Late to the Party 🎉</a> and the
-              <a href="https://latent.club">Latent Space Community</a>.
+              <p>
+                <a href="/legal/terms-conditions/">Terms</a> &amp;
+                <a href="/legal/privacy-policy/">Privacy Policy</a>
+                from <a href="https://dramsch.net">Jesper Dramsch,</a> creator
+                of <a href="https://ml.recipes">ML.recipes</a>,
+                <a href="https://data-science-gui.de">data-science-gui.de</a>,
+                <a href="https://late.email">Late to the Party 🎉</a> and the
+                <a href="https://latent.club">Latent Space Community</a>.
+              </p>
             </div>
           </div>
         </div>
