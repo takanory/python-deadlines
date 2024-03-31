@@ -46,6 +46,9 @@
 <loc>https://pythondeadlin.es/conference/kiwi-pycon-2024/</loc>
 </url>
 <url>
+<loc>https://pythondeadlin.es/conference/pyohio-2024/</loc>
+</url>
+<url>
 <loc>https://pythondeadlin.es/conference/pycon-russia-2024/</loc>
 </url>
 <url>
@@ -166,9 +169,6 @@
 <loc>https://pythondeadlin.es/conference/python-sul-2024/</loc>
 </url>
 <url>
-<loc>https://pythondeadlin.es/conference/pyohio-2024/</loc>
-</url>
-<url>
 <loc>https://pythondeadlin.es/conference/flask-con-2024/</loc>
 </url>
 <url>
@@ -176,6 +176,9 @@
 </url>
 <url>
 <loc>https://pythondeadlin.es/conference/python-niger-2024/</loc>
+</url>
+<url>
+<loc>https://pythondeadlin.es/conference/pycon-cameroon-2017/</loc>
 </url>
 <url>
 <loc>https://pythondeadlin.es/conference/python-in-finance-2013/</loc>
@@ -973,6 +976,9 @@
 <loc>https://pythondeadlin.es/conference/pycon-us-2018/</loc>
 </url>
 <url>
+<loc>https://pythondeadlin.es/conference/pycon-cameroon-2018/</loc>
+</url>
+<url>
 <loc>https://pythondeadlin.es/conference/pycon-indonesia-2017/</loc>
 </url>
 <url>
@@ -1660,9 +1666,6 @@
 <loc>https://pythondeadlin.es/conference/pyfest-2021/</loc>
 </url>
 <url>
-<loc>https://pythondeadlin.es/conference/pycon-cameroon-2021/</loc>
-</url>
-<url>
 <loc>https://pythondeadlin.es/conference/pycon-belarus-2021/</loc>
 </url>
 <url>
@@ -2023,9 +2026,6 @@
 <loc>https://pythondeadlin.es/conference/fosdem-2018/</loc>
 </url>
 <url>
-<loc>https://pythondeadlin.es/conference/pycon-cameroon-2018/</loc>
-</url>
-<url>
 <loc>https://pythondeadlin.es/conference/pycon-pakistan-2017/</loc>
 </url>
 <url>
@@ -2174,9 +2174,6 @@
 </url>
 <url>
 <loc>https://pythondeadlin.es/conference/fosdem-2017/</loc>
-</url>
-<url>
-<loc>https://pythondeadlin.es/conference/pycon-cameroon-2017/</loc>
 </url>
 <url>
 <loc>https://pythondeadlin.es/conference/pydata-cologne-2016/</loc>
@@ -2560,9 +2557,6 @@
 <loc>https://pythondeadlin.es/series/pyfest/</loc>
 </url>
 <url>
-<loc>https://pythondeadlin.es/series/pycon-cameroon/</loc>
-</url>
-<url>
 <loc>https://pythondeadlin.es/series/pycon-belarus/</loc>
 </url>
 <url>
@@ -2923,9 +2917,6 @@
 <loc>https://pythondeadlin.es/series/fosdem/</loc>
 </url>
 <url>
-<loc>https://pythondeadlin.es/series/pycon-cameroon/</loc>
-</url>
-<url>
 <loc>https://pythondeadlin.es/series/pycon-pakistan/</loc>
 </url>
 <url>
@@ -3074,9 +3065,6 @@
 </url>
 <url>
 <loc>https://pythondeadlin.es/series/fosdem/</loc>
-</url>
-<url>
-<loc>https://pythondeadlin.es/series/pycon-cameroon/</loc>
 </url>
 <url>
 <loc>https://pythondeadlin.es/series/pydata-cologne/</loc>
@@ -3443,6 +3431,9 @@
 </url>
 <url>
 <loc>https://pythondeadlin.es/series/rupy-brno-edition/</loc>
+</url>
+<url>
+<loc>https://pythondeadlin.es/series/pycon-cameroon/</loc>
 </url>
 <url>
 <loc>https://pythondeadlin.es/series/python-in-finance/</loc>
@@ -4240,6 +4231,9 @@
 <loc>https://pythondeadlin.es/series/pycon-us/</loc>
 </url>
 <url>
+<loc>https://pythondeadlin.es/series/pycon-cameroon/</loc>
+</url>
+<url>
 <loc>https://pythondeadlin.es/series/pycon-indonesia/</loc>
 </url>
 <url>
@@ -4930,6 +4924,9 @@
 <loc>https://pythondeadlin.es/series/kiwi-pycon/</loc>
 </url>
 <url>
+<loc>https://pythondeadlin.es/series/pyohio/</loc>
+</url>
+<url>
 <loc>https://pythondeadlin.es/series/pycon-russia/</loc>
 </url>
 <url>
@@ -5048,9 +5045,6 @@
 </url>
 <url>
 <loc>https://pythondeadlin.es/series/python-sul/</loc>
-</url>
-<url>
-<loc>https://pythondeadlin.es/series/pyohio/</loc>
 </url>
 <url>
 <loc>https://pythondeadlin.es/series/flask-con/</loc>

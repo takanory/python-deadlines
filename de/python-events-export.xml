@@ -9,7 +9,7 @@
 		<title>Newsfeed for Python Events Calendar from Python Conference Deadlines</title>
 		<description>Countdowns to your favourite Python conferences with calls for participation and resources to submit awesome talks!</description>
 		<link>https://pythondeadlin.es/feed.xml</link>
-		<lastBuildDate>Sat, 30 Mar 2024 00:18:06 +0000</lastBuildDate>
+		<lastBuildDate>Sun, 31 Mar 2024 19:11:12 +0000</lastBuildDate>
 		
 			<item>
 				<title>PyCon Poland 2024 Conference Deadline</title>
@@ -61,6 +61,15 @@
 				<description><![CDATA[* name of the event: Kiwi PyCon 2024<br/>* type of event: Conference <br/>* focus on Python: Yes<br/>* approximate number of attendees: Unknown<br/>* location (incl. country): Te Whanganui-a-Tara Wellington, New Zealand<br/>* dates/times/recurrence (incl. time zone): August 23 - 25, 2024<br/>* HTML link : <a href="https://kiwipycon.nz/">Kiwi PyCon 2024</a>]]></description>
 				<pubDate>Fri, 23 Aug 2024 00:00:00 +0000</pubDate>
 				<link>https://pythondeadlin.es/conference/kiwi-pycon-2024/</link>
+				<guid isPermaLink="false"></guid>
+				<category>PY</category>
+			</item>
+		
+			<item>
+				<title>PyOhio 2024 Conference Deadline</title>
+				<description><![CDATA[* name of the event: PyOhio 2024<br/>* type of event: Conference <br/>* focus on Python: Yes<br/>* approximate number of attendees: Unknown<br/>* location (incl. country): Columbus, USA<br/>* dates/times/recurrence (incl. time zone): July 27 - 28, 2024<br/>* HTML link : <a href="https://pyohio.org/2024/">PyOhio 2024</a>]]></description>
+				<pubDate>Sat, 27 Jul 2024 00:00:00 +0000</pubDate>
+				<link>https://pythondeadlin.es/conference/pyohio-2024/</link>
 				<guid isPermaLink="false"></guid>
 				<category>PY</category>
 			</item>
@@ -207,15 +216,6 @@
 				<link>https://pythondeadlin.es/conference/python-nordeste-2024/</link>
 				<guid isPermaLink="false"></guid>
 				<category>PY</category>
-			</item>
-		
-			<item>
-				<title>PyData London 2024 Conference Deadline</title>
-				<description><![CDATA[* name of the event: PyData London 2024<br/>* type of event: Conference <br/>* focus on Python: Yes<br/>* approximate number of attendees: Unknown<br/>* location (incl. country): London, UK<br/>* dates/times/recurrence (incl. time zone): June 14 - 16, 2024<br/>* HTML link : <a href="https://pydata.org/london2024/">PyData London 2024</a>]]></description>
-				<pubDate>Fri, 14 Jun 2024 00:00:00 +0000</pubDate>
-				<link>https://pythondeadlin.es/conference/pydata-london-2024/</link>
-				<guid isPermaLink="false"></guid>
-				<category>PYDATA</category>
 			</item>
 		
 	</channel>

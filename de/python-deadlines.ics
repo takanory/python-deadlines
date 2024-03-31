@@ -10,7 +10,7 @@ SUMMARY:PyCon Poland 2024 Deadline
 UID: 
 ORGANIZER:pythondeadlin.es
 DESCRIPTION:<a href="https://pl.pycon.org/2024/">PyCon Poland 2024</a> found on <a href="https://pythondeadlin.es">PythonDeadlin.es</a>.
-DTSTAMP:20240330T001806Z
+DTSTAMP:20240331T191112Z
 DTSTART;TZID=Europe/Warsaw:20240813T235900
 END:VEVENT
 
@@ -21,7 +21,7 @@ SUMMARY:PyHEP 2024 Deadline
 UID: 
 ORGANIZER:pythondeadlin.es
 DESCRIPTION:<a href="https://indico.cern.ch/event/1375573/">PyHEP 2024</a> found on <a href="https://pythondeadlin.es">PythonDeadlin.es</a>.
-DTSTAMP:20240330T001806Z
+DTSTAMP:20240331T191112Z
 DTSTART;TZID=Europe/Brussels:20240625T055900
 END:VEVENT
 
@@ -32,7 +32,7 @@ SUMMARY:Piter Py 2024 Deadline
 UID: 
 ORGANIZER:pythondeadlin.es
 DESCRIPTION:<a href="https://piterpy.com/en/">Piter Py 2024</a> found on <a href="https://pythondeadlin.es">PythonDeadlin.es</a>.
-DTSTAMP:20240330T001806Z
+DTSTAMP:20240331T191112Z
 DTSTART;TZID=:20240601T235900
 END:VEVENT
 
@@ -43,7 +43,7 @@ SUMMARY:PyCon MEA 2024 Deadline
 UID: 
 ORGANIZER:pythondeadlin.es
 DESCRIPTION:<a href="https://globaldevslam.com/">PyCon MEA 2024</a> found on <a href="https://pythondeadlin.es">PythonDeadlin.es</a>.
-DTSTAMP:20240330T001806Z
+DTSTAMP:20240331T191112Z
 DTSTART;TZID=Asia/Dubai:20240531T235900
 END:VEVENT
 
@@ -54,7 +54,7 @@ SUMMARY:PyCon India 2024 Tutorial Deadline
 UID:-tutorial 
 ORGANIZER:pythondeadlin.es
 DESCRIPTION:<a href="https://in.pycon.org/2024/">PyCon India 2024</a> found on <a href="https://pythondeadlin.es">PythonDeadlin.es</a>.
-DTSTAMP:20240330T001806Z
+DTSTAMP:20240331T191112Z
 DTSTART;TZID=Asia/Kolkata:20240531T235900
 END:VEVENT
 BEGIN:VEVENT
@@ -62,7 +62,7 @@ SUMMARY:PyCon India 2024 Deadline
 UID: 
 ORGANIZER:pythondeadlin.es
 DESCRIPTION:<a href="https://in.pycon.org/2024/">PyCon India 2024</a> found on <a href="https://pythondeadlin.es">PythonDeadlin.es</a>.
-DTSTAMP:20240330T001806Z
+DTSTAMP:20240331T191112Z
 DTSTART;TZID=Asia/Kolkata:20240531T235900
 END:VEVENT
 
@@ -73,8 +73,19 @@ SUMMARY:Kiwi PyCon 2024 Deadline
 UID: 
 ORGANIZER:pythondeadlin.es
 DESCRIPTION:<a href="https://kiwipycon.nz/">Kiwi PyCon 2024</a> found on <a href="https://pythondeadlin.es">PythonDeadlin.es</a>.
-DTSTAMP:20240330T001806Z
+DTSTAMP:20240331T191112Z
 DTSTART;TZID=Pacific/Auckland:20240523T235900
+END:VEVENT
+
+
+
+BEGIN:VEVENT
+SUMMARY:PyOhio 2024 Deadline 
+UID: 
+ORGANIZER:pythondeadlin.es
+DESCRIPTION:<a href="https://pyohio.org/2024/">PyOhio 2024</a> found on <a href="https://pythondeadlin.es">PythonDeadlin.es</a>.
+DTSTAMP:20240331T191112Z
+DTSTART;TZID=:20240520T235900
 END:VEVENT
 
 
@@ -84,7 +95,7 @@ SUMMARY:PyCon Russia 2024 Deadline
 UID: 
 ORGANIZER:pythondeadlin.es
 DESCRIPTION:<a href="https://www.pycon.ru/">PyCon Russia 2024</a> found on <a href="https://pythondeadlin.es">PythonDeadlin.es</a>.
-DTSTAMP:20240330T001806Z
+DTSTAMP:20240331T191112Z
 DTSTART;TZID=:20240515T235900
 END:VEVENT
 
@@ -95,7 +106,7 @@ SUMMARY:PyData Eindhoven 2024 Deadline
 UID: 
 ORGANIZER:pythondeadlin.es
 DESCRIPTION:<a href="https://pydata.org/eindhoven2024/">PyData Eindhoven 2024</a> found on <a href="https://pythondeadlin.es">PythonDeadlin.es</a>.
-DTSTAMP:20240330T001806Z
+DTSTAMP:20240331T191112Z
 DTSTART;TZID=Europe/Amsterdam:20240513T235900
 END:VEVENT
 
@@ -106,7 +117,7 @@ SUMMARY:DjangoCon US 2024 Deadline
 UID: 
 ORGANIZER:pythondeadlin.es
 DESCRIPTION:<a href="https://2024.djangocon.us/">DjangoCon US 2024</a> found on <a href="https://pythondeadlin.es">PythonDeadlin.es</a>.
-DTSTAMP:20240330T001806Z
+DTSTAMP:20240331T191112Z
 DTSTART;TZID=America/New_York:20240424T120000
 END:VEVENT
 
@@ -117,7 +128,7 @@ SUMMARY:Wagtail Space US 2024 Deadline
 UID: 
 ORGANIZER:pythondeadlin.es
 DESCRIPTION:<a href="https://us.wagtail.space/">Wagtail Space US 2024</a> found on <a href="https://pythondeadlin.es">PythonDeadlin.es</a>.
-DTSTAMP:20240330T001806Z
+DTSTAMP:20240331T191112Z
 DTSTART;TZID=America/New_York:20240422T235900
 END:VEVENT
 
@@ -128,7 +139,7 @@ SUMMARY:PyCon Estonia 2024 Deadline
 UID: 
 ORGANIZER:pythondeadlin.es
 DESCRIPTION:<a href="https://pycon.ee/">PyCon Estonia 2024</a> found on <a href="https://pythondeadlin.es">PythonDeadlin.es</a>.
-DTSTAMP:20240330T001806Z
+DTSTAMP:20240331T191112Z
 DTSTART;TZID=Europe/Tallinn:20240415T235900
 END:VEVENT
 
@@ -139,7 +150,7 @@ SUMMARY:North Bay Python 2024 Deadline
 UID: 
 ORGANIZER:pythondeadlin.es
 DESCRIPTION:<a href="https://2024.northbaypython.org/">North Bay Python 2024</a> found on <a href="https://pythondeadlin.es">PythonDeadlin.es</a>.
-DTSTAMP:20240330T001806Z
+DTSTAMP:20240331T191112Z
 DTSTART;TZID=:20240412T235900
 END:VEVENT
 
@@ -150,7 +161,7 @@ SUMMARY:PyCon Taiwan 2024 Tutorial Deadline
 UID:-tutorial 
 ORGANIZER:pythondeadlin.es
 DESCRIPTION:<a href="https://tw.pycon.org/2024/en-us">PyCon Taiwan 2024</a> found on <a href="https://pythondeadlin.es">PythonDeadlin.es</a>.
-DTSTAMP:20240330T001806Z
+DTSTAMP:20240331T191112Z
 DTSTART;TZID=:20240408T235900
 END:VEVENT
 BEGIN:VEVENT
@@ -158,7 +169,7 @@ SUMMARY:PyCon Taiwan 2024 Deadline
 UID: 
 ORGANIZER:pythondeadlin.es
 DESCRIPTION:<a href="https://tw.pycon.org/2024/en-us">PyCon Taiwan 2024</a> found on <a href="https://pythondeadlin.es">PythonDeadlin.es</a>.
-DTSTAMP:20240330T001806Z
+DTSTAMP:20240331T191112Z
 DTSTART;TZID=:20240408T235900
 END:VEVENT
 
@@ -169,7 +180,7 @@ SUMMARY:PyData Paris 2024 Deadline
 UID: 
 ORGANIZER:pythondeadlin.es
 DESCRIPTION:<a href="https://pydata.org/paris2024/">PyData Paris 2024</a> found on <a href="https://pythondeadlin.es">PythonDeadlin.es</a>.
-DTSTAMP:20240330T001806Z
+DTSTAMP:20240331T191112Z
 DTSTART;TZID=:20240408T235900
 END:VEVENT
 
@@ -180,7 +191,7 @@ SUMMARY:EARL 2024 Deadline
 UID: 
 ORGANIZER:pythondeadlin.es
 DESCRIPTION:<a href="https://datacove.co.uk/earl-2024-tech-conference/">EARL 2024</a> found on <a href="https://pythondeadlin.es">PythonDeadlin.es</a>.
-DTSTAMP:20240330T001806Z
+DTSTAMP:20240331T191112Z
 DTSTART;TZID=Europe/Zurich:20240331T235900
 END:VEVENT
 
@@ -191,7 +202,7 @@ SUMMARY:PyCamp España 2024 Deadline
 UID: 
 ORGANIZER:pythondeadlin.es
 DESCRIPTION:<a href="https://pycamp.es/">PyCamp España 2024</a> found on <a href="https://pythondeadlin.es">PythonDeadlin.es</a>.
-DTSTAMP:20240330T001806Z
+DTSTAMP:20240331T191112Z
 DTSTART;TZID=:20240327T235900
 END:VEVENT
 
@@ -202,7 +213,7 @@ SUMMARY:Python fwdays 2024 Deadline
 UID: 
 ORGANIZER:pythondeadlin.es
 DESCRIPTION:<a href="https://fwdays.com/en/event/python-ds-fwdays-2024">Python fwdays 2024</a> found on <a href="https://pythondeadlin.es">PythonDeadlin.es</a>.
-DTSTAMP:20240330T001806Z
+DTSTAMP:20240331T191112Z
 DTSTART;TZID=:20240320T235900
 END:VEVENT
 
@@ -213,7 +224,7 @@ SUMMARY:PyCon Colombia 2024 Deadline
 UID: 
 ORGANIZER:pythondeadlin.es
 DESCRIPTION:<a href="https://2024.pycon.co/en">PyCon Colombia 2024</a> found on <a href="https://pythondeadlin.es">PythonDeadlin.es</a>.
-DTSTAMP:20240330T001806Z
+DTSTAMP:20240331T191112Z
 DTSTART;TZID=America/Bogota:20240311T235959
 END:VEVENT
 
@@ -224,7 +235,7 @@ SUMMARY:PyCon Nigeria 2024 Deadline
 UID: 
 ORGANIZER:pythondeadlin.es
 DESCRIPTION:<a href="https://ng.pycon.org/">PyCon Nigeria 2024</a> found on <a href="https://pythondeadlin.es">PythonDeadlin.es</a>.
-DTSTAMP:20240330T001806Z
+DTSTAMP:20240331T191112Z
 DTSTART;TZID=:20240310T235900
 END:VEVENT
 
@@ -235,7 +246,7 @@ SUMMARY:Wagtail Space NL 2024 Deadline
 UID: 
 ORGANIZER:pythondeadlin.es
 DESCRIPTION:<a href="https://nl.wagtail.space/">Wagtail Space NL 2024</a> found on <a href="https://pythondeadlin.es">PythonDeadlin.es</a>.
-DTSTAMP:20240330T001806Z
+DTSTAMP:20240331T191112Z
 DTSTART;TZID=Europe/Amsterdam:20240308T235900
 END:VEVENT
 
@@ -246,7 +257,7 @@ SUMMARY:EuroPython 2024 Deadline
 UID: 
 ORGANIZER:pythondeadlin.es
 DESCRIPTION:<a href="https://ep2024.europython.eu/">EuroPython 2024</a> found on <a href="https://pythondeadlin.es">PythonDeadlin.es</a>.
-DTSTAMP:20240330T001806Z
+DTSTAMP:20240331T191112Z
 DTSTART;TZID=:20240306T235900
 END:VEVENT
 
@@ -257,7 +268,7 @@ SUMMARY:Python Nordeste 2024 Deadline
 UID: 
 ORGANIZER:pythondeadlin.es
 DESCRIPTION:<a href="https://2024.pythonnordeste.org/">Python Nordeste 2024</a> found on <a href="https://pythondeadlin.es">PythonDeadlin.es</a>.
-DTSTAMP:20240330T001806Z
+DTSTAMP:20240331T191112Z
 DTSTART;TZID=:20240304T235900
 END:VEVENT
 
@@ -268,7 +279,7 @@ SUMMARY:PyData London 2024 Deadline
 UID: 
 ORGANIZER:pythondeadlin.es
 DESCRIPTION:<a href="https://pydata.org/london2024/">PyData London 2024</a> found on <a href="https://pythondeadlin.es">PythonDeadlin.es</a>.
-DTSTAMP:20240330T001806Z
+DTSTAMP:20240331T191112Z
 DTSTART;TZID=Europe/London:20240304T235900
 END:VEVENT
 
@@ -279,7 +290,7 @@ SUMMARY:DjangoCon Europe 2024 Deadline
 UID: 
 ORGANIZER:pythondeadlin.es
 DESCRIPTION:<a href="https://2024.djangocon.eu/">DjangoCon Europe 2024</a> found on <a href="https://pythondeadlin.es">PythonDeadlin.es</a>.
-DTSTAMP:20240330T001806Z
+DTSTAMP:20240331T191112Z
 DTSTART;TZID=Europe/Madrid:20240229T235900
 END:VEVENT
 
@@ -290,7 +301,7 @@ SUMMARY:SciPy US 2024 Deadline
 UID: 
 ORGANIZER:pythondeadlin.es
 DESCRIPTION:<a href="https://scipy2024.scipy.org">SciPy US 2024</a> found on <a href="https://pythondeadlin.es">PythonDeadlin.es</a>.
-DTSTAMP:20240330T001806Z
+DTSTAMP:20240331T191112Z
 DTSTART;TZID=America/Los_Angeles:20240227T235900
 END:VEVENT
 
@@ -301,7 +312,7 @@ SUMMARY:GeoPython 2024 Deadline
 UID: 
 ORGANIZER:pythondeadlin.es
 DESCRIPTION:<a href="https://2024.geopython.net/">GeoPython 2024</a> found on <a href="https://pythondeadlin.es">PythonDeadlin.es</a>.
-DTSTAMP:20240330T001806Z
+DTSTAMP:20240331T191112Z
 DTSTART;TZID=Europe/Zurich:20240123T005900
 END:VEVENT
 
@@ -312,7 +323,7 @@ SUMMARY:PyCon Namibia 2024 Deadline
 UID: 
 ORGANIZER:pythondeadlin.es
 DESCRIPTION:<a href="https://na.pycon.org/">PyCon Namibia 2024</a> found on <a href="https://pythondeadlin.es">PythonDeadlin.es</a>.
-DTSTAMP:20240330T001806Z
+DTSTAMP:20240331T191112Z
 DTSTART;TZID=Africa/Windhoek:20240121T235900
 END:VEVENT
 
@@ -323,7 +334,7 @@ SUMMARY:PyCon Pakistan 2024 Deadline
 UID: 
 ORGANIZER:pythondeadlin.es
 DESCRIPTION:<a href="https://pycon.pk/">PyCon Pakistan 2024</a> found on <a href="https://pythondeadlin.es">PythonDeadlin.es</a>.
-DTSTAMP:20240330T001806Z
+DTSTAMP:20240331T191112Z
 DTSTART;TZID=Asia/Karachi:20240115T235900
 END:VEVENT
 
@@ -334,7 +345,7 @@ SUMMARY:PyTexas 2024 Deadline
 UID: 
 ORGANIZER:pythondeadlin.es
 DESCRIPTION:<a href="https://pytexas.org/2024/">PyTexas 2024</a> found on <a href="https://pythondeadlin.es">PythonDeadlin.es</a>.
-DTSTAMP:20240330T001806Z
+DTSTAMP:20240331T191112Z
 DTSTART;TZID=America/Chicago:20240114T235900
 END:VEVENT
 
@@ -345,7 +356,7 @@ SUMMARY:PyCon Lithuania 2024 Deadline
 UID: 
 ORGANIZER:pythondeadlin.es
 DESCRIPTION:<a href="https://pycon.lt/2024">PyCon Lithuania 2024</a> found on <a href="https://pythondeadlin.es">PythonDeadlin.es</a>.
-DTSTAMP:20240330T001806Z
+DTSTAMP:20240331T191112Z
 DTSTART;TZID=Europe/Vilnius:20240110T235959
 END:VEVENT
 
@@ -356,7 +367,7 @@ SUMMARY:PyCon Italia 2024 Deadline (extended)
 UID: 
 ORGANIZER:pythondeadlin.es
 DESCRIPTION:<a href="https://pycon.it/en">PyCon Italia 2024</a> found on <a href="https://pythondeadlin.es">PythonDeadlin.es</a>.
-DTSTAMP:20240330T001806Z
+DTSTAMP:20240331T191112Z
 DTSTART;TZID=:20240115T235900
 END:VEVENT
 
@@ -367,7 +378,7 @@ SUMMARY:PyCascades 2024 Deadline (extended)
 UID: 
 ORGANIZER:pythondeadlin.es
 DESCRIPTION:<a href="https://2024.pycascades.com/">PyCascades 2024</a> found on <a href="https://pythondeadlin.es">PythonDeadlin.es</a>.
-DTSTAMP:20240330T001806Z
+DTSTAMP:20240331T191112Z
 DTSTART;TZID=:20240104T235959
 END:VEVENT
 
@@ -378,7 +389,7 @@ SUMMARY:PyCon Philippines 2024 Deadline (extended)
 UID: 
 ORGANIZER:pythondeadlin.es
 DESCRIPTION:<a href="https://pycon-2024.python.ph/">PyCon Philippines 2024</a> found on <a href="https://pythondeadlin.es">PythonDeadlin.es</a>.
-DTSTAMP:20240330T001806Z
+DTSTAMP:20240331T191112Z
 DTSTART;TZID=Asia/Manila:20231231T235900
 END:VEVENT
 
@@ -389,7 +400,7 @@ SUMMARY:PyCon Slovakia 2024 Deadline (extended)
 UID: 
 ORGANIZER:pythondeadlin.es
 DESCRIPTION:<a href="https://2024.pycon.sk/">PyCon Slovakia 2024</a> found on <a href="https://pythondeadlin.es">PythonDeadlin.es</a>.
-DTSTAMP:20240330T001806Z
+DTSTAMP:20240331T191112Z
 DTSTART;TZID=Europe/Bratislava:20231231T235959
 END:VEVENT
 
@@ -400,7 +411,7 @@ SUMMARY:Python Pizza Prague 2024 Deadline (extended)
 UID: 
 ORGANIZER:pythondeadlin.es
 DESCRIPTION:<a href="https://prague.python.pizza/">Python Pizza Prague 2024</a> found on <a href="https://pythondeadlin.es">PythonDeadlin.es</a>.
-DTSTAMP:20240330T001806Z
+DTSTAMP:20240331T191112Z
 DTSTART;TZID=Europe/Prague:20231231T235900
 END:VEVENT
 
@@ -411,7 +422,7 @@ SUMMARY:PyCon Germany & PyData Berlin 2024 Deadline (extended)
 UID: 
 ORGANIZER:pythondeadlin.es
 DESCRIPTION:<a href="https://pycon.de/">PyCon Germany & PyData Berlin 2024</a> found on <a href="https://pythondeadlin.es">PythonDeadlin.es</a>.
-DTSTAMP:20240330T001806Z
+DTSTAMP:20240331T191112Z
 DTSTART;TZID=Europe/Berlin:20240107T235959
 END:VEVENT
 
@@ -422,7 +433,7 @@ SUMMARY:PyCon US 2024 Deadline (extended)
 UID: 
 ORGANIZER:pythondeadlin.es
 DESCRIPTION:<a href="https://us.pycon.org/2024/">PyCon US 2024</a> found on <a href="https://pythondeadlin.es">PythonDeadlin.es</a>.
-DTSTAMP:20240330T001806Z
+DTSTAMP:20240331T191112Z
 DTSTART;TZID=America/New_York:20231218T235900
 END:VEVENT
 
@@ -433,7 +444,7 @@ SUMMARY:PyData Tel Aviv 2023 Deadline (extended)
 UID: 
 ORGANIZER:pythondeadlin.es
 DESCRIPTION:<a href="https://pydata.org/telaviv2024/">PyData Tel Aviv 2023</a> found on <a href="https://pythondeadlin.es">PythonDeadlin.es</a>.
-DTSTAMP:20240330T001806Z
+DTSTAMP:20240331T191112Z
 DTSTART;TZID=Asia/Jerusalem:20230714T235900
 END:VEVENT
 
@@ -469,7 +480,12 @@ END:VEVENT
 
 
 
-
-
-
+BEGIN:VEVENT
+SUMMARY:Python Niger 2024 Deadline (extended)
+UID: 
+ORGANIZER:pythondeadlin.es
+DESCRIPTION:<a href="https://fb.me/e/8alLCsc39">Python Niger 2024</a> found on <a href="https://pythondeadlin.es">PythonDeadlin.es</a>.
+DTSTAMP:20240331T191112Z
+DTSTART;TZID=:None
+END:VEVENT
 END:VCALENDAR

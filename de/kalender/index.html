@@ -52,7 +52,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711757886"
+      href="/static/css/js-year-calendar.min.css?t=1711912272"
       media="screen,projection"
     />
 
@@ -64,13 +64,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711757886"
+      href="/static/css/deadlines.css?t=1711912272"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711757886"
+      href="/static/css/calendar.css?t=1711912272"
       media="screen,projection"
     />
 
@@ -966,6 +966,38 @@
           subject: "PY",
           startDate: Date.parse("2024-08-23"),
           endDate: Date.parse("2024-08-25"),
+        });
+
+        // add deadlines in red
+        conf_list_all.push({
+          id: "pyohio-2024-deadline",
+          abbreviation: "pyohio-2024",
+          name: "PyOhio 2024 CfP ",
+          color: "red",
+          location: "Columbus, USA",
+          date: "July 27 - 28, 2024",
+          subject: "PY",
+          startDate: Date.parse("2024-05-20 23:59:00"),
+          endDate: Date.parse("2024-05-20 23:59:00"),
+        });
+
+        // add Conferences in chosen color
+
+        var color = "black";
+        // use first sub to choose color
+
+        color = "#4B8BBE";
+
+        conf_list_all.push({
+          id: "pyohio-2024-conference",
+          abbreviation: "pyohio-2024",
+          name: "PyOhio 2024",
+          color: color,
+          location: "Columbus, USA",
+          date: "July 27 - 28, 2024",
+          subject: "PY",
+          startDate: Date.parse("2024-07-27"),
+          endDate: Date.parse("2024-07-28"),
         });
 
         // add deadlines in red
@@ -2262,38 +2294,6 @@
 
         // add deadlines in red
         conf_list_all.push({
-          id: "pyohio-2024-deadline",
-          abbreviation: "pyohio-2024",
-          name: "PyOhio 2024 CfP (extended)",
-          color: "red",
-          location: "Columbus, USA",
-          date: "July 27 - 28, 2024",
-          subject: "PY",
-          startDate: Date.parse("TBA"),
-          endDate: Date.parse("TBA"),
-        });
-
-        // add Conferences in chosen color
-
-        var color = "black";
-        // use first sub to choose color
-
-        color = "#4B8BBE";
-
-        conf_list_all.push({
-          id: "pyohio-2024-conference",
-          abbreviation: "pyohio-2024",
-          name: "PyOhio 2024",
-          color: color,
-          location: "Columbus, USA",
-          date: "July 27 - 28, 2024",
-          subject: "PY",
-          startDate: Date.parse("2024-07-27"),
-          endDate: Date.parse("2024-07-28"),
-        });
-
-        // add deadlines in red
-        conf_list_all.push({
           id: "flask-con-2024-deadline",
           abbreviation: "flask-con-2024",
           name: "Flask Con 2024 CfP (extended)",
@@ -2365,8 +2365,8 @@
           location: "Maradi, Niger Republic",
           date: "April 28th, 2024",
           subject: "PY",
-          startDate: Date.parse("TBA"),
-          endDate: Date.parse("TBA"),
+          startDate: Date.parse("None"),
+          endDate: Date.parse("None"),
         });
 
         // add Conferences in chosen color

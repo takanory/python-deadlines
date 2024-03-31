@@ -33,7 +33,7 @@
     <meta property="og:type" content="article" />
     <meta
       property="article:published_time"
-      content="2024-01-24T00:00:00+00:00"
+      content="2024-02-23T00:00:00+00:00"
     />
     <meta name="twitter:card" content="summary" />
     <meta
@@ -51,8 +51,8 @@
           "name": "Jesper Dramsch",
           "url": "https://dramsch.net"
         },
-        "dateModified": "2024-01-24T00:00:00+00:00",
-        "datePublished": "2024-01-24T00:00:00+00:00",
+        "dateModified": "2024-02-23T00:00:00+00:00",
+        "datePublished": "2024-02-23T00:00:00+00:00",
         "description": "Countdown for the Call for Participation of this conference including conference dates and details.",
         "headline": "PyCon Cameroon 2018 Conference Deadlines",
         "mainEntityOfPage": {
@@ -74,7 +74,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711757886"
+      href="/static/css/js-year-calendar.min.css?t=1711912272"
       media="screen,projection"
     />
 
@@ -86,13 +86,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711757886"
+      href="/static/css/deadlines.css?t=1711912272"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711757886"
+      href="/static/css/calendar.css?t=1711912272"
       media="screen,projection"
     />
 
@@ -500,7 +500,7 @@
       </div>
       <div id="page-content">
         <div id="conf-deadline-timer" class="row">
-          <div id="cfp-timer" class="col-12 conf-timer">TBA</div>
+          <div id="cfp-timer" class="col-12 conf-timer"></div>
         </div>
         <div id="conf-key-facts" class="row">
           <div class="col-12 col-md-6">
@@ -512,7 +512,7 @@
                 width="16"
                 height="16"
               />
-              <span id="conf-date">January 24 - 29, 2018</span>
+              <span id="conf-date">February 23 - 24, 2018</span>
             </div>
             <div>
               <img
@@ -626,13 +626,13 @@
         </div>
         <div class="row">
           <div
-            id="c2449b8c-d4a2-4aac-bc6f-effdf39ddaa6"
+            id="33947bb7-3169-4270-b74c-634b545c6f40"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "c2449b8c-d4a2-4aac-bc6f-effdf39ddaa6",
+              "33947bb7-3169-4270-b74c-634b545c6f40",
               [
                 {
                   latitude: 4.010289,
@@ -789,9 +789,65 @@
 
         // other
 
-        $("#cfp-timer").html("TBA");
-        $(".deadline-time").html("TBA");
-        $(".deadline-local-time").html("TBA");
+        // Use specified timezone for deadlines if available else use AoE timezone
+
+        var confDeadline = DateTime.fromSQL("2017-12-03 23:59:59", {
+          zone: "Africa/Douala",
+        });
+
+        // check if timezone is valid otherwise replace by system timezone
+        if (confDeadline.invalid) {
+          var confDeadline = DateTime.fromSQL("2017-12-03 23:59:59");
+          console.log("Invalid timezone. Using system timezone instead.");
+        }
+
+        // add calendar
+
+        var conferenceDeadlineCalendar = createCalendarFromObject({
+          id: "pycon-cameroon-2018",
+          title: "PyCon Cameroon 2018 deadline",
+          start_date: confDeadline.toJSDate(),
+          duration: 60,
+          place: "Limbe, Cameroon",
+          link:
+            "https://web.archive.org/web/20180201160312/http://pythoncm.org/pycon.html",
+        });
+        document
+          .querySelector("#conference-deadline")
+          .appendChild(conferenceDeadlineCalendar);
+
+        var conferenceCalendar = createCalendarFromObject({
+          id: "pycon-cameroon-2018",
+          title: "PyCon Cameroon 2018",
+          start_date: DateTime.fromSQL("2018-02-23").toJSDate(),
+          end_date: DateTime.fromSQL("2018-02-24").toJSDate(),
+          place: "Limbe, Cameroon",
+          link:
+            "https://web.archive.org/web/20180201160312/http://pythoncm.org/pycon.html",
+        });
+        document
+          .querySelector("#conference-calendar")
+          .appendChild(conferenceCalendar);
+
+        // render countdown timer
+        $("#cfp-timer").countdown(confDeadline.toJSDate(), function (event) {
+          $(this).html(event.strftime("%D Tage %HS %Mm %Ss"));
+        });
+
+        // render deadline conference time
+
+        $(".deadline-time").html(
+          confDeadline
+            .setZone("Africa/Douala")
+            .toLocaleString(DateTime.DATETIME_HUGE_WITH_SECONDS)
+        );
+
+        // render deadline in local timezone
+        $(".deadline-local-time").html(
+          confDeadline
+            .setZone("system")
+            .toLocaleString(DateTime.DATETIME_HUGE_WITH_SECONDS)
+        );
       });
     </script>
     <script async defer>
