@@ -52,7 +52,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1711912246"
+      href="/static/css/js-year-calendar.min.css?t=1712010957"
       media="screen,projection"
     />
 
@@ -64,13 +64,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1711912246"
+      href="/static/css/deadlines.css?t=1712010957"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1711912246"
+      href="/static/css/calendar.css?t=1712010957"
       media="screen,projection"
     />
 
@@ -1273,6 +1273,38 @@
 
         // add deadlines in red
         conf_list_all.push({
+          id: "pygrunn-2024-deadline",
+          abbreviation: "pygrunn-2024",
+          name: "PyGrunn 2024 CfP ",
+          color: "red",
+          location: "Groningen, Netherlands",
+          date: "May 17th, 2024",
+          subject: "PY",
+          startDate: Date.parse("2024-04-07 23:59:00"),
+          endDate: Date.parse("2024-04-07 23:59:00"),
+        });
+
+        // add Conferences in chosen color
+
+        var color = "black";
+        // use first sub to choose color
+
+        color = "#4B8BBE";
+
+        conf_list_all.push({
+          id: "pygrunn-2024-conference",
+          abbreviation: "pygrunn-2024",
+          name: "PyGrunn 2024",
+          color: color,
+          location: "Groningen, Netherlands",
+          date: "May 17th, 2024",
+          subject: "PY",
+          startDate: Date.parse("2024-05-17"),
+          endDate: Date.parse("2024-05-17"),
+        });
+
+        // add deadlines in red
+        conf_list_all.push({
           id: "earl-2024-deadline",
           abbreviation: "earl-2024",
           name: "EARL 2024 CfP ",
@@ -2323,38 +2355,6 @@
           location: "Pittsburgh, USA",
           date: "May 17th, 2024",
           subject: "WEB",
-          startDate: Date.parse("2024-05-17"),
-          endDate: Date.parse("2024-05-17"),
-        });
-
-        // add deadlines in red
-        conf_list_all.push({
-          id: "pygrunn-2024-deadline",
-          abbreviation: "pygrunn-2024",
-          name: "PyGrunn 2024 CfP (extended)",
-          color: "red",
-          location: "Groningen, Netherlands",
-          date: "May 17th, 2024",
-          subject: "PY",
-          startDate: Date.parse("TBA"),
-          endDate: Date.parse("TBA"),
-        });
-
-        // add Conferences in chosen color
-
-        var color = "black";
-        // use first sub to choose color
-
-        color = "#4B8BBE";
-
-        conf_list_all.push({
-          id: "pygrunn-2024-conference",
-          abbreviation: "pygrunn-2024",
-          name: "PyGrunn 2024",
-          color: color,
-          location: "Groningen, Netherlands",
-          date: "May 17th, 2024",
-          subject: "PY",
           startDate: Date.parse("2024-05-17"),
           endDate: Date.parse("2024-05-17"),
         });

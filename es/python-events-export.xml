@@ -9,7 +9,7 @@
 		<title>Newsfeed for Python Events Calendar from Python Conference Deadlines</title>
 		<description>Countdowns to your favourite Python conferences with calls for participation and resources to submit awesome talks!</description>
 		<link>https://pythondeadlin.es/feed.xml</link>
-		<lastBuildDate>Sun, 31 Mar 2024 19:10:46 +0000</lastBuildDate>
+		<lastBuildDate>Mon, 01 Apr 2024 22:35:57 +0000</lastBuildDate>
 		
 			<item>
 				<title>PyCon Poland 2024 Conference Deadline</title>
@@ -147,6 +147,15 @@
 			</item>
 		
 			<item>
+				<title>PyGrunn 2024 Conference Deadline</title>
+				<description><![CDATA[* name of the event: PyGrunn 2024<br/>* type of event: Conference <br/>* focus on Python: Yes<br/>* approximate number of attendees: Unknown<br/>* location (incl. country): Groningen, Netherlands<br/>* dates/times/recurrence (incl. time zone): May 17th, 2024<br/>* HTML link : <a href="https://pygrunn.org/">PyGrunn 2024</a>]]></description>
+				<pubDate>Fri, 17 May 2024 00:00:00 +0000</pubDate>
+				<link>https://pythondeadlin.es/conference/pygrunn-2024/</link>
+				<guid isPermaLink="false"></guid>
+				<category>PY</category>
+			</item>
+		
+			<item>
 				<title>EARL 2024 Conference Deadline</title>
 				<description><![CDATA[* name of the event: EARL 2024<br/>* type of event: Conference <br/>* focus on Python: Yes<br/>* approximate number of attendees: Unknown<br/>* location (incl. country): Brighton, UK<br/>* dates/times/recurrence (incl. time zone): September 4 - 5, 2024<br/>* HTML link : <a href="https://datacove.co.uk/earl-2024-tech-conference/">EARL 2024</a>]]></description>
 				<pubDate>Wed, 04 Sep 2024 00:00:00 +0000</pubDate>
@@ -205,15 +214,6 @@
 				<description><![CDATA[* name of the event: EuroPython 2024<br/>* type of event: Conference <br/>* focus on Python: Yes<br/>* approximate number of attendees: Unknown<br/>* location (incl. country): Prague, Czechia<br/>* dates/times/recurrence (incl. time zone): July 8 - 14, 2024<br/>* HTML link : <a href="https://ep2024.europython.eu/">EuroPython 2024</a>]]></description>
 				<pubDate>Mon, 08 Jul 2024 00:00:00 +0000</pubDate>
 				<link>https://pythondeadlin.es/conference/europython-2024/</link>
-				<guid isPermaLink="false"></guid>
-				<category>PY</category>
-			</item>
-		
-			<item>
-				<title>Python Nordeste 2024 Conference Deadline</title>
-				<description><![CDATA[* name of the event: Python Nordeste 2024<br/>* type of event: Conference <br/>* focus on Python: Yes<br/>* approximate number of attendees: Unknown<br/>* location (incl. country): Natal, Brazil<br/>* dates/times/recurrence (incl. time zone): August 9 - 11, 2024<br/>* HTML link : <a href="https://2024.pythonnordeste.org/">Python Nordeste 2024</a>]]></description>
-				<pubDate>Fri, 09 Aug 2024 00:00:00 +0000</pubDate>
-				<link>https://pythondeadlin.es/conference/python-nordeste-2024/</link>
 				<guid isPermaLink="false"></guid>
 				<category>PY</category>
 			</item>
