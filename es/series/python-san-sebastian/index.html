@@ -73,9 +73,30 @@
     />
 
     <link
+      rel="alternate"
+      hreflang="en"
+      href="/series/python-san-sebastian/"
+      title=""
+    />
+
+    <link
+      rel="alternate"
+      title="Python San Sebastian Conference Summary in Spanish"
+      hreflang="es"
+      href="/es/series/python-san-sebastian/"
+    />
+
+    <link
+      rel="alternate"
+      title="Python San Sebastian Conference Summary in German"
+      hreflang="de"
+      href="/de/series/python-san-sebastian/"
+    />
+
+    <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1712010957"
+      href="/static/css/js-year-calendar.min.css?t=1712407527"
       media="screen,projection"
     />
 
@@ -87,13 +108,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1712010957"
+      href="/static/css/deadlines.css?t=1712407527"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1712010957"
+      href="/static/css/calendar.css?t=1712407527"
       media="screen,projection"
     />
 
@@ -420,7 +441,9 @@
                 <div class="deadline">
                   <div>
                     Deadline:
-                    <span class="deadline-time">TBA</span>
+                    <span class="deadline-time"
+                      >Saturday, 15 September 2018</span
+                    >
                   </div>
                 </div>
               </div>
@@ -480,7 +503,7 @@
             <div class="row">
               <div class="col-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">October 6 - 9, 2017.</span>
+                  <span class="conf-date">October 6 - 8, 2017.</span>
                   <span class="conf-place">
                     <a href="http://maps.google.com/?q=San Sebastián, Spain"
                       >San Sebastián, Spain</a
@@ -492,7 +515,7 @@
                 <div class="deadline">
                   <div>
                     Deadline:
-                    <span class="deadline-time">TBA</span>
+                    <span class="deadline-time">Friday, 1 September 2017</span>
                   </div>
                 </div>
               </div>
@@ -564,7 +587,7 @@
                 <div class="deadline">
                   <div>
                     Deadline:
-                    <span class="deadline-time">TBA</span>
+                    <span class="deadline-time">Thursday, 31 August 2017</span>
                   </div>
                 </div>
               </div>
@@ -604,7 +627,7 @@
                 <span class="conf-title-icon">
                   <a
                     title="Conference Website"
-                    href="https://web.archive.org/web/20160810133537/http://pyss15.pyss.org/"
+                    href="https://web.archive.org/web/20150805095718/http://pyss15.pyss.org/en/"
                     target="_blank"
                     ><img
                       src="/static/img/203-earth.svg"
@@ -624,7 +647,7 @@
             <div class="row">
               <div class="col-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">October 24 - 26, 2015.</span>
+                  <span class="conf-date">October 24 - 25, 2015.</span>
                   <span class="conf-place">
                     <a href="http://maps.google.com/?q=San Sebastian, Spain"
                       >San Sebastian, Spain</a
@@ -636,7 +659,7 @@
                 <div class="deadline">
                   <div>
                     Deadline:
-                    <span class="deadline-time">TBA</span>
+                    <span class="deadline-time">Friday, 25 September 2015</span>
                   </div>
                 </div>
               </div>
@@ -708,7 +731,7 @@
                 <div class="deadline">
                   <div>
                     Deadline:
-                    <span class="deadline-time">TBA</span>
+                    <span class="deadline-time">Sunday, 31 August 2014</span>
                   </div>
                 </div>
               </div>
@@ -907,9 +930,69 @@
                 $('#python-san-sebastian-2018 .PY-tag').html(sub2name["PY"].toLocaleLowerCase());
 
 
-                $('#python-san-sebastian-2018 .timer').html("TBA");
-                $('#python-san-sebastian-2018 .deadline-time').html("TBA");
-                $('#python-san-sebastian-2018').attr("cfpDiff", Infinity);
+
+                // Use specified timezone for deadlines if available else use AoE timezone
+
+                  var cfpDate = DateTime.fromSQL("2018-09-15 23:59:00", { zone: "UTC-12" });
+                  var confDate = DateTime.fromSQL("2018-10-12", { zone: "UTC-12" });
+
+
+                // check if timezone is valid otherwise replace by system timezone
+                if (cfpDate.invalid || confDate.invalid) {
+                  var cfpDate = DateTime.fromSQL("2018-09-15 23:59:00");
+                  var confDate = DateTime.fromSQL("2018-10-12");
+                  console.log("Invalid timezone in python-san-sebastian-2018. Using system timezone instead.");
+                }
+
+                // render countdown timer
+                $('#python-san-sebastian-2018 .timer').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+
+                // render countdown timer small
+                $('#python-san-sebastian-2018 .timer-small').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%Dd %H:%M:%S'));
+                });
+
+                // deadline in local timezone
+                $('#python-san-sebastian-2018 .deadline-time').html(cfpDate.setZone('system').toLocaleString(DateTime.DATE_HUGE));
+
+                // add calendar button
+                try {
+                  var myCalendar = createCalendarFromObject({
+                    id: 'python-san-sebastian-2018',
+                    title: 'Python San Sebastian 2018 deadline',
+                    start_date: cfpDate.toJSDate(),
+                    duration: 60,
+                    place: 'Kursaal, Spain',
+                    link: 'https://web.archive.org/web/20181008223234/http://pyss18.pyss.org/'
+                  });
+                  document.querySelector('#python-san-sebastian-2018 .calendar').appendChild(myCalendar);
+                } catch (err) {
+                  document.querySelector('#python-san-sebastian-2018 .calendar').appendChild("<p>Calendar not available.</p>");
+                  console.log("Error in cfp date.");
+                }
+
+                // check if date has passed, add 'past' class to it
+                cfpDiff = cfpDate.diffNow("seconds");
+                confDiff = confDate.diffNow("seconds");
+
+                $('#python-san-sebastian-2018').attr("cfpDiff", cfpDiff.toMillis());
+                $('#python-san-sebastian-2018').attr("confDiff", confDiff.toMillis());
+
+                if (cfpDiff < 0) {
+                  $('#python-san-sebastian-2018').addClass('pastcfp');
+                  $('#python-san-sebastian-2018 .timer').replaceWith($('#python-san-sebastian-2018 .deadline'));
+                  $('#python-san-sebastian-2018 .timer-small').replaceWith($('#python-san-sebastian-2018 .deadline'));
+                  $('#python-san-sebastian-2018 .calendar').remove();
+                }
+
+                if (confDiff < 0) {
+                  $('#python-san-sebastian-2018').addClass('pastconf');
+                  $('#python-san-sebastian-2018 .timer').replaceWith($('#python-san-sebastian-2018 .deadline'));
+                  $('#python-san-sebastian-2018 .timer-small').replaceWith($('#python-san-sebastian-2018 .deadline'));
+                  $('#python-san-sebastian-2018 .calendar').remove();
+                }
 
 
 
@@ -918,9 +1001,69 @@
                 $('#python-san-sebastian-2017 .PY-tag').html(sub2name["PY"].toLocaleLowerCase());
 
 
-                $('#python-san-sebastian-2017 .timer').html("TBA");
-                $('#python-san-sebastian-2017 .deadline-time').html("TBA");
-                $('#python-san-sebastian-2017').attr("cfpDiff", Infinity);
+
+                // Use specified timezone for deadlines if available else use AoE timezone
+
+                  var cfpDate = DateTime.fromSQL("2017-09-01 23:59:00", { zone: "UTC-12" });
+                  var confDate = DateTime.fromSQL("2017-10-06", { zone: "UTC-12" });
+
+
+                // check if timezone is valid otherwise replace by system timezone
+                if (cfpDate.invalid || confDate.invalid) {
+                  var cfpDate = DateTime.fromSQL("2017-09-01 23:59:00");
+                  var confDate = DateTime.fromSQL("2017-10-06");
+                  console.log("Invalid timezone in python-san-sebastian-2017. Using system timezone instead.");
+                }
+
+                // render countdown timer
+                $('#python-san-sebastian-2017 .timer').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+
+                // render countdown timer small
+                $('#python-san-sebastian-2017 .timer-small').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%Dd %H:%M:%S'));
+                });
+
+                // deadline in local timezone
+                $('#python-san-sebastian-2017 .deadline-time').html(cfpDate.setZone('system').toLocaleString(DateTime.DATE_HUGE));
+
+                // add calendar button
+                try {
+                  var myCalendar = createCalendarFromObject({
+                    id: 'python-san-sebastian-2017',
+                    title: 'Python San Sebastian 2017 deadline',
+                    start_date: cfpDate.toJSDate(),
+                    duration: 60,
+                    place: 'San Sebastián, Spain',
+                    link: 'https://web.archive.org/web/20170909095524/http://pyss17.pyss.org/'
+                  });
+                  document.querySelector('#python-san-sebastian-2017 .calendar').appendChild(myCalendar);
+                } catch (err) {
+                  document.querySelector('#python-san-sebastian-2017 .calendar').appendChild("<p>Calendar not available.</p>");
+                  console.log("Error in cfp date.");
+                }
+
+                // check if date has passed, add 'past' class to it
+                cfpDiff = cfpDate.diffNow("seconds");
+                confDiff = confDate.diffNow("seconds");
+
+                $('#python-san-sebastian-2017').attr("cfpDiff", cfpDiff.toMillis());
+                $('#python-san-sebastian-2017').attr("confDiff", confDiff.toMillis());
+
+                if (cfpDiff < 0) {
+                  $('#python-san-sebastian-2017').addClass('pastcfp');
+                  $('#python-san-sebastian-2017 .timer').replaceWith($('#python-san-sebastian-2017 .deadline'));
+                  $('#python-san-sebastian-2017 .timer-small').replaceWith($('#python-san-sebastian-2017 .deadline'));
+                  $('#python-san-sebastian-2017 .calendar').remove();
+                }
+
+                if (confDiff < 0) {
+                  $('#python-san-sebastian-2017').addClass('pastconf');
+                  $('#python-san-sebastian-2017 .timer').replaceWith($('#python-san-sebastian-2017 .deadline'));
+                  $('#python-san-sebastian-2017 .timer-small').replaceWith($('#python-san-sebastian-2017 .deadline'));
+                  $('#python-san-sebastian-2017 .calendar').remove();
+                }
 
 
 
@@ -929,9 +1072,69 @@
                 $('#python-san-sebastian-2016 .PY-tag').html(sub2name["PY"].toLocaleLowerCase());
 
 
-                $('#python-san-sebastian-2016 .timer').html("TBA");
-                $('#python-san-sebastian-2016 .deadline-time').html("TBA");
-                $('#python-san-sebastian-2016').attr("cfpDiff", Infinity);
+
+                // Use specified timezone for deadlines if available else use AoE timezone
+
+                  var cfpDate = DateTime.fromSQL("2017-08-31 23:59:00", { zone: "UTC-12" });
+                  var confDate = DateTime.fromSQL("2016-09-30", { zone: "UTC-12" });
+
+
+                // check if timezone is valid otherwise replace by system timezone
+                if (cfpDate.invalid || confDate.invalid) {
+                  var cfpDate = DateTime.fromSQL("2017-08-31 23:59:00");
+                  var confDate = DateTime.fromSQL("2016-09-30");
+                  console.log("Invalid timezone in python-san-sebastian-2016. Using system timezone instead.");
+                }
+
+                // render countdown timer
+                $('#python-san-sebastian-2016 .timer').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+
+                // render countdown timer small
+                $('#python-san-sebastian-2016 .timer-small').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%Dd %H:%M:%S'));
+                });
+
+                // deadline in local timezone
+                $('#python-san-sebastian-2016 .deadline-time').html(cfpDate.setZone('system').toLocaleString(DateTime.DATE_HUGE));
+
+                // add calendar button
+                try {
+                  var myCalendar = createCalendarFromObject({
+                    id: 'python-san-sebastian-2016',
+                    title: 'Python San Sebastian 2016 deadline',
+                    start_date: cfpDate.toJSDate(),
+                    duration: 60,
+                    place: 'San Sebastian, Spain',
+                    link: 'http://pyss16.pyss.org/'
+                  });
+                  document.querySelector('#python-san-sebastian-2016 .calendar').appendChild(myCalendar);
+                } catch (err) {
+                  document.querySelector('#python-san-sebastian-2016 .calendar').appendChild("<p>Calendar not available.</p>");
+                  console.log("Error in cfp date.");
+                }
+
+                // check if date has passed, add 'past' class to it
+                cfpDiff = cfpDate.diffNow("seconds");
+                confDiff = confDate.diffNow("seconds");
+
+                $('#python-san-sebastian-2016').attr("cfpDiff", cfpDiff.toMillis());
+                $('#python-san-sebastian-2016').attr("confDiff", confDiff.toMillis());
+
+                if (cfpDiff < 0) {
+                  $('#python-san-sebastian-2016').addClass('pastcfp');
+                  $('#python-san-sebastian-2016 .timer').replaceWith($('#python-san-sebastian-2016 .deadline'));
+                  $('#python-san-sebastian-2016 .timer-small').replaceWith($('#python-san-sebastian-2016 .deadline'));
+                  $('#python-san-sebastian-2016 .calendar').remove();
+                }
+
+                if (confDiff < 0) {
+                  $('#python-san-sebastian-2016').addClass('pastconf');
+                  $('#python-san-sebastian-2016 .timer').replaceWith($('#python-san-sebastian-2016 .deadline'));
+                  $('#python-san-sebastian-2016 .timer-small').replaceWith($('#python-san-sebastian-2016 .deadline'));
+                  $('#python-san-sebastian-2016 .calendar').remove();
+                }
 
 
 
@@ -940,9 +1143,69 @@
                 $('#python-san-sebastian-2015 .PY-tag').html(sub2name["PY"].toLocaleLowerCase());
 
 
-                $('#python-san-sebastian-2015 .timer').html("TBA");
-                $('#python-san-sebastian-2015 .deadline-time').html("TBA");
-                $('#python-san-sebastian-2015').attr("cfpDiff", Infinity);
+
+                // Use specified timezone for deadlines if available else use AoE timezone
+
+                  var cfpDate = DateTime.fromSQL("2015-09-25 23:59:00", { zone: "UTC-12" });
+                  var confDate = DateTime.fromSQL("2015-10-24", { zone: "UTC-12" });
+
+
+                // check if timezone is valid otherwise replace by system timezone
+                if (cfpDate.invalid || confDate.invalid) {
+                  var cfpDate = DateTime.fromSQL("2015-09-25 23:59:00");
+                  var confDate = DateTime.fromSQL("2015-10-24");
+                  console.log("Invalid timezone in python-san-sebastian-2015. Using system timezone instead.");
+                }
+
+                // render countdown timer
+                $('#python-san-sebastian-2015 .timer').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+
+                // render countdown timer small
+                $('#python-san-sebastian-2015 .timer-small').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%Dd %H:%M:%S'));
+                });
+
+                // deadline in local timezone
+                $('#python-san-sebastian-2015 .deadline-time').html(cfpDate.setZone('system').toLocaleString(DateTime.DATE_HUGE));
+
+                // add calendar button
+                try {
+                  var myCalendar = createCalendarFromObject({
+                    id: 'python-san-sebastian-2015',
+                    title: 'Python San Sebastian 2015 deadline',
+                    start_date: cfpDate.toJSDate(),
+                    duration: 60,
+                    place: 'San Sebastian, Spain',
+                    link: 'https://web.archive.org/web/20150805095718/http://pyss15.pyss.org/en/'
+                  });
+                  document.querySelector('#python-san-sebastian-2015 .calendar').appendChild(myCalendar);
+                } catch (err) {
+                  document.querySelector('#python-san-sebastian-2015 .calendar').appendChild("<p>Calendar not available.</p>");
+                  console.log("Error in cfp date.");
+                }
+
+                // check if date has passed, add 'past' class to it
+                cfpDiff = cfpDate.diffNow("seconds");
+                confDiff = confDate.diffNow("seconds");
+
+                $('#python-san-sebastian-2015').attr("cfpDiff", cfpDiff.toMillis());
+                $('#python-san-sebastian-2015').attr("confDiff", confDiff.toMillis());
+
+                if (cfpDiff < 0) {
+                  $('#python-san-sebastian-2015').addClass('pastcfp');
+                  $('#python-san-sebastian-2015 .timer').replaceWith($('#python-san-sebastian-2015 .deadline'));
+                  $('#python-san-sebastian-2015 .timer-small').replaceWith($('#python-san-sebastian-2015 .deadline'));
+                  $('#python-san-sebastian-2015 .calendar').remove();
+                }
+
+                if (confDiff < 0) {
+                  $('#python-san-sebastian-2015').addClass('pastconf');
+                  $('#python-san-sebastian-2015 .timer').replaceWith($('#python-san-sebastian-2015 .deadline'));
+                  $('#python-san-sebastian-2015 .timer-small').replaceWith($('#python-san-sebastian-2015 .deadline'));
+                  $('#python-san-sebastian-2015 .calendar').remove();
+                }
 
 
 
@@ -951,9 +1214,69 @@
                 $('#python-san-sebastian-2014 .PY-tag').html(sub2name["PY"].toLocaleLowerCase());
 
 
-                $('#python-san-sebastian-2014 .timer').html("TBA");
-                $('#python-san-sebastian-2014 .deadline-time').html("TBA");
-                $('#python-san-sebastian-2014').attr("cfpDiff", Infinity);
+
+                // Use specified timezone for deadlines if available else use AoE timezone
+
+                  var cfpDate = DateTime.fromSQL("2014-08-31 23:59:00", { zone: "UTC-12" });
+                  var confDate = DateTime.fromSQL("2014-09-26", { zone: "UTC-12" });
+
+
+                // check if timezone is valid otherwise replace by system timezone
+                if (cfpDate.invalid || confDate.invalid) {
+                  var cfpDate = DateTime.fromSQL("2014-08-31 23:59:00");
+                  var confDate = DateTime.fromSQL("2014-09-26");
+                  console.log("Invalid timezone in python-san-sebastian-2014. Using system timezone instead.");
+                }
+
+                // render countdown timer
+                $('#python-san-sebastian-2014 .timer').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+
+                // render countdown timer small
+                $('#python-san-sebastian-2014 .timer-small').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%Dd %H:%M:%S'));
+                });
+
+                // deadline in local timezone
+                $('#python-san-sebastian-2014 .deadline-time').html(cfpDate.setZone('system').toLocaleString(DateTime.DATE_HUGE));
+
+                // add calendar button
+                try {
+                  var myCalendar = createCalendarFromObject({
+                    id: 'python-san-sebastian-2014',
+                    title: 'Python San Sebastian 2014 deadline',
+                    start_date: cfpDate.toJSDate(),
+                    duration: 60,
+                    place: 'San Sebastian, Spain',
+                    link: 'https://web.archive.org/web/20150109142404/http://www.pyss.org/'
+                  });
+                  document.querySelector('#python-san-sebastian-2014 .calendar').appendChild(myCalendar);
+                } catch (err) {
+                  document.querySelector('#python-san-sebastian-2014 .calendar').appendChild("<p>Calendar not available.</p>");
+                  console.log("Error in cfp date.");
+                }
+
+                // check if date has passed, add 'past' class to it
+                cfpDiff = cfpDate.diffNow("seconds");
+                confDiff = confDate.diffNow("seconds");
+
+                $('#python-san-sebastian-2014').attr("cfpDiff", cfpDiff.toMillis());
+                $('#python-san-sebastian-2014').attr("confDiff", confDiff.toMillis());
+
+                if (cfpDiff < 0) {
+                  $('#python-san-sebastian-2014').addClass('pastcfp');
+                  $('#python-san-sebastian-2014 .timer').replaceWith($('#python-san-sebastian-2014 .deadline'));
+                  $('#python-san-sebastian-2014 .timer-small').replaceWith($('#python-san-sebastian-2014 .deadline'));
+                  $('#python-san-sebastian-2014 .calendar').remove();
+                }
+
+                if (confDiff < 0) {
+                  $('#python-san-sebastian-2014').addClass('pastconf');
+                  $('#python-san-sebastian-2014 .timer').replaceWith($('#python-san-sebastian-2014 .deadline'));
+                  $('#python-san-sebastian-2014 .timer-small').replaceWith($('#python-san-sebastian-2014 .deadline'));
+                  $('#python-san-sebastian-2014 .calendar').remove();
+                }
 
 
 

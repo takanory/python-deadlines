@@ -9,7 +9,7 @@
 		<title>Newsfeed for Python Events Calendar from Python Conference Deadlines</title>
 		<description>Countdowns to your favourite Python conferences with calls for participation and resources to submit awesome talks!</description>
 		<link>https://pythondeadlin.es/feed.xml</link>
-		<lastBuildDate>Mon, 01 Apr 2024 22:36:25 +0000</lastBuildDate>
+		<lastBuildDate>Sat, 06 Apr 2024 12:45:56 +0000</lastBuildDate>
 		
 			<item>
 				<title>PyCon Poland 2024 Conference Deadline</title>
@@ -90,6 +90,15 @@
 				<link>https://pythondeadlin.es/conference/pydata-eindhoven-2024/</link>
 				<guid isPermaLink="false"></guid>
 				<category>PYDATA</category>
+			</item>
+		
+			<item>
+				<title>PyCon Portugal 2024 Conference Deadline</title>
+				<description><![CDATA[* name of the event: PyCon Portugal 2024<br/>* type of event: Conference <br/>* focus on Python: Yes<br/>* approximate number of attendees: Unknown<br/>* location (incl. country): Braga, Portugal<br/>* dates/times/recurrence (incl. time zone): October 17 - 19, 2024<br/>* HTML link : <a href="https://2024.pycon.pt/">PyCon Portugal 2024</a>]]></description>
+				<pubDate>Thu, 17 Oct 2024 00:00:00 +0000</pubDate>
+				<link>https://pythondeadlin.es/conference/pycon-portugal-2024/</link>
+				<guid isPermaLink="false"></guid>
+				<category>PY</category>
 			</item>
 		
 			<item>
@@ -207,15 +216,6 @@
 				<link>https://pythondeadlin.es/conference/wagtail-space-nl-2024/</link>
 				<guid isPermaLink="false"></guid>
 				<category>WEB</category>
-			</item>
-		
-			<item>
-				<title>EuroPython 2024 Conference Deadline</title>
-				<description><![CDATA[* name of the event: EuroPython 2024<br/>* type of event: Conference <br/>* focus on Python: Yes<br/>* approximate number of attendees: Unknown<br/>* location (incl. country): Prague, Czechia<br/>* dates/times/recurrence (incl. time zone): July 8 - 14, 2024<br/>* HTML link : <a href="https://ep2024.europython.eu/">EuroPython 2024</a>]]></description>
-				<pubDate>Mon, 08 Jul 2024 00:00:00 +0000</pubDate>
-				<link>https://pythondeadlin.es/conference/europython-2024/</link>
-				<guid isPermaLink="false"></guid>
-				<category>PY</category>
 			</item>
 		
 	</channel>

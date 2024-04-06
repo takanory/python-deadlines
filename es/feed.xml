@@ -9,7 +9,7 @@
 		<title>Python Conference Deadlines</title>
 		<description>Countdowns to your favourite Python conferences with calls for participation and resources to submit awesome talks!</description>
 		<link>https://pythondeadlin.es/feed.xml</link>
-		<lastBuildDate>Mon, 01 Apr 2024 22:35:57 +0000</lastBuildDate>
+		<lastBuildDate>Sat, 06 Apr 2024 12:45:27 +0000</lastBuildDate>
 		
 		
 		
@@ -116,6 +116,18 @@
 				<link>https://pythondeadlin.es/conference/pydata-eindhoven-2024/</link>
 				<guid isPermaLink="false"></guid>
 				<category>PYDATA</category>
+			</item>
+		
+		
+		
+		
+			<item>
+				<title>PyCon Portugal 2024 Conference Deadline</title>
+				<description>Conference in Braga, Portugal on October 17 - 19, 2024. CfP: 2024-04-29 00:00:00 AoE. </description>
+				<pubDate>Mon, 29 Apr 2024 00:00:00 +0000</pubDate>
+				<link>https://pythondeadlin.es/conference/pycon-portugal-2024/</link>
+				<guid isPermaLink="false"></guid>
+				<category>PY</category>
 			</item>
 		
 		
@@ -272,18 +284,6 @@
 				<link>https://pythondeadlin.es/conference/wagtail-space-nl-2024/</link>
 				<guid isPermaLink="false"></guid>
 				<category>WEB</category>
-			</item>
-		
-		
-		
-		
-			<item>
-				<title>EuroPython 2024 Conference Deadline</title>
-				<description>Conference in Prague, Czechia on July 8 - 14, 2024. CfP: 2024-03-06 23:59:00 AoE.&lt;br /&gt;Find them here: @EuroPython </description>
-				<pubDate>Wed, 06 Mar 2024 23:59:00 +0000</pubDate>
-				<link>https://pythondeadlin.es/conference/europython-2024/</link>
-				<guid isPermaLink="false"></guid>
-				<category>PY</category>
 			</item>
 		
 		

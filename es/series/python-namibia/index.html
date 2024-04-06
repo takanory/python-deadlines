@@ -70,9 +70,30 @@
     />
 
     <link
+      rel="alternate"
+      hreflang="en"
+      href="/series/python-namibia/"
+      title=""
+    />
+
+    <link
+      rel="alternate"
+      title="Python Namibia Conference Summary in Spanish"
+      hreflang="es"
+      href="/es/series/python-namibia/"
+    />
+
+    <link
+      rel="alternate"
+      title="Python Namibia Conference Summary in German"
+      hreflang="de"
+      href="/de/series/python-namibia/"
+    />
+
+    <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1712010957"
+      href="/static/css/js-year-calendar.min.css?t=1712407527"
       media="screen,projection"
     />
 
@@ -84,13 +105,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1712010957"
+      href="/static/css/deadlines.css?t=1712407527"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1712010957"
+      href="/static/css/calendar.css?t=1712407527"
       media="screen,projection"
     />
 
@@ -405,7 +426,7 @@
             <div class="row">
               <div class="col-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">February 2 - 6, 2015.</span>
+                  <span class="conf-date">February 2 - 5, 2015.</span>
                   <span class="conf-place">
                     <a href="http://maps.google.com/?q=Windhoek, Namibia"
                       >Windhoek, Namibia</a
@@ -417,7 +438,7 @@
                 <div class="deadline">
                   <div>
                     Deadline:
-                    <span class="deadline-time">TBA</span>
+                    <span class="deadline-time">Monday, 15 December 2014</span>
                   </div>
                 </div>
               </div>
@@ -616,9 +637,69 @@
                 $('#python-namibia-2015 .PY-tag').html(sub2name["PY"].toLocaleLowerCase());
 
 
-                $('#python-namibia-2015 .timer').html("TBA");
-                $('#python-namibia-2015 .deadline-time').html("TBA");
-                $('#python-namibia-2015').attr("cfpDiff", Infinity);
+
+                // Use specified timezone for deadlines if available else use AoE timezone
+
+                  var cfpDate = DateTime.fromSQL("2014-12-15 23:59:00", { zone: "UTC-12" });
+                  var confDate = DateTime.fromSQL("2015-02-02", { zone: "UTC-12" });
+
+
+                // check if timezone is valid otherwise replace by system timezone
+                if (cfpDate.invalid || confDate.invalid) {
+                  var cfpDate = DateTime.fromSQL("2014-12-15 23:59:00");
+                  var confDate = DateTime.fromSQL("2015-02-02");
+                  console.log("Invalid timezone in python-namibia-2015. Using system timezone instead.");
+                }
+
+                // render countdown timer
+                $('#python-namibia-2015 .timer').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+
+                // render countdown timer small
+                $('#python-namibia-2015 .timer-small').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%Dd %H:%M:%S'));
+                });
+
+                // deadline in local timezone
+                $('#python-namibia-2015 .deadline-time').html(cfpDate.setZone('system').toLocaleString(DateTime.DATE_HUGE));
+
+                // add calendar button
+                try {
+                  var myCalendar = createCalendarFromObject({
+                    id: 'python-namibia-2015',
+                    title: 'Python Namibia 2015 deadline',
+                    start_date: cfpDate.toJSDate(),
+                    duration: 60,
+                    place: 'Windhoek, Namibia',
+                    link: 'https://web.archive.org/web/20150201083907/http://python-namibia.org/'
+                  });
+                  document.querySelector('#python-namibia-2015 .calendar').appendChild(myCalendar);
+                } catch (err) {
+                  document.querySelector('#python-namibia-2015 .calendar').appendChild("<p>Calendar not available.</p>");
+                  console.log("Error in cfp date.");
+                }
+
+                // check if date has passed, add 'past' class to it
+                cfpDiff = cfpDate.diffNow("seconds");
+                confDiff = confDate.diffNow("seconds");
+
+                $('#python-namibia-2015').attr("cfpDiff", cfpDiff.toMillis());
+                $('#python-namibia-2015').attr("confDiff", confDiff.toMillis());
+
+                if (cfpDiff < 0) {
+                  $('#python-namibia-2015').addClass('pastcfp');
+                  $('#python-namibia-2015 .timer').replaceWith($('#python-namibia-2015 .deadline'));
+                  $('#python-namibia-2015 .timer-small').replaceWith($('#python-namibia-2015 .deadline'));
+                  $('#python-namibia-2015 .calendar').remove();
+                }
+
+                if (confDiff < 0) {
+                  $('#python-namibia-2015').addClass('pastconf');
+                  $('#python-namibia-2015 .timer').replaceWith($('#python-namibia-2015 .deadline'));
+                  $('#python-namibia-2015 .timer-small').replaceWith($('#python-namibia-2015 .deadline'));
+                  $('#python-namibia-2015 .calendar').remove();
+                }
 
 
 

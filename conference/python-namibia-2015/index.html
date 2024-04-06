@@ -72,9 +72,30 @@
     />
 
     <link
+      rel="alternate"
+      hreflang="en"
+      href="/conference/python-namibia-2015/"
+      title=""
+    />
+
+    <link
+      rel="alternate"
+      title="Python Namibia 2015 Conference Deadlines in Spanish"
+      hreflang="es"
+      href="/es/conference/python-namibia-2015/"
+    />
+
+    <link
+      rel="alternate"
+      title="Python Namibia 2015 Conference Deadlines in German"
+      hreflang="de"
+      href="/de/conference/python-namibia-2015/"
+    />
+
+    <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1712010930"
+      href="/static/css/js-year-calendar.min.css?t=1712407497"
       media="screen,projection"
     />
 
@@ -86,13 +107,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1712010930"
+      href="/static/css/deadlines.css?t=1712407497"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1712010930"
+      href="/static/css/calendar.css?t=1712407497"
       media="screen,projection"
     />
 
@@ -496,7 +517,7 @@
       </div>
       <div id="page-content">
         <div id="conf-deadline-timer" class="row">
-          <div id="cfp-timer" class="col-12 conf-timer">TBA</div>
+          <div id="cfp-timer" class="col-12 conf-timer"></div>
         </div>
         <div id="conf-key-facts" class="row">
           <div class="col-12 col-md-6">
@@ -508,7 +529,7 @@
                 width="16"
                 height="16"
               />
-              <span id="conf-date">February 2 - 6, 2015</span>
+              <span id="conf-date">February 2 - 5, 2015</span>
             </div>
             <div>
               <img
@@ -623,13 +644,13 @@
         </div>
         <div class="row">
           <div
-            id="5f8ed334-9846-444a-848b-5cdf588aad4d"
+            id="772607c6-645d-4da4-a9c0-efc7efa317de"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "5f8ed334-9846-444a-848b-5cdf588aad4d",
+              "772607c6-645d-4da4-a9c0-efc7efa317de",
               [
                 {
                   latitude: -22.611456150000002,
@@ -786,9 +807,65 @@
 
         // other
 
-        $("#cfp-timer").html("TBA");
-        $(".deadline-time").html("TBA");
-        $(".deadline-local-time").html("TBA");
+        // Use specified timezone for deadlines if available else use AoE timezone
+
+        var confDeadline = DateTime.fromSQL("2014-12-15 23:59:00", {
+          zone: "UTC-12",
+        });
+
+        // check if timezone is valid otherwise replace by system timezone
+        if (confDeadline.invalid) {
+          var confDeadline = DateTime.fromSQL("2014-12-15 23:59:00");
+          console.log("Invalid timezone. Using system timezone instead.");
+        }
+
+        // add calendar
+
+        var conferenceDeadlineCalendar = createCalendarFromObject({
+          id: "python-namibia-2015",
+          title: "Python Namibia 2015 deadline",
+          start_date: confDeadline.toJSDate(),
+          duration: 60,
+          place: "Windhoek, Namibia",
+          link:
+            "https://web.archive.org/web/20150201083907/http://python-namibia.org/",
+        });
+        document
+          .querySelector("#conference-deadline")
+          .appendChild(conferenceDeadlineCalendar);
+
+        var conferenceCalendar = createCalendarFromObject({
+          id: "python-namibia-2015",
+          title: "Python Namibia 2015",
+          start_date: DateTime.fromSQL("2015-02-02").toJSDate(),
+          end_date: DateTime.fromSQL("2015-02-05").toJSDate(),
+          place: "Windhoek, Namibia",
+          link:
+            "https://web.archive.org/web/20150201083907/http://python-namibia.org/",
+        });
+        document
+          .querySelector("#conference-calendar")
+          .appendChild(conferenceCalendar);
+
+        // render countdown timer
+        $("#cfp-timer").countdown(confDeadline.toJSDate(), function (event) {
+          $(this).html(event.strftime("%D days %Hh %Mm %Ss"));
+        });
+
+        // render deadline conference time
+
+        $(".deadline-time").html(
+          confDeadline
+            .setZone("UTC-12")
+            .toLocaleString(DateTime.DATETIME_HUGE_WITH_SECONDS)
+        );
+
+        // render deadline in local timezone
+        $(".deadline-local-time").html(
+          confDeadline
+            .setZone("system")
+            .toLocaleString(DateTime.DATETIME_HUGE_WITH_SECONDS)
+        );
       });
     </script>
     <script async defer>
