@@ -28,11 +28,7 @@
       content="https://pythondeadlin.es/series/pydata-yerevan/"
     />
     <meta property="og:site_name" content="Python Conference Deadlines" />
-    <meta property="og:type" content="article" />
-    <meta
-      property="article:published_time"
-      content="2024-08-12T00:00:00+00:00"
-    />
+    <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary" />
     <meta
       property="twitter:title"
@@ -43,20 +39,14 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "BlogPosting",
+        "@type": "WebPage",
         "author": {
           "@type": "Person",
           "name": "Jesper Dramsch",
           "url": "https://dramsch.net"
         },
-        "dateModified": "2024-08-12T00:00:00+00:00",
-        "datePublished": "2024-08-12T00:00:00+00:00",
         "description": "Summary of the conference and its instances throughout the years.",
         "headline": "PyData Yerevan Conference Summary",
-        "mainEntityOfPage": {
-          "@type": "WebPage",
-          "@id": "https://pythondeadlin.es/series/pydata-yerevan/"
-        },
         "url": "https://pythondeadlin.es/series/pydata-yerevan/"
       }
     </script>
@@ -93,7 +83,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1712407556"
+      href="/static/css/js-year-calendar.min.css?t=1712524101"
       media="screen,projection"
     />
 
@@ -105,13 +95,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1712407556"
+      href="/static/css/deadlines.css?t=1712524101"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1712407556"
+      href="/static/css/calendar.css?t=1712524101"
       media="screen,projection"
     />
 
@@ -142,14 +132,14 @@
         background: #70163c;
       }
 
-      .PYDATA-tag {
+      .DATA-tag {
         color: #849324;
       }
-      .PYDATA-select {
+      .DATA-select {
         color: #849324;
         background: white;
       }
-      .PYDATA-select.active {
+      .DATA-select.active {
         color: white;
         background: #849324;
       }
@@ -356,7 +346,7 @@
         <div class="row">
           <div class="col-sm-12" id="conf-subs">
             <span id="conf-subs" title="Conference subjects">
-              <span class="PYDATA-tag badge badge-light conf-sub conf-PYDATA">
+              <span class="DATA-tag badge badge-light conf-sub conf-DATA">
                 Python for Data
               </span>
             </span>
@@ -386,7 +376,7 @@
         </div>
         <hr />
         <div id="all_confs">
-          <div id="pydata-yerevan-2022" class="ConfItem PYDATA-conf">
+          <div id="pydata-yerevan-2022" class="ConfItem DATA-conf">
             <div class="row conf-row">
               <div class="col-6">
                 <span class="conf-title">
@@ -426,7 +416,7 @@
             <div class="row">
               <div class="col-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">August 12 - 13, 2022.</span>
+                  <span class="conf-date">12. – 13. August 2022.</span>
                   <span class="conf-place">
                     <a href="http://maps.google.com/?q=Yerevan, Armenia"
                       >Yerevan, Armenia</a
@@ -446,9 +436,9 @@
             <div class="row">
               <div class="col-6">
                 <span
-                  title="Click to only show PYDATA conferences"
-                  data-sub="PYDATA"
-                  class="badge badge-light conf-sub PYDATA-tag"
+                  title="Click to only show DATA conferences"
+                  data-sub="DATA"
+                  class="badge badge-light conf-sub DATA-tag"
                 ></span>
               </div>
               <div class="col-6">
@@ -466,7 +456,7 @@
             <p>
               <a href="">pythondeadlin.es</a> wird seit 2022 von
               <a href="https://dramsch.net/">Jesper Dramsch</a> gepflegt.
-              <br />Es wurde inspiriert (und ursprünglich codiert) von der
+              <br />Es wurde inspiriert (und ursprünglich geschrieben) von der
               fantastischen <a href="https://aideadlin.es">aideadlin.es</a>.
               Keine Gewähr für die Richtigkeit, Fehler bitte korrigieren durch
               <a href="https://github.com/JesperDramsch/python-deadlines/pulls/"
@@ -515,7 +505,7 @@
       var subs = [];
       var _all_subs = [];
       // Get all subs
-      var conf_type_data = [{"name":"General Python","sub":"PY","color":"#4B8BBE"},{"name":"Scientific Python","sub":"SCIPY","color":"#70163C"},{"name":"Python for Data","sub":"PYDATA","color":"#849324"},{"name":"Python for Web","sub":"WEB","color":"#0D0A0B"},{"name":"Python for Business","sub":"BIZ","color":"#A8B9CC"},{"name":"Python for Earth","sub":"GEO","color":"#310c0c"}];
+      var conf_type_data = [{"name":"General Python","sub":"PY","color":"#4B8BBE"},{"name":"Scientific Python","sub":"SCIPY","color":"#70163C"},{"name":"Python for Data","sub":"DATA","color":"#849324"},{"name":"Python for Web","sub":"WEB","color":"#0D0A0B"},{"name":"Python for Business","sub":"BIZ","color":"#A8B9CC"},{"name":"Python for Earth","sub":"GEO","color":"#310c0c"}];
       var sub2name = {}; var name2sub = {};
       for (var i = 0; i < conf_type_data.length; i++) {
           _all_subs[i] = conf_type_data[i]['sub'];
@@ -633,7 +623,7 @@
 
 
 
-                $('#pydata-yerevan-2022 .PYDATA-tag').html(sub2name["PYDATA"].toLocaleLowerCase());
+                $('#pydata-yerevan-2022 .DATA-tag').html("Python für Daten".toLocaleLowerCase("de"));
 
 
 

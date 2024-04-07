@@ -22,11 +22,7 @@
     <link rel="canonical" href="https://pythondeadlin.es/series/belpy/" />
     <meta property="og:url" content="https://pythondeadlin.es/series/belpy/" />
     <meta property="og:site_name" content="Python Conference Deadlines" />
-    <meta property="og:type" content="article" />
-    <meta
-      property="article:published_time"
-      content="2024-01-30T00:00:00+00:00"
-    />
+    <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary" />
     <meta property="twitter:title" content="BelPy Conference Summary" />
     <meta name="twitter:site" content="@jesperdramsch" />
@@ -34,20 +30,14 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "BlogPosting",
+        "@type": "WebPage",
         "author": {
           "@type": "Person",
           "name": "Jesper Dramsch",
           "url": "https://dramsch.net"
         },
-        "dateModified": "2024-01-30T00:00:00+00:00",
-        "datePublished": "2024-01-30T00:00:00+00:00",
         "description": "Summary of the conference and its instances throughout the years.",
         "headline": "BelPy Conference Summary",
-        "mainEntityOfPage": {
-          "@type": "WebPage",
-          "@id": "https://pythondeadlin.es/series/belpy/"
-        },
         "url": "https://pythondeadlin.es/series/belpy/"
       }
     </script>
@@ -79,7 +69,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1712407497"
+      href="/static/css/js-year-calendar.min.css?t=1712524008"
       media="screen,projection"
     />
 
@@ -91,13 +81,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1712407497"
+      href="/static/css/deadlines.css?t=1712524008"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1712407497"
+      href="/static/css/calendar.css?t=1712524008"
       media="screen,projection"
     />
 
@@ -128,14 +118,14 @@
         background: #70163c;
       }
 
-      .PYDATA-tag {
+      .DATA-tag {
         color: #849324;
       }
-      .PYDATA-select {
+      .DATA-select {
         color: #849324;
         background: white;
       }
-      .PYDATA-select.active {
+      .DATA-select.active {
         color: white;
         background: #849324;
       }
@@ -200,6 +190,16 @@
       type="text/javascript"
       src="/static/js/bootstrap-multiselect.min.js"
     ></script>
+
+    <style>
+      #twitter-widget {
+        width: 100%;
+      }
+
+      .twitter-timeline {
+        width: 100% !important;
+      }
+    </style>
   </head>
 
   <body>
@@ -329,7 +329,11 @@
         </div>
         <div class="row">
           <div class="col-sm-12" id="conf-subs">
-            <span id="conf-subs" title="Conference subjects"> </span>
+            <span id="conf-subs" title="Conference subjects">
+              <span class="PY-tag badge badge-light conf-sub conf-PY">
+                General Python
+              </span>
+            </span>
           </div>
         </div>
       </div>
@@ -348,11 +352,140 @@
                 >https://belpy.in/</a
               >
             </div>
+
+            <div>
+              <img
+                src="/static/img/407-twitter.svg"
+                class="badge-link"
+                alt="Twitter icon"
+                width="16"
+                height="16"
+              />
+              <a
+                id="conf-twitter"
+                target="_blank"
+                href="https://twitter.com/Belpy2021"
+                >@Belpy2021</a
+              >
+            </div>
           </div>
-          <div class="col-12 col-md-6"></div>
+          <div class="col-12 col-md-6">
+            <!-- Twitter timeline -->
+            <div id="twitter-widget">
+              <a
+                class="twitter-timeline"
+                href="https://twitter.com/Belpy2021"
+                data-tweet-limit="2"
+                >Tweets by Belpy2021</a
+              >
+              <script
+                async
+                src="https://platform.twitter.com/widgets.js"
+                charset="utf-8"
+              ></script>
+            </div>
+          </div>
         </div>
         <hr />
         <div id="all_confs">
+          <div id="belpy-2024" class="ConfItem PY-conf">
+            <div class="row conf-row">
+              <div class="col-6">
+                <span class="conf-title">
+                  <a title="Deadline Details" href="/conference/belpy-2024/"
+                    >BelPy 2024</a
+                  >
+                </span>
+                <span class="conf-title-small">
+                  <a title="Deadline Details" href="/conference/belpy-2024/"
+                    >BelPy '24</a
+                  >
+                </span>
+                <span class="conf-title-icon">
+                  <a
+                    title="Conference Website"
+                    href="https://belpy.in/"
+                    target="_blank"
+                    ><img
+                      src="/static/img/203-earth.svg"
+                      class="badge-link"
+                      alt="Link to Conference Website"
+                      width="16"
+                      height="16"
+                  /></a>
+                  &ZeroWidthSpace;
+                </span>
+
+                <span class="conf-title-icon">
+                  <a
+                    title="Call for Participation for BelPy"
+                    href="https://www.papercall.io/belpy2024"
+                    target="_blank"
+                    ><img
+                      src="/static/img/035-file-text.svg"
+                      class="badge-link"
+                      alt="Link to Call for Participation for BelPy"
+                      width="16"
+                      height="16"
+                  /></a>
+                  &ZeroWidthSpace;
+                </span>
+
+                <span class="conf-title-icon">
+                  <a
+                    title="Twitter for BelPy"
+                    href="https://twitter.com/Belpy2021"
+                    target="_blank"
+                    ><img
+                      src="/static/img/407-twitter.svg"
+                      class="badge-link"
+                      alt="Link to Conference Twitter"
+                      width="16"
+                      height="16"
+                  /></a>
+                  &ZeroWidthSpace;
+                </span>
+              </div>
+              <div class="col-6">
+                <span class="timer"></span>
+                <span class="timer-small"></span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="meta">
+                  <span class="conf-date">June 6 – 8, 2024.</span>
+                  <span class="conf-place">
+                    <a href="http://maps.google.com/?q=Belagavi, India"
+                      >Belagavi, India</a
+                    >
+                  </span>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <div class="deadline">
+                  <div>
+                    Deadline:
+                    <span class="deadline-time">Sunday, 14 April 2024</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <span
+                  title="Click to only show PY conferences"
+                  data-sub="PY"
+                  class="badge badge-light conf-sub PY-tag"
+                ></span>
+              </div>
+              <div class="col-6">
+                <div class="calendar"></div>
+              </div>
+            </div>
+            <hr />
+          </div>
+
           <div id="belpy-2021" class="ConfItem">
             <div class="row conf-row">
               <div class="col-6">
@@ -380,6 +513,21 @@
                   /></a>
                   &ZeroWidthSpace;
                 </span>
+
+                <span class="conf-title-icon">
+                  <a
+                    title="Call for Participation for BelPy"
+                    href="https://web.archive.org/web/20210301200242/https://www.papercall.io/belpy"
+                    target="_blank"
+                    ><img
+                      src="/static/img/035-file-text.svg"
+                      class="badge-link"
+                      alt="Link to Call for Participation for BelPy"
+                      width="16"
+                      height="16"
+                  /></a>
+                  &ZeroWidthSpace;
+                </span>
               </div>
               <div class="col-6">
                 <span class="timer"></span>
@@ -389,7 +537,7 @@
             <div class="row">
               <div class="col-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">January 30 - February 1, 2021.</span>
+                  <span class="conf-date">January 30 – 31, 2021.</span>
                   <span class="conf-place">
                     <a href="#">Online</a>
                   </span>
@@ -399,7 +547,7 @@
                 <div class="deadline">
                   <div>
                     Deadline:
-                    <span class="deadline-time">TBA</span>
+                    <span class="deadline-time">Monday, 7 December 2020</span>
                   </div>
                 </div>
               </div>
@@ -470,7 +618,7 @@
       var subs = [];
       var _all_subs = [];
       // Get all subs
-      var conf_type_data = [{"name":"General Python","sub":"PY","color":"#4B8BBE"},{"name":"Scientific Python","sub":"SCIPY","color":"#70163C"},{"name":"Python for Data","sub":"PYDATA","color":"#849324"},{"name":"Python for Web","sub":"WEB","color":"#0D0A0B"},{"name":"Python for Business","sub":"BIZ","color":"#A8B9CC"},{"name":"Python for Earth","sub":"GEO","color":"#310c0c"}];
+      var conf_type_data = [{"name":"General Python","sub":"PY","color":"#4B8BBE"},{"name":"Scientific Python","sub":"SCIPY","color":"#70163C"},{"name":"Python for Data","sub":"DATA","color":"#849324"},{"name":"Python for Web","sub":"WEB","color":"#0D0A0B"},{"name":"Python for Business","sub":"BIZ","color":"#A8B9CC"},{"name":"Python for Earth","sub":"GEO","color":"#310c0c"}];
       var sub2name = {}; var name2sub = {};
       for (var i = 0; i < conf_type_data.length; i++) {
           _all_subs[i] = conf_type_data[i]['sub'];
@@ -588,10 +736,141 @@
 
 
 
+                $('#belpy-2024 .PY-tag').html("General Python".toLocaleLowerCase("en"));
 
-                $('#belpy-2021 .timer').html("TBA");
-                $('#belpy-2021 .deadline-time').html("TBA");
-                $('#belpy-2021').attr("cfpDiff", Infinity);
+
+
+                // Use specified timezone for deadlines if available else use AoE timezone
+
+                  var cfpDate = DateTime.fromSQL("2024-04-14 19:18:00", { zone: "UTC" });
+                  var confDate = DateTime.fromSQL("2024-06-06", { zone: "UTC" });
+
+
+                // check if timezone is valid otherwise replace by system timezone
+                if (cfpDate.invalid || confDate.invalid) {
+                  var cfpDate = DateTime.fromSQL("2024-04-14 19:18:00");
+                  var confDate = DateTime.fromSQL("2024-06-06");
+                  console.log("Invalid timezone in belpy-2024. Using system timezone instead.");
+                }
+
+                // render countdown timer
+                $('#belpy-2024 .timer').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+
+                // render countdown timer small
+                $('#belpy-2024 .timer-small').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%Dd %H:%M:%S'));
+                });
+
+                // deadline in local timezone
+                $('#belpy-2024 .deadline-time').html(cfpDate.setZone('system').toLocaleString(DateTime.DATE_HUGE));
+
+                // add calendar button
+                try {
+                  var myCalendar = createCalendarFromObject({
+                    id: 'belpy-2024',
+                    title: 'BelPy 2024 deadline',
+                    start_date: cfpDate.toJSDate(),
+                    duration: 60,
+                    place: 'Belagavi, India',
+                    link: 'https://belpy.in/'
+                  });
+                  document.querySelector('#belpy-2024 .calendar').appendChild(myCalendar);
+                } catch (err) {
+                  document.querySelector('#belpy-2024 .calendar').appendChild("<p>Calendar not available.</p>");
+                  console.log("Error in cfp date.");
+                }
+
+                // check if date has passed, add 'past' class to it
+                cfpDiff = cfpDate.diffNow("seconds");
+                confDiff = confDate.diffNow("seconds");
+
+                $('#belpy-2024').attr("cfpDiff", cfpDiff.toMillis());
+                $('#belpy-2024').attr("confDiff", confDiff.toMillis());
+
+                if (cfpDiff < 0) {
+                  $('#belpy-2024').addClass('pastcfp');
+                  $('#belpy-2024 .timer').replaceWith($('#belpy-2024 .deadline'));
+                  $('#belpy-2024 .timer-small').replaceWith($('#belpy-2024 .deadline'));
+                  $('#belpy-2024 .calendar').remove();
+                }
+
+                if (confDiff < 0) {
+                  $('#belpy-2024').addClass('pastconf');
+                  $('#belpy-2024 .timer').replaceWith($('#belpy-2024 .deadline'));
+                  $('#belpy-2024 .timer-small').replaceWith($('#belpy-2024 .deadline'));
+                  $('#belpy-2024 .calendar').remove();
+                }
+
+
+
+
+
+
+
+                // Use specified timezone for deadlines if available else use AoE timezone
+
+                  var cfpDate = DateTime.fromSQL("2020-12-07 11:59:00", { zone: "UTC" });
+                  var confDate = DateTime.fromSQL("2021-01-30", { zone: "UTC" });
+
+
+                // check if timezone is valid otherwise replace by system timezone
+                if (cfpDate.invalid || confDate.invalid) {
+                  var cfpDate = DateTime.fromSQL("2020-12-07 11:59:00");
+                  var confDate = DateTime.fromSQL("2021-01-30");
+                  console.log("Invalid timezone in belpy-2021. Using system timezone instead.");
+                }
+
+                // render countdown timer
+                $('#belpy-2021 .timer').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+
+                // render countdown timer small
+                $('#belpy-2021 .timer-small').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%Dd %H:%M:%S'));
+                });
+
+                // deadline in local timezone
+                $('#belpy-2021 .deadline-time').html(cfpDate.setZone('system').toLocaleString(DateTime.DATE_HUGE));
+
+                // add calendar button
+                try {
+                  var myCalendar = createCalendarFromObject({
+                    id: 'belpy-2021',
+                    title: 'BelPy 2021 deadline',
+                    start_date: cfpDate.toJSDate(),
+                    duration: 60,
+                    place: 'Online',
+                    link: 'https://belpy.in/'
+                  });
+                  document.querySelector('#belpy-2021 .calendar').appendChild(myCalendar);
+                } catch (err) {
+                  document.querySelector('#belpy-2021 .calendar').appendChild("<p>Calendar not available.</p>");
+                  console.log("Error in cfp date.");
+                }
+
+                // check if date has passed, add 'past' class to it
+                cfpDiff = cfpDate.diffNow("seconds");
+                confDiff = confDate.diffNow("seconds");
+
+                $('#belpy-2021').attr("cfpDiff", cfpDiff.toMillis());
+                $('#belpy-2021').attr("confDiff", confDiff.toMillis());
+
+                if (cfpDiff < 0) {
+                  $('#belpy-2021').addClass('pastcfp');
+                  $('#belpy-2021 .timer').replaceWith($('#belpy-2021 .deadline'));
+                  $('#belpy-2021 .timer-small').replaceWith($('#belpy-2021 .deadline'));
+                  $('#belpy-2021 .calendar').remove();
+                }
+
+                if (confDiff < 0) {
+                  $('#belpy-2021').addClass('pastconf');
+                  $('#belpy-2021 .timer').replaceWith($('#belpy-2021 .deadline'));
+                  $('#belpy-2021 .timer-small').replaceWith($('#belpy-2021 .deadline'));
+                  $('#belpy-2021 .calendar').remove();
+                }
 
 
 

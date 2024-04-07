@@ -68,7 +68,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1712407556"
+      href="/static/css/js-year-calendar.min.css?t=1712524101"
       media="screen,projection"
     />
 
@@ -80,13 +80,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1712407556"
+      href="/static/css/deadlines.css?t=1712524101"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1712407556"
+      href="/static/css/calendar.css?t=1712524101"
       media="screen,projection"
     />
 
@@ -117,14 +117,14 @@
         background: #70163c;
       }
 
-      .PYDATA-tag {
+      .DATA-tag {
         color: #849324;
       }
-      .PYDATA-select {
+      .DATA-select {
         color: #849324;
         background: white;
       }
-      .PYDATA-select.active {
+      .DATA-select.active {
         color: white;
         background: #849324;
       }
@@ -340,7 +340,7 @@
                   class="align-center"
                   style="margin-bottom: 0px; line-height: 1.5"
                 >
-                  Subject Filter:
+                  Filter nach Unterkategorie:
                 </label>
               </div>
               <div class="col-12 col-md-6">
@@ -358,8 +358,8 @@
                     Scientific Python (SCIPY)
                   </option>
 
-                  <option value="PYDATA" id="PYDATA-checkbox">
-                    Python for Data (PYDATA)
+                  <option value="DATA" id="DATA-checkbox">
+                    Python for Data (DATA)
                   </option>
 
                   <option value="WEB" id="WEB-checkbox">
@@ -517,7 +517,7 @@
             <p>
               <a href="">pythondeadlin.es</a> wird seit 2022 von
               <a href="https://dramsch.net/">Jesper Dramsch</a> gepflegt.
-              <br />Es wurde inspiriert (und ursprünglich codiert) von der
+              <br />Es wurde inspiriert (und ursprünglich geschrieben) von der
               fantastischen <a href="https://aideadlin.es">aideadlin.es</a>.
               Keine Gewähr für die Richtigkeit, Fehler bitte korrigieren durch
               <a href="https://github.com/JesperDramsch/python-deadlines/pulls/"
@@ -619,7 +619,7 @@
       var conf_type_data = [
         { name: "General Python", sub: "PY", color: "#4B8BBE" },
         { name: "Scientific Python", sub: "SCIPY", color: "#70163C" },
-        { name: "Python for Data", sub: "PYDATA", color: "#849324" },
+        { name: "Python for Data", sub: "DATA", color: "#849324" },
         { name: "Python for Web", sub: "WEB", color: "#0D0A0B" },
         { name: "Python for Business", sub: "BIZ", color: "#A8B9CC" },
         { name: "Python for Earth", sub: "GEO", color: "#310c0c" },
@@ -688,7 +688,7 @@
           if (e.events.length > 0) {
             for (var i in e.events) {
               window.open(
-                "/de/conference?id=" + e.events[i].abbreviation,
+                "/de/conference/" + e.events[i].abbreviation,
                 "_self"
               );
             }
@@ -726,13 +726,15 @@
               } else {
               }
               content +=
-                '<div class="event-tooltip-content">' +
+                '<div class="event-tooltip-content position-relative">' +
                 '<div class="event-name ' +
                 headline_color +
                 '">' +
-                "<b>" +
+                '<b><a href="/de/conference/' +
+                e.events[i].abbreviation +
+                '" class="stretched-link">' +
                 e.events[i].name +
-                "</b>" +
+                "</a></b>" +
                 "</div>" +
                 '<div class="event-location">' +
                 location_html +
@@ -753,12 +755,14 @@
             });
 
             $(e.element).popover("show");
+            timeoutPopover(e);
           }
         },
-        mouseOutDay: function (e) {
-          if (e.events.length > 0) {
-            $(e.element).popover("hide");
-          }
+        focusoutDay: function (e) {
+          // if (e.events.length > 0) {
+          //   $(e.element).popover("hide");
+          // }
+          timeoutPopover(e);
         },
         customDayRenderer: function (cellContent, currentDate) {
           var today = new Date();
@@ -772,10 +776,46 @@
           }
         },
         dayContextMenu: function (e) {
-          $(e.element).popover("hide");
+          // $(e.element).popover("hide");
+          timeoutPopover(e);
         },
         dataSource: conf_list_all,
       };
+
+      // Function to show the popover
+      function timeoutPopover(e) {
+        // Ensure e has a property to store the timeout if it doesn't already exist
+        if (!e.hidePopoverTimeout) {
+          e.hidePopoverTimeout = null;
+        }
+
+        // Mouse enter event for the calendar item to show the popover
+        $(e.element).mouseover(function () {
+          clearTimeout(e.hidePopoverTimeout); // Cancel any pending hide operation
+          $(e.element).popover("show");
+        });
+
+        // Mouse leave event for the calendar item to hide the popover
+        $(e.element).mouseout(function () {
+          // Start a timeout when leaving the element, gives a buffer time to move to the popover
+          e.hidePopoverTimeout = setTimeout(function () {
+            $(e.element).popover("hide");
+          }, 300); // Adjust delay as needed
+        });
+
+        // Prevent popover from hiding when mouse is over the popover
+        $("body")
+          .on("mouseover", ".popover", function () {
+            clearTimeout(e.hidePopoverTimeout);
+          })
+          .on("mouseout", ".popover", function () {
+            // Hide the popover when leaving it after a delay, allows returning to the calendar item
+            e.hidePopoverTimeout = setTimeout(function () {
+              $(e.element).popover("hide");
+            }, 300); // Adjust delay as needed
+          });
+      }
+
       function load_conference_list() {
         // Gather data
         var conf_list_all = [];
@@ -787,7 +827,7 @@
           name: "PyCon Poland 2024 CfP ",
           color: "red",
           location: "Gliwice, Poland",
-          date: "August 29 - September 1, 2024",
+          date: "29. – 1. August 2024",
           subject: "PY",
           startDate: Date.parse("2024-08-13 23:59:00"),
           endDate: Date.parse("2024-08-13 23:59:00"),
@@ -806,7 +846,7 @@
           name: "PyCon Poland 2024",
           color: color,
           location: "Gliwice, Poland",
-          date: "August 29 - September 1, 2024",
+          date: "29. – 1. August 2024",
           subject: "PY",
           startDate: Date.parse("2024-08-29"),
           endDate: Date.parse("2024-09-01"),
@@ -819,7 +859,7 @@
           name: "PyHEP 2024 CfP ",
           color: "red",
           location: "Aachen, Germany",
-          date: "August 26 - 30, 2024",
+          date: "26. – 30. August 2024",
           subject: "SCIPY",
           startDate: Date.parse("2024-06-25 05:59:00"),
           endDate: Date.parse("2024-06-25 05:59:00"),
@@ -838,7 +878,7 @@
           name: "PyHEP 2024",
           color: color,
           location: "Aachen, Germany",
-          date: "August 26 - 30, 2024",
+          date: "26. – 30. August 2024",
           subject: "SCIPY",
           startDate: Date.parse("2024-08-26"),
           endDate: Date.parse("2024-08-30"),
@@ -851,7 +891,7 @@
           name: "Piter Py 2024 CfP ",
           color: "red",
           location: "Saint Petersburg, Russia",
-          date: "September 26 - 27, 2024",
+          date: "26. – 27. September 2024",
           subject: "PY",
           startDate: Date.parse("2024-06-01 23:59:00"),
           endDate: Date.parse("2024-06-01 23:59:00"),
@@ -870,7 +910,7 @@
           name: "Piter Py 2024",
           color: color,
           location: "Saint Petersburg, Russia",
-          date: "September 26 - 27, 2024",
+          date: "26. – 27. September 2024",
           subject: "PY",
           startDate: Date.parse("2024-09-26"),
           endDate: Date.parse("2024-09-27"),
@@ -883,7 +923,7 @@
           name: "PyCon MEA 2024 CfP ",
           color: "red",
           location: "Dubai, UAE",
-          date: "October 14 - 18, 2024",
+          date: "14. – 18. Oktober 2024",
           subject: "PY",
           startDate: Date.parse("2024-05-31 23:59:00"),
           endDate: Date.parse("2024-05-31 23:59:00"),
@@ -902,7 +942,7 @@
           name: "PyCon MEA 2024",
           color: color,
           location: "Dubai, UAE",
-          date: "October 14 - 18, 2024",
+          date: "14. – 18. Oktober 2024",
           subject: "PY",
           startDate: Date.parse("2024-10-14"),
           endDate: Date.parse("2024-10-18"),
@@ -915,7 +955,7 @@
           name: "PyCon India 2024 CfP ",
           color: "red",
           location: "Bengaluru, India",
-          date: "September 20 - 23, 2024",
+          date: "20. – 23. September 2024",
           subject: "PY",
           startDate: Date.parse("2024-05-31 23:59:00"),
           endDate: Date.parse("2024-05-31 23:59:00"),
@@ -927,7 +967,7 @@
           name: "PyCon India 2024 Tutorial Deadline",
           color: "red",
           location: "Bengaluru, India",
-          date: "September 20 - 23, 2024",
+          date: "20. – 23. September 2024",
           subject: "PY",
           startDate: Date.parse("2024-05-31 23:59:00"),
           endDate: Date.parse("2024-05-31 23:59:00"),
@@ -946,7 +986,7 @@
           name: "PyCon India 2024",
           color: color,
           location: "Bengaluru, India",
-          date: "September 20 - 23, 2024",
+          date: "20. – 23. September 2024",
           subject: "PY",
           startDate: Date.parse("2024-09-20"),
           endDate: Date.parse("2024-09-23"),
@@ -959,7 +999,7 @@
           name: "Kiwi PyCon 2024 CfP ",
           color: "red",
           location: "Te Whanganui-a-Tara Wellington, New Zealand",
-          date: "August 23 - 25, 2024",
+          date: "23. – 25. August 2024",
           subject: "PY",
           startDate: Date.parse("2024-05-23 23:59:00"),
           endDate: Date.parse("2024-05-23 23:59:00"),
@@ -978,7 +1018,7 @@
           name: "Kiwi PyCon 2024",
           color: color,
           location: "Te Whanganui-a-Tara Wellington, New Zealand",
-          date: "August 23 - 25, 2024",
+          date: "23. – 25. August 2024",
           subject: "PY",
           startDate: Date.parse("2024-08-23"),
           endDate: Date.parse("2024-08-25"),
@@ -990,8 +1030,8 @@
           abbreviation: "pyohio-2024",
           name: "PyOhio 2024 CfP ",
           color: "red",
-          location: "Columbus, USA",
-          date: "July 27 - 28, 2024",
+          location: "Cleveland, USA",
+          date: "27. – 28. Juli 2024",
           subject: "PY",
           startDate: Date.parse("2024-05-20 23:59:00"),
           endDate: Date.parse("2024-05-20 23:59:00"),
@@ -1009,8 +1049,8 @@
           abbreviation: "pyohio-2024",
           name: "PyOhio 2024",
           color: color,
-          location: "Columbus, USA",
-          date: "July 27 - 28, 2024",
+          location: "Cleveland, USA",
+          date: "27. – 28. Juli 2024",
           subject: "PY",
           startDate: Date.parse("2024-07-27"),
           endDate: Date.parse("2024-07-28"),
@@ -1023,7 +1063,7 @@
           name: "PyCon Russia 2024 CfP ",
           color: "red",
           location: "Moscow, Russia",
-          date: "July 26 - 27, 2024",
+          date: "26. – 27. Juli 2024",
           subject: "PY",
           startDate: Date.parse("2024-05-15 23:59:00"),
           endDate: Date.parse("2024-05-15 23:59:00"),
@@ -1042,7 +1082,7 @@
           name: "PyCon Russia 2024",
           color: color,
           location: "Moscow, Russia",
-          date: "July 26 - 27, 2024",
+          date: "26. – 27. Juli 2024",
           subject: "PY",
           startDate: Date.parse("2024-07-26"),
           endDate: Date.parse("2024-07-27"),
@@ -1055,8 +1095,8 @@
           name: "PyData Eindhoven 2024 CfP ",
           color: "red",
           location: "Eindhoven, Netherlands",
-          date: "July 11th, 2024",
-          subject: "PYDATA",
+          date: "11. Juli 2024",
+          subject: "DATA",
           startDate: Date.parse("2024-05-13 23:59:00"),
           endDate: Date.parse("2024-05-13 23:59:00"),
         });
@@ -1074,8 +1114,8 @@
           name: "PyData Eindhoven 2024",
           color: color,
           location: "Eindhoven, Netherlands",
-          date: "July 11th, 2024",
-          subject: "PYDATA",
+          date: "11. Juli 2024",
+          subject: "DATA",
           startDate: Date.parse("2024-07-11"),
           endDate: Date.parse("2024-07-11"),
         });
@@ -1087,7 +1127,7 @@
           name: "PyCon Portugal 2024 CfP ",
           color: "red",
           location: "Braga, Portugal",
-          date: "October 17 - 19, 2024",
+          date: "17. – 19. Oktober 2024",
           subject: "PY",
           startDate: Date.parse("2024-04-29 00:00:00"),
           endDate: Date.parse("2024-04-29 00:00:00"),
@@ -1106,7 +1146,7 @@
           name: "PyCon Portugal 2024",
           color: color,
           location: "Braga, Portugal",
-          date: "October 17 - 19, 2024",
+          date: "17. – 19. Oktober 2024",
           subject: "PY",
           startDate: Date.parse("2024-10-17"),
           endDate: Date.parse("2024-10-19"),
@@ -1119,7 +1159,7 @@
           name: "DjangoCon US 2024 CfP ",
           color: "red",
           location: "Durham, USA",
-          date: "September 22 - 27, 2024",
+          date: "22. – 27. September 2024",
           subject: "WEB",
           startDate: Date.parse("2024-04-24 12:00:00"),
           endDate: Date.parse("2024-04-24 12:00:00"),
@@ -1138,7 +1178,7 @@
           name: "DjangoCon US 2024",
           color: color,
           location: "Durham, USA",
-          date: "September 22 - 27, 2024",
+          date: "22. – 27. September 2024",
           subject: "WEB",
           startDate: Date.parse("2024-09-22"),
           endDate: Date.parse("2024-09-27"),
@@ -1151,7 +1191,7 @@
           name: "Wagtail Space US 2024 CfP ",
           color: "red",
           location: "Philadelphia, USA",
-          date: "June 20 - 22, 2024",
+          date: "20. – 22. Juni 2024",
           subject: "WEB",
           startDate: Date.parse("2024-04-22 23:59:00"),
           endDate: Date.parse("2024-04-22 23:59:00"),
@@ -1170,7 +1210,7 @@
           name: "Wagtail Space US 2024",
           color: color,
           location: "Philadelphia, USA",
-          date: "June 20 - 22, 2024",
+          date: "20. – 22. Juni 2024",
           subject: "WEB",
           startDate: Date.parse("2024-06-20"),
           endDate: Date.parse("2024-06-22"),
@@ -1183,7 +1223,7 @@
           name: "PyCon Estonia 2024 CfP ",
           color: "red",
           location: "Tallinn, Estonia",
-          date: "September 5 - 6, 2024",
+          date: "5. – 6. September 2024",
           subject: "PY",
           startDate: Date.parse("2024-04-15 23:59:00"),
           endDate: Date.parse("2024-04-15 23:59:00"),
@@ -1202,10 +1242,42 @@
           name: "PyCon Estonia 2024",
           color: color,
           location: "Tallinn, Estonia",
-          date: "September 5 - 6, 2024",
+          date: "5. – 6. September 2024",
           subject: "PY",
           startDate: Date.parse("2024-09-05"),
           endDate: Date.parse("2024-09-06"),
+        });
+
+        // add deadlines in red
+        conf_list_all.push({
+          id: "belpy-2024-deadline",
+          abbreviation: "belpy-2024",
+          name: "BelPy 2024 CfP ",
+          color: "red",
+          location: "Belagavi, India",
+          date: "6. – 8. Juni 2024",
+          subject: "PY",
+          startDate: Date.parse("2024-04-14 19:18:00"),
+          endDate: Date.parse("2024-04-14 19:18:00"),
+        });
+
+        // add Conferences in chosen color
+
+        var color = "black";
+        // use first sub to choose color
+
+        color = "#4B8BBE";
+
+        conf_list_all.push({
+          id: "belpy-2024-conference",
+          abbreviation: "belpy-2024",
+          name: "BelPy 2024",
+          color: color,
+          location: "Belagavi, India",
+          date: "6. – 8. Juni 2024",
+          subject: "PY",
+          startDate: Date.parse("2024-06-06"),
+          endDate: Date.parse("2024-06-08"),
         });
 
         // add deadlines in red
@@ -1215,7 +1287,7 @@
           name: "North Bay Python 2024 CfP ",
           color: "red",
           location: "Petaluma, USA",
-          date: "June 29 - 30, 2024",
+          date: "29. – 30. Juni 2024",
           subject: "PY",
           startDate: Date.parse("2024-04-12 23:59:00"),
           endDate: Date.parse("2024-04-12 23:59:00"),
@@ -1234,7 +1306,7 @@
           name: "North Bay Python 2024",
           color: color,
           location: "Petaluma, USA",
-          date: "June 29 - 30, 2024",
+          date: "29. – 30. Juni 2024",
           subject: "PY",
           startDate: Date.parse("2024-06-29"),
           endDate: Date.parse("2024-06-30"),
@@ -1247,7 +1319,7 @@
           name: "PyCon Taiwan 2024 CfP ",
           color: "red",
           location: "Taipei, Taiwan",
-          date: "September 21 - 22, 2024",
+          date: "21. – 22. September 2024",
           subject: "PY",
           startDate: Date.parse("2024-04-08 23:59:00"),
           endDate: Date.parse("2024-04-08 23:59:00"),
@@ -1259,7 +1331,7 @@
           name: "PyCon Taiwan 2024 Tutorial Deadline",
           color: "red",
           location: "Taipei, Taiwan",
-          date: "September 21 - 22, 2024",
+          date: "21. – 22. September 2024",
           subject: "PY",
           startDate: Date.parse("2024-04-08 23:59:00"),
           endDate: Date.parse("2024-04-08 23:59:00"),
@@ -1278,7 +1350,7 @@
           name: "PyCon Taiwan 2024",
           color: color,
           location: "Taipei, Taiwan",
-          date: "September 21 - 22, 2024",
+          date: "21. – 22. September 2024",
           subject: "PY",
           startDate: Date.parse("2024-09-21"),
           endDate: Date.parse("2024-09-22"),
@@ -1291,8 +1363,8 @@
           name: "PyData Paris 2024 CfP ",
           color: "red",
           location: "Paris, France",
-          date: "September 25 - 26, 2024",
-          subject: "PYDATA",
+          date: "25. – 26. September 2024",
+          subject: "DATA",
           startDate: Date.parse("2024-04-08 23:59:00"),
           endDate: Date.parse("2024-04-08 23:59:00"),
         });
@@ -1310,8 +1382,8 @@
           name: "PyData Paris 2024",
           color: color,
           location: "Paris, France",
-          date: "September 25 - 26, 2024",
-          subject: "PYDATA",
+          date: "25. – 26. September 2024",
+          subject: "DATA",
           startDate: Date.parse("2024-09-25"),
           endDate: Date.parse("2024-09-26"),
         });
@@ -1323,7 +1395,7 @@
           name: "PyGrunn 2024 CfP ",
           color: "red",
           location: "Groningen, Netherlands",
-          date: "May 17th, 2024",
+          date: "17. Mai 2024",
           subject: "PY",
           startDate: Date.parse("2024-04-07 23:59:00"),
           endDate: Date.parse("2024-04-07 23:59:00"),
@@ -1342,7 +1414,7 @@
           name: "PyGrunn 2024",
           color: color,
           location: "Groningen, Netherlands",
-          date: "May 17th, 2024",
+          date: "17. Mai 2024",
           subject: "PY",
           startDate: Date.parse("2024-05-17"),
           endDate: Date.parse("2024-05-17"),
@@ -1355,7 +1427,7 @@
           name: "EARL 2024 CfP ",
           color: "red",
           location: "Brighton, UK",
-          date: "September 4 - 5, 2024",
+          date: "4. – 5. September 2024",
           subject: "BIZ",
           startDate: Date.parse("2024-03-31 23:59:00"),
           endDate: Date.parse("2024-03-31 23:59:00"),
@@ -1374,7 +1446,7 @@
           name: "EARL 2024",
           color: color,
           location: "Brighton, UK",
-          date: "September 4 - 5, 2024",
+          date: "4. – 5. September 2024",
           subject: "BIZ",
           startDate: Date.parse("2024-09-04"),
           endDate: Date.parse("2024-09-05"),
@@ -1387,7 +1459,7 @@
           name: "PyCamp España 2024 CfP ",
           color: "red",
           location: "Lleida, Spain",
-          date: "March 29 - April 1, 2024",
+          date: "29. – 1. März 2024",
           subject: "PY",
           startDate: Date.parse("2024-03-27 23:59:00"),
           endDate: Date.parse("2024-03-27 23:59:00"),
@@ -1406,7 +1478,7 @@
           name: "PyCamp España 2024",
           color: color,
           location: "Lleida, Spain",
-          date: "March 29 - April 1, 2024",
+          date: "29. – 1. März 2024",
           subject: "PY",
           startDate: Date.parse("2024-03-29"),
           endDate: Date.parse("2024-04-01"),
@@ -1419,7 +1491,7 @@
           name: "Python fwdays 2024 CfP ",
           color: "red",
           location: "Kyiv, Ukraine",
-          date: "April 20th, 2024",
+          date: "20. April 2024",
           subject: "PY",
           startDate: Date.parse("2024-03-20 23:59:00"),
           endDate: Date.parse("2024-03-20 23:59:00"),
@@ -1438,7 +1510,7 @@
           name: "Python fwdays 2024",
           color: color,
           location: "Kyiv, Ukraine",
-          date: "April 20th, 2024",
+          date: "20. April 2024",
           subject: "PY",
           startDate: Date.parse("2024-04-20"),
           endDate: Date.parse("2024-04-20"),
@@ -1451,7 +1523,7 @@
           name: "PyCon Colombia 2024 CfP ",
           color: "red",
           location: "Medellín, Colombia",
-          date: "June 7 - 9, 2024",
+          date: "7. – 9. Juni 2024",
           subject: "PY",
           startDate: Date.parse("2024-03-11 23:59:59"),
           endDate: Date.parse("2024-03-11 23:59:59"),
@@ -1470,7 +1542,7 @@
           name: "PyCon Colombia 2024",
           color: color,
           location: "Medellín, Colombia",
-          date: "June 7 - 9, 2024",
+          date: "7. – 9. Juni 2024",
           subject: "PY",
           startDate: Date.parse("2024-06-07"),
           endDate: Date.parse("2024-06-09"),
@@ -1483,7 +1555,7 @@
           name: "PyCon Nigeria 2024 CfP ",
           color: "red",
           location: "Lagos, Nigeria",
-          date: "July 10 - 13, 2024",
+          date: "10. – 13. Juli 2024",
           subject: "PY",
           startDate: Date.parse("2024-03-10 23:59:00"),
           endDate: Date.parse("2024-03-10 23:59:00"),
@@ -1502,7 +1574,7 @@
           name: "PyCon Nigeria 2024",
           color: color,
           location: "Lagos, Nigeria",
-          date: "July 10 - 13, 2024",
+          date: "10. – 13. Juli 2024",
           subject: "PY",
           startDate: Date.parse("2024-07-10"),
           endDate: Date.parse("2024-07-13"),
@@ -1514,8 +1586,8 @@
           abbreviation: "wagtail-space-nl-2024",
           name: "Wagtail Space NL 2024 CfP ",
           color: "red",
-          location: "Arnhem, The Netherlands",
-          date: "June 12 - 14, 2024",
+          location: "Arnhem, Netherlands",
+          date: "12. – 14. Juni 2024",
           subject: "WEB",
           startDate: Date.parse("2024-03-08 23:59:00"),
           endDate: Date.parse("2024-03-08 23:59:00"),
@@ -1533,8 +1605,8 @@
           abbreviation: "wagtail-space-nl-2024",
           name: "Wagtail Space NL 2024",
           color: color,
-          location: "Arnhem, The Netherlands",
-          date: "June 12 - 14, 2024",
+          location: "Arnhem, Netherlands",
+          date: "12. – 14. Juni 2024",
           subject: "WEB",
           startDate: Date.parse("2024-06-12"),
           endDate: Date.parse("2024-06-14"),
@@ -1547,7 +1619,7 @@
           name: "EuroPython 2024 CfP ",
           color: "red",
           location: "Prague, Czechia",
-          date: "July 8 - 14, 2024",
+          date: "8. – 14. Juli 2024",
           subject: "PY",
           startDate: Date.parse("2024-03-06 23:59:00"),
           endDate: Date.parse("2024-03-06 23:59:00"),
@@ -1566,7 +1638,7 @@
           name: "EuroPython 2024",
           color: color,
           location: "Prague, Czechia",
-          date: "July 8 - 14, 2024",
+          date: "8. – 14. Juli 2024",
           subject: "PY",
           startDate: Date.parse("2024-07-08"),
           endDate: Date.parse("2024-07-14"),
@@ -1579,7 +1651,7 @@
           name: "Python Nordeste 2024 CfP ",
           color: "red",
           location: "Natal, Brazil",
-          date: "August 9 - 11, 2024",
+          date: "9. – 11. August 2024",
           subject: "PY",
           startDate: Date.parse("2024-03-04 23:59:00"),
           endDate: Date.parse("2024-03-04 23:59:00"),
@@ -1598,7 +1670,7 @@
           name: "Python Nordeste 2024",
           color: color,
           location: "Natal, Brazil",
-          date: "August 9 - 11, 2024",
+          date: "9. – 11. August 2024",
           subject: "PY",
           startDate: Date.parse("2024-08-09"),
           endDate: Date.parse("2024-08-11"),
@@ -1611,8 +1683,8 @@
           name: "PyData London 2024 CfP ",
           color: "red",
           location: "London, UK",
-          date: "June 14 - 16, 2024",
-          subject: "PYDATA",
+          date: "14. – 16. Juni 2024",
+          subject: "DATA",
           startDate: Date.parse("2024-03-04 23:59:00"),
           endDate: Date.parse("2024-03-04 23:59:00"),
         });
@@ -1630,8 +1702,8 @@
           name: "PyData London 2024",
           color: color,
           location: "London, UK",
-          date: "June 14 - 16, 2024",
-          subject: "PYDATA",
+          date: "14. – 16. Juni 2024",
+          subject: "DATA",
           startDate: Date.parse("2024-06-14"),
           endDate: Date.parse("2024-06-16"),
         });
@@ -1643,7 +1715,7 @@
           name: "DjangoCon Europe 2024 CfP ",
           color: "red",
           location: "Vigo, Spain",
-          date: "June 5 - 9, 2024",
+          date: "5. – 9. Juni 2024",
           subject: "WEB",
           startDate: Date.parse("2024-02-29 23:59:00"),
           endDate: Date.parse("2024-02-29 23:59:00"),
@@ -1662,7 +1734,7 @@
           name: "DjangoCon Europe 2024",
           color: color,
           location: "Vigo, Spain",
-          date: "June 5 - 9, 2024",
+          date: "5. – 9. Juni 2024",
           subject: "WEB",
           startDate: Date.parse("2024-06-05"),
           endDate: Date.parse("2024-06-09"),
@@ -1675,7 +1747,7 @@
           name: "SciPy US 2024 CfP ",
           color: "red",
           location: "Tacoma, USA",
-          date: "July 8 - 14, 2024",
+          date: "8. – 14. Juli 2024",
           subject: "SCIPY",
           startDate: Date.parse("2024-02-27 23:59:00"),
           endDate: Date.parse("2024-02-27 23:59:00"),
@@ -1694,7 +1766,7 @@
           name: "SciPy US 2024",
           color: color,
           location: "Tacoma, USA",
-          date: "July 8 - 14, 2024",
+          date: "8. – 14. Juli 2024",
           subject: "SCIPY",
           startDate: Date.parse("2024-07-08"),
           endDate: Date.parse("2024-07-14"),
@@ -1707,7 +1779,7 @@
           name: "GeoPython 2024 CfP ",
           color: "red",
           location: "Basel, Switzerland",
-          date: "May 27 - 29, 2024",
+          date: "27. – 29. Mai 2024",
           subject: "GEO",
           startDate: Date.parse("2024-01-23 00:59:00"),
           endDate: Date.parse("2024-01-23 00:59:00"),
@@ -1726,7 +1798,7 @@
           name: "GeoPython 2024",
           color: color,
           location: "Basel, Switzerland",
-          date: "May 27 - 29, 2024",
+          date: "27. – 29. Mai 2024",
           subject: "GEO",
           startDate: Date.parse("2024-05-27"),
           endDate: Date.parse("2024-05-29"),
@@ -1739,7 +1811,7 @@
           name: "PyCon Namibia 2024 CfP ",
           color: "red",
           location: "Windhoek, Namibia",
-          date: "March 4 - 7, 2024",
+          date: "4. – 7. März 2024",
           subject: "PY",
           startDate: Date.parse("2024-01-21 23:59:00"),
           endDate: Date.parse("2024-01-21 23:59:00"),
@@ -1758,7 +1830,7 @@
           name: "PyCon Namibia 2024",
           color: color,
           location: "Windhoek, Namibia",
-          date: "March 4 - 7, 2024",
+          date: "4. – 7. März 2024",
           subject: "PY",
           startDate: Date.parse("2024-03-04"),
           endDate: Date.parse("2024-03-07"),
@@ -1771,7 +1843,7 @@
           name: "PyCon Pakistan 2024 CfP ",
           color: "red",
           location: "Lahore, Pakistan",
-          date: "March 9 - 10, 2024",
+          date: "9. – 10. März 2024",
           subject: "PY",
           startDate: Date.parse("2024-01-15 23:59:00"),
           endDate: Date.parse("2024-01-15 23:59:00"),
@@ -1790,7 +1862,7 @@
           name: "PyCon Pakistan 2024",
           color: color,
           location: "Lahore, Pakistan",
-          date: "March 9 - 10, 2024",
+          date: "9. – 10. März 2024",
           subject: "PY",
           startDate: Date.parse("2024-03-09"),
           endDate: Date.parse("2024-03-10"),
@@ -1803,7 +1875,7 @@
           name: "PyTexas 2024 CfP ",
           color: "red",
           location: "Austin, USA",
-          date: "April 19 - 21, 2024",
+          date: "19. – 21. April 2024",
           subject: "PY",
           startDate: Date.parse("2024-01-14 23:59:00"),
           endDate: Date.parse("2024-01-14 23:59:00"),
@@ -1822,7 +1894,7 @@
           name: "PyTexas 2024",
           color: color,
           location: "Austin, USA",
-          date: "April 19 - 21, 2024",
+          date: "19. – 21. April 2024",
           subject: "PY",
           startDate: Date.parse("2024-04-19"),
           endDate: Date.parse("2024-04-21"),
@@ -1835,10 +1907,10 @@
           name: "PyCon Lithuania 2024 CfP ",
           color: "red",
           location: "Vilnius, Lithuania",
-          date: "April 2 - 6, 2024",
+          date: "2. – 6. April 2024",
           subject: "PY",
-          startDate: Date.parse("2024-01-10 23:59:59"),
-          endDate: Date.parse("2024-01-10 23:59:59"),
+          startDate: Date.parse("2024-01-10 23:59:00"),
+          endDate: Date.parse("2024-01-10 23:59:00"),
         });
 
         // add Conferences in chosen color
@@ -1854,7 +1926,7 @@
           name: "PyCon Lithuania 2024",
           color: color,
           location: "Vilnius, Lithuania",
-          date: "April 2 - 6, 2024",
+          date: "2. – 6. April 2024",
           subject: "PY",
           startDate: Date.parse("2024-04-02"),
           endDate: Date.parse("2024-04-06"),
@@ -1867,7 +1939,7 @@
           name: "PyCon Italia 2024 CfP (extended)",
           color: "red",
           location: "Florence, Italy",
-          date: "May 22 - 25, 2024",
+          date: "22. – 25. Mai 2024",
           subject: "PY",
           startDate: Date.parse("2024-01-15 23:59:00"),
           endDate: Date.parse("2024-01-15 23:59:00"),
@@ -1886,7 +1958,7 @@
           name: "PyCon Italia 2024",
           color: color,
           location: "Florence, Italy",
-          date: "May 22 - 25, 2024",
+          date: "22. – 25. Mai 2024",
           subject: "PY",
           startDate: Date.parse("2024-05-22"),
           endDate: Date.parse("2024-05-25"),
@@ -1899,10 +1971,10 @@
           name: "PyCascades 2024 CfP (extended)",
           color: "red",
           location: "Seattle, USA",
-          date: "April 5 - 8, 2024",
+          date: "5. – 8. April 2024",
           subject: "PY",
-          startDate: Date.parse("2024-01-04 23:59:59"),
-          endDate: Date.parse("2024-01-04 23:59:59"),
+          startDate: Date.parse("2024-01-04 23:59:00"),
+          endDate: Date.parse("2024-01-04 23:59:00"),
         });
 
         // add Conferences in chosen color
@@ -1918,7 +1990,7 @@
           name: "PyCascades 2024",
           color: color,
           location: "Seattle, USA",
-          date: "April 5 - 8, 2024",
+          date: "5. – 8. April 2024",
           subject: "PY",
           startDate: Date.parse("2024-04-05"),
           endDate: Date.parse("2024-04-08"),
@@ -1931,10 +2003,10 @@
           name: "PyCon Slovakia 2024 CfP (extended)",
           color: "red",
           location: "Bratislava, Slovakia",
-          date: "March 15 - 17, 2024",
+          date: "15. – 17. März 2024",
           subject: "PY",
-          startDate: Date.parse("2023-12-31 23:59:59"),
-          endDate: Date.parse("2023-12-31 23:59:59"),
+          startDate: Date.parse("2023-12-31 23:59:00"),
+          endDate: Date.parse("2023-12-31 23:59:00"),
         });
 
         // add Conferences in chosen color
@@ -1950,7 +2022,7 @@
           name: "PyCon Slovakia 2024",
           color: color,
           location: "Bratislava, Slovakia",
-          date: "March 15 - 17, 2024",
+          date: "15. – 17. März 2024",
           subject: "PY",
           startDate: Date.parse("2024-03-15"),
           endDate: Date.parse("2024-03-17"),
@@ -1963,8 +2035,8 @@
           name: "PyCon Germany & PyData Berlin 2024 CfP (extended)",
           color: "red",
           location: "Berlin, Germany",
-          date: "April 22 - 24, 2024",
-          subject: "PY,PYDATA",
+          date: "22. – 24. April 2024",
+          subject: "PY,DATA",
           startDate: Date.parse("2024-01-07 23:59:59"),
           endDate: Date.parse("2024-01-07 23:59:59"),
         });
@@ -1982,8 +2054,8 @@
           name: "PyCon Germany & PyData Berlin 2024",
           color: color,
           location: "Berlin, Germany",
-          date: "April 22 - 24, 2024",
-          subject: "PY,PYDATA",
+          date: "22. – 24. April 2024",
+          subject: "PY,DATA",
           startDate: Date.parse("2024-04-22"),
           endDate: Date.parse("2024-04-24"),
         });
@@ -1995,7 +2067,7 @@
           name: "PyCon US 2024 CfP (extended)",
           color: "red",
           location: "Pittsburgh, USA",
-          date: "May 15 - 23, 2024",
+          date: "15. – 23. Mai 2024",
           subject: "PY",
           startDate: Date.parse("2023-12-18 23:59:00"),
           endDate: Date.parse("2023-12-18 23:59:00"),
@@ -2014,7 +2086,7 @@
           name: "PyCon US 2024",
           color: color,
           location: "Pittsburgh, USA",
-          date: "May 15 - 23, 2024",
+          date: "15. – 23. Mai 2024",
           subject: "PY",
           startDate: Date.parse("2024-05-15"),
           endDate: Date.parse("2024-05-23"),
@@ -2027,8 +2099,8 @@
           name: "PyData Tel Aviv 2023 CfP (extended)",
           color: "red",
           location: "Tel Aviv, Israel",
-          date: "November 4th, 2024",
-          subject: "PYDATA",
+          date: "4. November 2024",
+          subject: "DATA",
           startDate: Date.parse("2023-07-14 23:59:00"),
           endDate: Date.parse("2023-07-14 23:59:00"),
         });
@@ -2046,8 +2118,8 @@
           name: "PyData Tel Aviv 2023",
           color: color,
           location: "Tel Aviv, Israel",
-          date: "November 4th, 2024",
-          subject: "PYDATA",
+          date: "4. November 2024",
+          subject: "DATA",
           startDate: Date.parse("2024-11-04"),
           endDate: Date.parse("2024-11-04"),
         });
@@ -2059,7 +2131,7 @@
           name: "Plone Conference 2024 CfP (extended)",
           color: "red",
           location: "Brasilia, Brazil",
-          date: "November 25 - December 1, 2024",
+          date: "25. – 1. November 2024",
           subject: "WEB",
           startDate: Date.parse("TBA"),
           endDate: Date.parse("TBA"),
@@ -2078,7 +2150,7 @@
           name: "Plone Conference 2024",
           color: color,
           location: "Brasilia, Brazil",
-          date: "November 25 - December 1, 2024",
+          date: "25. – 1. November 2024",
           subject: "WEB",
           startDate: Date.parse("2024-11-25"),
           endDate: Date.parse("2024-12-01"),
@@ -2091,7 +2163,7 @@
           name: "PyCon France 2024 CfP (extended)",
           color: "red",
           location: "Strasbourg, France",
-          date: "October 31 - November 3, 2024",
+          date: "31. – 3. Oktober 2024",
           subject: "PY",
           startDate: Date.parse("TBA"),
           endDate: Date.parse("TBA"),
@@ -2110,7 +2182,7 @@
           name: "PyCon France 2024",
           color: color,
           location: "Strasbourg, France",
-          date: "October 31 - November 3, 2024",
+          date: "31. – 3. Oktober 2024",
           subject: "PY",
           startDate: Date.parse("2024-10-31"),
           endDate: Date.parse("2024-11-03"),
@@ -2123,7 +2195,7 @@
           name: "PyCon Asia Pacific 2024 CfP (extended)",
           color: "red",
           location: "Yogyakarta, Indonesia",
-          date: "October 25 - 27, 2024",
+          date: "25. – 27. Oktober 2024",
           subject: "PY",
           startDate: Date.parse("TBA"),
           endDate: Date.parse("TBA"),
@@ -2142,7 +2214,7 @@
           name: "PyCon Asia Pacific 2024",
           color: color,
           location: "Yogyakarta, Indonesia",
-          date: "October 25 - 27, 2024",
+          date: "25. – 27. Oktober 2024",
           subject: "PY",
           startDate: Date.parse("2024-10-25"),
           endDate: Date.parse("2024-10-27"),
@@ -2155,7 +2227,7 @@
           name: "Swiss Python Summit 2024 CfP (extended)",
           color: "red",
           location: "Rapperswil, Switzerland",
-          date: "October 17 - 18, 2024",
+          date: "17. – 18. Oktober 2024",
           subject: "PY",
           startDate: Date.parse("TBA"),
           endDate: Date.parse("TBA"),
@@ -2174,7 +2246,7 @@
           name: "Swiss Python Summit 2024",
           color: color,
           location: "Rapperswil, Switzerland",
-          date: "October 17 - 18, 2024",
+          date: "17. – 18. Oktober 2024",
           subject: "PY",
           startDate: Date.parse("2024-10-17"),
           endDate: Date.parse("2024-10-18"),
@@ -2187,7 +2259,7 @@
           name: "Python Brasil 2024 CfP (extended)",
           color: "red",
           location: "Rio de Janeiro, Brazil",
-          date: "October 16 - 21, 2024",
+          date: "16. – 21. Oktober 2024",
           subject: "PY",
           startDate: Date.parse("TBA"),
           endDate: Date.parse("TBA"),
@@ -2206,7 +2278,7 @@
           name: "Python Brasil 2024",
           color: color,
           location: "Rio de Janeiro, Brazil",
-          date: "October 16 - 21, 2024",
+          date: "16. – 21. Oktober 2024",
           subject: "PY",
           startDate: Date.parse("2024-10-16"),
           endDate: Date.parse("2024-10-21"),
@@ -2219,7 +2291,7 @@
           name: "PyCon Spain 2024 CfP (extended)",
           color: "red",
           location: "Vigo, Spain",
-          date: "October 4 - 6, 2024",
+          date: "4. – 6. Oktober 2024",
           subject: "PY",
           startDate: Date.parse("TBA"),
           endDate: Date.parse("TBA"),
@@ -2238,7 +2310,7 @@
           name: "PyCon Spain 2024",
           color: color,
           location: "Vigo, Spain",
-          date: "October 4 - 6, 2024",
+          date: "4. – 6. Oktober 2024",
           subject: "PY",
           startDate: Date.parse("2024-10-04"),
           endDate: Date.parse("2024-10-06"),
@@ -2251,7 +2323,7 @@
           name: "PyCon Japan 2024 CfP (extended)",
           color: "red",
           location: "Tokyo, Japan",
-          date: "September 27 - 29, 2024",
+          date: "27. – 29. September 2024",
           subject: "PY",
           startDate: Date.parse("TBA"),
           endDate: Date.parse("TBA"),
@@ -2270,7 +2342,7 @@
           name: "PyCon Japan 2024",
           color: color,
           location: "Tokyo, Japan",
-          date: "September 27 - 29, 2024",
+          date: "27. – 29. September 2024",
           subject: "PY",
           startDate: Date.parse("2024-09-27"),
           endDate: Date.parse("2024-09-29"),
@@ -2283,8 +2355,8 @@
           name: "PyData Amsterdam 2024 CfP (extended)",
           color: "red",
           location: "Amsterdam, Netherlands",
-          date: "September 18 - 20, 2024",
-          subject: "PYDATA",
+          date: "18. – 20. September 2024",
+          subject: "DATA",
           startDate: Date.parse("TBA"),
           endDate: Date.parse("TBA"),
         });
@@ -2302,8 +2374,8 @@
           name: "PyData Amsterdam 2024",
           color: color,
           location: "Amsterdam, Netherlands",
-          date: "September 18 - 20, 2024",
-          subject: "PYDATA",
+          date: "18. – 20. September 2024",
+          subject: "DATA",
           startDate: Date.parse("2024-09-18"),
           endDate: Date.parse("2024-09-20"),
         });
@@ -2314,8 +2386,8 @@
           abbreviation: "python-sul-2024",
           name: "Python Sul 2024 CfP (extended)",
           color: "red",
-          location: "Florianópolis - SC, Brazil",
-          date: "September 13 - 15, 2024",
+          location: "Florianópolis, Brazil",
+          date: "13. – 15. September 2024",
           subject: "PY",
           startDate: Date.parse("TBA"),
           endDate: Date.parse("TBA"),
@@ -2333,8 +2405,8 @@
           abbreviation: "python-sul-2024",
           name: "Python Sul 2024",
           color: color,
-          location: "Florianópolis - SC, Brazil",
-          date: "September 13 - 15, 2024",
+          location: "Florianópolis, Brazil",
+          date: "13. – 15. September 2024",
           subject: "PY",
           startDate: Date.parse("2024-09-13"),
           endDate: Date.parse("2024-09-15"),
@@ -2347,7 +2419,7 @@
           name: "PyCon Malaysia 2024 CfP (extended)",
           color: "red",
           location: "Petaling Jaya, Malaysia",
-          date: "August 24 - 25, 2024",
+          date: "24. – 25. August 2024",
           subject: "PY",
           startDate: Date.parse("TBA"),
           endDate: Date.parse("TBA"),
@@ -2366,7 +2438,7 @@
           name: "PyCon Malaysia 2024",
           color: color,
           location: "Petaling Jaya, Malaysia",
-          date: "August 24 - 25, 2024",
+          date: "24. – 25. August 2024",
           subject: "PY",
           startDate: Date.parse("2024-08-24"),
           endDate: Date.parse("2024-08-25"),
@@ -2379,7 +2451,7 @@
           name: "Flask Con 2024 CfP (extended)",
           color: "red",
           location: "Pittsburgh, USA",
-          date: "May 17th, 2024",
+          date: "17. Mai 2024",
           subject: "WEB",
           startDate: Date.parse("TBA"),
           endDate: Date.parse("TBA"),
@@ -2398,7 +2470,7 @@
           name: "Flask Con 2024",
           color: color,
           location: "Pittsburgh, USA",
-          date: "May 17th, 2024",
+          date: "17. Mai 2024",
           subject: "WEB",
           startDate: Date.parse("2024-05-17"),
           endDate: Date.parse("2024-05-17"),
@@ -2411,7 +2483,7 @@
           name: "Python Niger 2024 CfP (extended)",
           color: "red",
           location: "Maradi, Niger Republic",
-          date: "April 28th, 2024",
+          date: "28. April 2024",
           subject: "PY",
           startDate: Date.parse("None"),
           endDate: Date.parse("None"),
@@ -2430,7 +2502,7 @@
           name: "Python Niger 2024",
           color: color,
           location: "Maradi, Niger Republic",
-          date: "April 28th, 2024",
+          date: "28. April 2024",
           subject: "PY",
           startDate: Date.parse("2024-04-28"),
           endDate: Date.parse("2024-04-28"),

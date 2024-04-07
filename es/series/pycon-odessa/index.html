@@ -28,11 +28,7 @@
       content="https://pythondeadlin.es/series/pycon-odessa/"
     />
     <meta property="og:site_name" content="Python Conference Deadlines" />
-    <meta property="og:type" content="article" />
-    <meta
-      property="article:published_time"
-      content="2024-06-13T00:00:00+00:00"
-    />
+    <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary" />
     <meta property="twitter:title" content="PyCon Odessa Conference Summary" />
     <meta name="twitter:site" content="@jesperdramsch" />
@@ -40,20 +36,14 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "BlogPosting",
+        "@type": "WebPage",
         "author": {
           "@type": "Person",
           "name": "Jesper Dramsch",
           "url": "https://dramsch.net"
         },
-        "dateModified": "2024-06-13T00:00:00+00:00",
-        "datePublished": "2024-06-13T00:00:00+00:00",
         "description": "Summary of the conference and its instances throughout the years.",
         "headline": "PyCon Odessa Conference Summary",
-        "mainEntityOfPage": {
-          "@type": "WebPage",
-          "@id": "https://pythondeadlin.es/series/pycon-odessa/"
-        },
         "url": "https://pythondeadlin.es/series/pycon-odessa/"
       }
     </script>
@@ -85,7 +75,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1712407527"
+      href="/static/css/js-year-calendar.min.css?t=1712524055"
       media="screen,projection"
     />
 
@@ -97,13 +87,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1712407527"
+      href="/static/css/deadlines.css?t=1712524055"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1712407527"
+      href="/static/css/calendar.css?t=1712524055"
       media="screen,projection"
     />
 
@@ -134,14 +124,14 @@
         background: #70163c;
       }
 
-      .PYDATA-tag {
+      .DATA-tag {
         color: #849324;
       }
-      .PYDATA-select {
+      .DATA-select {
         color: #849324;
         background: white;
       }
-      .PYDATA-select.active {
+      .DATA-select.active {
         color: white;
         background: #849324;
       }
@@ -583,7 +573,7 @@
             <div class="row">
               <div class="col-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">September 11 - 12, 2021.</span>
+                  <span class="conf-date">11 – 12 de septiembre de 2021.</span>
                   <span class="conf-place">
                     <a href="http://maps.google.com/?q=Odessa, Ukraine"
                       >Odessa, Ukraine</a
@@ -655,7 +645,7 @@
             <div class="row">
               <div class="col-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">June 13 - 15, 2020.</span>
+                  <span class="conf-date">13 – 15 de junio de 2020.</span>
                   <span class="conf-place">
                     <a href="http://maps.google.com/?q=Odessa, Ukraine"
                       >Odessa, Ukraine</a
@@ -729,7 +719,7 @@
             <div class="row">
               <div class="col-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">March 16th, 2019.</span>
+                  <span class="conf-date">16 de marzo de 2019.</span>
                   <span class="conf-place">
                     <a href="http://maps.google.com/?q=Odessa, Ukraine"
                       >Odessa, Ukraine</a
@@ -764,13 +754,13 @@
 
         <div class="row">
           <div
-            id="916fceea-9d43-40c5-9e2c-af6d7ff3e8ba"
+            id="15b18534-0add-40e9-a839-8031409e5e8c"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "916fceea-9d43-40c5-9e2c-af6d7ff3e8ba",
+              "15b18534-0add-40e9-a839-8031409e5e8c",
               [
                 {
                   latitude: 46.4843023,
@@ -873,7 +863,7 @@
       var subs = [];
       var _all_subs = [];
       // Get all subs
-      var conf_type_data = [{"name":"General Python","sub":"PY","color":"#4B8BBE"},{"name":"Scientific Python","sub":"SCIPY","color":"#70163C"},{"name":"Python for Data","sub":"PYDATA","color":"#849324"},{"name":"Python for Web","sub":"WEB","color":"#0D0A0B"},{"name":"Python for Business","sub":"BIZ","color":"#A8B9CC"},{"name":"Python for Earth","sub":"GEO","color":"#310c0c"}];
+      var conf_type_data = [{"name":"General Python","sub":"PY","color":"#4B8BBE"},{"name":"Scientific Python","sub":"SCIPY","color":"#70163C"},{"name":"Python for Data","sub":"DATA","color":"#849324"},{"name":"Python for Web","sub":"WEB","color":"#0D0A0B"},{"name":"Python for Business","sub":"BIZ","color":"#A8B9CC"},{"name":"Python for Earth","sub":"GEO","color":"#310c0c"}];
       var sub2name = {}; var name2sub = {};
       for (var i = 0; i < conf_type_data.length; i++) {
           _all_subs[i] = conf_type_data[i]['sub'];
@@ -991,7 +981,7 @@
 
 
 
-                $('#pycon-odessa-2021 .PY-tag').html(sub2name["PY"].toLocaleLowerCase());
+                $('#pycon-odessa-2021 .PY-tag').html("Python General".toLocaleLowerCase("es"));
 
 
 
@@ -1062,7 +1052,7 @@
 
 
 
-                $('#pycon-odessa-2020 .PY-tag').html(sub2name["PY"].toLocaleLowerCase());
+                $('#pycon-odessa-2020 .PY-tag').html("Python General".toLocaleLowerCase("es"));
 
 
 
@@ -1133,7 +1123,7 @@
 
 
 
-                $('#pycon-odessa-2019 .PY-tag').html(sub2name["PY"].toLocaleLowerCase());
+                $('#pycon-odessa-2019 .PY-tag').html("Python General".toLocaleLowerCase("es"));
 
 
                 $('#pycon-odessa-2019 .timer').html("TBA");

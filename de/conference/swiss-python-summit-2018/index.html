@@ -32,11 +32,7 @@
       content="https://pythondeadlin.es/conference/swiss-python-summit-2018/"
     />
     <meta property="og:site_name" content="Python Conference Deadlines" />
-    <meta property="og:type" content="article" />
-    <meta
-      property="article:published_time"
-      content="2024-02-16T00:00:00+00:00"
-    />
+    <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary" />
     <meta
       property="twitter:title"
@@ -47,20 +43,14 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "BlogPosting",
+        "@type": "WebPage",
         "author": {
           "@type": "Person",
           "name": "Jesper Dramsch",
           "url": "https://dramsch.net"
         },
-        "dateModified": "2024-02-16T00:00:00+00:00",
-        "datePublished": "2024-02-16T00:00:00+00:00",
         "description": "Countdown for the Call for Participation of this conference including conference dates and details.",
         "headline": "Swiss Python Summit 2018 Conference Deadlines",
-        "mainEntityOfPage": {
-          "@type": "WebPage",
-          "@id": "https://pythondeadlin.es/conference/swiss-python-summit-2018/"
-        },
         "url": "https://pythondeadlin.es/conference/swiss-python-summit-2018/"
       }
     </script>
@@ -97,7 +87,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1712407556"
+      href="/static/css/js-year-calendar.min.css?t=1712524101"
       media="screen,projection"
     />
 
@@ -109,13 +99,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1712407556"
+      href="/static/css/deadlines.css?t=1712524101"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1712407556"
+      href="/static/css/calendar.css?t=1712524101"
       media="screen,projection"
     />
 
@@ -146,14 +136,14 @@
         background: #70163c;
       }
 
-      .PYDATA-tag {
+      .DATA-tag {
         color: #849324;
       }
-      .PYDATA-select {
+      .DATA-select {
         color: #849324;
         background: white;
       }
-      .PYDATA-select.active {
+      .DATA-select.active {
         color: white;
         background: #849324;
       }
@@ -527,7 +517,7 @@
       </div>
       <div id="page-content">
         <div id="conf-deadline-timer" class="row">
-          <div id="cfp-timer" class="col-12 conf-timer">TBA</div>
+          <div id="cfp-timer" class="col-12 conf-timer"></div>
         </div>
         <div id="conf-key-facts" class="row">
           <div class="col-12 col-md-6">
@@ -539,7 +529,7 @@
                 width="16"
                 height="16"
               />
-              <span id="conf-date">February 16 - 17, 2018</span>
+              <span id="conf-date">16. Februar 2018</span>
             </div>
             <div>
               <img
@@ -596,7 +586,7 @@
               Deadline in der Zeitzone der Konferenz:
             </div>
             <div class="meta">
-              <span class="deadline-time"></span>
+              <span class="deadline-time">Tuesday, 31 October 2017</span>
             </div>
             <div class="meta">
               Deadline in lokaler <span class="local-timezone"></span> Zeitzone:
@@ -653,13 +643,13 @@
         </div>
         <div class="row">
           <div
-            id="d2cb8208-cb21-4ff0-bac6-b8983d61232a"
+            id="ebe194ae-9f48-4f04-96dd-de445cc4cb68"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "d2cb8208-cb21-4ff0-bac6-b8983d61232a",
+              "ebe194ae-9f48-4f04-96dd-de445cc4cb68",
               [
                 {
                   latitude: 47.2266532,
@@ -692,7 +682,7 @@
             <p>
               <a href="">pythondeadlin.es</a> wird seit 2022 von
               <a href="https://dramsch.net/">Jesper Dramsch</a> gepflegt.
-              <br />Es wurde inspiriert (und ursprünglich codiert) von der
+              <br />Es wurde inspiriert (und ursprünglich geschrieben) von der
               fantastischen <a href="https://aideadlin.es">aideadlin.es</a>.
               Keine Gewähr für die Richtigkeit, Fehler bitte korrigieren durch
               <a href="https://github.com/JesperDramsch/python-deadlines/pulls/"
@@ -740,7 +730,7 @@
         var conf_type_data = [
           { name: "General Python", sub: "PY", color: "#4B8BBE" },
           { name: "Scientific Python", sub: "SCIPY", color: "#70163C" },
-          { name: "Python for Data", sub: "PYDATA", color: "#849324" },
+          { name: "Python for Data", sub: "DATA", color: "#849324" },
           { name: "Python for Web", sub: "WEB", color: "#0D0A0B" },
           { name: "Python for Business", sub: "BIZ", color: "#A8B9CC" },
           { name: "Python for Earth", sub: "GEO", color: "#310c0c" },
@@ -816,9 +806,65 @@
 
         // other
 
-        $("#cfp-timer").html("TBA");
-        $(".deadline-time").html("TBA");
-        $(".deadline-local-time").html("TBA");
+        // Use specified timezone for deadlines if available else use AoE timezone
+
+        var confDeadline = DateTime.fromSQL("2017-10-31 23:59:00", {
+          zone: "UTC-12",
+        });
+
+        // check if timezone is valid otherwise replace by system timezone
+        if (confDeadline.invalid) {
+          var confDeadline = DateTime.fromSQL("2017-10-31 23:59:00");
+          console.log("Invalid timezone. Using system timezone instead.");
+        }
+
+        // add calendar
+
+        var conferenceDeadlineCalendar = createCalendarFromObject({
+          id: "swiss-python-summit-2018",
+          title: "Swiss Python Summit 2018 deadline",
+          start_date: confDeadline.toJSDate(),
+          duration: 60,
+          place: "Rapperswil, Switzerland",
+          link:
+            "https://web.archive.org/web/20180205001500/http://www.python-summit.ch/",
+        });
+        document
+          .querySelector("#conference-deadline")
+          .appendChild(conferenceDeadlineCalendar);
+
+        var conferenceCalendar = createCalendarFromObject({
+          id: "swiss-python-summit-2018",
+          title: "Swiss Python Summit 2018",
+          start_date: DateTime.fromSQL("2018-02-16").toJSDate(),
+          end_date: DateTime.fromSQL("2018-02-16").toJSDate(),
+          place: "Rapperswil, Switzerland",
+          link:
+            "https://web.archive.org/web/20180205001500/http://www.python-summit.ch/",
+        });
+        document
+          .querySelector("#conference-calendar")
+          .appendChild(conferenceCalendar);
+
+        // render countdown timer
+        $("#cfp-timer").countdown(confDeadline.toJSDate(), function (event) {
+          $(this).html(event.strftime("%D Tage %HS %Mm %Ss"));
+        });
+
+        // render deadline conference time
+
+        $(".deadline-time").html(
+          confDeadline
+            .setZone("UTC-12")
+            .toLocaleString(DateTime.DATETIME_HUGE_WITH_SECONDS)
+        );
+
+        // render deadline in local timezone
+        $(".deadline-local-time").html(
+          confDeadline
+            .setZone("system")
+            .toLocaleString(DateTime.DATETIME_HUGE_WITH_SECONDS)
+        );
       });
     </script>
     <script async defer>

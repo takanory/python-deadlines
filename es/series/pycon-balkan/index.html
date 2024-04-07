@@ -28,11 +28,7 @@
       content="https://pythondeadlin.es/series/pycon-balkan/"
     />
     <meta property="og:site_name" content="Python Conference Deadlines" />
-    <meta property="og:type" content="article" />
-    <meta
-      property="article:published_time"
-      content="2024-10-03T00:00:00+00:00"
-    />
+    <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary" />
     <meta property="twitter:title" content="PyCon Balkan Conference Summary" />
     <meta name="twitter:site" content="@jesperdramsch" />
@@ -40,20 +36,14 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "BlogPosting",
+        "@type": "WebPage",
         "author": {
           "@type": "Person",
           "name": "Jesper Dramsch",
           "url": "https://dramsch.net"
         },
-        "dateModified": "2024-10-03T00:00:00+00:00",
-        "datePublished": "2024-10-03T00:00:00+00:00",
         "description": "Summary of the conference and its instances throughout the years.",
         "headline": "PyCon Balkan Conference Summary",
-        "mainEntityOfPage": {
-          "@type": "WebPage",
-          "@id": "https://pythondeadlin.es/series/pycon-balkan/"
-        },
         "url": "https://pythondeadlin.es/series/pycon-balkan/"
       }
     </script>
@@ -85,7 +75,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1712407527"
+      href="/static/css/js-year-calendar.min.css?t=1712524055"
       media="screen,projection"
     />
 
@@ -97,13 +87,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1712407527"
+      href="/static/css/deadlines.css?t=1712524055"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1712407527"
+      href="/static/css/calendar.css?t=1712524055"
       media="screen,projection"
     />
 
@@ -134,14 +124,14 @@
         background: #70163c;
       }
 
-      .PYDATA-tag {
+      .DATA-tag {
         color: #849324;
       }
-      .PYDATA-select {
+      .DATA-select {
         color: #849324;
         background: white;
       }
-      .PYDATA-select.active {
+      .DATA-select.active {
         color: white;
         background: #849324;
       }
@@ -613,7 +603,7 @@
             <div class="row">
               <div class="col-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">October 3 - 6, 2019.</span>
+                  <span class="conf-date">3 – 6 de octubre de 2019.</span>
                   <span class="conf-place">
                     <a href="http://maps.google.com/?q=Belgrade, Serbia"
                       >Belgrade, Serbia</a
@@ -685,7 +675,7 @@
             <div class="row">
               <div class="col-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">November 16 - 19, 2018.</span>
+                  <span class="conf-date">16 – 19 de noviembre de 2018.</span>
                   <span class="conf-place">
                     <a href="http://maps.google.com/?q=Belgrade, Serbia"
                       >Belgrade, Serbia</a
@@ -720,13 +710,13 @@
 
         <div class="row">
           <div
-            id="166d8654-cca5-43c6-8713-c1f574bc75b2"
+            id="baab408d-9324-4835-b687-0b1f593d8f9a"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "166d8654-cca5-43c6-8713-c1f574bc75b2",
+              "baab408d-9324-4835-b687-0b1f593d8f9a",
               [
                 {
                   latitude: 44.8178131,
@@ -819,7 +809,7 @@
       var subs = [];
       var _all_subs = [];
       // Get all subs
-      var conf_type_data = [{"name":"General Python","sub":"PY","color":"#4B8BBE"},{"name":"Scientific Python","sub":"SCIPY","color":"#70163C"},{"name":"Python for Data","sub":"PYDATA","color":"#849324"},{"name":"Python for Web","sub":"WEB","color":"#0D0A0B"},{"name":"Python for Business","sub":"BIZ","color":"#A8B9CC"},{"name":"Python for Earth","sub":"GEO","color":"#310c0c"}];
+      var conf_type_data = [{"name":"General Python","sub":"PY","color":"#4B8BBE"},{"name":"Scientific Python","sub":"SCIPY","color":"#70163C"},{"name":"Python for Data","sub":"DATA","color":"#849324"},{"name":"Python for Web","sub":"WEB","color":"#0D0A0B"},{"name":"Python for Business","sub":"BIZ","color":"#A8B9CC"},{"name":"Python for Earth","sub":"GEO","color":"#310c0c"}];
       var sub2name = {}; var name2sub = {};
       for (var i = 0; i < conf_type_data.length; i++) {
           _all_subs[i] = conf_type_data[i]['sub'];
@@ -937,7 +927,7 @@
 
 
 
-                $('#pycon-balkan-2019 .PY-tag').html(sub2name["PY"].toLocaleLowerCase());
+                $('#pycon-balkan-2019 .PY-tag').html("Python General".toLocaleLowerCase("es"));
 
 
 
@@ -1008,7 +998,7 @@
 
 
 
-                $('#pycon-balkan-2018 .PY-tag').html(sub2name["PY"].toLocaleLowerCase());
+                $('#pycon-balkan-2018 .PY-tag').html("Python General".toLocaleLowerCase("es"));
 
 
                 $('#pycon-balkan-2018 .timer').html("TBA");

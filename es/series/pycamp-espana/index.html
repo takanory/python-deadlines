@@ -28,11 +28,7 @@
       content="https://pythondeadlin.es/series/pycamp-espana/"
     />
     <meta property="og:site_name" content="Python Conference Deadlines" />
-    <meta property="og:type" content="article" />
-    <meta
-      property="article:published_time"
-      content="2024-03-29T00:00:00+00:00"
-    />
+    <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary" />
     <meta property="twitter:title" content="PyCamp España Conference Summary" />
     <meta name="twitter:site" content="@jesperdramsch" />
@@ -40,20 +36,14 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "BlogPosting",
+        "@type": "WebPage",
         "author": {
           "@type": "Person",
           "name": "Jesper Dramsch",
           "url": "https://dramsch.net"
         },
-        "dateModified": "2024-03-29T00:00:00+00:00",
-        "datePublished": "2024-03-29T00:00:00+00:00",
         "description": "Summary of the conference and its instances throughout the years.",
         "headline": "PyCamp España Conference Summary",
-        "mainEntityOfPage": {
-          "@type": "WebPage",
-          "@id": "https://pythondeadlin.es/series/pycamp-espana/"
-        },
         "url": "https://pythondeadlin.es/series/pycamp-espana/"
       }
     </script>
@@ -90,7 +80,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1712407527"
+      href="/static/css/js-year-calendar.min.css?t=1712524055"
       media="screen,projection"
     />
 
@@ -102,13 +92,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1712407527"
+      href="/static/css/deadlines.css?t=1712524055"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1712407527"
+      href="/static/css/calendar.css?t=1712524055"
       media="screen,projection"
     />
 
@@ -139,14 +129,14 @@
         background: #70163c;
       }
 
-      .PYDATA-tag {
+      .DATA-tag {
         color: #849324;
       }
-      .PYDATA-select {
+      .DATA-select {
         color: #849324;
         background: white;
       }
-      .PYDATA-select.active {
+      .DATA-select.active {
         color: white;
         background: #849324;
       }
@@ -413,7 +403,7 @@
                 <span class="conf-title-icon">
                   <a
                     title="Call for Participation for PyCamp España"
-                    href="https://docs.google.com/forms/d/1PpI3MstjIBH2e9J21UQaTHQLKTTEuR13od3iQkfJ8Zo/viewform?edit_requested=true"
+                    href="https://docs.google.com/forms/d/1PpI3MstjIBH2e9J21UQaTHQLKTTEuR13od3iQkfJ8Zo/viewform"
                     target="_blank"
                     ><img
                       src="/static/img/035-file-text.svg"
@@ -433,7 +423,7 @@
             <div class="row">
               <div class="col-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">March 29 - April 1, 2024.</span>
+                  <span class="conf-date">29 – 1 de marzo de 2024.</span>
                   <span class="conf-place">
                     <a href="http://maps.google.com/?q=Lleida, Spain"
                       >Lleida, Spain</a
@@ -505,7 +495,7 @@
             <div class="row">
               <div class="col-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">April 15 - 19, 2022.</span>
+                  <span class="conf-date">15 – 19 de abril de 2022.</span>
                   <span class="conf-place">
                     <a href="http://maps.google.com/?q=Girona, Spain"
                       >Girona, Spain</a
@@ -595,7 +585,7 @@
       var subs = [];
       var _all_subs = [];
       // Get all subs
-      var conf_type_data = [{"name":"General Python","sub":"PY","color":"#4B8BBE"},{"name":"Scientific Python","sub":"SCIPY","color":"#70163C"},{"name":"Python for Data","sub":"PYDATA","color":"#849324"},{"name":"Python for Web","sub":"WEB","color":"#0D0A0B"},{"name":"Python for Business","sub":"BIZ","color":"#A8B9CC"},{"name":"Python for Earth","sub":"GEO","color":"#310c0c"}];
+      var conf_type_data = [{"name":"General Python","sub":"PY","color":"#4B8BBE"},{"name":"Scientific Python","sub":"SCIPY","color":"#70163C"},{"name":"Python for Data","sub":"DATA","color":"#849324"},{"name":"Python for Web","sub":"WEB","color":"#0D0A0B"},{"name":"Python for Business","sub":"BIZ","color":"#A8B9CC"},{"name":"Python for Earth","sub":"GEO","color":"#310c0c"}];
       var sub2name = {}; var name2sub = {};
       for (var i = 0; i < conf_type_data.length; i++) {
           _all_subs[i] = conf_type_data[i]['sub'];
@@ -713,7 +703,7 @@
 
 
 
-                $('#pycamp-espana-2024 .PY-tag').html(sub2name["PY"].toLocaleLowerCase());
+                $('#pycamp-espana-2024 .PY-tag').html("Python General".toLocaleLowerCase("es"));
 
 
 
@@ -784,7 +774,7 @@
 
 
 
-                $('#pycamp-espana-2022 .PY-tag').html(sub2name["PY"].toLocaleLowerCase());
+                $('#pycamp-espana-2022 .PY-tag').html("Python General".toLocaleLowerCase("es"));
 
 
 

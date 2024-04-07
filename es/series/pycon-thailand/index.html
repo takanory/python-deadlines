@@ -28,11 +28,7 @@
       content="https://pythondeadlin.es/series/pycon-thailand/"
     />
     <meta property="og:site_name" content="Python Conference Deadlines" />
-    <meta property="og:type" content="article" />
-    <meta
-      property="article:published_time"
-      content="2024-12-14T00:00:00+00:00"
-    />
+    <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary" />
     <meta
       property="twitter:title"
@@ -43,20 +39,14 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "BlogPosting",
+        "@type": "WebPage",
         "author": {
           "@type": "Person",
           "name": "Jesper Dramsch",
           "url": "https://dramsch.net"
         },
-        "dateModified": "2024-12-14T00:00:00+00:00",
-        "datePublished": "2024-12-14T00:00:00+00:00",
         "description": "Summary of the conference and its instances throughout the years.",
         "headline": "PyCon Thailand Conference Summary",
-        "mainEntityOfPage": {
-          "@type": "WebPage",
-          "@id": "https://pythondeadlin.es/series/pycon-thailand/"
-        },
         "url": "https://pythondeadlin.es/series/pycon-thailand/"
       }
     </script>
@@ -93,7 +83,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1712407527"
+      href="/static/css/js-year-calendar.min.css?t=1712524055"
       media="screen,projection"
     />
 
@@ -105,13 +95,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1712407527"
+      href="/static/css/deadlines.css?t=1712524055"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1712407527"
+      href="/static/css/calendar.css?t=1712524055"
       media="screen,projection"
     />
 
@@ -142,14 +132,14 @@
         background: #70163c;
       }
 
-      .PYDATA-tag {
+      .DATA-tag {
         color: #849324;
       }
-      .PYDATA-select {
+      .DATA-select {
         color: #849324;
         background: white;
       }
-      .PYDATA-select.active {
+      .DATA-select.active {
         color: white;
         background: #849324;
       }
@@ -620,7 +610,7 @@
             <div class="row">
               <div class="col-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">December 14 - 16, 2023.</span>
+                  <span class="conf-date">14 – 16 de diciembre de 2023.</span>
                   <span class="conf-place">
                     <a href="http://maps.google.com/?q=Bangkok, Thailand"
                       >Bangkok, Thailand</a
@@ -692,7 +682,7 @@
             <div class="row">
               <div class="col-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">June 15 - 17, 2019.</span>
+                  <span class="conf-date">15 – 17 de junio de 2019.</span>
                   <span class="conf-place">
                     <a href="http://maps.google.com/?q=Bangkok, Thailand"
                       >Bangkok, Thailand</a
@@ -764,7 +754,7 @@
             <div class="row">
               <div class="col-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">June 16 - 18, 2018.</span>
+                  <span class="conf-date">16 – 18 de junio de 2018.</span>
                   <span class="conf-place">
                     <a href="http://maps.google.com/?q=Thon Buri, Thailand"
                       >Thon Buri, Thailand</a
@@ -799,13 +789,13 @@
 
         <div class="row">
           <div
-            id="6b6e36ea-b771-4454-9e6e-ed7c113cd7d9"
+            id="dbf4bb56-e26b-434d-8619-40f5072223dc"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "6b6e36ea-b771-4454-9e6e-ed7c113cd7d9",
+              "dbf4bb56-e26b-434d-8619-40f5072223dc",
               [
                 {
                   latitude: 13.7524938,
@@ -898,7 +888,7 @@
       var subs = [];
       var _all_subs = [];
       // Get all subs
-      var conf_type_data = [{"name":"General Python","sub":"PY","color":"#4B8BBE"},{"name":"Scientific Python","sub":"SCIPY","color":"#70163C"},{"name":"Python for Data","sub":"PYDATA","color":"#849324"},{"name":"Python for Web","sub":"WEB","color":"#0D0A0B"},{"name":"Python for Business","sub":"BIZ","color":"#A8B9CC"},{"name":"Python for Earth","sub":"GEO","color":"#310c0c"}];
+      var conf_type_data = [{"name":"General Python","sub":"PY","color":"#4B8BBE"},{"name":"Scientific Python","sub":"SCIPY","color":"#70163C"},{"name":"Python for Data","sub":"DATA","color":"#849324"},{"name":"Python for Web","sub":"WEB","color":"#0D0A0B"},{"name":"Python for Business","sub":"BIZ","color":"#A8B9CC"},{"name":"Python for Earth","sub":"GEO","color":"#310c0c"}];
       var sub2name = {}; var name2sub = {};
       for (var i = 0; i < conf_type_data.length; i++) {
           _all_subs[i] = conf_type_data[i]['sub'];
@@ -1016,7 +1006,7 @@
 
 
 
-                $('#pycon-thailand-2023 .PY-tag').html(sub2name["PY"].toLocaleLowerCase());
+                $('#pycon-thailand-2023 .PY-tag').html("Python General".toLocaleLowerCase("es"));
 
 
 
@@ -1087,7 +1077,7 @@
 
 
 
-                $('#pycon-thailand-2019 .PY-tag').html(sub2name["PY"].toLocaleLowerCase());
+                $('#pycon-thailand-2019 .PY-tag').html("Python General".toLocaleLowerCase("es"));
 
 
                 $('#pycon-thailand-2019 .timer').html("TBA");
@@ -1098,7 +1088,7 @@
 
 
 
-                $('#pycon-thailand-2018 .PY-tag').html(sub2name["PY"].toLocaleLowerCase());
+                $('#pycon-thailand-2018 .PY-tag').html("Python General".toLocaleLowerCase("es"));
 
 
                 $('#pycon-thailand-2018 .timer').html("TBA");

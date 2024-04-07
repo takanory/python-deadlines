@@ -27,11 +27,7 @@
       content="https://pythondeadlin.es/conference/belpy-2021/"
     />
     <meta property="og:site_name" content="Python Conference Deadlines" />
-    <meta property="og:type" content="article" />
-    <meta
-      property="article:published_time"
-      content="2024-01-30T00:00:00+00:00"
-    />
+    <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary" />
     <meta property="twitter:title" content="BelPy 2021 Conference Deadlines" />
     <meta name="twitter:site" content="@jesperdramsch" />
@@ -39,20 +35,14 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "BlogPosting",
+        "@type": "WebPage",
         "author": {
           "@type": "Person",
           "name": "Jesper Dramsch",
           "url": "https://dramsch.net"
         },
-        "dateModified": "2024-01-30T00:00:00+00:00",
-        "datePublished": "2024-01-30T00:00:00+00:00",
         "description": "Countdown for the Call for Participation of this conference including conference dates and details.",
         "headline": "BelPy 2021 Conference Deadlines",
-        "mainEntityOfPage": {
-          "@type": "WebPage",
-          "@id": "https://pythondeadlin.es/conference/belpy-2021/"
-        },
         "url": "https://pythondeadlin.es/conference/belpy-2021/"
       }
     </script>
@@ -89,7 +79,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1712407497"
+      href="/static/css/js-year-calendar.min.css?t=1712524008"
       media="screen,projection"
     />
 
@@ -101,13 +91,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1712407497"
+      href="/static/css/deadlines.css?t=1712524008"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1712407497"
+      href="/static/css/calendar.css?t=1712524008"
       media="screen,projection"
     />
 
@@ -138,14 +128,14 @@
         background: #70163c;
       }
 
-      .PYDATA-tag {
+      .DATA-tag {
         color: #849324;
       }
-      .PYDATA-select {
+      .DATA-select {
         color: #849324;
         background: white;
       }
-      .PYDATA-select.active {
+      .DATA-select.active {
         color: white;
         background: #849324;
       }
@@ -334,7 +324,7 @@
       </div>
       <div id="page-content">
         <div id="conf-deadline-timer" class="row">
-          <div id="cfp-timer" class="col-12 conf-timer">TBA</div>
+          <div id="cfp-timer" class="col-12 conf-timer"></div>
         </div>
         <div id="conf-key-facts" class="row">
           <div class="col-12 col-md-6">
@@ -346,7 +336,7 @@
                 width="16"
                 height="16"
               />
-              <span id="conf-date">January 30 - February 1, 2021</span>
+              <span id="conf-date">January 30 – 31, 2021</span>
             </div>
             <div>
               <img
@@ -368,6 +358,22 @@
               />
               <a id="conf-website" target="_blank" href="https://belpy.in/"
                 >https://belpy.in/</a
+              >
+            </div>
+
+            <div>
+              <img
+                src="/static/img/035-file-text.svg"
+                class="badge-link"
+                alt="Document Icon for CfP link"
+                width="16"
+                height="16"
+              />
+              <a
+                id="conf-cfp_link"
+                target="_blank"
+                href="https://web.archive.org/web/20210301200242/https://www.papercall.io/belpy"
+                >Call for Participation</a
               >
             </div>
 
@@ -395,7 +401,7 @@
               Deadline in timezone from conference website:
             </div>
             <div class="meta">
-              <span class="deadline-time"></span>
+              <span class="deadline-time">Monday, 7 December 2020</span>
             </div>
             <div class="meta">
               Deadline in your local
@@ -508,7 +514,7 @@
         var conf_type_data = [
           { name: "General Python", sub: "PY", color: "#4B8BBE" },
           { name: "Scientific Python", sub: "SCIPY", color: "#70163C" },
-          { name: "Python for Data", sub: "PYDATA", color: "#849324" },
+          { name: "Python for Data", sub: "DATA", color: "#849324" },
           { name: "Python for Web", sub: "WEB", color: "#0D0A0B" },
           { name: "Python for Business", sub: "BIZ", color: "#A8B9CC" },
           { name: "Python for Earth", sub: "GEO", color: "#310c0c" },
@@ -584,9 +590,63 @@
 
         // other
 
-        $("#cfp-timer").html("TBA");
-        $(".deadline-time").html("TBA");
-        $(".deadline-local-time").html("TBA");
+        // Use specified timezone for deadlines if available else use AoE timezone
+
+        var confDeadline = DateTime.fromSQL("2020-12-07 11:59:00", {
+          zone: "UTC",
+        });
+
+        // check if timezone is valid otherwise replace by system timezone
+        if (confDeadline.invalid) {
+          var confDeadline = DateTime.fromSQL("2020-12-07 11:59:00");
+          console.log("Invalid timezone. Using system timezone instead.");
+        }
+
+        // add calendar
+
+        var conferenceDeadlineCalendar = createCalendarFromObject({
+          id: "belpy-2021",
+          title: "BelPy 2021 deadline",
+          start_date: confDeadline.toJSDate(),
+          duration: 60,
+          place: "Online",
+          link: "https://belpy.in/",
+        });
+        document
+          .querySelector("#conference-deadline")
+          .appendChild(conferenceDeadlineCalendar);
+
+        var conferenceCalendar = createCalendarFromObject({
+          id: "belpy-2021",
+          title: "BelPy 2021",
+          start_date: DateTime.fromSQL("2021-01-30").toJSDate(),
+          end_date: DateTime.fromSQL("2021-01-31").toJSDate(),
+          place: "Online",
+          link: "https://belpy.in/",
+        });
+        document
+          .querySelector("#conference-calendar")
+          .appendChild(conferenceCalendar);
+
+        // render countdown timer
+        $("#cfp-timer").countdown(confDeadline.toJSDate(), function (event) {
+          $(this).html(event.strftime("%D days %Hh %Mm %Ss"));
+        });
+
+        // render deadline conference time
+
+        $(".deadline-time").html(
+          confDeadline
+            .setZone("UTC")
+            .toLocaleString(DateTime.DATETIME_HUGE_WITH_SECONDS)
+        );
+
+        // render deadline in local timezone
+        $(".deadline-local-time").html(
+          confDeadline
+            .setZone("system")
+            .toLocaleString(DateTime.DATETIME_HUGE_WITH_SECONDS)
+        );
       });
     </script>
   </body>

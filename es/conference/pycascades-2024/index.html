@@ -27,11 +27,7 @@
       content="https://pythondeadlin.es/conference/pycascades-2024/"
     />
     <meta property="og:site_name" content="Python Conference Deadlines" />
-    <meta property="og:type" content="article" />
-    <meta
-      property="article:published_time"
-      content="2024-04-05T00:00:00+00:00"
-    />
+    <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary" />
     <meta
       property="twitter:title"
@@ -42,20 +38,14 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "BlogPosting",
+        "@type": "WebPage",
         "author": {
           "@type": "Person",
           "name": "Jesper Dramsch",
           "url": "https://dramsch.net"
         },
-        "dateModified": "2024-04-05T00:00:00+00:00",
-        "datePublished": "2024-04-05T00:00:00+00:00",
         "description": "Countdown for the Call for Participation of this conference including conference dates and details.",
         "headline": "PyCascades 2024 Conference Deadlines",
-        "mainEntityOfPage": {
-          "@type": "WebPage",
-          "@id": "https://pythondeadlin.es/conference/pycascades-2024/"
-        },
         "url": "https://pythondeadlin.es/conference/pycascades-2024/"
       }
     </script>
@@ -92,7 +82,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1712407527"
+      href="/static/css/js-year-calendar.min.css?t=1712524055"
       media="screen,projection"
     />
 
@@ -104,13 +94,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1712407527"
+      href="/static/css/deadlines.css?t=1712524055"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1712407527"
+      href="/static/css/calendar.css?t=1712524055"
       media="screen,projection"
     />
 
@@ -141,14 +131,14 @@
         background: #70163c;
       }
 
-      .PYDATA-tag {
+      .DATA-tag {
         color: #849324;
       }
-      .PYDATA-select {
+      .DATA-select {
         color: #849324;
         background: white;
       }
-      .PYDATA-select.active {
+      .DATA-select.active {
         color: white;
         background: #849324;
       }
@@ -567,7 +557,7 @@
                 width="16"
                 height="16"
               />
-              <span id="conf-date">April 5 - 8, 2024</span>
+              <span id="conf-date">5 – 8 de abril de 2024</span>
             </div>
             <div>
               <img
@@ -690,7 +680,7 @@
               Fecha límite en la zona horaria de la conferencia:
             </div>
             <div class="meta">
-              <span class="deadline-time"></span>
+              <span class="deadline-time">Thursday, 4 January 2024</span>
             </div>
             <div class="meta">
               Fecha límite en sua zona horaria
@@ -741,7 +731,7 @@
               data-toggle="tooltip"
               title="Text on Whatsapp!"
             >
-              Texto Conferencia en WhatsApp
+              Enviar Conferencia en WhatsApp
             </a>
             |
             <a
@@ -755,13 +745,13 @@
         </div>
         <div class="row">
           <div
-            id="82ef5d40-901c-4027-bfd3-5090643a0e02"
+            id="e7ed1ea8-07ae-4a6a-af43-1c1b907170d7"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "82ef5d40-901c-4027-bfd3-5090643a0e02",
+              "e7ed1ea8-07ae-4a6a-af43-1c1b907170d7",
               [
                 {
                   latitude: 47.6038321,
@@ -843,7 +833,7 @@
         var conf_type_data = [
           { name: "General Python", sub: "PY", color: "#4B8BBE" },
           { name: "Scientific Python", sub: "SCIPY", color: "#70163C" },
-          { name: "Python for Data", sub: "PYDATA", color: "#849324" },
+          { name: "Python for Data", sub: "DATA", color: "#849324" },
           { name: "Python for Web", sub: "WEB", color: "#0D0A0B" },
           { name: "Python for Business", sub: "BIZ", color: "#A8B9CC" },
           { name: "Python for Earth", sub: "GEO", color: "#310c0c" },
@@ -921,13 +911,13 @@
 
         // Use specified timezone for deadlines if available else use AoE timezone
 
-        var confDeadline = DateTime.fromSQL("2024-01-04 23:59:59", {
+        var confDeadline = DateTime.fromSQL("2024-01-04 23:59:00", {
           zone: "UTC-12",
         });
 
         // check if timezone is valid otherwise replace by system timezone
         if (confDeadline.invalid) {
-          var confDeadline = DateTime.fromSQL("2024-01-04 23:59:59");
+          var confDeadline = DateTime.fromSQL("2024-01-04 23:59:00");
           console.log("Invalid timezone. Using system timezone instead.");
         }
 

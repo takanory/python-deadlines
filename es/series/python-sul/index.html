@@ -25,11 +25,7 @@
       content="https://pythondeadlin.es/series/python-sul/"
     />
     <meta property="og:site_name" content="Python Conference Deadlines" />
-    <meta property="og:type" content="article" />
-    <meta
-      property="article:published_time"
-      content="2024-09-13T00:00:00+00:00"
-    />
+    <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary" />
     <meta property="twitter:title" content="Python Sul Conference Summary" />
     <meta name="twitter:site" content="@jesperdramsch" />
@@ -37,20 +33,14 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "BlogPosting",
+        "@type": "WebPage",
         "author": {
           "@type": "Person",
           "name": "Jesper Dramsch",
           "url": "https://dramsch.net"
         },
-        "dateModified": "2024-09-13T00:00:00+00:00",
-        "datePublished": "2024-09-13T00:00:00+00:00",
         "description": "Summary of the conference and its instances throughout the years.",
         "headline": "Python Sul Conference Summary",
-        "mainEntityOfPage": {
-          "@type": "WebPage",
-          "@id": "https://pythondeadlin.es/series/python-sul/"
-        },
         "url": "https://pythondeadlin.es/series/python-sul/"
       }
     </script>
@@ -82,7 +72,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1712407527"
+      href="/static/css/js-year-calendar.min.css?t=1712524055"
       media="screen,projection"
     />
 
@@ -94,13 +84,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1712407527"
+      href="/static/css/deadlines.css?t=1712524055"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1712407527"
+      href="/static/css/calendar.css?t=1712524055"
       media="screen,projection"
     />
 
@@ -131,14 +121,14 @@
         background: #70163c;
       }
 
-      .PYDATA-tag {
+      .DATA-tag {
         color: #849324;
       }
-      .PYDATA-select {
+      .DATA-select {
         color: #849324;
         background: white;
       }
-      .PYDATA-select.active {
+      .DATA-select.active {
         color: white;
         background: #849324;
       }
@@ -411,11 +401,10 @@
             <div class="row">
               <div class="col-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">September 13 - 15, 2024.</span>
+                  <span class="conf-date">13 – 15 de septiembre de 2024.</span>
                   <span class="conf-place">
-                    <a
-                      href="http://maps.google.com/?q=Florianópolis - SC, Brazil"
-                      >Florianópolis - SC, Brazil</a
+                    <a href="http://maps.google.com/?q=Florianópolis, Brazil"
+                      >Florianópolis, Brazil</a
                     >
                   </span>
                 </div>
@@ -484,7 +473,7 @@
             <div class="row">
               <div class="col-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">September 8 - 11, 2017.</span>
+                  <span class="conf-date">8 – 11 de septiembre de 2017.</span>
                   <span class="conf-place">
                     <a href="http://maps.google.com/?q=Caxias do Sul, Brazil"
                       >Caxias do Sul, Brazil</a
@@ -574,7 +563,7 @@
       var subs = [];
       var _all_subs = [];
       // Get all subs
-      var conf_type_data = [{"name":"General Python","sub":"PY","color":"#4B8BBE"},{"name":"Scientific Python","sub":"SCIPY","color":"#70163C"},{"name":"Python for Data","sub":"PYDATA","color":"#849324"},{"name":"Python for Web","sub":"WEB","color":"#0D0A0B"},{"name":"Python for Business","sub":"BIZ","color":"#A8B9CC"},{"name":"Python for Earth","sub":"GEO","color":"#310c0c"}];
+      var conf_type_data = [{"name":"General Python","sub":"PY","color":"#4B8BBE"},{"name":"Scientific Python","sub":"SCIPY","color":"#70163C"},{"name":"Python for Data","sub":"DATA","color":"#849324"},{"name":"Python for Web","sub":"WEB","color":"#0D0A0B"},{"name":"Python for Business","sub":"BIZ","color":"#A8B9CC"},{"name":"Python for Earth","sub":"GEO","color":"#310c0c"}];
       var sub2name = {}; var name2sub = {};
       for (var i = 0; i < conf_type_data.length; i++) {
           _all_subs[i] = conf_type_data[i]['sub'];
@@ -692,7 +681,7 @@
 
 
 
-                $('#python-sul-2024 .PY-tag').html(sub2name["PY"].toLocaleLowerCase());
+                $('#python-sul-2024 .PY-tag').html("Python General".toLocaleLowerCase("es"));
 
 
                 $('#python-sul-2024 .timer').html("TBA");
@@ -703,7 +692,7 @@
 
 
 
-                $('#python-sul-2017 .PY-tag').html(sub2name["PY"].toLocaleLowerCase());
+                $('#python-sul-2017 .PY-tag').html("Python General".toLocaleLowerCase("es"));
 
 
                 $('#python-sul-2017 .timer').html("TBA");

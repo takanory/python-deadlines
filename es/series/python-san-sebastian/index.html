@@ -31,11 +31,7 @@
       content="https://pythondeadlin.es/series/python-san-sebastian/"
     />
     <meta property="og:site_name" content="Python Conference Deadlines" />
-    <meta property="og:type" content="article" />
-    <meta
-      property="article:published_time"
-      content="2024-09-26T00:00:00+00:00"
-    />
+    <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary" />
     <meta
       property="twitter:title"
@@ -46,20 +42,14 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "BlogPosting",
+        "@type": "WebPage",
         "author": {
           "@type": "Person",
           "name": "Jesper Dramsch",
           "url": "https://dramsch.net"
         },
-        "dateModified": "2024-09-26T00:00:00+00:00",
-        "datePublished": "2024-09-26T00:00:00+00:00",
         "description": "Summary of the conference and its instances throughout the years.",
         "headline": "Python San Sebastian Conference Summary",
-        "mainEntityOfPage": {
-          "@type": "WebPage",
-          "@id": "https://pythondeadlin.es/series/python-san-sebastian/"
-        },
         "url": "https://pythondeadlin.es/series/python-san-sebastian/"
       }
     </script>
@@ -96,7 +86,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1712407527"
+      href="/static/css/js-year-calendar.min.css?t=1712524055"
       media="screen,projection"
     />
 
@@ -108,13 +98,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1712407527"
+      href="/static/css/deadlines.css?t=1712524055"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1712407527"
+      href="/static/css/calendar.css?t=1712524055"
       media="screen,projection"
     />
 
@@ -145,14 +135,14 @@
         background: #70163c;
       }
 
-      .PYDATA-tag {
+      .DATA-tag {
         color: #849324;
       }
-      .PYDATA-select {
+      .DATA-select {
         color: #849324;
         background: white;
       }
-      .PYDATA-select.active {
+      .DATA-select.active {
         color: white;
         background: #849324;
       }
@@ -429,7 +419,7 @@
             <div class="row">
               <div class="col-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">October 12 - 15, 2018.</span>
+                  <span class="conf-date">12 – 15 de octubre de 2018.</span>
                   <span class="conf-place">
                     <a href="http://maps.google.com/?q=Kursaal, Spain"
                       >Kursaal, Spain</a
@@ -503,7 +493,7 @@
             <div class="row">
               <div class="col-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">October 6 - 8, 2017.</span>
+                  <span class="conf-date">6 – 8 de octubre de 2017.</span>
                   <span class="conf-place">
                     <a href="http://maps.google.com/?q=San Sebastián, Spain"
                       >San Sebastián, Spain</a
@@ -575,7 +565,7 @@
             <div class="row">
               <div class="col-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">September 30 - October 3, 2016.</span>
+                  <span class="conf-date">30 – 3 de septiembre de 2016.</span>
                   <span class="conf-place">
                     <a href="http://maps.google.com/?q=San Sebastian, Spain"
                       >San Sebastian, Spain</a
@@ -647,7 +637,7 @@
             <div class="row">
               <div class="col-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">October 24 - 25, 2015.</span>
+                  <span class="conf-date">24 – 25 de octubre de 2015.</span>
                   <span class="conf-place">
                     <a href="http://maps.google.com/?q=San Sebastian, Spain"
                       >San Sebastian, Spain</a
@@ -719,7 +709,7 @@
             <div class="row">
               <div class="col-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">September 26 - 29, 2014.</span>
+                  <span class="conf-date">26 – 29 de septiembre de 2014.</span>
                   <span class="conf-place">
                     <a href="http://maps.google.com/?q=San Sebastian, Spain"
                       >San Sebastian, Spain</a
@@ -809,7 +799,7 @@
       var subs = [];
       var _all_subs = [];
       // Get all subs
-      var conf_type_data = [{"name":"General Python","sub":"PY","color":"#4B8BBE"},{"name":"Scientific Python","sub":"SCIPY","color":"#70163C"},{"name":"Python for Data","sub":"PYDATA","color":"#849324"},{"name":"Python for Web","sub":"WEB","color":"#0D0A0B"},{"name":"Python for Business","sub":"BIZ","color":"#A8B9CC"},{"name":"Python for Earth","sub":"GEO","color":"#310c0c"}];
+      var conf_type_data = [{"name":"General Python","sub":"PY","color":"#4B8BBE"},{"name":"Scientific Python","sub":"SCIPY","color":"#70163C"},{"name":"Python for Data","sub":"DATA","color":"#849324"},{"name":"Python for Web","sub":"WEB","color":"#0D0A0B"},{"name":"Python for Business","sub":"BIZ","color":"#A8B9CC"},{"name":"Python for Earth","sub":"GEO","color":"#310c0c"}];
       var sub2name = {}; var name2sub = {};
       for (var i = 0; i < conf_type_data.length; i++) {
           _all_subs[i] = conf_type_data[i]['sub'];
@@ -927,7 +917,7 @@
 
 
 
-                $('#python-san-sebastian-2018 .PY-tag').html(sub2name["PY"].toLocaleLowerCase());
+                $('#python-san-sebastian-2018 .PY-tag').html("Python General".toLocaleLowerCase("es"));
 
 
 
@@ -998,7 +988,7 @@
 
 
 
-                $('#python-san-sebastian-2017 .PY-tag').html(sub2name["PY"].toLocaleLowerCase());
+                $('#python-san-sebastian-2017 .PY-tag').html("Python General".toLocaleLowerCase("es"));
 
 
 
@@ -1069,7 +1059,7 @@
 
 
 
-                $('#python-san-sebastian-2016 .PY-tag').html(sub2name["PY"].toLocaleLowerCase());
+                $('#python-san-sebastian-2016 .PY-tag').html("Python General".toLocaleLowerCase("es"));
 
 
 
@@ -1140,7 +1130,7 @@
 
 
 
-                $('#python-san-sebastian-2015 .PY-tag').html(sub2name["PY"].toLocaleLowerCase());
+                $('#python-san-sebastian-2015 .PY-tag').html("Python General".toLocaleLowerCase("es"));
 
 
 
@@ -1211,7 +1201,7 @@
 
 
 
-                $('#python-san-sebastian-2014 .PY-tag').html(sub2name["PY"].toLocaleLowerCase());
+                $('#python-san-sebastian-2014 .PY-tag').html("Python General".toLocaleLowerCase("es"));
 
 
 
