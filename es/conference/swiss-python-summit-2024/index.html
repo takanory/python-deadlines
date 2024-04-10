@@ -87,7 +87,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1712524055"
+      href="/static/css/js-year-calendar.min.css?t=1712789912"
       media="screen,projection"
     />
 
@@ -99,13 +99,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1712524055"
+      href="/static/css/deadlines.css?t=1712789912"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1712524055"
+      href="/static/css/calendar.css?t=1712789912"
       media="screen,projection"
     />
 
@@ -527,7 +527,7 @@
       </div>
       <div id="page-content">
         <div id="conf-deadline-timer" class="row">
-          <div id="cfp-timer" class="col-12 conf-timer">TBA</div>
+          <div id="cfp-timer" class="col-12 conf-timer"></div>
         </div>
         <div id="conf-key-facts" class="row">
           <div class="col-12 col-md-6">
@@ -574,6 +574,22 @@
 
             <div>
               <img
+                src="/static/img/035-file-text.svg"
+                class="badge-link"
+                alt="Document Icon for CfP link"
+                width="16"
+                height="16"
+              />
+              <a
+                id="conf-cfp_link"
+                target="_blank"
+                href="https://www.python-summit.ch/cfp/"
+                >Llamada por participación</a
+              >
+            </div>
+
+            <div>
+              <img
                 src="/static/img/002-home2.svg"
                 class="badge-link"
                 alt="Conference Series"
@@ -614,7 +630,7 @@
               Fecha límite en la zona horaria de la conferencia:
             </div>
             <div class="meta">
-              <span class="deadline-time">TBA</span>
+              <span class="deadline-time">Sunday, 30 June 2024</span>
             </div>
             <div class="meta">
               Fecha límite en sua zona horaria
@@ -687,13 +703,13 @@
         </div>
         <div class="row">
           <div
-            id="eac4296f-201c-4080-8cd7-0303e21c9702"
+            id="8c6734e5-a7c5-400f-96fd-562f061f55cc"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "eac4296f-201c-4080-8cd7-0303e21c9702",
+              "8c6734e5-a7c5-400f-96fd-562f061f55cc",
               [
                 {
                   latitude: 47.2266532,
@@ -851,9 +867,63 @@
 
         // other
 
-        $("#cfp-timer").html("TBA");
-        $(".deadline-time").html("TBA");
-        $(".deadline-local-time").html("TBA");
+        // Use specified timezone for deadlines if available else use AoE timezone
+
+        var confDeadline = DateTime.fromSQL("2024-06-30", {
+          zone: "Europe/Zurich",
+        });
+
+        // check if timezone is valid otherwise replace by system timezone
+        if (confDeadline.invalid) {
+          var confDeadline = DateTime.fromSQL("2024-06-30");
+          console.log("Invalid timezone. Using system timezone instead.");
+        }
+
+        // add calendar
+
+        var conferenceDeadlineCalendar = createCalendarFromObject({
+          id: "swiss-python-summit-2024",
+          title: "Swiss Python Summit 2024 deadline",
+          start_date: confDeadline.toJSDate(),
+          duration: 60,
+          place: "Rapperswil, Switzerland",
+          link: "https://python-summit.ch",
+        });
+        document
+          .querySelector("#conference-deadline")
+          .appendChild(conferenceDeadlineCalendar);
+
+        var conferenceCalendar = createCalendarFromObject({
+          id: "swiss-python-summit-2024",
+          title: "Swiss Python Summit 2024",
+          start_date: DateTime.fromSQL("2024-10-17").toJSDate(),
+          end_date: DateTime.fromSQL("2024-10-18").toJSDate(),
+          place: "Rapperswil, Switzerland",
+          link: "https://python-summit.ch",
+        });
+        document
+          .querySelector("#conference-calendar")
+          .appendChild(conferenceCalendar);
+
+        // render countdown timer
+        $("#cfp-timer").countdown(confDeadline.toJSDate(), function (event) {
+          $(this).html(event.strftime("%D dias %Hh %Mm %Ss"));
+        });
+
+        // render deadline conference time
+
+        $(".deadline-time").html(
+          confDeadline
+            .setZone("Europe/Zurich")
+            .toLocaleString(DateTime.DATETIME_HUGE_WITH_SECONDS)
+        );
+
+        // render deadline in local timezone
+        $(".deadline-local-time").html(
+          confDeadline
+            .setZone("system")
+            .toLocaleString(DateTime.DATETIME_HUGE_WITH_SECONDS)
+        );
       });
     </script>
     <script async defer>

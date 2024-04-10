@@ -86,7 +86,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1712524008"
+      href="/static/css/js-year-calendar.min.css?t=1712789869"
       media="screen,projection"
     />
 
@@ -98,13 +98,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1712524008"
+      href="/static/css/deadlines.css?t=1712789869"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1712524008"
+      href="/static/css/calendar.css?t=1712789869"
       media="screen,projection"
     />
 
@@ -615,6 +615,21 @@
 
                 <span class="conf-title-icon">
                   <a
+                    title="Call for Participation for Swiss Python Summit"
+                    href="https://www.python-summit.ch/cfp/"
+                    target="_blank"
+                    ><img
+                      src="/static/img/035-file-text.svg"
+                      class="badge-link"
+                      alt="Link to Call for Participation for Swiss Python Summit"
+                      width="16"
+                      height="16"
+                  /></a>
+                  &ZeroWidthSpace;
+                </span>
+
+                <span class="conf-title-icon">
+                  <a
                     title="Twitter for Swiss Python Summit"
                     href="https://twitter.com/pythonsummit"
                     target="_blank"
@@ -648,7 +663,7 @@
                 <div class="deadline">
                   <div>
                     Deadline:
-                    <span class="deadline-time">TBA</span>
+                    <span class="deadline-time">Sunday, 30 June 2024</span>
                   </div>
                 </div>
               </div>
@@ -1078,13 +1093,13 @@
 
         <div class="row">
           <div
-            id="15572a3d-984e-47c9-83f9-69a59b86cf71"
+            id="fe8aadd4-d354-4a89-a13a-e079a7c3b7df"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "15572a3d-984e-47c9-83f9-69a59b86cf71",
+              "fe8aadd4-d354-4a89-a13a-e079a7c3b7df",
               [
                 {
                   latitude: 47.2266532,
@@ -1337,9 +1352,69 @@
                 $('#swiss-python-summit-2024 .PY-tag').html("General Python".toLocaleLowerCase("en"));
 
 
-                $('#swiss-python-summit-2024 .timer').html("TBA");
-                $('#swiss-python-summit-2024 .deadline-time').html("TBA");
-                $('#swiss-python-summit-2024').attr("cfpDiff", Infinity);
+
+                // Use specified timezone for deadlines if available else use AoE timezone
+
+                  var cfpDate = DateTime.fromSQL("2024-06-30", { zone: "Europe/Zurich" });
+                  var confDate = DateTime.fromSQL("2024-10-17", { zone: "Europe/Zurich" });
+
+
+                // check if timezone is valid otherwise replace by system timezone
+                if (cfpDate.invalid || confDate.invalid) {
+                  var cfpDate = DateTime.fromSQL("2024-06-30");
+                  var confDate = DateTime.fromSQL("2024-10-17");
+                  console.log("Invalid timezone in swiss-python-summit-2024. Using system timezone instead.");
+                }
+
+                // render countdown timer
+                $('#swiss-python-summit-2024 .timer').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+
+                // render countdown timer small
+                $('#swiss-python-summit-2024 .timer-small').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%Dd %H:%M:%S'));
+                });
+
+                // deadline in local timezone
+                $('#swiss-python-summit-2024 .deadline-time').html(cfpDate.setZone('system').toLocaleString(DateTime.DATE_HUGE));
+
+                // add calendar button
+                try {
+                  var myCalendar = createCalendarFromObject({
+                    id: 'swiss-python-summit-2024',
+                    title: 'Swiss Python Summit 2024 deadline',
+                    start_date: cfpDate.toJSDate(),
+                    duration: 60,
+                    place: 'Rapperswil, Switzerland',
+                    link: 'https://python-summit.ch'
+                  });
+                  document.querySelector('#swiss-python-summit-2024 .calendar').appendChild(myCalendar);
+                } catch (err) {
+                  document.querySelector('#swiss-python-summit-2024 .calendar').appendChild("<p>Calendar not available.</p>");
+                  console.log("Error in cfp date.");
+                }
+
+                // check if date has passed, add 'past' class to it
+                cfpDiff = cfpDate.diffNow("seconds");
+                confDiff = confDate.diffNow("seconds");
+
+                $('#swiss-python-summit-2024').attr("cfpDiff", cfpDiff.toMillis());
+                $('#swiss-python-summit-2024').attr("confDiff", confDiff.toMillis());
+
+                if (cfpDiff < 0) {
+                  $('#swiss-python-summit-2024').addClass('pastcfp');
+                  $('#swiss-python-summit-2024 .timer').replaceWith($('#swiss-python-summit-2024 .deadline'));
+                  $('#swiss-python-summit-2024 .timer-small').replaceWith($('#swiss-python-summit-2024 .deadline'));
+                  $('#swiss-python-summit-2024 .calendar').remove();
+                }
+
+                if (confDiff < 0) {
+                  $('#swiss-python-summit-2024').addClass('pastconf');
+                  $('#swiss-python-summit-2024 .timer').replaceWith($('#swiss-python-summit-2024 .deadline'));
+                  $('#swiss-python-summit-2024 .timer-small').replaceWith($('#swiss-python-summit-2024 .deadline'));
+                  $('#swiss-python-summit-2024 .calendar').remove();
+                }
 
 
 
