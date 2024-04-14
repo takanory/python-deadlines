@@ -85,7 +85,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1712789955"
+      href="/static/css/js-year-calendar.min.css?t=1713102539"
       media="screen,projection"
     />
 
@@ -97,13 +97,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1712789955"
+      href="/static/css/deadlines.css?t=1713102539"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1712789955"
+      href="/static/css/calendar.css?t=1713102539"
       media="screen,projection"
     />
 
@@ -206,6 +206,16 @@
       type="text/javascript"
       src="/static/js/bootstrap-multiselect.min.js"
     ></script>
+
+    <style>
+      #twitter-widget {
+        width: 100%;
+      }
+
+      .twitter-timeline {
+        width: 100% !important;
+      }
+    </style>
 
     <script type="text/javascript">
       /* global google */
@@ -586,6 +596,22 @@
                 >Sponsoringmöglichkeiten</a
               >
             </div>
+
+            <div>
+              <img
+                src="/static/img/407-twitter.svg"
+                class="badge-link"
+                alt="Twitter icon"
+                width="16"
+                height="16"
+              />
+              <a
+                id="conf-twitter"
+                target="_blank"
+                href="https://twitter.com/PythonBrasil"
+                >@PythonBrasil</a
+              >
+            </div>
           </div>
         </div>
         <div id="conf-deadlines" class="row">
@@ -607,7 +633,22 @@
               <span class="deadline-local-time"></span>
             </div>
           </div>
-          <div class="col-12 col-md-6"></div>
+          <div class="col-12 col-md-6">
+            <!-- Twitter timeline -->
+            <div id="twitter-widget">
+              <a
+                class="twitter-timeline"
+                href="https://twitter.com/PythonBrasil"
+                data-tweet-limit="2"
+                >Tweets by PythonBrasil</a
+              >
+              <script
+                async
+                src="https://platform.twitter.com/widgets.js"
+                charset="utf-8"
+              ></script>
+            </div>
+          </div>
         </div>
         <div class="row" id="conf-share-links">
           <div class="col-12">
@@ -655,13 +696,13 @@
         </div>
         <div class="row">
           <div
-            id="4c631291-4e06-460d-9592-290bc3055eee"
+            id="1841b821-b130-4963-aadf-074a244d3ea5"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "4c631291-4e06-460d-9592-290bc3055eee",
+              "1841b821-b130-4963-aadf-074a244d3ea5",
               [
                 {
                   latitude: -22.9110137,

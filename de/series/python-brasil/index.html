@@ -80,7 +80,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1712789955"
+      href="/static/css/js-year-calendar.min.css?t=1713102539"
       media="screen,projection"
     />
 
@@ -92,13 +92,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1712789955"
+      href="/static/css/deadlines.css?t=1713102539"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1712789955"
+      href="/static/css/calendar.css?t=1713102539"
       media="screen,projection"
     />
 
@@ -201,6 +201,16 @@
       type="text/javascript"
       src="/static/js/bootstrap-multiselect.min.js"
     ></script>
+
+    <style>
+      #twitter-widget {
+        width: 100%;
+      }
+
+      .twitter-timeline {
+        width: 100% !important;
+      }
+    </style>
   </head>
 
   <body>
@@ -366,8 +376,39 @@
                 >https://2024.pythonbrasil.org.br/</a
               >
             </div>
+
+            <div>
+              <img
+                src="/static/img/407-twitter.svg"
+                class="badge-link"
+                alt="Twitter icon"
+                width="16"
+                height="16"
+              />
+              <a
+                id="conf-twitter"
+                target="_blank"
+                href="https://twitter.com/PythonBrasil"
+                >@PythonBrasil</a
+              >
+            </div>
           </div>
-          <div class="col-12 col-md-6"></div>
+          <div class="col-12 col-md-6">
+            <!-- Twitter timeline -->
+            <div id="twitter-widget">
+              <a
+                class="twitter-timeline"
+                href="https://twitter.com/PythonBrasil"
+                data-tweet-limit="2"
+                >Tweets by PythonBrasil</a
+              >
+              <script
+                async
+                src="https://platform.twitter.com/widgets.js"
+                charset="utf-8"
+              ></script>
+            </div>
+          </div>
         </div>
         <hr />
         <div id="all_confs">
@@ -412,6 +453,21 @@
                       src="/static/img/060-coin-dollar.svg"
                       class="badge-link"
                       alt="Link to Sponsorship page of Python Brasil"
+                      width="16"
+                      height="16"
+                  /></a>
+                  &ZeroWidthSpace;
+                </span>
+
+                <span class="conf-title-icon">
+                  <a
+                    title="Twitter for Python Brasil"
+                    href="https://twitter.com/PythonBrasil"
+                    target="_blank"
+                    ><img
+                      src="/static/img/407-twitter.svg"
+                      class="badge-link"
+                      alt="Link to Conference Twitter"
                       width="16"
                       height="16"
                   /></a>

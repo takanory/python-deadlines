@@ -86,7 +86,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1712789955"
+      href="/static/css/js-year-calendar.min.css?t=1713102539"
       media="screen,projection"
     />
 
@@ -98,13 +98,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1712789955"
+      href="/static/css/deadlines.css?t=1713102539"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1712789955"
+      href="/static/css/calendar.css?t=1713102539"
       media="screen,projection"
     />
 
@@ -1099,13 +1099,13 @@
 
         <div class="row">
           <div
-            id="28f1d900-f527-45d2-9638-c7828e81f2c0"
+            id="cc23412c-f38d-4f11-ad33-478dbddcbc10"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "28f1d900-f527-45d2-9638-c7828e81f2c0",
+              "cc23412c-f38d-4f11-ad33-478dbddcbc10",
               [
                 {
                   latitude: 47.2266532,
@@ -1361,13 +1361,13 @@
 
                 // Use specified timezone for deadlines if available else use AoE timezone
 
-                  var cfpDate = DateTime.fromSQL("2024-06-30", { zone: "Europe/Zurich" });
+                  var cfpDate = DateTime.fromSQL("2024-06-30 23:59:00", { zone: "Europe/Zurich" });
                   var confDate = DateTime.fromSQL("2024-10-17", { zone: "Europe/Zurich" });
 
 
                 // check if timezone is valid otherwise replace by system timezone
                 if (cfpDate.invalid || confDate.invalid) {
-                  var cfpDate = DateTime.fromSQL("2024-06-30");
+                  var cfpDate = DateTime.fromSQL("2024-06-30 23:59:00");
                   var confDate = DateTime.fromSQL("2024-10-17");
                   console.log("Invalid timezone in swiss-python-summit-2024. Using system timezone instead.");
                 }

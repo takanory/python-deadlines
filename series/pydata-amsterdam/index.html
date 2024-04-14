@@ -83,7 +83,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1712789869"
+      href="/static/css/js-year-calendar.min.css?t=1713102450"
       media="screen,projection"
     />
 
@@ -95,13 +95,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1712789869"
+      href="/static/css/deadlines.css?t=1713102450"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1712789869"
+      href="/static/css/calendar.css?t=1713102450"
       media="screen,projection"
     />
 
@@ -943,13 +943,13 @@
 
         <div class="row">
           <div
-            id="b2651f7c-75db-42ba-95db-ddf78be78df7"
+            id="f5638617-eeba-4f1a-be07-2c9ce497a27b"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "b2651f7c-75db-42ba-95db-ddf78be78df7",
+              "f5638617-eeba-4f1a-be07-2c9ce497a27b",
               [
                 {
                   latitude: 52.4111289,
@@ -1195,13 +1195,13 @@
 
                 // Use specified timezone for deadlines if available else use AoE timezone
 
-                  var cfpDate = DateTime.fromSQL("2024-05-19", { zone: "Europe/Amsterdam" });
+                  var cfpDate = DateTime.fromSQL("2024-05-19 23:59:00", { zone: "Europe/Amsterdam" });
                   var confDate = DateTime.fromSQL("2024-09-18", { zone: "Europe/Amsterdam" });
 
 
                 // check if timezone is valid otherwise replace by system timezone
                 if (cfpDate.invalid || confDate.invalid) {
-                  var cfpDate = DateTime.fromSQL("2024-05-19");
+                  var cfpDate = DateTime.fromSQL("2024-05-19 23:59:00");
                   var confDate = DateTime.fromSQL("2024-09-18");
                   console.log("Invalid timezone in pydata-amsterdam-2024. Using system timezone instead.");
                 }

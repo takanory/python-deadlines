@@ -82,7 +82,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1712789869"
+      href="/static/css/js-year-calendar.min.css?t=1713102450"
       media="screen,projection"
     />
 
@@ -94,13 +94,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1712789869"
+      href="/static/css/deadlines.css?t=1713102450"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1712789869"
+      href="/static/css/calendar.css?t=1713102450"
       media="screen,projection"
     />
 
@@ -502,7 +502,7 @@
       </div>
       <div id="page-content">
         <div id="conf-deadline-timer" class="row">
-          <div id="cfp-timer" class="col-12 conf-timer">TBA</div>
+          <div id="cfp-timer" class="col-12 conf-timer"></div>
         </div>
         <div id="conf-key-facts" class="row">
           <div class="col-12 col-md-6">
@@ -549,6 +549,22 @@
 
             <div>
               <img
+                src="/static/img/035-file-text.svg"
+                class="badge-link"
+                alt="Document Icon for CfP link"
+                width="16"
+                height="16"
+              />
+              <a
+                id="conf-cfp_link"
+                target="_blank"
+                href="https://talks.python.org.br/pythonsul-2024/cfp"
+                >Call for Participation</a
+              >
+            </div>
+
+            <div>
+              <img
                 src="/static/img/002-home2.svg"
                 class="badge-link"
                 alt="Conference Series"
@@ -557,6 +573,22 @@
               />
               <a id="conf-series" href="/series/python-sul"
                 >All conferences for Python Sul</a
+              >
+            </div>
+
+            <div>
+              <img
+                src="/static/img/060-coin-dollar.svg"
+                class="badge-link"
+                alt="Coin Dollar Icon for Sponsorship"
+                width="16"
+                height="16"
+              />
+              <a
+                id="conf-sponsor"
+                target="_blank"
+                href="https://bit.ly/sponsorship-pysul24"
+                >Sponsorship Opportunity</a
               >
             </div>
           </div>
@@ -571,7 +603,7 @@
               Deadline in timezone from conference website:
             </div>
             <div class="meta">
-              <span class="deadline-time">TBA</span>
+              <span class="deadline-time">Sunday, 12 May 2024</span>
             </div>
             <div class="meta">
               Deadline in your local
@@ -629,13 +661,13 @@
         </div>
         <div class="row">
           <div
-            id="e93d1413-a9b6-4a6d-bb4d-a4c102493713"
+            id="781ce3bd-140a-4667-a17a-4067721c6eca"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "e93d1413-a9b6-4a6d-bb4d-a4c102493713",
+              "781ce3bd-140a-4667-a17a-4067721c6eca",
               [
                 {
                   latitude: -27.5973002,
@@ -792,9 +824,63 @@
 
         // other
 
-        $("#cfp-timer").html("TBA");
-        $(".deadline-time").html("TBA");
-        $(".deadline-local-time").html("TBA");
+        // Use specified timezone for deadlines if available else use AoE timezone
+
+        var confDeadline = DateTime.fromSQL("2024-05-12 23:59:00", {
+          zone: "America/Sao_Paulo",
+        });
+
+        // check if timezone is valid otherwise replace by system timezone
+        if (confDeadline.invalid) {
+          var confDeadline = DateTime.fromSQL("2024-05-12 23:59:00");
+          console.log("Invalid timezone. Using system timezone instead.");
+        }
+
+        // add calendar
+
+        var conferenceDeadlineCalendar = createCalendarFromObject({
+          id: "python-sul-2024",
+          title: "Python Sul 2024 deadline",
+          start_date: confDeadline.toJSDate(),
+          duration: 60,
+          place: "Florianópolis, Brazil",
+          link: "https://sul.python.org.br/",
+        });
+        document
+          .querySelector("#conference-deadline")
+          .appendChild(conferenceDeadlineCalendar);
+
+        var conferenceCalendar = createCalendarFromObject({
+          id: "python-sul-2024",
+          title: "Python Sul 2024",
+          start_date: DateTime.fromSQL("2024-09-13").toJSDate(),
+          end_date: DateTime.fromSQL("2024-09-15").toJSDate(),
+          place: "Florianópolis, Brazil",
+          link: "https://sul.python.org.br/",
+        });
+        document
+          .querySelector("#conference-calendar")
+          .appendChild(conferenceCalendar);
+
+        // render countdown timer
+        $("#cfp-timer").countdown(confDeadline.toJSDate(), function (event) {
+          $(this).html(event.strftime("%D days %Hh %Mm %Ss"));
+        });
+
+        // render deadline conference time
+
+        $(".deadline-time").html(
+          confDeadline
+            .setZone("America/Sao_Paulo")
+            .toLocaleString(DateTime.DATETIME_HUGE_WITH_SECONDS)
+        );
+
+        // render deadline in local timezone
+        $(".deadline-local-time").html(
+          confDeadline
+            .setZone("system")
+            .toLocaleString(DateTime.DATETIME_HUGE_WITH_SECONDS)
+        );
       });
     </script>
     <script async defer>
