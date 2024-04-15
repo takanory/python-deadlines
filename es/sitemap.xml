@@ -31,6 +31,9 @@
 <loc>https://pythondeadlin.es/conference/pycon-poland-2024/</loc>
 </url>
 <url>
+<loc>https://pythondeadlin.es/conference/pycon-hong-kong-2024/</loc>
+</url>
+<url>
 <loc>https://pythondeadlin.es/conference/swiss-python-summit-2024/</loc>
 </url>
 <url>
@@ -131,9 +134,6 @@
 </url>
 <url>
 <loc>https://pythondeadlin.es/conference/geopython-2024/</loc>
-</url>
-<url>
-<loc>https://pythondeadlin.es/conference/pycon-namibia-2024/</loc>
 </url>
 <url>
 <loc>https://pythondeadlin.es/conference/pycon-pakistan-2024/</loc>
@@ -266,6 +266,9 @@
 </url>
 <url>
 <loc>https://pythondeadlin.es/conference/pycon-uk-2011/</loc>
+</url>
+<url>
+<loc>https://pythondeadlin.es/conference/pycon-namibia-2024/</loc>
 </url>
 <url>
 <loc>https://pythondeadlin.es/conference/pycon-philippines-2024/</loc>
@@ -3238,6 +3241,9 @@
 <loc>https://pythondeadlin.es/series/pycon-uk/</loc>
 </url>
 <url>
+<loc>https://pythondeadlin.es/series/pycon-namibia/</loc>
+</url>
+<url>
 <loc>https://pythondeadlin.es/series/pycon-philippines/</loc>
 </url>
 <url>
@@ -4777,6 +4783,9 @@
 <loc>https://pythondeadlin.es/series/pycon-poland/</loc>
 </url>
 <url>
+<loc>https://pythondeadlin.es/series/pycon-hong-kong/</loc>
+</url>
+<url>
 <loc>https://pythondeadlin.es/series/swiss-python-summit/</loc>
 </url>
 <url>
@@ -4877,9 +4886,6 @@
 </url>
 <url>
 <loc>https://pythondeadlin.es/series/geopython/</loc>
-</url>
-<url>
-<loc>https://pythondeadlin.es/series/pycon-namibia/</loc>
 </url>
 <url>
 <loc>https://pythondeadlin.es/series/pycon-pakistan/</loc>

@@ -9,7 +9,7 @@
 		<title>Python Conference Deadlines</title>
 		<description>Countdowns to your favourite Python conferences with calls for participation and resources to submit awesome talks!</description>
 		<link>https://pythondeadlin.es/feed.xml</link>
-		<lastBuildDate>Sun, 14 Apr 2024 13:47:30 +0000</lastBuildDate>
+		<lastBuildDate>Mon, 15 Apr 2024 19:33:41 +0000</lastBuildDate>
 		
 		
 		
@@ -18,6 +18,18 @@
 				<description>Conference in Gliwice, Poland on August 29 – 1, 2024. CfP: 2024-08-13 23:59:00 AoE. </description>
 				<pubDate>Tue, 13 Aug 2024 23:59:00 +0000</pubDate>
 				<link>https://pythondeadlin.es/conference/pycon-poland-2024/</link>
+				<guid isPermaLink="false"></guid>
+				<category>PY</category>
+			</item>
+		
+		
+		
+		
+			<item>
+				<title>PyCon Hong Kong 2024 Conference Deadline</title>
+				<description>Conference in Hong Kong, Hong Kong on November 16, 2024. CfP: 2024-07-01 23:59:00 AoE.&lt;br /&gt;Find them here: @pyconhk </description>
+				<pubDate>Mon, 01 Jul 2024 23:59:00 +0000</pubDate>
+				<link>https://pythondeadlin.es/conference/pycon-hong-kong-2024/</link>
 				<guid isPermaLink="false"></guid>
 				<category>PY</category>
 			</item>
@@ -272,18 +284,6 @@
 				<link>https://pythondeadlin.es/conference/pydata-paris-2024/</link>
 				<guid isPermaLink="false"></guid>
 				<category>DATA</category>
-			</item>
-		
-		
-		
-		
-			<item>
-				<title>PyGrunn 2024 Conference Deadline</title>
-				<description>Conference in Groningen, Netherlands on May 17, 2024. CfP: 2024-04-07 23:59:00 AoE.&lt;br /&gt;Find them here: @pygrunn </description>
-				<pubDate>Sun, 07 Apr 2024 23:59:00 +0000</pubDate>
-				<link>https://pythondeadlin.es/conference/pygrunn-2024/</link>
-				<guid isPermaLink="false"></guid>
-				<category>PY</category>
 			</item>
 		
 		

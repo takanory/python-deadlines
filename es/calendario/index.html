@@ -68,7 +68,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1713102494"
+      href="/static/css/js-year-calendar.min.css?t=1713209667"
       media="screen,projection"
     />
 
@@ -80,13 +80,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1713102494"
+      href="/static/css/deadlines.css?t=1713209667"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1713102494"
+      href="/static/css/calendar.css?t=1713209667"
       media="screen,projection"
     />
 
@@ -853,6 +853,38 @@
           subject: "PY",
           startDate: Date.parse("2024-08-29"),
           endDate: Date.parse("2024-09-01"),
+        });
+
+        // add deadlines in red
+        conf_list_all.push({
+          id: "pycon-hong-kong-2024-deadline",
+          abbreviation: "pycon-hong-kong-2024",
+          name: "PyCon Hong Kong 2024 CfP ",
+          color: "red",
+          location: "Hong Kong, Hong Kong",
+          date: "16 de noviembre de 2024",
+          subject: "PY",
+          startDate: Date.parse("2024-07-01 23:59:00"),
+          endDate: Date.parse("2024-07-01 23:59:00"),
+        });
+
+        // add Conferences in chosen color
+
+        var color = "black";
+        // use first sub to choose color
+
+        color = "#4B8BBE";
+
+        conf_list_all.push({
+          id: "pycon-hong-kong-2024-conference",
+          abbreviation: "pycon-hong-kong-2024",
+          name: "PyCon Hong Kong 2024",
+          color: color,
+          location: "Hong Kong, Hong Kong",
+          date: "16 de noviembre de 2024",
+          subject: "PY",
+          startDate: Date.parse("2024-11-16"),
+          endDate: Date.parse("2024-11-16"),
         });
 
         // add deadlines in red
@@ -1965,38 +1997,6 @@
           subject: "GEO",
           startDate: Date.parse("2024-05-27"),
           endDate: Date.parse("2024-05-29"),
-        });
-
-        // add deadlines in red
-        conf_list_all.push({
-          id: "pycon-namibia-2024-deadline",
-          abbreviation: "pycon-namibia-2024",
-          name: "PyCon Namibia 2024 CfP ",
-          color: "red",
-          location: "Windhoek, Namibia",
-          date: "4 – 7 de marzo de 2024",
-          subject: "PY",
-          startDate: Date.parse("2024-01-21 23:59:00"),
-          endDate: Date.parse("2024-01-21 23:59:00"),
-        });
-
-        // add Conferences in chosen color
-
-        var color = "black";
-        // use first sub to choose color
-
-        color = "#4B8BBE";
-
-        conf_list_all.push({
-          id: "pycon-namibia-2024-conference",
-          abbreviation: "pycon-namibia-2024",
-          name: "PyCon Namibia 2024",
-          color: color,
-          location: "Windhoek, Namibia",
-          date: "4 – 7 de marzo de 2024",
-          subject: "PY",
-          startDate: Date.parse("2024-03-04"),
-          endDate: Date.parse("2024-03-07"),
         });
 
         // add deadlines in red
