@@ -68,7 +68,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1713209667"
+      href="/static/css/js-year-calendar.min.css?t=1713881674"
       media="screen,projection"
     />
 
@@ -80,13 +80,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1713209667"
+      href="/static/css/deadlines.css?t=1713881674"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1713209667"
+      href="/static/css/calendar.css?t=1713881674"
       media="screen,projection"
     />
 
@@ -825,6 +825,38 @@
 
         // add deadlines in red
         conf_list_all.push({
+          id: "pycon-south-africa-2024-deadline",
+          abbreviation: "pycon-south-africa-2024",
+          name: "PyCon South Africa 2024 CfP ",
+          color: "red",
+          location: "Rondebosch, South Africa",
+          date: "2 – 6 de octubre de 2024",
+          subject: "PY",
+          startDate: Date.parse("2024-08-18 23:59:00"),
+          endDate: Date.parse("2024-08-18 23:59:00"),
+        });
+
+        // add Conferences in chosen color
+
+        var color = "black";
+        // use first sub to choose color
+
+        color = "#4B8BBE";
+
+        conf_list_all.push({
+          id: "pycon-south-africa-2024-conference",
+          abbreviation: "pycon-south-africa-2024",
+          name: "PyCon South Africa 2024",
+          color: color,
+          location: "Rondebosch, South Africa",
+          date: "2 – 6 de octubre de 2024",
+          subject: "PY",
+          startDate: Date.parse("2024-10-02"),
+          endDate: Date.parse("2024-10-06"),
+        });
+
+        // add deadlines in red
+        conf_list_all.push({
           id: "pycon-poland-2024-deadline",
           abbreviation: "pycon-poland-2024",
           name: "PyCon Poland 2024 CfP ",
@@ -1057,6 +1089,38 @@
           subject: "PY",
           startDate: Date.parse("2024-09-20"),
           endDate: Date.parse("2024-09-23"),
+        });
+
+        // add deadlines in red
+        conf_list_all.push({
+          id: "euroscipy-2024-deadline",
+          abbreviation: "euroscipy-2024",
+          name: "EuroSciPy 2024 CfP ",
+          color: "red",
+          location: "Szczecin, Poland",
+          date: "26 – 30 de agosto de 2024",
+          subject: "SCIPY",
+          startDate: Date.parse("2024-05-26 23:59:59"),
+          endDate: Date.parse("2024-05-26 23:59:59"),
+        });
+
+        // add Conferences in chosen color
+
+        var color = "black";
+        // use first sub to choose color
+
+        color = "#70163C";
+
+        conf_list_all.push({
+          id: "euroscipy-2024-conference",
+          abbreviation: "euroscipy-2024",
+          name: "EuroSciPy 2024",
+          color: color,
+          location: "Szczecin, Poland",
+          date: "26 – 30 de agosto de 2024",
+          subject: "SCIPY",
+          startDate: Date.parse("2024-08-26"),
+          endDate: Date.parse("2024-08-30"),
         });
 
         // add deadlines in red
@@ -1997,38 +2061,6 @@
           subject: "GEO",
           startDate: Date.parse("2024-05-27"),
           endDate: Date.parse("2024-05-29"),
-        });
-
-        // add deadlines in red
-        conf_list_all.push({
-          id: "pycon-pakistan-2024-deadline",
-          abbreviation: "pycon-pakistan-2024",
-          name: "PyCon Pakistan 2024 CfP ",
-          color: "red",
-          location: "Lahore, Pakistan",
-          date: "9 – 10 de marzo de 2024",
-          subject: "PY",
-          startDate: Date.parse("2024-01-15 23:59:00"),
-          endDate: Date.parse("2024-01-15 23:59:00"),
-        });
-
-        // add Conferences in chosen color
-
-        var color = "black";
-        // use first sub to choose color
-
-        color = "#4B8BBE";
-
-        conf_list_all.push({
-          id: "pycon-pakistan-2024-conference",
-          abbreviation: "pycon-pakistan-2024",
-          name: "PyCon Pakistan 2024",
-          color: color,
-          location: "Lahore, Pakistan",
-          date: "9 – 10 de marzo de 2024",
-          subject: "PY",
-          startDate: Date.parse("2024-03-09"),
-          endDate: Date.parse("2024-03-10"),
         });
 
         // add deadlines in red

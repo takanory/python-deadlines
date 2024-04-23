@@ -72,7 +72,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1713209621"
+      href="/static/css/js-year-calendar.min.css?t=1713881627"
       media="screen,projection"
     />
 
@@ -84,13 +84,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1713209621"
+      href="/static/css/deadlines.css?t=1713881627"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1713209621"
+      href="/static/css/calendar.css?t=1713881627"
       media="screen,projection"
     />
 
@@ -193,6 +193,16 @@
       type="text/javascript"
       src="/static/js/bootstrap-multiselect.min.js"
     ></script>
+
+    <style>
+      #twitter-widget {
+        width: 100%;
+      }
+
+      .twitter-timeline {
+        width: 100% !important;
+      }
+    </style>
   </head>
 
   <body>
@@ -348,8 +358,8 @@
               <a
                 id="conf-website"
                 target="_blank"
-                href="https://euroscipy.org/2023/"
-                >https://euroscipy.org/2023/</a
+                href="https://euroscipy.org/2024/"
+                >https://euroscipy.org/2024/</a
               >
             </div>
 
@@ -374,7 +384,7 @@
             <div id="twitter-widget">
               <a
                 class="twitter-timeline"
-                href="https://twitter.com/"
+                href="https://twitter.com/euroSciPy"
                 data-tweet-limit="2"
                 >Tweets by euroSciPy</a
               >
@@ -388,6 +398,134 @@
         </div>
         <hr />
         <div id="all_confs">
+          <div id="euroscipy-2024" class="ConfItem SCIPY-conf">
+            <div class="row conf-row">
+              <div class="col-6">
+                <span class="conf-title">
+                  <a title="Deadline Details" href="/conference/euroscipy-2024/"
+                    >EuroSciPy 2024</a
+                  >
+                </span>
+                <span class="conf-title-small">
+                  <a title="Deadline Details" href="/conference/euroscipy-2024/"
+                    >EuroSciPy '24</a
+                  >
+                </span>
+                <span class="conf-title-icon">
+                  <a
+                    title="Conference Website"
+                    href="https://euroscipy.org/2024/"
+                    target="_blank"
+                    ><img
+                      src="/static/img/203-earth.svg"
+                      class="badge-link"
+                      alt="Link to Conference Website"
+                      width="16"
+                      height="16"
+                  /></a>
+                  &ZeroWidthSpace;
+                </span>
+
+                <span class="conf-title-icon">
+                  <a
+                    title="Call for Participation for EuroSciPy"
+                    href="https://euroscipy.org/2024/program.html"
+                    target="_blank"
+                    ><img
+                      src="/static/img/035-file-text.svg"
+                      class="badge-link"
+                      alt="Link to Call for Participation for EuroSciPy"
+                      width="16"
+                      height="16"
+                  /></a>
+                  &ZeroWidthSpace;
+                </span>
+
+                <span class="conf-title-icon">
+                  <a
+                    title="Financial Aid from EuroSciPy"
+                    href="https://euroscipy.org/2024/finaid.html"
+                    target="_blank"
+                    ><img
+                      src="/static/img/066-lifebuoy.svg"
+                      class="badge-link"
+                      alt="Link to Sponsorship page of EuroSciPy"
+                      width="16"
+                      height="16"
+                  /></a>
+                  &ZeroWidthSpace;
+                </span>
+
+                <span class="conf-title-icon">
+                  <a
+                    title="Sponsorship Opportunity for EuroSciPy"
+                    href="https://euroscipy.org/2024/sponsoring.html"
+                    target="_blank"
+                    ><img
+                      src="/static/img/060-coin-dollar.svg"
+                      class="badge-link"
+                      alt="Link to Sponsorship page of EuroSciPy"
+                      width="16"
+                      height="16"
+                  /></a>
+                  &ZeroWidthSpace;
+                </span>
+
+                <span class="conf-title-icon">
+                  <a
+                    title="Twitter for EuroSciPy"
+                    href="https://twitter.com/euroSciPy"
+                    target="_blank"
+                    ><img
+                      src="/static/img/407-twitter.svg"
+                      class="badge-link"
+                      alt="Link to Conference Twitter"
+                      width="16"
+                      height="16"
+                  /></a>
+                  &ZeroWidthSpace;
+                </span>
+              </div>
+              <div class="col-6">
+                <span class="timer"></span>
+                <span class="timer-small"></span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="meta">
+                  <span class="conf-date">August 26 – 30, 2024.</span>
+                  <span class="conf-place">
+                    <a href="http://maps.google.com/?q=Szczecin, Poland"
+                      >Szczecin, Poland</a
+                    >
+                  </span>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <div class="deadline">
+                  <div>
+                    Deadline:
+                    <span class="deadline-time">Sunday, 26 May 2024</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <span
+                  title="Click to only show SCIPY conferences"
+                  data-sub="SCIPY"
+                  class="badge badge-light conf-sub SCIPY-tag"
+                ></span>
+              </div>
+              <div class="col-6">
+                <div class="calendar"></div>
+              </div>
+            </div>
+            <hr />
+          </div>
+
           <div id="euroscipy-2023" class="ConfItem SCIPY-conf">
             <div class="row conf-row">
               <div class="col-6">
@@ -1647,6 +1785,77 @@
 
             // Set time zone to local timezone on web copy
             $('.local-timezone').text(today.toFormat('z'));
+
+
+
+
+
+                $('#euroscipy-2024 .SCIPY-tag').html("Scientific Python".toLocaleLowerCase("en"));
+
+
+
+                // Use specified timezone for deadlines if available else use AoE timezone
+
+                  var cfpDate = DateTime.fromSQL("2024-05-26 23:59:59", { zone: "Europe/Warsaw" });
+                  var confDate = DateTime.fromSQL("2024-08-26", { zone: "Europe/Warsaw" });
+
+
+                // check if timezone is valid otherwise replace by system timezone
+                if (cfpDate.invalid || confDate.invalid) {
+                  var cfpDate = DateTime.fromSQL("2024-05-26 23:59:59");
+                  var confDate = DateTime.fromSQL("2024-08-26");
+                  console.log("Invalid timezone in euroscipy-2024. Using system timezone instead.");
+                }
+
+                // render countdown timer
+                $('#euroscipy-2024 .timer').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+
+                // render countdown timer small
+                $('#euroscipy-2024 .timer-small').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%Dd %H:%M:%S'));
+                });
+
+                // deadline in local timezone
+                $('#euroscipy-2024 .deadline-time').html(cfpDate.setZone('system').toLocaleString(DateTime.DATE_HUGE));
+
+                // add calendar button
+                try {
+                  var myCalendar = createCalendarFromObject({
+                    id: 'euroscipy-2024',
+                    title: 'EuroSciPy 2024 deadline',
+                    start_date: cfpDate.toJSDate(),
+                    duration: 60,
+                    place: 'Szczecin, Poland',
+                    link: 'https://euroscipy.org/2024/'
+                  });
+                  document.querySelector('#euroscipy-2024 .calendar').appendChild(myCalendar);
+                } catch (err) {
+                  document.querySelector('#euroscipy-2024 .calendar').appendChild("<p>Calendar not available.</p>");
+                  console.log("Error in cfp date.");
+                }
+
+                // check if date has passed, add 'past' class to it
+                cfpDiff = cfpDate.diffNow("seconds");
+                confDiff = confDate.diffNow("seconds");
+
+                $('#euroscipy-2024').attr("cfpDiff", cfpDiff.toMillis());
+                $('#euroscipy-2024').attr("confDiff", confDiff.toMillis());
+
+                if (cfpDiff < 0) {
+                  $('#euroscipy-2024').addClass('pastcfp');
+                  $('#euroscipy-2024 .timer').replaceWith($('#euroscipy-2024 .deadline'));
+                  $('#euroscipy-2024 .timer-small').replaceWith($('#euroscipy-2024 .deadline'));
+                  $('#euroscipy-2024 .calendar').remove();
+                }
+
+                if (confDiff < 0) {
+                  $('#euroscipy-2024').addClass('pastconf');
+                  $('#euroscipy-2024 .timer').replaceWith($('#euroscipy-2024 .deadline'));
+                  $('#euroscipy-2024 .timer-small').replaceWith($('#euroscipy-2024 .deadline'));
+                  $('#euroscipy-2024 .calendar').remove();
+                }
 
 
 

@@ -83,7 +83,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1713209713"
+      href="/static/css/js-year-calendar.min.css?t=1713881721"
       media="screen,projection"
     />
 
@@ -95,13 +95,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1713209713"
+      href="/static/css/deadlines.css?t=1713881721"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1713209713"
+      href="/static/css/calendar.css?t=1713881721"
       media="screen,projection"
     />
 
@@ -204,6 +204,45 @@
       type="text/javascript"
       src="/static/js/bootstrap-multiselect.min.js"
     ></script>
+
+    <link rel="stylesheet" type="text/css" href="/static/css/mastodon.css" />
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch("https://fosstodon.org/@PyConZA.rss")
+          .then(function (response) {
+            return response.text();
+          })
+          .then(function (xmlText) {
+            var parser = new DOMParser();
+            var xml = parser.parseFromString(xmlText, "text/xml");
+            var items = xml.querySelectorAll("item");
+            var feedContainer = document.getElementById("mastodon-feed");
+            var postLimit = 2; // Number of posts to display
+
+            for (var i = 0; i < postLimit && i < items.length; i++) {
+              var item = items[i];
+              var post = item.querySelector("description").textContent;
+              var link = item.querySelector("link").textContent;
+              var pubDate = item.querySelector("pubDate").textContent;
+
+              var feedItem = document.createElement("div");
+              feedItem.setAttribute("class", "timeline-item");
+              feedItem.innerHTML =
+                '<div class="timeline-content">' +
+                post +
+                '</div><a href="' +
+                link +
+                '">' +
+                pubDate +
+                " by PyCon South Africa</a>";
+              feedContainer.appendChild(feedItem);
+            }
+          })
+          .catch(function (error) {
+            console.log("Error fetching Mastodon RSS feed:", error);
+          });
+      });
+    </script>
   </head>
 
   <body>
@@ -405,11 +444,115 @@
             <!-- Mastodon timeline -->
             <div class="meta">Mastodon Posts by PyCon South Africa:</div>
             <div id="mastodon-feed"></div>
-            <a href="">See all Mastodon posts for PyCon South Africa</a>
+            <a href="https://fosstodon.org/@PyConZA"
+              >See all Mastodon posts for PyCon South Africa</a
+            >
           </div>
         </div>
         <hr />
         <div id="all_confs">
+          <div id="pycon-south-africa-2024" class="ConfItem PY-conf">
+            <div class="row conf-row">
+              <div class="col-6">
+                <span class="conf-title">
+                  <a
+                    title="Deadline Details"
+                    href="/de/conference/pycon-south-africa-2024/"
+                    >PyCon South Africa 2024</a
+                  >
+                </span>
+                <span class="conf-title-small">
+                  <a
+                    title="Deadline Details"
+                    href="/de/conference/pycon-south-africa-2024/"
+                    >PyCon South Africa '24</a
+                  >
+                </span>
+                <span class="conf-title-icon">
+                  <a
+                    title="Conference Website"
+                    href="https://za.pycon.org/"
+                    target="_blank"
+                    ><img
+                      src="/static/img/203-earth.svg"
+                      class="badge-link"
+                      alt="Link to Conference Website"
+                      width="16"
+                      height="16"
+                  /></a>
+                  &ZeroWidthSpace;
+                </span>
+
+                <span class="conf-title-icon">
+                  <a
+                    title="Call for Participation for PyCon South Africa"
+                    href="https://za.pycon.org/talks/how-to-submit-a-talk/"
+                    target="_blank"
+                    ><img
+                      src="/static/img/035-file-text.svg"
+                      class="badge-link"
+                      alt="Link to Call for Participation for PyCon South Africa"
+                      width="16"
+                      height="16"
+                  /></a>
+                  &ZeroWidthSpace;
+                </span>
+
+                <span class="conf-title-icon">
+                  <a
+                    title="Mastodon for PyCon South Africa"
+                    href="https://fosstodon.org/@PyConZA"
+                    target="_blank"
+                    ><img
+                      src="/static/img/407-mastodon.svg"
+                      class="badge-link"
+                      alt="Link to Conference Mastodon"
+                      width="16"
+                      height="16"
+                  /></a>
+                  &ZeroWidthSpace;
+                </span>
+              </div>
+              <div class="col-6">
+                <span class="timer"></span>
+                <span class="timer-small"></span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="meta">
+                  <span class="conf-date">2. – 6. Oktober 2024.</span>
+                  <span class="conf-place">
+                    <a href="http://maps.google.com/?q=Rondebosch, South Africa"
+                      >Rondebosch, South Africa</a
+                    >
+                  </span>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <div class="deadline">
+                  <div>
+                    Deadline:
+                    <span class="deadline-time">Sunday, 18 August 2024</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <span
+                  title="Click to only show PY conferences"
+                  data-sub="PY"
+                  class="badge badge-light conf-sub PY-tag"
+                ></span>
+              </div>
+              <div class="col-6">
+                <div class="calendar"></div>
+              </div>
+            </div>
+            <hr />
+          </div>
+
           <div id="pycon-south-africa-2023" class="ConfItem PY-conf">
             <div class="row conf-row">
               <div class="col-6">
@@ -1452,6 +1595,77 @@
 
             // Set time zone to local timezone on web copy
             $('.local-timezone').text(today.toFormat('z'));
+
+
+
+
+
+                $('#pycon-south-africa-2024 .PY-tag').html("Python allgemein".toLocaleLowerCase("de"));
+
+
+
+                // Use specified timezone for deadlines if available else use AoE timezone
+
+                  var cfpDate = DateTime.fromSQL("2024-08-18 23:59:00", { zone: "Africa/Johannesburg" });
+                  var confDate = DateTime.fromSQL("2024-10-02", { zone: "Africa/Johannesburg" });
+
+
+                // check if timezone is valid otherwise replace by system timezone
+                if (cfpDate.invalid || confDate.invalid) {
+                  var cfpDate = DateTime.fromSQL("2024-08-18 23:59:00");
+                  var confDate = DateTime.fromSQL("2024-10-02");
+                  console.log("Invalid timezone in pycon-south-africa-2024. Using system timezone instead.");
+                }
+
+                // render countdown timer
+                $('#pycon-south-africa-2024 .timer').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+
+                // render countdown timer small
+                $('#pycon-south-africa-2024 .timer-small').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%Dd %H:%M:%S'));
+                });
+
+                // deadline in local timezone
+                $('#pycon-south-africa-2024 .deadline-time').html(cfpDate.setZone('system').toLocaleString(DateTime.DATE_HUGE));
+
+                // add calendar button
+                try {
+                  var myCalendar = createCalendarFromObject({
+                    id: 'pycon-south-africa-2024',
+                    title: 'PyCon South Africa 2024 deadline',
+                    start_date: cfpDate.toJSDate(),
+                    duration: 60,
+                    place: 'Rondebosch, South Africa',
+                    link: 'https://za.pycon.org/'
+                  });
+                  document.querySelector('#pycon-south-africa-2024 .calendar').appendChild(myCalendar);
+                } catch (err) {
+                  document.querySelector('#pycon-south-africa-2024 .calendar').appendChild("<p>Calendar not available.</p>");
+                  console.log("Error in cfp date.");
+                }
+
+                // check if date has passed, add 'past' class to it
+                cfpDiff = cfpDate.diffNow("seconds");
+                confDiff = confDate.diffNow("seconds");
+
+                $('#pycon-south-africa-2024').attr("cfpDiff", cfpDiff.toMillis());
+                $('#pycon-south-africa-2024').attr("confDiff", confDiff.toMillis());
+
+                if (cfpDiff < 0) {
+                  $('#pycon-south-africa-2024').addClass('pastcfp');
+                  $('#pycon-south-africa-2024 .timer').replaceWith($('#pycon-south-africa-2024 .deadline'));
+                  $('#pycon-south-africa-2024 .timer-small').replaceWith($('#pycon-south-africa-2024 .deadline'));
+                  $('#pycon-south-africa-2024 .calendar').remove();
+                }
+
+                if (confDiff < 0) {
+                  $('#pycon-south-africa-2024').addClass('pastconf');
+                  $('#pycon-south-africa-2024 .timer').replaceWith($('#pycon-south-africa-2024 .deadline'));
+                  $('#pycon-south-africa-2024 .timer-small').replaceWith($('#pycon-south-africa-2024 .deadline'));
+                  $('#pycon-south-africa-2024 .calendar').remove();
+                }
 
 
 
