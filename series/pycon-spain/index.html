@@ -72,7 +72,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1713881627"
+      href="/static/css/js-year-calendar.min.css?t=1714036173"
       media="screen,projection"
     />
 
@@ -84,13 +84,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1713881627"
+      href="/static/css/deadlines.css?t=1714036173"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1713881627"
+      href="/static/css/calendar.css?t=1714036173"
       media="screen,projection"
     />
 
@@ -388,6 +388,21 @@
                   /></a>
                   &ZeroWidthSpace;
                 </span>
+
+                <span class="conf-title-icon">
+                  <a
+                    title="Call for Participation for PyCon Spain"
+                    href="https://2024.es.pycon.org/c4p/"
+                    target="_blank"
+                    ><img
+                      src="/static/img/035-file-text.svg"
+                      class="badge-link"
+                      alt="Link to Call for Participation for PyCon Spain"
+                      width="16"
+                      height="16"
+                  /></a>
+                  &ZeroWidthSpace;
+                </span>
               </div>
               <div class="col-6">
                 <span class="timer"></span>
@@ -409,7 +424,7 @@
                 <div class="deadline">
                   <div>
                     Deadline:
-                    <span class="deadline-time">TBA</span>
+                    <span class="deadline-time">Friday, 31 May 2024</span>
                   </div>
                 </div>
               </div>
@@ -1241,9 +1256,69 @@
                 $('#pycon-spain-2024 .PY-tag').html("General Python".toLocaleLowerCase("en"));
 
 
-                $('#pycon-spain-2024 .timer').html("TBA");
-                $('#pycon-spain-2024 .deadline-time').html("TBA");
-                $('#pycon-spain-2024').attr("cfpDiff", Infinity);
+
+                // Use specified timezone for deadlines if available else use AoE timezone
+
+                  var cfpDate = DateTime.fromSQL("2024-05-31 21:00:00", { zone: "Europe/Madrid" });
+                  var confDate = DateTime.fromSQL("2024-10-04", { zone: "Europe/Madrid" });
+
+
+                // check if timezone is valid otherwise replace by system timezone
+                if (cfpDate.invalid || confDate.invalid) {
+                  var cfpDate = DateTime.fromSQL("2024-05-31 21:00:00");
+                  var confDate = DateTime.fromSQL("2024-10-04");
+                  console.log("Invalid timezone in pycon-spain-2024. Using system timezone instead.");
+                }
+
+                // render countdown timer
+                $('#pycon-spain-2024 .timer').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+
+                // render countdown timer small
+                $('#pycon-spain-2024 .timer-small').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%Dd %H:%M:%S'));
+                });
+
+                // deadline in local timezone
+                $('#pycon-spain-2024 .deadline-time').html(cfpDate.setZone('system').toLocaleString(DateTime.DATE_HUGE));
+
+                // add calendar button
+                try {
+                  var myCalendar = createCalendarFromObject({
+                    id: 'pycon-spain-2024',
+                    title: 'PyCon Spain 2024 deadline',
+                    start_date: cfpDate.toJSDate(),
+                    duration: 60,
+                    place: 'Vigo, Spain',
+                    link: 'https://2024.es.pycon.org/'
+                  });
+                  document.querySelector('#pycon-spain-2024 .calendar').appendChild(myCalendar);
+                } catch (err) {
+                  document.querySelector('#pycon-spain-2024 .calendar').appendChild("<p>Calendar not available.</p>");
+                  console.log("Error in cfp date.");
+                }
+
+                // check if date has passed, add 'past' class to it
+                cfpDiff = cfpDate.diffNow("seconds");
+                confDiff = confDate.diffNow("seconds");
+
+                $('#pycon-spain-2024').attr("cfpDiff", cfpDiff.toMillis());
+                $('#pycon-spain-2024').attr("confDiff", confDiff.toMillis());
+
+                if (cfpDiff < 0) {
+                  $('#pycon-spain-2024').addClass('pastcfp');
+                  $('#pycon-spain-2024 .timer').replaceWith($('#pycon-spain-2024 .deadline'));
+                  $('#pycon-spain-2024 .timer-small').replaceWith($('#pycon-spain-2024 .deadline'));
+                  $('#pycon-spain-2024 .calendar').remove();
+                }
+
+                if (confDiff < 0) {
+                  $('#pycon-spain-2024').addClass('pastconf');
+                  $('#pycon-spain-2024 .timer').replaceWith($('#pycon-spain-2024 .deadline'));
+                  $('#pycon-spain-2024 .timer-small').replaceWith($('#pycon-spain-2024 .deadline'));
+                  $('#pycon-spain-2024 .calendar').remove();
+                }
 
 
 
