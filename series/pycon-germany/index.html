@@ -80,7 +80,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1714036173"
+      href="/static/css/js-year-calendar.min.css?t=1714307448"
       media="screen,projection"
     />
 
@@ -92,13 +92,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1714036173"
+      href="/static/css/deadlines.css?t=1714307448"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1714036173"
+      href="/static/css/calendar.css?t=1714307448"
       media="screen,projection"
     />
 
@@ -1204,21 +1204,17 @@
             <hr />
           </div>
 
-          <div id="pycon-germany-2016" class="ConfItem PY-conf">
+          <div id="pymunich-2016" class="ConfItem PY-conf">
             <div class="row conf-row">
               <div class="col-6">
                 <span class="conf-title">
-                  <a
-                    title="Deadline Details"
-                    href="/conference/pycon-germany-2016/"
-                    >PyCon Germany 2016</a
+                  <a title="Deadline Details" href="/conference/pymunich-2016/"
+                    >PyMunich 2016</a
                   >
                 </span>
                 <span class="conf-title-small">
-                  <a
-                    title="Deadline Details"
-                    href="/conference/pycon-germany-2016/"
-                    >PyCon Germany '16</a
+                  <a title="Deadline Details" href="/conference/pymunich-2016/"
+                    >PyMunich '16</a
                   >
                 </span>
                 <span class="conf-title-icon">
@@ -2183,7 +2179,7 @@
 
 
 
-                $('#pycon-germany-2016 .PY-tag').html("General Python".toLocaleLowerCase("en"));
+                $('#pymunich-2016 .PY-tag').html("General Python".toLocaleLowerCase("en"));
 
 
 
@@ -2197,35 +2193,35 @@
                 if (cfpDate.invalid || confDate.invalid) {
                   var cfpDate = DateTime.fromSQL("2016-09-12 00:00:00");
                   var confDate = DateTime.fromSQL("2016-10-28");
-                  console.log("Invalid timezone in pycon-germany-2016. Using system timezone instead.");
+                  console.log("Invalid timezone in pymunich-2016. Using system timezone instead.");
                 }
 
                 // render countdown timer
-                $('#pycon-germany-2016 .timer').countdown(cfpDate.toJSDate(), function (event) {
+                $('#pymunich-2016 .timer').countdown(cfpDate.toJSDate(), function (event) {
                   $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
                 });
 
                 // render countdown timer small
-                $('#pycon-germany-2016 .timer-small').countdown(cfpDate.toJSDate(), function (event) {
+                $('#pymunich-2016 .timer-small').countdown(cfpDate.toJSDate(), function (event) {
                   $(this).html(event.strftime('%Dd %H:%M:%S'));
                 });
 
                 // deadline in local timezone
-                $('#pycon-germany-2016 .deadline-time').html(cfpDate.setZone('system').toLocaleString(DateTime.DATE_HUGE));
+                $('#pymunich-2016 .deadline-time').html(cfpDate.setZone('system').toLocaleString(DateTime.DATE_HUGE));
 
                 // add calendar button
                 try {
                   var myCalendar = createCalendarFromObject({
-                    id: 'pycon-germany-2016',
-                    title: 'PyCon Germany 2016 deadline',
+                    id: 'pymunich-2016',
+                    title: 'PyMunich 2016 deadline',
                     start_date: cfpDate.toJSDate(),
                     duration: 60,
                     place: 'Munich, Germany',
                     link: 'https://web.archive.org/web/20161015212639/http://www.pymunich.com/'
                   });
-                  document.querySelector('#pycon-germany-2016 .calendar').appendChild(myCalendar);
+                  document.querySelector('#pymunich-2016 .calendar').appendChild(myCalendar);
                 } catch (err) {
-                  document.querySelector('#pycon-germany-2016 .calendar').appendChild("<p>Calendar not available.</p>");
+                  document.querySelector('#pymunich-2016 .calendar').appendChild("<p>Calendar not available.</p>");
                   console.log("Error in cfp date.");
                 }
 
@@ -2233,21 +2229,21 @@
                 cfpDiff = cfpDate.diffNow("seconds");
                 confDiff = confDate.diffNow("seconds");
 
-                $('#pycon-germany-2016').attr("cfpDiff", cfpDiff.toMillis());
-                $('#pycon-germany-2016').attr("confDiff", confDiff.toMillis());
+                $('#pymunich-2016').attr("cfpDiff", cfpDiff.toMillis());
+                $('#pymunich-2016').attr("confDiff", confDiff.toMillis());
 
                 if (cfpDiff < 0) {
-                  $('#pycon-germany-2016').addClass('pastcfp');
-                  $('#pycon-germany-2016 .timer').replaceWith($('#pycon-germany-2016 .deadline'));
-                  $('#pycon-germany-2016 .timer-small').replaceWith($('#pycon-germany-2016 .deadline'));
-                  $('#pycon-germany-2016 .calendar').remove();
+                  $('#pymunich-2016').addClass('pastcfp');
+                  $('#pymunich-2016 .timer').replaceWith($('#pymunich-2016 .deadline'));
+                  $('#pymunich-2016 .timer-small').replaceWith($('#pymunich-2016 .deadline'));
+                  $('#pymunich-2016 .calendar').remove();
                 }
 
                 if (confDiff < 0) {
-                  $('#pycon-germany-2016').addClass('pastconf');
-                  $('#pycon-germany-2016 .timer').replaceWith($('#pycon-germany-2016 .deadline'));
-                  $('#pycon-germany-2016 .timer-small').replaceWith($('#pycon-germany-2016 .deadline'));
-                  $('#pycon-germany-2016 .calendar').remove();
+                  $('#pymunich-2016').addClass('pastconf');
+                  $('#pymunich-2016 .timer').replaceWith($('#pymunich-2016 .deadline'));
+                  $('#pymunich-2016 .timer-small').replaceWith($('#pymunich-2016 .deadline'));
+                  $('#pymunich-2016 .calendar').remove();
                 }
 
 

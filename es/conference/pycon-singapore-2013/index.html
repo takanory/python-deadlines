@@ -85,7 +85,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1714036217"
+      href="/static/css/js-year-calendar.min.css?t=1714307497"
       media="screen,projection"
     />
 
@@ -97,13 +97,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1714036217"
+      href="/static/css/deadlines.css?t=1714307497"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1714036217"
+      href="/static/css/calendar.css?t=1714307497"
       media="screen,projection"
     />
 
@@ -515,7 +515,7 @@
       </div>
       <div id="page-content">
         <div id="conf-deadline-timer" class="row">
-          <div id="cfp-timer" class="col-12 conf-timer">TBA</div>
+          <div id="cfp-timer" class="col-12 conf-timer"></div>
         </div>
         <div id="conf-key-facts" class="row">
           <div class="col-12 col-md-6">
@@ -527,7 +527,7 @@
                 width="16"
                 height="16"
               />
-              <span id="conf-date">13 – 16 de junio de 2013</span>
+              <span id="conf-date">13 – 15 de junio de 2013</span>
             </div>
             <div>
               <img
@@ -555,8 +555,24 @@
               <a
                 id="conf-website"
                 target="_blank"
-                href="https://web.archive.org/web/20180425194853/https://pycon.sg/"
-                >https://web.archive.org/web/20180425194853/https://pycon.sg/</a
+                href="https://web.archive.org/web/20130531041813/https://pycon.sg/"
+                >https://web.archive.org/web/20130531041813/https://pycon.sg/</a
+              >
+            </div>
+
+            <div>
+              <img
+                src="/static/img/035-file-text.svg"
+                class="badge-link"
+                alt="Document Icon for CfP link"
+                width="16"
+                height="16"
+              />
+              <a
+                id="conf-cfp_link"
+                target="_blank"
+                href="https://web.archive.org/web/20130816132236/https://pycon.sg/proposals/"
+                >Llamada por participación</a
               >
             </div>
 
@@ -586,7 +602,7 @@
               Fecha límite en la zona horaria de la conferencia:
             </div>
             <div class="meta">
-              <span class="deadline-time">TBA</span>
+              <span class="deadline-time">Monday, 1 April 2013</span>
             </div>
             <div class="meta">
               Fecha límite en sua zona horaria
@@ -644,13 +660,13 @@
         </div>
         <div class="row">
           <div
-            id="20f97f00-6cea-4df5-b978-d37a53043b13"
+            id="e0d219d5-3c86-43a3-9bb7-fd59a937d207"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "20f97f00-6cea-4df5-b978-d37a53043b13",
+              "e0d219d5-3c86-43a3-9bb7-fd59a937d207",
               [
                 {
                   latitude: 1.2899175,
@@ -808,9 +824,63 @@
 
         // other
 
-        $("#cfp-timer").html("TBA");
-        $(".deadline-time").html("TBA");
-        $(".deadline-local-time").html("TBA");
+        // Use specified timezone for deadlines if available else use AoE timezone
+
+        var confDeadline = DateTime.fromSQL("2013-04-01 23:59:00", {
+          zone: "UTC-12",
+        });
+
+        // check if timezone is valid otherwise replace by system timezone
+        if (confDeadline.invalid) {
+          var confDeadline = DateTime.fromSQL("2013-04-01 23:59:00");
+          console.log("Invalid timezone. Using system timezone instead.");
+        }
+
+        // add calendar
+
+        var conferenceDeadlineCalendar = createCalendarFromObject({
+          id: "pycon-singapore-2013",
+          title: "PyCon Singapore 2013 deadline",
+          start_date: confDeadline.toJSDate(),
+          duration: 60,
+          place: "Singapore, Singapore",
+          link: "https://web.archive.org/web/20130531041813/https://pycon.sg/",
+        });
+        document
+          .querySelector("#conference-deadline")
+          .appendChild(conferenceDeadlineCalendar);
+
+        var conferenceCalendar = createCalendarFromObject({
+          id: "pycon-singapore-2013",
+          title: "PyCon Singapore 2013",
+          start_date: DateTime.fromSQL("2013-06-13").toJSDate(),
+          end_date: DateTime.fromSQL("2013-06-15").toJSDate(),
+          place: "Singapore, Singapore",
+          link: "https://web.archive.org/web/20130531041813/https://pycon.sg/",
+        });
+        document
+          .querySelector("#conference-calendar")
+          .appendChild(conferenceCalendar);
+
+        // render countdown timer
+        $("#cfp-timer").countdown(confDeadline.toJSDate(), function (event) {
+          $(this).html(event.strftime("%D dias %Hh %Mm %Ss"));
+        });
+
+        // render deadline conference time
+
+        $(".deadline-time").html(
+          confDeadline
+            .setZone("UTC-12")
+            .toLocaleString(DateTime.DATETIME_HUGE_WITH_SECONDS)
+        );
+
+        // render deadline in local timezone
+        $(".deadline-local-time").html(
+          confDeadline
+            .setZone("system")
+            .toLocaleString(DateTime.DATETIME_HUGE_WITH_SECONDS)
+        );
       });
     </script>
     <script async defer>

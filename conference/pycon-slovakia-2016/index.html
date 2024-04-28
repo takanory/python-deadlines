@@ -85,7 +85,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1714036173"
+      href="/static/css/js-year-calendar.min.css?t=1714307448"
       media="screen,projection"
     />
 
@@ -97,13 +97,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1714036173"
+      href="/static/css/deadlines.css?t=1714307448"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1714036173"
+      href="/static/css/calendar.css?t=1714307448"
       media="screen,projection"
     />
 
@@ -509,7 +509,7 @@
       </div>
       <div id="page-content">
         <div id="conf-deadline-timer" class="row">
-          <div id="cfp-timer" class="col-12 conf-timer">TBA</div>
+          <div id="cfp-timer" class="col-12 conf-timer"></div>
         </div>
         <div id="conf-key-facts" class="row">
           <div class="col-12 col-md-6">
@@ -521,7 +521,7 @@
                 width="16"
                 height="16"
               />
-              <span id="conf-date">March 11 – 14, 2016</span>
+              <span id="conf-date">March 11 – 13, 2016</span>
             </div>
             <div>
               <img
@@ -556,6 +556,22 @@
 
             <div>
               <img
+                src="/static/img/035-file-text.svg"
+                class="badge-link"
+                alt="Document Icon for CfP link"
+                width="16"
+                height="16"
+              />
+              <a
+                id="conf-cfp_link"
+                target="_blank"
+                href="https://2016.pycon.sk/en/speaking.html"
+                >Call for Participation</a
+              >
+            </div>
+
+            <div>
+              <img
                 src="/static/img/002-home2.svg"
                 class="badge-link"
                 alt="Conference Series"
@@ -578,7 +594,7 @@
               Deadline in timezone from conference website:
             </div>
             <div class="meta">
-              <span class="deadline-time">TBA</span>
+              <span class="deadline-time">Sunday, 24 January 2016</span>
             </div>
             <div class="meta">
               Deadline in your local
@@ -636,13 +652,13 @@
         </div>
         <div class="row">
           <div
-            id="348e8244-8964-409d-893b-27b28a5b047e"
+            id="c89888c0-35e8-46e5-8f54-b27367f1f077"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "348e8244-8964-409d-893b-27b28a5b047e",
+              "c89888c0-35e8-46e5-8f54-b27367f1f077",
               [
                 {
                   latitude: 48.1516988,
@@ -799,9 +815,65 @@
 
         // other
 
-        $("#cfp-timer").html("TBA");
-        $(".deadline-time").html("TBA");
-        $(".deadline-local-time").html("TBA");
+        // Use specified timezone for deadlines if available else use AoE timezone
+
+        var confDeadline = DateTime.fromSQL("2016-01-24 23:59:00", {
+          zone: "UTC-12",
+        });
+
+        // check if timezone is valid otherwise replace by system timezone
+        if (confDeadline.invalid) {
+          var confDeadline = DateTime.fromSQL("2016-01-24 23:59:00");
+          console.log("Invalid timezone. Using system timezone instead.");
+        }
+
+        // add calendar
+
+        var conferenceDeadlineCalendar = createCalendarFromObject({
+          id: "pycon-slovakia-2016",
+          title: "PyCon Slovakia 2016 deadline",
+          start_date: confDeadline.toJSDate(),
+          duration: 60,
+          place: "Bratislava, Slovakia",
+          link:
+            "https://web.archive.org/web/20160307164154/http://pycon.sk/en/",
+        });
+        document
+          .querySelector("#conference-deadline")
+          .appendChild(conferenceDeadlineCalendar);
+
+        var conferenceCalendar = createCalendarFromObject({
+          id: "pycon-slovakia-2016",
+          title: "PyCon Slovakia 2016",
+          start_date: DateTime.fromSQL("2016-03-11").toJSDate(),
+          end_date: DateTime.fromSQL("2016-03-13").toJSDate(),
+          place: "Bratislava, Slovakia",
+          link:
+            "https://web.archive.org/web/20160307164154/http://pycon.sk/en/",
+        });
+        document
+          .querySelector("#conference-calendar")
+          .appendChild(conferenceCalendar);
+
+        // render countdown timer
+        $("#cfp-timer").countdown(confDeadline.toJSDate(), function (event) {
+          $(this).html(event.strftime("%D days %Hh %Mm %Ss"));
+        });
+
+        // render deadline conference time
+
+        $(".deadline-time").html(
+          confDeadline
+            .setZone("UTC-12")
+            .toLocaleString(DateTime.DATETIME_HUGE_WITH_SECONDS)
+        );
+
+        // render deadline in local timezone
+        $(".deadline-local-time").html(
+          confDeadline
+            .setZone("system")
+            .toLocaleString(DateTime.DATETIME_HUGE_WITH_SECONDS)
+        );
       });
     </script>
     <script async defer>

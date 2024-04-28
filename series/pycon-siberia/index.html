@@ -80,7 +80,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1714036173"
+      href="/static/css/js-year-calendar.min.css?t=1714307448"
       media="screen,projection"
     />
 
@@ -92,13 +92,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1714036173"
+      href="/static/css/deadlines.css?t=1714307448"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1714036173"
+      href="/static/css/calendar.css?t=1714307448"
       media="screen,projection"
     />
 
@@ -405,7 +405,7 @@
             <div class="row">
               <div class="col-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">October 1 – 3, 2016.</span>
+                  <span class="conf-date">October 1 – 2, 2016.</span>
                   <span class="conf-place">
                     <a href="http://maps.google.com/?q=Aerovokzalnaya, Russia"
                       >Aerovokzalnaya, Russia</a
@@ -417,7 +417,9 @@
                 <div class="deadline">
                   <div>
                     Deadline:
-                    <span class="deadline-time">TBA</span>
+                    <span class="deadline-time"
+                      >Thursday, 1 September 2016</span
+                    >
                   </div>
                 </div>
               </div>
@@ -615,9 +617,69 @@
                 $('#pycon-siberia-2016 .PY-tag').html("General Python".toLocaleLowerCase("en"));
 
 
-                $('#pycon-siberia-2016 .timer').html("TBA");
-                $('#pycon-siberia-2016 .deadline-time').html("TBA");
-                $('#pycon-siberia-2016').attr("cfpDiff", Infinity);
+
+                // Use specified timezone for deadlines if available else use AoE timezone
+
+                  var cfpDate = DateTime.fromSQL("2016-09-01 23:59:00", { zone: "UTC-12" });
+                  var confDate = DateTime.fromSQL("2016-10-01", { zone: "UTC-12" });
+
+
+                // check if timezone is valid otherwise replace by system timezone
+                if (cfpDate.invalid || confDate.invalid) {
+                  var cfpDate = DateTime.fromSQL("2016-09-01 23:59:00");
+                  var confDate = DateTime.fromSQL("2016-10-01");
+                  console.log("Invalid timezone in pycon-siberia-2016. Using system timezone instead.");
+                }
+
+                // render countdown timer
+                $('#pycon-siberia-2016 .timer').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+
+                // render countdown timer small
+                $('#pycon-siberia-2016 .timer-small').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%Dd %H:%M:%S'));
+                });
+
+                // deadline in local timezone
+                $('#pycon-siberia-2016 .deadline-time').html(cfpDate.setZone('system').toLocaleString(DateTime.DATE_HUGE));
+
+                // add calendar button
+                try {
+                  var myCalendar = createCalendarFromObject({
+                    id: 'pycon-siberia-2016',
+                    title: 'PyCon Siberia 2016 deadline',
+                    start_date: cfpDate.toJSDate(),
+                    duration: 60,
+                    place: 'Aerovokzalnaya, Russia',
+                    link: 'https://web.archive.org/web/20161001171831/http://dev2dev.ru/'
+                  });
+                  document.querySelector('#pycon-siberia-2016 .calendar').appendChild(myCalendar);
+                } catch (err) {
+                  document.querySelector('#pycon-siberia-2016 .calendar').appendChild("<p>Calendar not available.</p>");
+                  console.log("Error in cfp date.");
+                }
+
+                // check if date has passed, add 'past' class to it
+                cfpDiff = cfpDate.diffNow("seconds");
+                confDiff = confDate.diffNow("seconds");
+
+                $('#pycon-siberia-2016').attr("cfpDiff", cfpDiff.toMillis());
+                $('#pycon-siberia-2016').attr("confDiff", confDiff.toMillis());
+
+                if (cfpDiff < 0) {
+                  $('#pycon-siberia-2016').addClass('pastcfp');
+                  $('#pycon-siberia-2016 .timer').replaceWith($('#pycon-siberia-2016 .deadline'));
+                  $('#pycon-siberia-2016 .timer-small').replaceWith($('#pycon-siberia-2016 .deadline'));
+                  $('#pycon-siberia-2016 .calendar').remove();
+                }
+
+                if (confDiff < 0) {
+                  $('#pycon-siberia-2016').addClass('pastconf');
+                  $('#pycon-siberia-2016 .timer').replaceWith($('#pycon-siberia-2016 .deadline'));
+                  $('#pycon-siberia-2016 .timer-small').replaceWith($('#pycon-siberia-2016 .deadline'));
+                  $('#pycon-siberia-2016 .calendar').remove();
+                }
 
 
 

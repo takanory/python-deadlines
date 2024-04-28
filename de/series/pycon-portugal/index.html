@@ -83,7 +83,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1714036260"
+      href="/static/css/js-year-calendar.min.css?t=1714307547"
       media="screen,projection"
     />
 
@@ -95,13 +95,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1714036260"
+      href="/static/css/deadlines.css?t=1714307547"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1714036260"
+      href="/static/css/calendar.css?t=1714307547"
       media="screen,projection"
     />
 
@@ -890,13 +890,13 @@
 
                 // Use specified timezone for deadlines if available else use AoE timezone
 
-                  var cfpDate = DateTime.fromSQL("2024-04-29 00:00:00", { zone: "Europe/Lisbon" });
+                  var cfpDate = DateTime.fromSQL("2024-05-15 00:00:00", { zone: "Europe/Lisbon" });
                   var confDate = DateTime.fromSQL("2024-10-17", { zone: "Europe/Lisbon" });
 
 
                 // check if timezone is valid otherwise replace by system timezone
                 if (cfpDate.invalid || confDate.invalid) {
-                  var cfpDate = DateTime.fromSQL("2024-04-29 00:00:00");
+                  var cfpDate = DateTime.fromSQL("2024-05-15 00:00:00");
                   var confDate = DateTime.fromSQL("2024-10-17");
                   console.log("Invalid timezone in pycon-portugal-2024. Using system timezone instead.");
                 }

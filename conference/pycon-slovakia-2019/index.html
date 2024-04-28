@@ -85,7 +85,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1714036173"
+      href="/static/css/js-year-calendar.min.css?t=1714307448"
       media="screen,projection"
     />
 
@@ -97,13 +97,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1714036173"
+      href="/static/css/deadlines.css?t=1714307448"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1714036173"
+      href="/static/css/calendar.css?t=1714307448"
       media="screen,projection"
     />
 
@@ -509,7 +509,7 @@
       </div>
       <div id="page-content">
         <div id="conf-deadline-timer" class="row">
-          <div id="cfp-timer" class="col-12 conf-timer">TBA</div>
+          <div id="cfp-timer" class="col-12 conf-timer"></div>
         </div>
         <div id="conf-key-facts" class="row">
           <div class="col-12 col-md-6">
@@ -578,7 +578,7 @@
               Deadline in timezone from conference website:
             </div>
             <div class="meta">
-              <span class="deadline-time">TBA</span>
+              <span class="deadline-time">Thursday, 14 February 2019</span>
             </div>
             <div class="meta">
               Deadline in your local
@@ -636,13 +636,13 @@
         </div>
         <div class="row">
           <div
-            id="e5d121c2-732e-4bcf-880a-30b7d54ce666"
+            id="59c49156-127c-4d6e-9aca-c1189be312a3"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "e5d121c2-732e-4bcf-880a-30b7d54ce666",
+              "59c49156-127c-4d6e-9aca-c1189be312a3",
               [
                 {
                   latitude: 48.1516988,
@@ -799,9 +799,65 @@
 
         // other
 
-        $("#cfp-timer").html("TBA");
-        $(".deadline-time").html("TBA");
-        $(".deadline-local-time").html("TBA");
+        // Use specified timezone for deadlines if available else use AoE timezone
+
+        var confDeadline = DateTime.fromSQL("2019-02-14 23:59:00", {
+          zone: "UTC-12",
+        });
+
+        // check if timezone is valid otherwise replace by system timezone
+        if (confDeadline.invalid) {
+          var confDeadline = DateTime.fromSQL("2019-02-14 23:59:00");
+          console.log("Invalid timezone. Using system timezone instead.");
+        }
+
+        // add calendar
+
+        var conferenceDeadlineCalendar = createCalendarFromObject({
+          id: "pycon-slovakia-2019",
+          title: "PyCon Slovakia 2019 deadline",
+          start_date: confDeadline.toJSDate(),
+          duration: 60,
+          place: "Bratislava, Slovakia",
+          link:
+            "https://web.archive.org/web/20200807013346/https://2019.pycon.sk/",
+        });
+        document
+          .querySelector("#conference-deadline")
+          .appendChild(conferenceDeadlineCalendar);
+
+        var conferenceCalendar = createCalendarFromObject({
+          id: "pycon-slovakia-2019",
+          title: "PyCon Slovakia 2019",
+          start_date: DateTime.fromSQL("2019-03-22").toJSDate(),
+          end_date: DateTime.fromSQL("2019-03-24").toJSDate(),
+          place: "Bratislava, Slovakia",
+          link:
+            "https://web.archive.org/web/20200807013346/https://2019.pycon.sk/",
+        });
+        document
+          .querySelector("#conference-calendar")
+          .appendChild(conferenceCalendar);
+
+        // render countdown timer
+        $("#cfp-timer").countdown(confDeadline.toJSDate(), function (event) {
+          $(this).html(event.strftime("%D days %Hh %Mm %Ss"));
+        });
+
+        // render deadline conference time
+
+        $(".deadline-time").html(
+          confDeadline
+            .setZone("UTC-12")
+            .toLocaleString(DateTime.DATETIME_HUGE_WITH_SECONDS)
+        );
+
+        // render deadline in local timezone
+        $(".deadline-local-time").html(
+          confDeadline
+            .setZone("system")
+            .toLocaleString(DateTime.DATETIME_HUGE_WITH_SECONDS)
+        );
       });
     </script>
     <script async defer>

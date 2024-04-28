@@ -83,7 +83,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1714036173"
+      href="/static/css/js-year-calendar.min.css?t=1714307448"
       media="screen,projection"
     />
 
@@ -95,13 +95,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1714036173"
+      href="/static/css/deadlines.css?t=1714307448"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1714036173"
+      href="/static/css/calendar.css?t=1714307448"
       media="screen,projection"
     />
 
@@ -1313,7 +1313,7 @@
             <div class="row">
               <div class="col-12 col-sm-6">
                 <div class="meta">
-                  <span class="conf-date">October 3 – 5, 2013.</span>
+                  <span class="conf-date">October 3 – 4, 2013.</span>
                   <span class="conf-place">
                     <a href="http://maps.google.com/?q=Cape Town, South Africa"
                       >Cape Town, South Africa</a
@@ -1325,7 +1325,7 @@
                 <div class="deadline">
                   <div>
                     Deadline:
-                    <span class="deadline-time">TBA</span>
+                    <span class="deadline-time">Sunday, 1 September 2013</span>
                   </div>
                 </div>
               </div>
@@ -2307,9 +2307,69 @@
                 $('#pycon-south-africa-2013 .PY-tag').html("General Python".toLocaleLowerCase("en"));
 
 
-                $('#pycon-south-africa-2013 .timer').html("TBA");
-                $('#pycon-south-africa-2013 .deadline-time').html("TBA");
-                $('#pycon-south-africa-2013').attr("cfpDiff", Infinity);
+
+                // Use specified timezone for deadlines if available else use AoE timezone
+
+                  var cfpDate = DateTime.fromSQL("2013-09-15 23:59:00", { zone: "UTC-12" });
+                  var confDate = DateTime.fromSQL("2013-10-03", { zone: "UTC-12" });
+
+
+                // check if timezone is valid otherwise replace by system timezone
+                if (cfpDate.invalid || confDate.invalid) {
+                  var cfpDate = DateTime.fromSQL("2013-09-15 23:59:00");
+                  var confDate = DateTime.fromSQL("2013-10-03");
+                  console.log("Invalid timezone in pycon-south-africa-2013. Using system timezone instead.");
+                }
+
+                // render countdown timer
+                $('#pycon-south-africa-2013 .timer').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
+                });
+
+                // render countdown timer small
+                $('#pycon-south-africa-2013 .timer-small').countdown(cfpDate.toJSDate(), function (event) {
+                  $(this).html(event.strftime('%Dd %H:%M:%S'));
+                });
+
+                // deadline in local timezone
+                $('#pycon-south-africa-2013 .deadline-time').html(cfpDate.setZone('system').toLocaleString(DateTime.DATE_HUGE));
+
+                // add calendar button
+                try {
+                  var myCalendar = createCalendarFromObject({
+                    id: 'pycon-south-africa-2013',
+                    title: 'PyCon South Africa 2013 deadline',
+                    start_date: cfpDate.toJSDate(),
+                    duration: 60,
+                    place: 'Cape Town, South Africa',
+                    link: 'https://web.archive.org/web/20130925120247/http://za.pycon.org/'
+                  });
+                  document.querySelector('#pycon-south-africa-2013 .calendar').appendChild(myCalendar);
+                } catch (err) {
+                  document.querySelector('#pycon-south-africa-2013 .calendar').appendChild("<p>Calendar not available.</p>");
+                  console.log("Error in cfp date.");
+                }
+
+                // check if date has passed, add 'past' class to it
+                cfpDiff = cfpDate.diffNow("seconds");
+                confDiff = confDate.diffNow("seconds");
+
+                $('#pycon-south-africa-2013').attr("cfpDiff", cfpDiff.toMillis());
+                $('#pycon-south-africa-2013').attr("confDiff", confDiff.toMillis());
+
+                if (cfpDiff < 0) {
+                  $('#pycon-south-africa-2013').addClass('pastcfp');
+                  $('#pycon-south-africa-2013 .timer').replaceWith($('#pycon-south-africa-2013 .deadline'));
+                  $('#pycon-south-africa-2013 .timer-small').replaceWith($('#pycon-south-africa-2013 .deadline'));
+                  $('#pycon-south-africa-2013 .calendar').remove();
+                }
+
+                if (confDiff < 0) {
+                  $('#pycon-south-africa-2013').addClass('pastconf');
+                  $('#pycon-south-africa-2013 .timer').replaceWith($('#pycon-south-africa-2013 .deadline'));
+                  $('#pycon-south-africa-2013 .timer-small').replaceWith($('#pycon-south-africa-2013 .deadline'));
+                  $('#pycon-south-africa-2013 .calendar').remove();
+                }
 
 
 

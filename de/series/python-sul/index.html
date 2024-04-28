@@ -72,7 +72,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1714036260"
+      href="/static/css/js-year-calendar.min.css?t=1714307547"
       media="screen,projection"
     />
 
@@ -84,13 +84,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1714036260"
+      href="/static/css/deadlines.css?t=1714307547"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1714036260"
+      href="/static/css/calendar.css?t=1714307547"
       media="screen,projection"
     />
 
@@ -716,13 +716,13 @@
 
                 // Use specified timezone for deadlines if available else use AoE timezone
 
-                  var cfpDate = DateTime.fromSQL("2024-05-12 23:59:00", { zone: "America/Sao_Paulo" });
+                  var cfpDate = DateTime.fromSQL("2024-05-31 23:59:00", { zone: "America/Sao_Paulo" });
                   var confDate = DateTime.fromSQL("2024-09-13", { zone: "America/Sao_Paulo" });
 
 
                 // check if timezone is valid otherwise replace by system timezone
                 if (cfpDate.invalid || confDate.invalid) {
-                  var cfpDate = DateTime.fromSQL("2024-05-12 23:59:00");
+                  var cfpDate = DateTime.fromSQL("2024-05-31 23:59:00");
                   var confDate = DateTime.fromSQL("2024-09-13");
                   console.log("Invalid timezone in python-sul-2024. Using system timezone instead.");
                 }

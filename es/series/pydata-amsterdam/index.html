@@ -83,7 +83,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1714036217"
+      href="/static/css/js-year-calendar.min.css?t=1714307497"
       media="screen,projection"
     />
 
@@ -95,13 +95,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1714036217"
+      href="/static/css/deadlines.css?t=1714307497"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1714036217"
+      href="/static/css/calendar.css?t=1714307497"
       media="screen,projection"
     />
 
@@ -951,13 +951,13 @@
 
         <div class="row">
           <div
-            id="57727344-f38a-4a24-a61e-cc213e11cfba"
+            id="ad4781a9-4a8d-4d4b-9806-c2de9aa1f792"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "57727344-f38a-4a24-a61e-cc213e11cfba",
+              "ad4781a9-4a8d-4d4b-9806-c2de9aa1f792",
               [
                 {
                   latitude: 52.4111289,
@@ -1204,13 +1204,13 @@
 
                 // Use specified timezone for deadlines if available else use AoE timezone
 
-                  var cfpDate = DateTime.fromSQL("2024-05-19 23:59:00", { zone: "Europe/Amsterdam" });
+                  var cfpDate = DateTime.fromSQL("2024-06-02 23:59:00", { zone: "Europe/Amsterdam" });
                   var confDate = DateTime.fromSQL("2024-09-18", { zone: "Europe/Amsterdam" });
 
 
                 // check if timezone is valid otherwise replace by system timezone
                 if (cfpDate.invalid || confDate.invalid) {
-                  var cfpDate = DateTime.fromSQL("2024-05-19 23:59:00");
+                  var cfpDate = DateTime.fromSQL("2024-06-02 23:59:00");
                   var confDate = DateTime.fromSQL("2024-09-18");
                   console.log("Invalid timezone in pydata-amsterdam-2024. Using system timezone instead.");
                 }
