@@ -71,7 +71,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1714307448"
+      href="/static/css/js-year-calendar.min.css?t=1714432797"
       media="screen,projection"
     />
 
@@ -83,13 +83,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1714307448"
+      href="/static/css/deadlines.css?t=1714432797"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1714307448"
+      href="/static/css/calendar.css?t=1714432797"
       media="screen,projection"
     />
 
@@ -166,6 +166,18 @@
       .GEO-select.active {
         color: white;
         background: #310c0c;
+      }
+
+      .CAMP-tag {
+        color: #303030;
+      }
+      .CAMP-select {
+        color: #303030;
+        background: white;
+      }
+      .CAMP-select.active {
+        color: white;
+        background: #303030;
       }
     </style>
 
@@ -372,6 +384,10 @@
                   <option value="GEO" id="GEO-checkbox">
                     Python for Earth (GEO)
                   </option>
+
+                  <option value="CAMP" id="CAMP-checkbox">
+                    Python Camps (CAMP)
+                  </option>
                 </select>
               </div>
             </div>
@@ -508,6 +524,11 @@
           <span class="color-box" style="background-color: #310c0c"></span>
           Python for Earth
         </div>
+
+        <div class="col-6 col-sm-4">
+          <span class="color-box" style="background-color: #303030"></span>
+          Python Camps
+        </div>
       </div>
       <footer>
         <hr />
@@ -556,7 +577,10 @@
 
       function update_filtering(data) {
         var page_url = window.location.pathname;
-        store.set("pythondeadlin.es-subs", data.subs);
+        store.set("pythondeadlin.es-subs", {
+          subs: data.subs,
+          timestamp: new Date().getTime(),
+        });
 
         $(".confItem").hide();
 
@@ -579,6 +603,15 @@
             page_url + "?sub=" + data.subs.join()
           );
         }
+      }
+
+      function isDataExpired(data) {
+        const EXPIRATION_PERIOD = 1 * 17 * 60 * 60 * 1000; // 1 day in milliseconds
+        const now = new Date().getTime();
+        if (data.timestamp && now - data.timestamp > EXPIRATION_PERIOD) {
+          return true;
+        }
+        return false;
       }
 
       function createCalendarFromObject(data) {
@@ -622,6 +655,7 @@
         { name: "Python for Web", sub: "WEB", color: "#0D0A0B" },
         { name: "Python for Business", sub: "BIZ", color: "#A8B9CC" },
         { name: "Python for Earth", sub: "GEO", color: "#310c0c" },
+        { name: "Python Camps", sub: "CAMP", color: "#303030" },
       ];
       var sub2name = {};
       var name2sub = {};
@@ -660,12 +694,14 @@
         },
         buttonText: function (options, select) {
           if (options.length === 0) {
-            return "None selected";
+            return "No Conference Selected";
+          } else if (options.length === select.children("option").length) {
+            return "All Conferences Selected";
           } else {
             var labels = [];
             options.each(function () {
               if ($(this).attr("value") !== undefined) {
-                labels.push($(this).attr("value"));
+                labels.push($(this).attr("value").slice(0, 3));
               } else {
                 labels.push($(this).html());
               }
@@ -679,6 +715,35 @@
         optionClass: function (element) {
           return $(element).val() + "-select";
         },
+      });
+
+      $(function () {
+        // Get data from URL/Cache
+        // Get subjects from URL/Cache
+        var url = new URL(window.location);
+        subs = url.searchParams.get("sub");
+        if (subs == undefined) {
+          data = store.get("pythondeadlin.es-subs");
+          if (!data || typeof data !== "object" || isDataExpired(data)) {
+            data = { subs: data.all_subs };
+          }
+          subs = data.subs;
+        } else {
+          subs = subs.toUpperCase().split(",");
+        }
+
+        // Apply selections
+        if (subs == undefined) {
+          subs = all_subs;
+        }
+        $("#subject-select").multiselect("select", subs);
+        update_filtering({ subs: subs, all_subs: all_subs });
+
+        conf_list_all = load_conference_list();
+        conf_list = conf_list_all;
+
+        // Render calendar
+        update_filtering({ subs: subs, all_subs: all_subs });
       });
 
       // calendar data template
@@ -1413,8 +1478,8 @@
           location: "Burlington, Canada",
           date: "July 29 – 30, 2024",
           subject: "DATA",
-          startDate: Date.parse("2024-04-26 23:59:00"),
-          endDate: Date.parse("2024-04-26 23:59:00"),
+          startDate: Date.parse("2024-05-03 23:59:00"),
+          endDate: Date.parse("2024-05-03 23:59:00"),
         });
 
         // add Conferences in chosen color
@@ -2604,7 +2669,10 @@
       }
 
       function update_filtering(data) {
-        store.set("pythondeadlin.es-subs", data.subs);
+        store.set("pythondeadlin.es-subs", {
+          subs: data.subs,
+          timestamp: new Date().getTime(),
+        });
 
         conf_list = conf_list_all.filter((v) => {
           var commonValues = data.subs.filter(function (value) {
@@ -2634,31 +2702,6 @@
         }
       }
       // overwrites update_filtering
-
-      $(function () {
-        // Get data from URL/Cache
-        // Get subjects from URL/Cache
-        var url = new URL(window.location);
-        subs = url.searchParams.get("sub");
-        if (subs == undefined) {
-          subs = store.get("pythondeadlin.es-subs");
-        } else {
-          subs = subs.toUpperCase().split(",");
-        }
-
-        // Apply selections
-        if (subs == undefined) {
-          subs = all_subs;
-        }
-        $("#subject-select").multiselect("select", subs);
-        update_filtering({ subs: subs, all_subs: all_subs });
-
-        conf_list_all = load_conference_list();
-        conf_list = conf_list_all;
-
-        // Render calendar
-        update_filtering({ subs: subs, all_subs: all_subs });
-      });
     </script>
   </body>
 </html>

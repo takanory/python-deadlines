@@ -83,7 +83,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1714307547"
+      href="/static/css/js-year-calendar.min.css?t=1714432903"
       media="screen,projection"
     />
 
@@ -95,13 +95,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1714307547"
+      href="/static/css/deadlines.css?t=1714432903"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1714307547"
+      href="/static/css/calendar.css?t=1714432903"
       media="screen,projection"
     />
 
@@ -178,6 +178,18 @@
       .GEO-select.active {
         color: white;
         background: #310c0c;
+      }
+
+      .CAMP-tag {
+        color: #303030;
+      }
+      .CAMP-select {
+        color: #303030;
+        background: white;
+      }
+      .CAMP-select.active {
+        color: white;
+        background: #303030;
       }
     </style>
 
@@ -908,13 +920,13 @@
 
         <div class="row">
           <div
-            id="7bd32f3d-0e55-42ef-bcd9-3ee6d4b4cf17"
+            id="bd425c1f-8638-41ee-ab6f-c37f1240ab9b"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "7bd32f3d-0e55-42ef-bcd9-3ee6d4b4cf17",
+              "bd425c1f-8638-41ee-ab6f-c37f1240ab9b",
               [
                 {
                   latitude: 54.6870458,
@@ -1026,7 +1038,7 @@
       var subs = [];
       var _all_subs = [];
       // Get all subs
-      var conf_type_data = [{"name":"General Python","sub":"PY","color":"#4B8BBE"},{"name":"Scientific Python","sub":"SCIPY","color":"#70163C"},{"name":"Python for Data","sub":"DATA","color":"#849324"},{"name":"Python for Web","sub":"WEB","color":"#0D0A0B"},{"name":"Python for Business","sub":"BIZ","color":"#A8B9CC"},{"name":"Python for Earth","sub":"GEO","color":"#310c0c"}];
+      var conf_type_data = [{"name":"General Python","sub":"PY","color":"#4B8BBE"},{"name":"Scientific Python","sub":"SCIPY","color":"#70163C"},{"name":"Python for Data","sub":"DATA","color":"#849324"},{"name":"Python for Web","sub":"WEB","color":"#0D0A0B"},{"name":"Python for Business","sub":"BIZ","color":"#A8B9CC"},{"name":"Python for Earth","sub":"GEO","color":"#310c0c"},{"name":"Python Camps","sub":"CAMP","color":"#303030"}];
       var sub2name = {}; var name2sub = {};
       for (var i = 0; i < conf_type_data.length; i++) {
           _all_subs[i] = conf_type_data[i]['sub'];
@@ -1038,7 +1050,7 @@
 
             function update_filtering(data) {
       	var page_url = window.location.pathname;
-      	store.set('pythondeadlin.es-subs', data.subs);
+      	store.set('pythondeadlin.es-subs', { subs: data.subs, timestamp: new Date().getTime() });
 
       	$('.confItem').hide();
 
@@ -1048,16 +1060,25 @@
       		$('.' + s + '-conf').show();
       	}
 
-        if (data.subs.length === 0 || data.subs.length == data.all_subs.length) {
+      	if (data.subs.length === 0 || data.subs.length == data.all_subs.length) {
       		window.history.pushState('', '', page_url);
-        } else {
+      	} else {
       		// Join the selected values into a query parameter
       		window.history.pushState('', '', page_url + '?sub=' + data.subs.join());
-        }
+      	}
+      }
+
+      function isDataExpired(data) {
+      	const EXPIRATION_PERIOD = 1 * 17 * 60 * 60 * 1000; // 1 day in milliseconds
+      	const now = new Date().getTime();
+      	if (data.timestamp && now - data.timestamp > EXPIRATION_PERIOD) {
+      		return true;
+      	}
+      	return false;
       }
 
       function createCalendarFromObject(data) {
-        return createCalendar({
+      	return createCalendar({
       		options: {
       			class: 'calendar-obj',
 
@@ -1071,8 +1092,8 @@
       			// Event start date
       			start: data.start_date,
 
-            // Event duration (minutes)
-            duration: 60,
+      			// Event duration (minutes)
+      			duration: 60,
 
       			// You can also choose to set an end time
       			// If an end time is set, this will take precedence over duration
@@ -1082,58 +1103,60 @@
       			address: data.place,
 
       			// Event Description
-      			description: '<a href='+data.link+'>'+data.title+'</a>',
+      			description: '<a href=' + data.link + '>' + data.title + '</a>',
       		},
-        });
+      	});
       }
 
             // Multi-select handler
-      $("#subject-select").multiselect({
-        includeSelectAllOption: true,
-        numberDisplayed: 5,
-        onChange: function (option, checked, select) {
-          var csub = $(option).val();
-          if (checked == true) {
-            if (subs.indexOf(csub) < 0) subs.push(csub);
-          } else {
-            var idx = subs.indexOf(csub);
-            if (idx >= 0) subs.splice(idx, 1);
-            // In case a conf with multiple types (including this type) is wrongly hid, show all confs with at least one checked type.
-            for (var i = 0; i < subs.length; i++) {
-              // $('.' + subs[i] + '-conf').show();
-            }
-          }
-          update_filtering({ subs: subs, all_subs: all_subs });
-        },
-        onSelectAll: function (options) {
-          subs = all_subs;
-          update_filtering({ subs: subs, all_subs: all_subs });
-        },
-        onDeselectAll: function (options) {
-          subs = [];
-          update_filtering({ subs: subs, all_subs: all_subs });
-        },
-        buttonText: function (options, select) {
-          if (options.length === 0) {
-            return "None selected";
-          } else {
-            var labels = [];
-            options.each(function () {
-              if ($(this).attr("value") !== undefined) {
-                labels.push($(this).attr("value"));
-              } else {
-                labels.push($(this).html());
-              }
-            });
-            return labels.join(", ") + "";
-          }
-        },
-        buttonTitle: function (options, select) {
-          return "";
-        },
-        optionClass: function(element) {
-          return $(element).val() + '-select';
-        },
+      $('#subject-select').multiselect({
+      	includeSelectAllOption: true,
+      	numberDisplayed: 5,
+      	onChange: function (option, checked, select) {
+      		var csub = $(option).val();
+      		if (checked == true) {
+      			if (subs.indexOf(csub) < 0) subs.push(csub);
+      		} else {
+      			var idx = subs.indexOf(csub);
+      			if (idx >= 0) subs.splice(idx, 1);
+      			// In case a conf with multiple types (including this type) is wrongly hid, show all confs with at least one checked type.
+      			for (var i = 0; i < subs.length; i++) {
+      				// $('.' + subs[i] + '-conf').show();
+      			}
+      		}
+      		update_filtering({ subs: subs, all_subs: all_subs });
+      	},
+      	onSelectAll: function (options) {
+      		subs = all_subs;
+      		update_filtering({ subs: subs, all_subs: all_subs });
+      	},
+      	onDeselectAll: function (options) {
+      		subs = [];
+      		update_filtering({ subs: subs, all_subs: all_subs });
+      	},
+      	buttonText: function (options, select) {
+      		if (options.length === 0) {
+      			return 'Keine Konferenz ausgewählt';
+      		} else if (options.length === select.children('option').length) {
+      			return 'Alle Konferenzen ausgewählt';
+      		} else {
+      			var labels = [];
+      			options.each(function () {
+      				if ($(this).attr('value') !== undefined) {
+      					labels.push($(this).attr('value').slice(0, 3));
+      				} else {
+      					labels.push($(this).html());
+      				}
+      			});
+      			return labels.join(', ') + '';
+      		}
+      	},
+      	buttonTitle: function (options, select) {
+      		return '';
+      	},
+      	optionClass: function (element) {
+      		return $(element).val() + '-select';
+      	},
       });
 
 

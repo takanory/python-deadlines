@@ -87,7 +87,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/js-year-calendar.min.css?t=1714307497"
+      href="/static/css/js-year-calendar.min.css?t=1714432849"
       media="screen,projection"
     />
 
@@ -99,13 +99,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/deadlines.css?t=1714307497"
+      href="/static/css/deadlines.css?t=1714432849"
       media="screen,projection"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/calendar.css?t=1714307497"
+      href="/static/css/calendar.css?t=1714432849"
       media="screen,projection"
     />
 
@@ -182,6 +182,18 @@
       .GEO-select.active {
         color: white;
         background: #310c0c;
+      }
+
+      .CAMP-tag {
+        color: #303030;
+      }
+      .CAMP-select {
+        color: #303030;
+        background: white;
+      }
+      .CAMP-select.active {
+        color: white;
+        background: #303030;
       }
     </style>
 
@@ -648,13 +660,13 @@
         </div>
         <div class="row">
           <div
-            id="ed0e4e45-4161-416a-825a-816c50edcbf1"
+            id="3578357f-c4f8-4b0f-89a9-e6888b425664"
             style="width: 100%; height: 400px"
             class="jekyll-map"
           ></div>
           <script type="text/javascript">
             jekyllMaps.register(
-              "ed0e4e45-4161-416a-825a-816c50edcbf1",
+              "3578357f-c4f8-4b0f-89a9-e6888b425664",
               [
                 {
                   latitude: 37.5666791,
@@ -740,6 +752,7 @@
           { name: "Python for Web", sub: "WEB", color: "#0D0A0B" },
           { name: "Python for Business", sub: "BIZ", color: "#A8B9CC" },
           { name: "Python for Earth", sub: "GEO", color: "#310c0c" },
+          { name: "Python Camps", sub: "CAMP", color: "#303030" },
         ];
         var sub2name = {};
         var name2sub = {};
@@ -752,7 +765,10 @@
 
         function update_filtering(data) {
           var page_url = window.location.pathname;
-          store.set("pythondeadlin.es-subs", data.subs);
+          store.set("pythondeadlin.es-subs", {
+            subs: data.subs,
+            timestamp: new Date().getTime(),
+          });
 
           $(".confItem").hide();
 
@@ -775,6 +791,15 @@
               page_url + "?sub=" + data.subs.join()
             );
           }
+        }
+
+        function isDataExpired(data) {
+          const EXPIRATION_PERIOD = 1 * 17 * 60 * 60 * 1000; // 1 day in milliseconds
+          const now = new Date().getTime();
+          if (data.timestamp && now - data.timestamp > EXPIRATION_PERIOD) {
+            return true;
+          }
+          return false;
         }
 
         function createCalendarFromObject(data) {
